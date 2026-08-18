@@ -39,6 +39,11 @@ public sealed class Card : ContentControl
     private bool _isPressed;
     private IPointer? _capturedPointer;
 
+    public Card()
+    {
+        LostFocus += OnLostFocus;
+    }
+
     protected override void OnPointerPressed(PointerPressedEventArgs e)
     {
         base.OnPointerPressed(e);
@@ -82,9 +87,8 @@ public sealed class Card : ContentControl
         _capturedPointer = null;
     }
 
-    protected override void OnLostFocus(RoutedEventArgs e)
+    private void OnLostFocus(object? sender, RoutedEventArgs e)
     {
-        base.OnLostFocus(e);
         if (_isPressed)
         {
             _isPressed = false;

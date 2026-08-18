@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:converters="clr-namespace:Material3.Avalonia.Demo.Converters"
+             xmlns:dynamicColor="clr-namespace:Bdziam.UI.Theming.MaterialColors.DynamicColor;assembly=Bdziam.DynamicColor"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Material3.Avalonia.Demo.Views.TonalPalettes">
   <UserControl.Styles>
@@ -46,6 +47,7 @@
     <Grid RowDefinitions="Auto Auto Auto Auto Auto Auto"
           ColumnDefinitions="Auto *"
           Margin="12"
+          x:DataType="dynamicColor:DynamicScheme"
           DataContext="{DynamicResource Material.DynamicScheme}">
         <TextBlock Grid.Row="0" Grid.Column="0" Classes="row-label" Text="Primary" />
         <UniformGrid Grid.Row="0" Grid.Column="1" Columns="14" Rows="1">
