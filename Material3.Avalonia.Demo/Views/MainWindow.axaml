@@ -15,7 +15,8 @@
     <ScrollViewer VerticalScrollBarVisibility="Visible"
                   controls1:ScrollViewerAssist.ScrollBarInset="0 18">
         <StackPanel Orientation="Vertical"
-                    Spacing="16">
+                    Spacing="16"
+                    Margin="16">
             <views:TonalPalettes IsVisible="False" />
 
             <views:SchemeColors HorizontalAlignment="Center" IsVisible="False" />
@@ -26,13 +27,13 @@
 
             <views:ScrollViewers HorizontalAlignment="Center" IsVisible="True" />
 
-            <Border IsVisible="False" BorderBrush="Black" BorderThickness="1" Padding="4" Margin="100" Width="{Binding $self.Bounds.Height}"  HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border IsVisible="False" BorderBrush="Black" BorderThickness="1" Padding="4" Margin="100" Width="{Binding $self.Bounds.Height}" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <controls:MaterialShape Kind="Arch" Width="400" Height="400"
                                           Fill="{StaticResource MdSysOnSurfaceBrush}" />
             </Border>
-            
-            <views:Shapes HorizontalAlignment="Center" IsVisible="False" />
-            
+
+            <views:Shapes HorizontalAlignment="Center" IsVisible="True" />
+
             <views:Cards HorizontalAlignment="Center" IsVisible="True" />
         </StackPanel>
     </ScrollViewer>
