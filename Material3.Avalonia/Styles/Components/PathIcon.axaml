@@ -10,6 +10,8 @@
                 <Path Data="{TemplateBinding Data}"
                       Fill="{TemplateBinding Foreground}"
                       Stretch="Uniform"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
                       UseLayoutRounding="True" />
             </ControlTemplate>
         </Setter>
