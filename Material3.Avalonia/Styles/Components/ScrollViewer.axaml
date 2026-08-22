@@ -1,0 +1,59 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls"
+                     xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives">
+
+    <ControlTheme x:Key="{x:Type ScrollViewer}"
+                  TargetType="ScrollViewer">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid ColumnDefinitions="*,Auto"
+                      RowDefinitions="*,Auto">
+                    <primitives:SmoothScrollContentPresenter x:Name="PART_ContentPresenter"
+                                                             Grid.Row="0"
+                                                             Grid.Column="0"
+                                                             Padding="{TemplateBinding Padding}"
+                                                             HorizontalSnapPointsType="{TemplateBinding HorizontalSnapPointsType}"
+                                                             VerticalSnapPointsType="{TemplateBinding VerticalSnapPointsType}"
+                                                             HorizontalSnapPointsAlignment="{TemplateBinding HorizontalSnapPointsAlignment}"
+                                                             VerticalSnapPointsAlignment="{TemplateBinding VerticalSnapPointsAlignment}"
+                                                             Background="{TemplateBinding Background}"
+                                                             ScrollViewer.IsScrollInertiaEnabled="{TemplateBinding IsScrollInertiaEnabled}">
+                        <primitives:SmoothScrollContentPresenter.GestureRecognizers>
+                            <ScrollGestureRecognizer CanHorizontallyScroll="{Binding CanHorizontallyScroll, ElementName=PART_ContentPresenter}"
+                                                     CanVerticallyScroll="{Binding CanVerticallyScroll, ElementName=PART_ContentPresenter}"
+                                                     IsScrollInertiaEnabled="{Binding (ScrollViewer.IsScrollInertiaEnabled), ElementName=PART_ContentPresenter}"
+                                                     Offset="{Binding Offset, ElementName=PART_ContentPresenter}"
+                                                     Viewport="{Binding Viewport, ElementName=PART_ContentPresenter}"
+                                                     Extent="{Binding Extent, ElementName=PART_ContentPresenter}" />
+                        </primitives:SmoothScrollContentPresenter.GestureRecognizers>
+                    </primitives:SmoothScrollContentPresenter>
+
+                    <ScrollBar x:Name="PART_HorizontalScrollBar"
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               controls:ScrollViewerAssist.ScrollBarInset="{Binding Path=(controls:ScrollViewerAssist.ScrollBarInset), RelativeSource={RelativeSource TemplatedParent}}"
+                               Orientation="Horizontal" />
+
+                    <ScrollBar x:Name="PART_VerticalScrollBar"
+                               Grid.Row="0"
+                               Grid.Column="1"
+                               controls:ScrollViewerAssist.ScrollBarInset="{Binding Path=(controls:ScrollViewerAssist.ScrollBarInset), RelativeSource={RelativeSource TemplatedParent}}"
+                               Orientation="Vertical" />
+
+                    <Panel x:Name="PART_ScrollBarsSeparator"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Background="Transparent" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Auto Hide -->
+        <Style Selector="^[AllowAutoHide=True] /template/ primitives|SmoothScrollContentPresenter#PART_ContentPresenter">
+            <Setter Property="Grid.ColumnSpan" Value="2" />
+            <Setter Property="Grid.RowSpan" Value="2" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

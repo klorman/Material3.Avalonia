@@ -1,0 +1,223 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls"
+                     xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
+                     xmlns:transitions="clr-namespace:Material3.Avalonia.Motion.Transitions">
+
+    <converters:FullCornerRadiusConverter x:Key="ScrollBarFullCornerRadiusConverter" />
+
+    <!-- M3 has no ScrollBar tokens; keep a 12dp interactive area around the visual thumb. -->
+    <x:Double x:Key="MdImplScrollBarThickness">12</x:Double>
+    <x:Double x:Key="MdImplScrollBarThumbCollapsedThickness">4</x:Double>
+    <x:Double x:Key="MdImplScrollBarThumbExpandedThickness">6</x:Double>
+    <x:Double x:Key="MdImplScrollBarThumbMinimumLength">32</x:Double>
+    <x:Double x:Key="MdImplScrollBarThumbOpacity">0.5</x:Double>
+    <x:Double x:Key="MdImplScrollBarThumbExpandedOpacity">0.72</x:Double>
+    <x:Double x:Key="MdImplScrollBarThumbPointerOverOpacity">0.8</x:Double>
+    <x:Double x:Key="MdImplScrollBarThumbPressedOpacity">0.9</x:Double>
+    <x:Double x:Key="MdImplScrollBarThumbDisabledOpacity">0</x:Double>
+
+    <ControlTheme x:Key="MaterialScrollBarPageButton"
+                  TargetType="RepeatButton">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}" />
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme x:Key="MaterialVerticalScrollBarThumb"
+                  TargetType="Thumb">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Background" Value="{DynamicResource MdSysOnSurfaceVariantBrush}" />
+        <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbOpacity}" />
+        <Setter Property="Width" Value="{StaticResource MdImplScrollBarThickness}" />
+        <Setter Property="MinHeight" Value="{StaticResource MdImplScrollBarThumbMinimumLength}" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <transitions:SpringBrushTransition Property="Background"
+                                                   Style="Effects"
+                                                   Speed="Fast" />
+                <transitions:SpringDoubleTransition Property="Opacity"
+                                                    Style="Effects"
+                                                    Speed="Fast" />
+            </Transitions>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="Transparent">
+                    <Border x:Name="PART_ThumbVisual"
+                            Width="{StaticResource MdImplScrollBarThumbCollapsedThickness}"
+                            HorizontalAlignment="Center"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{Binding $self.Bounds, Converter={StaticResource ScrollBarFullCornerRadiusConverter}}">
+                        <Border.Transitions>
+                            <Transitions>
+                                <transitions:SpringDoubleTransition Property="Width"
+                                                                    Style="Effects"
+                                                                    Speed="Fast" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbPointerOverOpacity}" />
+        </Style>
+
+        <Style Selector="^:pressed">
+            <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbPressedOpacity}" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbDisabledOpacity}" />
+        </Style>
+
+        <Style Selector="^[Tag=True]">
+            <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbExpandedOpacity}" />
+        </Style>
+
+        <Style Selector="^[Tag=True] /template/ Border#PART_ThumbVisual">
+            <Setter Property="Width" Value="{StaticResource MdImplScrollBarThumbExpandedThickness}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="MaterialHorizontalScrollBarThumb"
+                  TargetType="Thumb">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Background" Value="{DynamicResource MdSysOnSurfaceVariantBrush}" />
+        <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbOpacity}" />
+        <Setter Property="Height" Value="{StaticResource MdImplScrollBarThickness}" />
+        <Setter Property="MinWidth" Value="{StaticResource MdImplScrollBarThumbMinimumLength}" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <transitions:SpringBrushTransition Property="Background"
+                                                   Style="Effects"
+                                                   Speed="Fast" />
+                <transitions:SpringDoubleTransition Property="Opacity"
+                                                    Style="Effects"
+                                                    Speed="Fast" />
+            </Transitions>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="Transparent">
+                    <Border x:Name="PART_ThumbVisual"
+                            Height="{StaticResource MdImplScrollBarThumbCollapsedThickness}"
+                            VerticalAlignment="Center"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{Binding $self.Bounds, Converter={StaticResource ScrollBarFullCornerRadiusConverter}}">
+                        <Border.Transitions>
+                            <Transitions>
+                                <transitions:SpringDoubleTransition Property="Height"
+                                                                    Style="Effects"
+                                                                    Speed="Fast" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbPointerOverOpacity}" />
+        </Style>
+
+        <Style Selector="^:pressed">
+            <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbPressedOpacity}" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbDisabledOpacity}" />
+        </Style>
+
+        <Style Selector="^[Tag=True]">
+            <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbExpandedOpacity}" />
+        </Style>
+
+        <Style Selector="^[Tag=True] /template/ Border#PART_ThumbVisual">
+            <Setter Property="Height" Value="{StaticResource MdImplScrollBarThumbExpandedThickness}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="{x:Type ScrollBar}"
+                  TargetType="ScrollBar">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="ShowDelay" Value="0:0:0" />
+        <Setter Property="HideDelay" Value="0:0:1.2" />
+
+        <Style Selector="^:horizontal">
+            <Setter Property="Height" Value="{StaticResource MdImplScrollBarThickness}" />
+            <Setter Property="MinHeight" Value="{StaticResource MdImplScrollBarThickness}" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}">
+                        <Track x:Name="PART_Track"
+                               Margin="{Binding Path=(controls:ScrollViewerAssist.ScrollBarInset), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static converters:ScrollBarConverters.TrackMargin}, ConverterParameter=Horizontal}"
+                               Maximum="{TemplateBinding Maximum}"
+                               Minimum="{TemplateBinding Minimum}"
+                               Orientation="{TemplateBinding Orientation}"
+                               ViewportSize="{TemplateBinding ViewportSize}"
+                               DeferThumbDrag="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                               Value="{TemplateBinding Value, Mode=TwoWay}">
+                            <Track.DecreaseButton>
+                                <RepeatButton x:Name="PART_PageUpButton"
+                                              Theme="{StaticResource MaterialScrollBarPageButton}" />
+                            </Track.DecreaseButton>
+                            <Track.IncreaseButton>
+                                <RepeatButton x:Name="PART_PageDownButton"
+                                              Theme="{StaticResource MaterialScrollBarPageButton}" />
+                            </Track.IncreaseButton>
+                            <Thumb x:Name="PART_Thumb"
+                                   Tag="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
+                                   Theme="{StaticResource MaterialHorizontalScrollBarThumb}" />
+                        </Track>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+        <Style Selector="^:vertical">
+            <Setter Property="Width" Value="{StaticResource MdImplScrollBarThickness}" />
+            <Setter Property="MinWidth" Value="{StaticResource MdImplScrollBarThickness}" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}">
+                        <Track x:Name="PART_Track"
+                               Margin="{Binding Path=(controls:ScrollViewerAssist.ScrollBarInset), RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static converters:ScrollBarConverters.TrackMargin}, ConverterParameter=Vertical}"
+                               IsDirectionReversed="True"
+                               Maximum="{TemplateBinding Maximum}"
+                               Minimum="{TemplateBinding Minimum}"
+                               Orientation="{TemplateBinding Orientation}"
+                               ViewportSize="{TemplateBinding ViewportSize}"
+                               DeferThumbDrag="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                               Value="{TemplateBinding Value, Mode=TwoWay}">
+                            <Track.DecreaseButton>
+                                <RepeatButton x:Name="PART_PageUpButton"
+                                              Theme="{StaticResource MaterialScrollBarPageButton}" />
+                            </Track.DecreaseButton>
+                            <Track.IncreaseButton>
+                                <RepeatButton x:Name="PART_PageDownButton"
+                                              Theme="{StaticResource MaterialScrollBarPageButton}" />
+                            </Track.IncreaseButton>
+                            <Thumb x:Name="PART_Thumb"
+                                   Tag="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
+                                   Theme="{StaticResource MaterialVerticalScrollBarThumb}" />
+                        </Track>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+        <Style Selector="^:disabled /template/ Thumb#PART_Thumb">
+            <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbDisabledOpacity}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

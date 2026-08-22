@@ -1,13 +1,17 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="clr-namespace:Material3.Avalonia.Controls"
-                    xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
-                    xmlns:attached="clr-namespace:Material3.Avalonia.Attached">
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:controls="clr-namespace:Material3.Avalonia.Controls"
+                     xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
+                     xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
+                     xmlns:attachedControls="clr-namespace:Material3.Avalonia.Attached.Controls"
+                     xmlns:attached="clr-namespace:Material3.Avalonia.Attached">
     <ControlTheme x:Key="{x:Type controls:Card}" TargetType="controls:Card">
         <Setter Property="ClipToBounds" Value="False" />
         <Setter Property="Focusable" Value="{Binding $self.IsInteractive}" />
         <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerMedium}" />
         <Setter Property="Padding" Value="{DynamicResource MdCompCardPadding}" />
+        <Setter Property="attachedControls:ScrollViewerAssist.ScrollBarInset"
+                Value="{Binding $self.CornerRadius, Converter={x:Static converters:ScrollBarConverters.InsetFromCornerRadius}}" />
         <Setter Property="attached:FocusRing.Thickness" Value="{DynamicResource MdCompCardFocusRingThickness}" />
         <Setter Property="attached:FocusRing.Offset" Value="{DynamicResource MdCompCardFocusRingOffset}" />
         <Setter Property="attached:FocusRing.CornerRadius" Value="{Binding $self.CornerRadius}" />
@@ -25,16 +29,16 @@
                                 Opacity="1"
                                 CornerRadius="{TemplateBinding CornerRadius}" />
                     </Border>
-                    
+
                     <primitives:StateLayer x:Name="PART_StateLayer"
                                            CornerRadius="{TemplateBinding CornerRadius}"
                                            Brush="{DynamicResource MdCompCardStateLayerBrush}"
                                            Opacity="0" />
-                    
+
                     <ContentPresenter x:Name="PART_Content"
                                       Margin="{TemplateBinding Padding}"
-                                      Content="{TemplateBinding Content}" />
-                    
+                                       Content="{TemplateBinding Content}" />
+
                     <primitives:InkRipple x:Name="PART_Ripple"
                                           IsVisible="{TemplateBinding IsInteractive}"
                                           CornerRadius="{TemplateBinding CornerRadius}"
@@ -43,7 +47,7 @@
                 </Grid>
             </ControlTemplate>
         </Setter>
-        
+
         <!-- State -->
         <Style Selector="^[IsInteractive=True]:focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
             <Setter Property="Opacity" Value="{DynamicResource MdSysStateFocusOpacity}" />
@@ -83,7 +87,7 @@
                 </Style>
             </Style>
         </Style>
-        
+
         <Style Selector="^[Variant=Filled]">
             <Setter Property="Background" Value="{DynamicResource MdCompCardFilledContainerBrush}" />
             <Setter Property="Foreground" Value="{DynamicResource MdCompCardOnFilledContainerBrush}" />
@@ -113,7 +117,7 @@
                 </Style>
             </Style>
         </Style>
-        
+
         <Style Selector="^[Variant=Outlined]">
             <Setter Property="Background" Value="{DynamicResource MdCompCardOutlinedContainerBrush}" />
             <Setter Property="Foreground" Value="{DynamicResource MdCompCardOnOutlinedContainerBrush}" />
@@ -151,11 +155,11 @@
         <Style Selector="^.elevated">
             <Setter Property="Variant" Value="Elevated" />
         </Style>
-        
+
         <Style Selector="^.filled">
             <Setter Property="Variant" Value="Filled" />
         </Style>
-        
+
         <Style Selector="^.outlined">
             <Setter Property="Variant" Value="Outlined" />
         </Style>
