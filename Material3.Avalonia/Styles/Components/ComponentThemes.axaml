@@ -5,6 +5,8 @@
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Button.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Card.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/PathIcon.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ScrollBar.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ScrollViewer.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/TextBlock.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Window.axaml" />
     </ResourceDictionary.MergedDictionaries>

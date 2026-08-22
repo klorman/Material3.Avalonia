@@ -5,12 +5,15 @@
         xmlns:views="clr-namespace:Material3.Avalonia.Demo.Views"
         xmlns:controls="clr-namespace:Material3.Avalonia.Controls;assembly=Material3.Avalonia"
         xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
+        xmlns:controls1="clr-namespace:Material3.Avalonia.Attached.Controls;assembly=Material3.Avalonia"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Material3.Avalonia.Demo.Views.MainWindow"
         Background="{DynamicResource MdSysBackgroundBrush}"
-        Title="MainWindow">
-    
-    <ScrollViewer VerticalScrollBarVisibility="Visible">
+        Title="MainWindow"
+        CornerRadius="18">
+
+    <ScrollViewer VerticalScrollBarVisibility="Visible"
+                  controls1:ScrollViewerAssist.ScrollBarInset="0 18">
         <StackPanel Orientation="Vertical"
                     Spacing="16">
             <views:TonalPalettes IsVisible="False" />
@@ -18,6 +21,8 @@
             <views:SchemeColors HorizontalAlignment="Center" IsVisible="False" />
 
             <views:Buttons HorizontalAlignment="Center" IsVisible="True" />
+
+            <views:ScrollViewers HorizontalAlignment="Center" IsVisible="True" />
 
             <Border IsVisible="False" BorderBrush="Black" BorderThickness="1" Padding="4" Margin="100" Width="{Binding $self.Bounds.Height}"  HorizontalAlignment="Center" VerticalAlignment="Center">
                 <controls:MaterialShape Kind="Arch" Width="400" Height="400"
