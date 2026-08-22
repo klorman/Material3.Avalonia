@@ -1,6 +1,5 @@
 ﻿using Avalonia;
-using Avalonia.ReactiveUI;
-using System;
+using ReactiveUI.Avalonia;
 
 namespace Material3.Avalonia.Demo.Desktop;
 
@@ -18,5 +17,5 @@ internal static class Program
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .LogToTrace()
-            .UseReactiveUI();
+            .UseReactiveUI(_ => { });
 }

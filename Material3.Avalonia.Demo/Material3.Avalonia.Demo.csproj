@@ -9,9 +9,10 @@
 
     <ItemGroup>
       <PackageReference Include="Avalonia" Version="12.1.1" />
-      <PackageReference Include="Avalonia.Desktop" Version="12.1.1" />
-      <PackageReference Include="Avalonia.Diagnostics" Version="11.3.20" />
-      <PackageReference Include="Avalonia.ReactiveUI" Version="11.3.9" />
+        <PackageReference Include="AvaloniaUI.DiagnosticsSupport"
+                          Version="2.2.3"
+                          Condition="'$(Configuration)' == 'Debug'" />
+      <PackageReference Include="ReactiveUI" Version="24.1.0" />
     </ItemGroup>
 
     <ItemGroup>

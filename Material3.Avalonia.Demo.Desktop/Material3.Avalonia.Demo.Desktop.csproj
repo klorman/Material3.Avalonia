@@ -12,4 +12,9 @@
       <ProjectReference Include="..\Material3.Avalonia.Demo\Material3.Avalonia.Demo.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Avalonia.Desktop" Version="12.1.1" />
+      <PackageReference Include="ReactiveUI.Avalonia" Version="12.1.1" />
+    </ItemGroup>
+
 </Project>
