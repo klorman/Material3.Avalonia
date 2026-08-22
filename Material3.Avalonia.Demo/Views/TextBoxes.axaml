@@ -1,0 +1,295 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls;assembly=Material3.Avalonia"
+             xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
+             xmlns:viewModels="clr-namespace:Material3.Avalonia.Demo.ViewModels"
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="1600"
+             x:Class="Material3.Avalonia.Demo.Views.TextBoxes"
+             x:DataType="viewModels:TextBoxesViewModel"
+             ClipToBounds="False">
+
+    <StackPanel Width="744"
+                Margin="24"
+                Spacing="32">
+
+        <!-- Header -->
+        <StackPanel Spacing="8">
+            <TextBlock Text="Text fields"
+                       Foreground="{DynamicResource MdSysOnBackgroundBrush}"
+                       helpers:Typography.TextStyle="HeadlineMedium" />
+            <TextBlock Text="Interactive Material 3 / Avalonia 12 regression gallery. Hover, focus, edit and tab through the fields to verify state and motion behavior."
+                       MaxWidth="696"
+                       TextWrapping="Wrap"
+                       Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                       helpers:Typography.TextStyle="BodyMedium" />
+        </StackPanel>
+
+        <!-- Variants -->
+        <Border Background="{DynamicResource MdSysSurfaceContainerLowBrush}"
+                CornerRadius="{DynamicResource MdSysShapeCornerLarge}"
+                Padding="24">
+            <StackPanel Spacing="20">
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Variants and labels"
+                               Foreground="{DynamicResource MdSysOnSurfaceBrush}"
+                               helpers:Typography.TextStyle="TitleLarge" />
+                    <TextBlock Text="The label floats on focus or when populated. With both Label and PlaceholderText, the placeholder is revealed only after the label floats."
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                               helpers:Typography.TextStyle="BodySmall" />
+                </StackPanel>
+
+                <Grid ColumnDefinitions="336,24,336">
+                    <StackPanel Grid.Column="0" Spacing="16">
+                        <TextBlock Text="Filled"
+                                   Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                                   helpers:Typography.TextStyle="LabelLarge" />
+
+                        <TextBox Classes="filled"
+                                 controls:TextFieldAssist.Label="Email"
+                                 PlaceholderText="name@example.com" />
+
+                        <TextBox Classes="filled"
+                                 controls:TextFieldAssist.Label="Populated"
+                                 Text="Existing value" />
+
+                        <TextBox Classes="filled"
+                                 PlaceholderText="Placeholder without label" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Spacing="16">
+                        <TextBlock Text="Outlined"
+                                   Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                                   helpers:Typography.TextStyle="LabelLarge" />
+
+                        <TextBox Classes="outlined"
+                                 controls:TextFieldAssist.Label="Email"
+                                 PlaceholderText="name@example.com" />
+
+                        <TextBox Classes="outlined"
+                                 controls:TextFieldAssist.Label="Populated"
+                                 Text="Existing value" />
+
+                        <TextBox Classes="outlined"
+                                 PlaceholderText="Placeholder without label" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- Decorations -->
+        <Border Background="{DynamicResource MdSysSurfaceContainerLowBrush}"
+                CornerRadius="{DynamicResource MdSysShapeCornerLarge}"
+                Padding="24">
+            <StackPanel Spacing="20">
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Decorations and supporting content"
+                               Foreground="{DynamicResource MdSysOnSurfaceBrush}"
+                               helpers:Typography.TextStyle="TitleLarge" />
+                    <TextBlock Text="Uses Material leading/trailing icons, native InnerLeftContent / InnerRightContent slots, prefix, suffix, supporting text, required indicator and MaxLength counter."
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                               helpers:Typography.TextStyle="BodySmall" />
+                </StackPanel>
+
+                <Grid ColumnDefinitions="336,24,336">
+                    <StackPanel Grid.Column="0" Spacing="16">
+                        <TextBox Classes="filled"
+                                 controls:TextFieldAssist.Label="Edited by"
+                                 controls:TextFieldAssist.LeadingIcon="{StaticResource PencilIcon}"
+                                 controls:TextFieldAssist.SupportingText="Material icon color follows text field state tokens" />
+
+                        <TextBox Classes="filled"
+                                 controls:TextFieldAssist.Label="Search"
+                                 controls:TextFieldAssist.LeadingIcon="{StaticResource SearchIcon}"
+                                 PlaceholderText="Find components" />
+
+                        <TextBox Classes="filled"
+                                 controls:TextFieldAssist.Label="Amount"
+                                 controls:TextFieldAssist.PrefixText="$"
+                                 controls:TextFieldAssist.SuffixText="USD"
+                                 PlaceholderText="0.00" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Spacing="16">
+                        <TextBox Classes="outlined"
+                                 controls:TextFieldAssist.Label="Display name"
+                                 controls:TextFieldAssist.IsRequired="True"
+                                 controls:TextFieldAssist.SupportingText="Required field" />
+
+                        <TextBox Classes="outlined"
+                                 controls:TextFieldAssist.Label="Short title"
+                                 controls:TextFieldAssist.SupportingText="MaxLength automatically enables the counter"
+                                 MaxLength="20"
+                                 Text="Material 3" />
+                    </StackPanel>
+                </Grid>
+
+                <TextBox Classes="outlined"
+                         controls:TextFieldAssist.Label="All decoration slots"
+                         controls:TextFieldAssist.LeadingIcon="{StaticResource SearchIcon}"
+                         controls:TextFieldAssist.TrailingIcon="{StaticResource PencilIcon}"
+                         controls:TextFieldAssist.PrefixText="@"
+                         controls:TextFieldAssist.SuffixText=".dev"
+                         controls:TextFieldAssist.SupportingText="Exercises Material icons together with native inner content and affixes"
+                         Text="material3">
+                    <TextBox.InnerLeftContent>
+                        <TextBlock Text="ID"
+                                   helpers:Typography.TextStyle="LabelLarge" />
+                    </TextBox.InnerLeftContent>
+                    <TextBox.InnerRightContent>
+                        <Button Content="Go"
+                                Classes="text xs" />
+                    </TextBox.InnerRightContent>
+                </TextBox>
+            </StackPanel>
+        </Border>
+
+        <!-- Validation -->
+        <Border Background="{DynamicResource MdSysSurfaceContainerLowBrush}"
+                CornerRadius="{DynamicResource MdSysShapeCornerLarge}"
+                Padding="24">
+            <StackPanel Spacing="20">
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Validation and states"
+                               Foreground="{DynamicResource MdSysOnSurfaceBrush}"
+                               helpers:Typography.TextStyle="TitleLarge" />
+                    <TextBlock Text="The first error is manual Material state. The second comes from INotifyDataErrorInfo and should clear as soon as a valid email is entered."
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                               helpers:Typography.TextStyle="BodySmall" />
+                </StackPanel>
+
+                <Grid ColumnDefinitions="336,24,336">
+                    <StackPanel Grid.Column="0" Spacing="16">
+                        <TextBox Classes="filled"
+                                 controls:TextFieldAssist.Label="Username"
+                                 controls:TextFieldAssist.SupportingText="Choose a unique username"
+                                 controls:TextFieldAssist.IsError="True"
+                                 controls:TextFieldAssist.ErrorText="Username is already taken"
+                                 controls:TextFieldAssist.TrailingIcon="{StaticResource ErrorIcon}"
+                                 Text="material3" />
+
+                        <TextBox Classes="filled"
+                                 controls:TextFieldAssist.Label="Disabled"
+                                 Text="Unavailable value"
+                                 IsEnabled="False" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Spacing="16">
+                        <TextBox Classes="outlined"
+                                 controls:TextFieldAssist.Label="Email — native validation"
+                                 controls:TextFieldAssist.SupportingText="Try user@example.com"
+                                 Text="{Binding NativeValidationEmail}" />
+
+                        <TextBox Classes="outlined"
+                                 controls:TextFieldAssist.Label="Read only"
+                                 controls:TextFieldAssist.SupportingText="Focusable and selectable, but not editable"
+                                 Text="INV-2026-0042"
+                                 IsReadOnly="True" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- Editing -->
+        <Border Background="{DynamicResource MdSysSurfaceContainerLowBrush}"
+                CornerRadius="{DynamicResource MdSysShapeCornerLarge}"
+                Padding="24">
+            <StackPanel Spacing="20">
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Editing features"
+                               Foreground="{DynamicResource MdSysOnSurfaceBrush}"
+                               helpers:Typography.TextStyle="TitleLarge" />
+                    <TextBlock Text="These examples exercise Avalonia's native editor engine under the Material template: multiline sizing, wrapping and scrolling, password reveal, selection and IME/preedit."
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                               helpers:Typography.TextStyle="BodySmall" />
+                </StackPanel>
+
+                <Grid ColumnDefinitions="336,24,336">
+                    <StackPanel Grid.Column="0" Spacing="16">
+                        <TextBox Classes="filled"
+                                 controls:TextFieldAssist.Label="Comments"
+                                 controls:TextFieldAssist.SupportingText="AcceptsReturn, MinLines=3, MaxLines=6"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 MinLines="3"
+                                 MaxLines="6"
+                                 PlaceholderText="Write several lines…" />
+
+                        <TextBox x:Name="PasswordField"
+                                 Classes="filled"
+                                 controls:TextFieldAssist.Label="Password"
+                                 PasswordChar="●"
+                                 Text="correct horse battery staple">
+                            <TextBox.InnerRightContent>
+                                <Button controls:ButtonAssist.Icon="{StaticResource VisibilityIcon}"
+                                        Classes="text xs"
+                                        Width="44"
+                                        Height="44"
+                                        Click="TogglePasswordReveal" />
+                            </TextBox.InnerRightContent>
+                        </TextBox>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Spacing="16">
+                        <TextBox Classes="outlined"
+                                 controls:TextFieldAssist.Label="Wrapped text"
+                                 controls:TextFieldAssist.SupportingText="Wraps and grows until MaxLines=4, then scrolls"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 MinLines="2"
+                                 MaxLines="4"
+                                 Text="A long Material text field value should wrap naturally while the M3 container grows instead of being locked to 56 dp." />
+
+                        <TextBox Classes="outlined"
+                                 controls:TextFieldAssist.Label="Selection / IME"
+                                 controls:TextFieldAssist.SupportingText="Selection is intentionally visible while inactive; also try a Japanese or Chinese IME"
+                                 Text="Select this text, then type with an IME"
+                                 SelectionStart="0"
+                                 SelectionEnd="11"
+                                 IsInactiveSelectionHighlightEnabled="True" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- RTL -->
+        <Border Background="{DynamicResource MdSysSurfaceContainerLowBrush}"
+                CornerRadius="{DynamicResource MdSysShapeCornerLarge}"
+                Padding="24">
+            <StackPanel Spacing="20">
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Right-to-left"
+                               Foreground="{DynamicResource MdSysOnSurfaceBrush}"
+                               helpers:Typography.TextStyle="TitleLarge" />
+                    <TextBlock Text="FlowDirection is left to Avalonia so text shaping, caret navigation, start/end alignment and the outlined notch mirror together."
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                               helpers:Typography.TextStyle="BodySmall" />
+                </StackPanel>
+
+                <Grid ColumnDefinitions="336,24,336">
+                    <TextBox Grid.Column="0"
+                             Classes="filled"
+                             FlowDirection="RightToLeft"
+                             controls:TextFieldAssist.Label="الاسم"
+                             PlaceholderText="أدخل الاسم" />
+
+                    <TextBox Grid.Column="2"
+                             Classes="outlined"
+                             FlowDirection="RightToLeft"
+                             controls:TextFieldAssist.Label="البريد الإلكتروني"
+                             controls:TextFieldAssist.SupportingText="مثال على حقل من اليمين إلى اليسار"
+                             Text="user@example.com" />
+                </Grid>
+            </StackPanel>
+        </Border>
+
+    </StackPanel>
+</UserControl>

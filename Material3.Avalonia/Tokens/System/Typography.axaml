@@ -41,14 +41,20 @@
     <system:Double x:Key="MdSysTypeScaleTitleSmallTracking">0.1</system:Double>
 
     <!-- Body -->
+    <StaticResource x:Key="MdSysTypeScaleBodyLargeFontFamily" ResourceKey="MdRefTypefacePlain" />
+    <StaticResource x:Key="MdSysTypeScaleBodyLargeWeight" ResourceKey="MdRefTypefaceWeightRegular" />
     <system:Double x:Key="MdSysTypeScaleBodyLargeSize">16</system:Double>
     <system:Double x:Key="MdSysTypeScaleBodyLargeLineHeight">24</system:Double>
     <system:Double x:Key="MdSysTypeScaleBodyLargeTracking">0.5</system:Double>
 
+    <StaticResource x:Key="MdSysTypeScaleBodyMediumFontFamily" ResourceKey="MdRefTypefacePlain" />
+    <StaticResource x:Key="MdSysTypeScaleBodyMediumWeight" ResourceKey="MdRefTypefaceWeightRegular" />
     <system:Double x:Key="MdSysTypeScaleBodyMediumSize">14</system:Double>
     <system:Double x:Key="MdSysTypeScaleBodyMediumLineHeight">20</system:Double>
     <system:Double x:Key="MdSysTypeScaleBodyMediumTracking">0.25</system:Double>
 
+    <StaticResource x:Key="MdSysTypeScaleBodySmallFontFamily" ResourceKey="MdRefTypefacePlain" />
+    <StaticResource x:Key="MdSysTypeScaleBodySmallWeight" ResourceKey="MdRefTypefaceWeightRegular" />
     <system:Double x:Key="MdSysTypeScaleBodySmallSize">12</system:Double>
     <system:Double x:Key="MdSysTypeScaleBodySmallLineHeight">16</system:Double>
     <system:Double x:Key="MdSysTypeScaleBodySmallTracking">0.4</system:Double>

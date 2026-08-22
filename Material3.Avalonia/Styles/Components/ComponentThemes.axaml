@@ -8,6 +8,7 @@
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ScrollBar.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ScrollViewer.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/TextBlock.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/TextBox.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Window.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

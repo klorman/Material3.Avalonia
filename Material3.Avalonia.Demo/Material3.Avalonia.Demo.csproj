@@ -28,4 +28,10 @@
       <AvaloniaResource Include="Assets\avatar_24.png" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="Views\TextBoxes.axaml.cs">
+        <DependentUpon>TextBoxes.axaml</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>

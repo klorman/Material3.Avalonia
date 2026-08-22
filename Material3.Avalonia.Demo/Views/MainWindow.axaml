@@ -22,6 +22,8 @@
 
             <views:Buttons HorizontalAlignment="Center" IsVisible="True" />
 
+            <views:TextBoxes HorizontalAlignment="Center" IsVisible="True" />
+
             <views:ScrollViewers HorizontalAlignment="Center" IsVisible="True" />
 
             <Border IsVisible="False" BorderBrush="Black" BorderThickness="1" Padding="4" Margin="100" Width="{Binding $self.Bounds.Height}"  HorizontalAlignment="Center" VerticalAlignment="Center">

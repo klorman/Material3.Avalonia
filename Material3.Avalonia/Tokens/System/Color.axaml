@@ -34,6 +34,11 @@
     <SolidColorBrush x:Key="MdSysOnPrimaryContainerBrush" Color="{DynamicResource MdSysOnPrimaryContainerColor}" />
     <SolidColorBrush x:Key="MdSysInversePrimaryBrush" Color="{DynamicResource MdSysInversePrimaryColor}" />
 
+    <!-- M3 text selection uses primary at 40% opacity. -->
+    <SolidColorBrush x:Key="MdImplTextSelectionBrush"
+                     Color="{DynamicResource MdSysPrimaryColor}"
+                     Opacity="0.4" />
+
     <!-- Secondary -->
     <SolidColorBrush x:Key="MdSysSecondaryBrush" Color="{DynamicResource MdSysSecondaryColor}" />
     <SolidColorBrush x:Key="MdSysOnSecondaryBrush" Color="{DynamicResource MdSysOnSecondaryColor}" />
