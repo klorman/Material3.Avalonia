@@ -3,244 +3,252 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:Material3.Avalonia.Controls;assembly=Material3.Avalonia"
+             xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Material3.Avalonia.Demo.Views.Shapes">
+    <UserControl.Styles>
+        <Style Selector="TextBlock.shape-label">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing100 MdSysSpacing0 MdSysSpacing0}" />
+        </Style>
+    </UserControl.Styles>
+
     <UserControl.Resources>
         <x:Double x:Key="CellSize">140</x:Double>
         <x:Double x:Key="ShapeSize">96</x:Double>
     </UserControl.Resources>
 
     <ScrollViewer HorizontalScrollBarVisibility="Disabled">
-        <WrapPanel Margin="20"
+        <WrapPanel Margin="{markup:DynamicThickness MdSysSpacing250}"
                    ItemWidth="{StaticResource CellSize}"
                    ItemHeight="{StaticResource CellSize}"
                    HorizontalAlignment="Center">
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Circle" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
-                                  Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Circle" />
+                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
+                <TextBlock Classes="shape-label" Text="Circle" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Square" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Square" />
+                <TextBlock Classes="shape-label" Text="Square" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Slanted" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Slanted" />
+                <TextBlock Classes="shape-label" Text="Slanted" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Arch" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Arch" />
+                <TextBlock Classes="shape-label" Text="Arch" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Semicircle" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Semicircle" />
+                <TextBlock Classes="shape-label" Text="Semicircle" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Oval" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Oval" />
+                <TextBlock Classes="shape-label" Text="Oval" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Pill" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Pill" />
+                <TextBlock Classes="shape-label" Text="Pill" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Triangle" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Triangle" />
+                <TextBlock Classes="shape-label" Text="Triangle" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Arrow" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Arrow" />
+                <TextBlock Classes="shape-label" Text="Arrow" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Fan" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Fan" />
+                <TextBlock Classes="shape-label" Text="Fan" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Diamond" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Diamond" />
+                <TextBlock Classes="shape-label" Text="Diamond" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Clamshell" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Clamshell" />
+                <TextBlock Classes="shape-label" Text="Clamshell" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Pentagon" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Pentagon" />
+                <TextBlock Classes="shape-label" Text="Pentagon" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Gem" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Gem" />
+                <TextBlock Classes="shape-label" Text="Gem" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="VerySunny" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Very sunny" />
+                <TextBlock Classes="shape-label" Text="Very sunny" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Sunny" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Sunny" />
+                <TextBlock Classes="shape-label" Text="Sunny" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Cookie4" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="4-sided cookie" />
+                <TextBlock Classes="shape-label" Text="4-sided cookie" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Cookie6" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="6-sided cookie" />
+                <TextBlock Classes="shape-label" Text="6-sided cookie" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Cookie7" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="7-sided cookie" />
+                <TextBlock Classes="shape-label" Text="7-sided cookie" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Cookie9" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="9-sided cookie" />
+                <TextBlock Classes="shape-label" Text="9-sided cookie" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Cookie12" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="12-sided cookie" />
+                <TextBlock Classes="shape-label" Text="12-sided cookie" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Clover4" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="4-leaf clover" />
+                <TextBlock Classes="shape-label" Text="4-leaf clover" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Clover8" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="8-leaf clover" />
+                <TextBlock Classes="shape-label" Text="8-leaf clover" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Burst" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Burst" />
+                <TextBlock Classes="shape-label" Text="Burst" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="SoftBurst" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Soft burst" />
+                <TextBlock Classes="shape-label" Text="Soft burst" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Boom" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Boom" />
+                <TextBlock Classes="shape-label" Text="Boom" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="SoftBoom" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Soft boom" />
+                <TextBlock Classes="shape-label" Text="Soft boom" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Flower" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Flower" />
+                <TextBlock Classes="shape-label" Text="Flower" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Puffy" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Puffy" />
+                <TextBlock Classes="shape-label" Text="Puffy" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="PuffyDiamond" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Puffy diamond" />
+                <TextBlock Classes="shape-label" Text="Puffy diamond" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Ghostish" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Ghost-ish" />
+                <TextBlock Classes="shape-label" Text="Ghost-ish" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="PixelCircle" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Pixel circle" />
+                <TextBlock Classes="shape-label" Text="Pixel circle" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="PixelTriangle" Width="{StaticResource ShapeSize}"
                                   Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Pixel triangle" />
+                <TextBlock Classes="shape-label" Text="Pixel triangle" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Bun" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Bun" />
+                <TextBlock Classes="shape-label" Text="Bun" />
             </StackPanel>
 
             <StackPanel Width="{StaticResource CellSize}" Height="{StaticResource CellSize}">
                 <controls:MaterialShape Kind="Heart" Width="{StaticResource ShapeSize}" Height="{StaticResource ShapeSize}"
                                   Fill="{StaticResource MdSysOnSurfaceBrush}" HorizontalAlignment="Center" />
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center" Text="Heart" />
+                <TextBlock Classes="shape-label" Text="Heart" />
             </StackPanel>
         </WrapPanel>
     </ScrollViewer>

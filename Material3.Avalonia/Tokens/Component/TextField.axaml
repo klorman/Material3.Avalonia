@@ -55,24 +55,24 @@
     <StaticResource x:Key="MdCompFilledTextFieldSupportingTextTracking" ResourceKey="MdSysTypeScaleBodySmallTracking" />
 
     <!-- Layout -->
-    <x:Double x:Key="MdCompFilledTextFieldLeadingSpace">16</x:Double>
-    <x:Double x:Key="MdCompFilledTextFieldTrailingSpace">16</x:Double>
-    <x:Double x:Key="MdCompFilledTextFieldTopSpace">16</x:Double>
-    <x:Double x:Key="MdCompFilledTextFieldBottomSpace">16</x:Double>
+    <StaticResource x:Key="MdCompFilledTextFieldLeadingSpace" ResourceKey="MdSysSpacing200" />
+    <StaticResource x:Key="MdCompFilledTextFieldTrailingSpace" ResourceKey="MdSysSpacing200" />
+    <StaticResource x:Key="MdCompFilledTextFieldTopSpace" ResourceKey="MdSysSpacing200" />
+    <StaticResource x:Key="MdCompFilledTextFieldBottomSpace" ResourceKey="MdSysSpacing200" />
 
-    <x:Double x:Key="MdCompFilledTextFieldWithLeadingIconLeadingSpace">12</x:Double>
-    <x:Double x:Key="MdCompFilledTextFieldWithTrailingIconTrailingSpace">12</x:Double>
-    <x:Double x:Key="MdCompFilledTextFieldIconInputSpace">16</x:Double>
+    <StaticResource x:Key="MdCompFilledTextFieldWithLeadingIconLeadingSpace" ResourceKey="MdSysSpacing150" />
+    <StaticResource x:Key="MdCompFilledTextFieldWithTrailingIconTrailingSpace" ResourceKey="MdSysSpacing150" />
+    <StaticResource x:Key="MdCompFilledTextFieldIconInputSpace" ResourceKey="MdSysSpacing200" />
 
-    <x:Double x:Key="MdCompFilledTextFieldInputTextPrefixTrailingSpace">2</x:Double>
-    <x:Double x:Key="MdCompFilledTextFieldInputTextSuffixLeadingSpace">2</x:Double>
+    <StaticResource x:Key="MdCompFilledTextFieldInputTextPrefixTrailingSpace" ResourceKey="MdSysSpacing25" />
+    <StaticResource x:Key="MdCompFilledTextFieldInputTextSuffixLeadingSpace" ResourceKey="MdSysSpacing25" />
 
-    <x:Double x:Key="MdCompFilledTextFieldWithLabelTopSpace">8</x:Double>
-    <x:Double x:Key="MdCompFilledTextFieldWithLabelBottomSpace">8</x:Double>
+    <StaticResource x:Key="MdCompFilledTextFieldWithLabelTopSpace" ResourceKey="MdSysSpacing100" />
+    <StaticResource x:Key="MdCompFilledTextFieldWithLabelBottomSpace" ResourceKey="MdSysSpacing100" />
 
-    <x:Double x:Key="MdCompFilledTextFieldSupportingTextLeadingSpace">16</x:Double>
-    <x:Double x:Key="MdCompFilledTextFieldSupportingTextTopSpace">4</x:Double>
-    <x:Double x:Key="MdCompFilledTextFieldSupportingTextTrailingSpace">16</x:Double>
+    <StaticResource x:Key="MdCompFilledTextFieldSupportingTextLeadingSpace" ResourceKey="MdSysSpacing200" />
+    <StaticResource x:Key="MdCompFilledTextFieldSupportingTextTopSpace" ResourceKey="MdSysSpacing50" />
+    <StaticResource x:Key="MdCompFilledTextFieldSupportingTextTrailingSpace" ResourceKey="MdSysSpacing200" />
 
     <!-- Filled: Hover -->
     <StaticResource x:Key="MdCompFilledTextFieldHoverActiveIndicatorBrush" ResourceKey="MdSysOnSurfaceBrush" />
@@ -203,21 +203,21 @@
     <StaticResource x:Key="MdCompOutlinedTextFieldSupportingTextTracking" ResourceKey="MdSysTypeScaleBodySmallTracking" />
 
     <!-- Layout -->
-    <x:Double x:Key="MdCompOutlinedTextFieldLeadingSpace">16</x:Double>
-    <x:Double x:Key="MdCompOutlinedTextFieldTrailingSpace">16</x:Double>
-    <x:Double x:Key="MdCompOutlinedTextFieldTopSpace">16</x:Double>
-    <x:Double x:Key="MdCompOutlinedTextFieldBottomSpace">16</x:Double>
+    <StaticResource x:Key="MdCompOutlinedTextFieldLeadingSpace" ResourceKey="MdSysSpacing200" />
+    <StaticResource x:Key="MdCompOutlinedTextFieldTrailingSpace" ResourceKey="MdSysSpacing200" />
+    <StaticResource x:Key="MdCompOutlinedTextFieldTopSpace" ResourceKey="MdSysSpacing200" />
+    <StaticResource x:Key="MdCompOutlinedTextFieldBottomSpace" ResourceKey="MdSysSpacing200" />
 
-    <x:Double x:Key="MdCompOutlinedTextFieldWithLeadingIconLeadingSpace">12</x:Double>
-    <x:Double x:Key="MdCompOutlinedTextFieldWithTrailingIconTrailingSpace">12</x:Double>
-    <x:Double x:Key="MdCompOutlinedTextFieldIconInputSpace">16</x:Double>
+    <StaticResource x:Key="MdCompOutlinedTextFieldWithLeadingIconLeadingSpace" ResourceKey="MdSysSpacing150" />
+    <StaticResource x:Key="MdCompOutlinedTextFieldWithTrailingIconTrailingSpace" ResourceKey="MdSysSpacing150" />
+    <StaticResource x:Key="MdCompOutlinedTextFieldIconInputSpace" ResourceKey="MdSysSpacing200" />
 
-    <x:Double x:Key="MdCompOutlinedTextFieldInputTextPrefixTrailingSpace">2</x:Double>
-    <x:Double x:Key="MdCompOutlinedTextFieldInputTextSuffixLeadingSpace">2</x:Double>
+    <StaticResource x:Key="MdCompOutlinedTextFieldInputTextPrefixTrailingSpace" ResourceKey="MdSysSpacing25" />
+    <StaticResource x:Key="MdCompOutlinedTextFieldInputTextSuffixLeadingSpace" ResourceKey="MdSysSpacing25" />
 
-    <x:Double x:Key="MdCompOutlinedTextFieldSupportingTextLeadingSpace">16</x:Double>
-    <x:Double x:Key="MdCompOutlinedTextFieldSupportingTextTopSpace">4</x:Double>
-    <x:Double x:Key="MdCompOutlinedTextFieldSupportingTextTrailingSpace">16</x:Double>
+    <StaticResource x:Key="MdCompOutlinedTextFieldSupportingTextLeadingSpace" ResourceKey="MdSysSpacing200" />
+    <StaticResource x:Key="MdCompOutlinedTextFieldSupportingTextTopSpace" ResourceKey="MdSysSpacing50" />
+    <StaticResource x:Key="MdCompOutlinedTextFieldSupportingTextTrailingSpace" ResourceKey="MdSysSpacing200" />
 
     <!-- Outlined: Hover -->
     <StaticResource x:Key="MdCompOutlinedTextFieldHoverOutlineBrush" ResourceKey="MdSysOnSurfaceBrush" />
@@ -285,6 +285,6 @@
     <StaticResource x:Key="MdCompOutlinedTextFieldDisabledSupportingTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompOutlinedTextFieldDisabledSupportingTextOpacity">0.38</x:Double>
 
-    <x:Double x:Key="MdCompOutlinedTextFieldOutlineLabelPadding">4</x:Double>
-    <x:Double x:Key="MdCompOutlinedTextFieldLabelTextPaddingBottom">8</x:Double>
+    <StaticResource x:Key="MdCompOutlinedTextFieldOutlineLabelPadding" ResourceKey="MdSysSpacing50" />
+    <StaticResource x:Key="MdCompOutlinedTextFieldLabelTextPaddingBottom" ResourceKey="MdSysSpacing100" />
 </ResourceDictionary>

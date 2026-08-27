@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
                     xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
                     xmlns:transitions="clr-namespace:Material3.Avalonia.Motion.Transitions"
                     xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
@@ -83,7 +84,7 @@
                 <Setter Property="Height" Value="{DynamicResource MdCompButtonXsIconSize}" />
                 <Setter Property="Width" Value="{DynamicResource MdCompButtonXsIconSize}" />
             </Style>
-            <Setter Property="Padding" Value="{DynamicResource MdCompButtonXsPadding}" />
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonXsLeadingSpace MdCompButtonXsVerticalSpace MdCompButtonXsTrailingSpace MdCompButtonXsVerticalSpace}" />
             <Style Selector="^ /template/ StackPanel#PART_Content">
                 <Setter Property="Spacing" Value="{DynamicResource MdCompButtonXsBetweenIconLabelSpace}" />
             </Style>
@@ -97,7 +98,7 @@
                 <Setter Property="Height" Value="{DynamicResource MdCompButtonSmIconSize}" />
                 <Setter Property="Width" Value="{DynamicResource MdCompButtonSmIconSize}" />
             </Style>
-            <Setter Property="Padding" Value="{DynamicResource MdCompButtonSmPadding}" />
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonSmLeadingSpace MdCompButtonSmVerticalSpace MdCompButtonSmTrailingSpace MdCompButtonSmVerticalSpace}" />
             <Style Selector="^ /template/ StackPanel#PART_Content">
                 <Setter Property="Spacing" Value="{DynamicResource MdCompButtonSmBetweenIconLabelSpace}" />
             </Style>
@@ -111,7 +112,7 @@
                 <Setter Property="Height" Value="{DynamicResource MdCompButtonMdIconSize}" />
                 <Setter Property="Width" Value="{DynamicResource MdCompButtonMdIconSize}" />
             </Style>
-            <Setter Property="Padding" Value="{DynamicResource MdCompButtonMdPadding}" />
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonMdLeadingSpace MdCompButtonMdVerticalSpace MdCompButtonMdTrailingSpace MdCompButtonMdVerticalSpace}" />
             <Style Selector="^ /template/ StackPanel#PART_Content">
                 <Setter Property="Spacing" Value="{DynamicResource MdCompButtonMdBetweenIconLabelSpace}" />
             </Style>
@@ -125,7 +126,7 @@
                 <Setter Property="Height" Value="{DynamicResource MdCompButtonLgIconSize}" />
                 <Setter Property="Width" Value="{DynamicResource MdCompButtonLgIconSize}" />
             </Style>
-            <Setter Property="Padding" Value="{DynamicResource MdCompButtonLgPadding}" />
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonLgLeadingSpace MdCompButtonLgVerticalSpace MdCompButtonLgTrailingSpace MdCompButtonLgVerticalSpace}" />
             <Style Selector="^ /template/ StackPanel#PART_Content">
                 <Setter Property="Spacing" Value="{DynamicResource MdCompButtonLgBetweenIconLabelSpace}" />
             </Style>
@@ -139,7 +140,7 @@
                 <Setter Property="Height" Value="{DynamicResource MdCompButtonXlIconSize}" />
                 <Setter Property="Width" Value="{DynamicResource MdCompButtonXlIconSize}" />
             </Style>
-            <Setter Property="Padding" Value="{DynamicResource MdCompButtonXlPadding}" />
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonXlLeadingSpace MdCompButtonXlVerticalSpace MdCompButtonXlTrailingSpace MdCompButtonXlVerticalSpace}" />
             <Style Selector="^ /template/ StackPanel#PART_Content">
                 <Setter Property="Spacing" Value="{DynamicResource MdCompButtonXlBetweenIconLabelSpace}" />
             </Style>

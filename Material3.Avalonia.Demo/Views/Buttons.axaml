@@ -4,17 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls;assembly=Material3.Avalonia"
              xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
+             xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
              mc:Ignorable="d"
              d:DesignWidth="800"
              d:DesignHeight="1200"
              x:Class="Material3.Avalonia.Demo.Views.Buttons"
              ClipToBounds="False">
 
-    <StackPanel Margin="24"
-                Spacing="32">
+    <UserControl.Styles>
+        <Style Selector="Border.demo-section">
+            <Setter Property="Background" Value="{DynamicResource MdSysSurfaceContainerLowBrush}" />
+            <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerLarge}" />
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdSysSpacing300}" />
+        </Style>
+    </UserControl.Styles>
 
+    <StackPanel Margin="{markup:DynamicThickness MdSysSpacing300}"
+                Spacing="{DynamicResource MdSysSpacing400}">
         <!-- Header -->
-        <StackPanel Spacing="8">
+        <StackPanel Spacing="{DynamicResource MdSysSpacing100}">
             <TextBlock Text="Buttons"
                        Foreground="{DynamicResource MdSysOnBackgroundBrush}"
                        helpers:Typography.TextStyle="HeadlineMedium" />
@@ -26,11 +34,9 @@
         </StackPanel>
 
         <!-- Sizes -->
-        <Border Background="{DynamicResource MdSysSurfaceContainerLowBrush}"
-                CornerRadius="{DynamicResource MdSysShapeCornerLarge}"
-                Padding="24">
-            <StackPanel Spacing="20">
-                <StackPanel Spacing="4">
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Sizes"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
                                helpers:Typography.TextStyle="TitleLarge" />
@@ -40,8 +46,8 @@
                                helpers:Typography.TextStyle="BodySmall" />
                 </StackPanel>
 
-                <StackPanel Spacing="16"
-                            Orientation="Horizontal">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing200}"
+                             Orientation="Horizontal">
                     <Button Content="Extra small"
                             Classes="tonal xs" />
                     <Button Content="Small"
@@ -57,11 +63,9 @@
         </Border>
 
         <!-- Variants -->
-        <Border Background="{DynamicResource MdSysSurfaceContainerLowBrush}"
-                CornerRadius="{DynamicResource MdSysShapeCornerLarge}"
-                Padding="24">
-            <StackPanel Spacing="20">
-                <StackPanel Spacing="4">
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Variants"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
                                helpers:Typography.TextStyle="TitleLarge" />
@@ -71,8 +75,8 @@
                                helpers:Typography.TextStyle="BodySmall" />
                 </StackPanel>
 
-                <StackPanel Spacing="16"
-                            Orientation="Horizontal">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing200}"
+                             Orientation="Horizontal">
                     <Button Content="Elevated"
                             Classes="elevated md" />
                     <Button Content="Filled"
@@ -88,11 +92,9 @@
         </Border>
 
         <!-- States -->
-        <Border Background="{DynamicResource MdSysSurfaceContainerLowBrush}"
-                CornerRadius="{DynamicResource MdSysShapeCornerLarge}"
-                Padding="24">
-            <StackPanel Spacing="20">
-                <StackPanel Spacing="4">
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Disabled states"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
                                helpers:Typography.TextStyle="TitleLarge" />
@@ -102,8 +104,8 @@
                                helpers:Typography.TextStyle="BodySmall" />
                 </StackPanel>
 
-                <StackPanel Spacing="16"
-                            Orientation="Horizontal">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing200}"
+                             Orientation="Horizontal">
                     <Button Content="Elevated"
                             Classes="elevated md"
                             IsEnabled="False" />
@@ -124,11 +126,9 @@
         </Border>
 
         <!-- Icons -->
-        <Border Background="{DynamicResource MdSysSurfaceContainerLowBrush}"
-                CornerRadius="{DynamicResource MdSysShapeCornerLarge}"
-                Padding="24">
-            <StackPanel Spacing="20">
-                <StackPanel Spacing="4">
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Icon content"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
                                helpers:Typography.TextStyle="TitleLarge" />
@@ -138,13 +138,13 @@
                                helpers:Typography.TextStyle="BodySmall" />
                 </StackPanel>
 
-                <StackPanel Spacing="16">
-                    <StackPanel Spacing="4">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing200}">
+                    <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                         <TextBlock Text="Vector icon"
                                    Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
                                    helpers:Typography.TextStyle="LabelLarge" />
 
-                        <StackPanel Spacing="16"
+                        <StackPanel Spacing="{DynamicResource MdSysSpacing200}"
                                     Orientation="Horizontal">
                             <Button Content="Elevated"
                                     Classes="elevated md"
@@ -164,12 +164,12 @@
                         </StackPanel>
                     </StackPanel>
 
-                    <StackPanel Spacing="4">
+                    <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                         <TextBlock Text="Bitmap icon"
                                    Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
                                    helpers:Typography.TextStyle="LabelLarge" />
 
-                        <StackPanel Spacing="16"
+                        <StackPanel Spacing="{DynamicResource MdSysSpacing200}"
                                     Orientation="Horizontal">
                             <Button Content="Elevated"
                                     Classes="elevated md"
@@ -193,11 +193,9 @@
         </Border>
 
         <!-- Shape -->
-        <Border Background="{DynamicResource MdSysSurfaceContainerLowBrush}"
-                CornerRadius="{DynamicResource MdSysShapeCornerLarge}"
-                Padding="24">
-            <StackPanel Spacing="20">
-                <StackPanel Spacing="4">
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Square shape"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
                                helpers:Typography.TextStyle="TitleLarge" />
@@ -207,8 +205,8 @@
                                helpers:Typography.TextStyle="BodySmall" />
                 </StackPanel>
 
-                <StackPanel Spacing="16"
-                            Orientation="Horizontal">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing200}"
+                             Orientation="Horizontal">
                     <Button Content="Elevated"
                             Classes="elevated md square" />
                     <Button Content="Filled"

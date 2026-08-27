@@ -1,15 +1,16 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                     xmlns:controls="clr-namespace:Material3.Avalonia.Controls"
-                     xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
-                     xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:controls="clr-namespace:Material3.Avalonia.Controls"
+                      xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
+                      xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
+                      xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
                      xmlns:attachedControls="clr-namespace:Material3.Avalonia.Attached.Controls"
                      xmlns:attached="clr-namespace:Material3.Avalonia.Attached">
     <ControlTheme x:Key="{x:Type controls:Card}" TargetType="controls:Card">
         <Setter Property="ClipToBounds" Value="False" />
         <Setter Property="Focusable" Value="{Binding $self.IsInteractive}" />
         <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerMedium}" />
-        <Setter Property="Padding" Value="{DynamicResource MdCompCardPadding}" />
+        <Setter Property="Padding" Value="{markup:DynamicThickness MdCompCardContentLeadingSpace MdCompCardContentTopSpace MdCompCardContentTrailingSpace MdCompCardContentBottomSpace}" />
         <Setter Property="attachedControls:ScrollViewerAssist.ScrollBarInset"
                 Value="{Binding $self.CornerRadius, Converter={x:Static converters:ScrollBarConverters.InsetFromCornerRadius}}" />
         <Setter Property="attached:FocusRing.Thickness" Value="{DynamicResource MdCompCardFocusRingThickness}" />

@@ -6,7 +6,7 @@
                     xmlns:transitions="clr-namespace:Material3.Avalonia.Motion.Transitions">
 
     <!-- Material Web uses a 16dp gap between supporting text and counter. -->
-    <x:Double x:Key="MdImplTextFieldSupportingTextGap">16</x:Double>
+    <StaticResource x:Key="MdImplTextFieldSupportingTextGap" ResourceKey="MdSysSpacing200" />
 
     <converters:TextFieldSupportingTextConverter x:Key="TextFieldSupportingTextConverter" />
     <converters:TextFieldLabelConverter x:Key="TextFieldLabelConverter" />

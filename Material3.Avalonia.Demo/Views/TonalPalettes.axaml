@@ -4,12 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:converters="clr-namespace:Material3.Avalonia.Demo.Converters"
              xmlns:dynamicColor="clr-namespace:Bdziam.UI.Theming.MaterialColors.DynamicColor;assembly=Bdziam.DynamicColor"
+             xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Material3.Avalonia.Demo.Views.TonalPalettes">
   <UserControl.Styles>
         <Style Selector="ContentControl.swatch">
             <Setter Property="Height" Value="60" />
-            <Setter Property="Margin" Value="0 0 0 8" />
+            <Setter Property="Margin" Value="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing0 MdSysSpacing100}" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="VerticalAlignment" Value="Stretch" />
             <Setter Property="Template">
@@ -35,7 +36,7 @@
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="0,0,16,8"/>
+            <Setter Property="Margin" Value="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing200 MdSysSpacing100}" />
             <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}"/>
         </Style>
     </UserControl.Styles>
@@ -46,7 +47,7 @@
     
     <Grid RowDefinitions="Auto Auto Auto Auto Auto Auto"
           ColumnDefinitions="Auto *"
-          Margin="12"
+          Margin="{markup:DynamicThickness MdSysSpacing150}"
           x:DataType="dynamicColor:DynamicScheme"
           DataContext="{DynamicResource Material.DynamicScheme}">
         <TextBlock Grid.Row="0" Grid.Column="0" Classes="row-label" Text="Primary" />

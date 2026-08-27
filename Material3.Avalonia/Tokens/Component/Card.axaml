@@ -35,6 +35,9 @@
     <Thickness x:Key="MdCompCardFocusRingOffset">2</Thickness>
     <StaticResource x:Key="MdCompCardFocusRingBrush" ResourceKey="MdSysSecondaryBrush" />
     
-    <Thickness x:Key="MdCompCardPadding">16</Thickness>
-    <x:Double x:Key="MdCompCardSpacing">8</x:Double>
+    <StaticResource x:Key="MdCompCardContentLeadingSpace" ResourceKey="MdSysSpacing200" />
+    <StaticResource x:Key="MdCompCardContentTopSpace" ResourceKey="MdSysSpacing200" />
+    <StaticResource x:Key="MdCompCardContentTrailingSpace" ResourceKey="MdSysSpacing200" />
+    <StaticResource x:Key="MdCompCardContentBottomSpace" ResourceKey="MdSysSpacing200" />
+    <StaticResource x:Key="MdCompCardSpacing" ResourceKey="MdSysSpacing100" />
 </ResourceDictionary>

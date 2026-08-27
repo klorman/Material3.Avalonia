@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls;assembly=Material3.Avalonia"
              xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
+             xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
              xmlns:viewModels="clr-namespace:Material3.Avalonia.Demo.ViewModels"
              mc:Ignorable="d"
              d:DesignWidth="800"
@@ -12,12 +13,19 @@
              x:DataType="viewModels:TextBoxesViewModel"
              ClipToBounds="False">
 
-    <StackPanel Width="744"
-                Margin="24"
-                Spacing="32">
+    <UserControl.Styles>
+        <Style Selector="Border.demo-section">
+            <Setter Property="Background" Value="{DynamicResource MdSysSurfaceContainerLowBrush}" />
+            <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerLarge}" />
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdSysSpacing300}" />
+        </Style>
+    </UserControl.Styles>
 
+    <StackPanel Width="744"
+                Margin="{markup:DynamicThickness MdSysSpacing300}"
+                Spacing="{DynamicResource MdSysSpacing400}">
         <!-- Header -->
-        <StackPanel Spacing="8">
+        <StackPanel Spacing="{DynamicResource MdSysSpacing100}">
             <TextBlock Text="Text fields"
                        Foreground="{DynamicResource MdSysOnBackgroundBrush}"
                        helpers:Typography.TextStyle="HeadlineMedium" />
@@ -29,11 +37,9 @@
         </StackPanel>
 
         <!-- Variants -->
-        <Border Background="{DynamicResource MdSysSurfaceContainerLowBrush}"
-                CornerRadius="{DynamicResource MdSysShapeCornerLarge}"
-                Padding="24">
-            <StackPanel Spacing="20">
-                <StackPanel Spacing="4">
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Variants and labels"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
                                helpers:Typography.TextStyle="TitleLarge" />
@@ -44,7 +50,7 @@
                 </StackPanel>
 
                 <Grid ColumnDefinitions="336,24,336">
-                    <StackPanel Grid.Column="0" Spacing="16">
+                    <StackPanel Grid.Column="0" Spacing="{DynamicResource MdSysSpacing200}">
                         <TextBlock Text="Filled"
                                    Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
                                    helpers:Typography.TextStyle="LabelLarge" />
@@ -61,7 +67,7 @@
                                  PlaceholderText="Placeholder without label" />
                     </StackPanel>
 
-                    <StackPanel Grid.Column="2" Spacing="16">
+                    <StackPanel Grid.Column="2" Spacing="{DynamicResource MdSysSpacing200}">
                         <TextBlock Text="Outlined"
                                    Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
                                    helpers:Typography.TextStyle="LabelLarge" />
@@ -82,11 +88,9 @@
         </Border>
 
         <!-- Decorations -->
-        <Border Background="{DynamicResource MdSysSurfaceContainerLowBrush}"
-                CornerRadius="{DynamicResource MdSysShapeCornerLarge}"
-                Padding="24">
-            <StackPanel Spacing="20">
-                <StackPanel Spacing="4">
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Decorations and supporting content"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
                                helpers:Typography.TextStyle="TitleLarge" />
@@ -97,7 +101,7 @@
                 </StackPanel>
 
                 <Grid ColumnDefinitions="336,24,336">
-                    <StackPanel Grid.Column="0" Spacing="16">
+                    <StackPanel Grid.Column="0" Spacing="{DynamicResource MdSysSpacing200}">
                         <TextBox Classes="filled"
                                  controls:TextFieldAssist.Label="Edited by"
                                  controls:TextFieldAssist.LeadingIcon="{StaticResource PencilIcon}"
@@ -115,7 +119,7 @@
                                  PlaceholderText="0.00" />
                     </StackPanel>
 
-                    <StackPanel Grid.Column="2" Spacing="16">
+                    <StackPanel Grid.Column="2" Spacing="{DynamicResource MdSysSpacing200}">
                         <TextBox Classes="outlined"
                                  controls:TextFieldAssist.Label="Display name"
                                  controls:TextFieldAssist.IsRequired="True"
@@ -150,11 +154,9 @@
         </Border>
 
         <!-- Validation -->
-        <Border Background="{DynamicResource MdSysSurfaceContainerLowBrush}"
-                CornerRadius="{DynamicResource MdSysShapeCornerLarge}"
-                Padding="24">
-            <StackPanel Spacing="20">
-                <StackPanel Spacing="4">
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Validation and states"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
                                helpers:Typography.TextStyle="TitleLarge" />
@@ -165,7 +167,7 @@
                 </StackPanel>
 
                 <Grid ColumnDefinitions="336,24,336">
-                    <StackPanel Grid.Column="0" Spacing="16">
+                    <StackPanel Grid.Column="0" Spacing="{DynamicResource MdSysSpacing200}">
                         <TextBox Classes="filled"
                                  controls:TextFieldAssist.Label="Username"
                                  controls:TextFieldAssist.SupportingText="Choose a unique username"
@@ -180,7 +182,7 @@
                                  IsEnabled="False" />
                     </StackPanel>
 
-                    <StackPanel Grid.Column="2" Spacing="16">
+                    <StackPanel Grid.Column="2" Spacing="{DynamicResource MdSysSpacing200}">
                         <TextBox Classes="outlined"
                                  controls:TextFieldAssist.Label="Email — native validation"
                                  controls:TextFieldAssist.SupportingText="Try user@example.com"
@@ -197,11 +199,9 @@
         </Border>
 
         <!-- Editing -->
-        <Border Background="{DynamicResource MdSysSurfaceContainerLowBrush}"
-                CornerRadius="{DynamicResource MdSysShapeCornerLarge}"
-                Padding="24">
-            <StackPanel Spacing="20">
-                <StackPanel Spacing="4">
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Editing features"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
                                helpers:Typography.TextStyle="TitleLarge" />
@@ -212,7 +212,7 @@
                 </StackPanel>
 
                 <Grid ColumnDefinitions="336,24,336">
-                    <StackPanel Grid.Column="0" Spacing="16">
+                    <StackPanel Grid.Column="0" Spacing="{DynamicResource MdSysSpacing200}">
                         <TextBox Classes="filled"
                                  controls:TextFieldAssist.Label="Comments"
                                  controls:TextFieldAssist.SupportingText="AcceptsReturn, MinLines=3, MaxLines=6"
@@ -237,7 +237,7 @@
                         </TextBox>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="2" Spacing="16">
+                    <StackPanel Grid.Column="2" Spacing="{DynamicResource MdSysSpacing200}">
                         <TextBox Classes="outlined"
                                  controls:TextFieldAssist.Label="Wrapped text"
                                  controls:TextFieldAssist.SupportingText="Wraps and grows until MaxLines=4, then scrolls"
@@ -260,11 +260,9 @@
         </Border>
 
         <!-- RTL -->
-        <Border Background="{DynamicResource MdSysSurfaceContainerLowBrush}"
-                CornerRadius="{DynamicResource MdSysShapeCornerLarge}"
-                Padding="24">
-            <StackPanel Spacing="20">
-                <StackPanel Spacing="4">
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Right-to-left"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
                                helpers:Typography.TextStyle="TitleLarge" />

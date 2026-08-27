@@ -2,11 +2,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Material3.Avalonia.Demo.Views.SchemeColors">
     <UserControl.Styles>
         <Style Selector="ContentControl.swatch">
-            <Setter Property="Padding" Value="12 8" />
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdSysSpacing150 MdSysSpacing100}" />
             <Setter Property="VerticalContentAlignment" Value="Top" />
             <Setter Property="HorizontalContentAlignment" Value="Left" />
             <Setter Property="Template">
@@ -33,7 +34,7 @@
 
     <Grid ColumnDefinitions="200 4 200 4 200 16 200"
           RowDefinitions="Auto 16 Auto 16 Auto"
-          Margin="12">
+          Margin="{markup:DynamicThickness MdSysSpacing150}">
         <Grid Grid.Row="0"
               Grid.Column="0"
               RowDefinitions="50 40 50 40">

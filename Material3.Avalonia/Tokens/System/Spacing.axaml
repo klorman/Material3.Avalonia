@@ -1,0 +1,21 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <x:Double x:Key="MdSysSpacing0">0</x:Double>
+    <x:Double x:Key="MdSysSpacing25">2</x:Double>
+    <x:Double x:Key="MdSysSpacing50">4</x:Double>
+    <x:Double x:Key="MdSysSpacing75">6</x:Double>
+    <x:Double x:Key="MdSysSpacing100">8</x:Double>
+    <x:Double x:Key="MdSysSpacing125">10</x:Double>
+    <x:Double x:Key="MdSysSpacing150">12</x:Double>
+    <x:Double x:Key="MdSysSpacing175">14</x:Double>
+    <x:Double x:Key="MdSysSpacing200">16</x:Double>
+    <x:Double x:Key="MdSysSpacing250">20</x:Double>
+    <x:Double x:Key="MdSysSpacing300">24</x:Double>
+    <x:Double x:Key="MdSysSpacing400">32</x:Double>
+    <x:Double x:Key="MdSysSpacing450">36</x:Double>
+    <x:Double x:Key="MdSysSpacing500">40</x:Double>
+    <x:Double x:Key="MdSysSpacing600">48</x:Double>
+    <x:Double x:Key="MdSysSpacing700">56</x:Double>
+    <x:Double x:Key="MdSysSpacing800">64</x:Double>
+    <x:Double x:Key="MdSysSpacing900">72</x:Double>
+</ResourceDictionary>

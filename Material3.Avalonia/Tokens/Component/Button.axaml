@@ -46,36 +46,46 @@
     <x:Double x:Key="MdCompButtonXsContainerHeight">32</x:Double>
     <Thickness x:Key="MdCompButtonXsOutlineWidth">1</Thickness>
     <x:Double x:Key="MdCompButtonXsIconSize">20</x:Double>
-    <Thickness x:Key="MdCompButtonXsPadding">12 0</Thickness>
-    <x:Double x:Key="MdCompButtonXsBetweenIconLabelSpace">8</x:Double>
+    <StaticResource x:Key="MdCompButtonXsLeadingSpace" ResourceKey="MdSysSpacing150" />
+    <StaticResource x:Key="MdCompButtonXsVerticalSpace" ResourceKey="MdSysSpacing0" />
+    <StaticResource x:Key="MdCompButtonXsTrailingSpace" ResourceKey="MdSysSpacing150" />
+    <StaticResource x:Key="MdCompButtonXsBetweenIconLabelSpace" ResourceKey="MdSysSpacing100" />
     
     <!-- Size Small -->
     <x:Double x:Key="MdCompButtonSmContainerHeight">40</x:Double>
     <Thickness x:Key="MdCompButtonSmOutlineWidth">1</Thickness>
     <x:Double x:Key="MdCompButtonSmIconSize">20</x:Double>
-    <Thickness x:Key="MdCompButtonSmPadding">16 0</Thickness>
-    <x:Double x:Key="MdCompButtonSmBetweenIconLabelSpace">8</x:Double>
+    <StaticResource x:Key="MdCompButtonSmLeadingSpace" ResourceKey="MdSysSpacing200" />
+    <StaticResource x:Key="MdCompButtonSmVerticalSpace" ResourceKey="MdSysSpacing0" />
+    <StaticResource x:Key="MdCompButtonSmTrailingSpace" ResourceKey="MdSysSpacing200" />
+    <StaticResource x:Key="MdCompButtonSmBetweenIconLabelSpace" ResourceKey="MdSysSpacing100" />
     
     <!-- Size Medium -->
     <x:Double x:Key="MdCompButtonMdContainerHeight">56</x:Double>
     <Thickness x:Key="MdCompButtonMdOutlineWidth">1</Thickness>
     <x:Double x:Key="MdCompButtonMdIconSize">24</x:Double>
-    <Thickness x:Key="MdCompButtonMdPadding">24 0</Thickness>
-    <x:Double x:Key="MdCompButtonMdBetweenIconLabelSpace">8</x:Double>
+    <StaticResource x:Key="MdCompButtonMdLeadingSpace" ResourceKey="MdSysSpacing300" />
+    <StaticResource x:Key="MdCompButtonMdVerticalSpace" ResourceKey="MdSysSpacing0" />
+    <StaticResource x:Key="MdCompButtonMdTrailingSpace" ResourceKey="MdSysSpacing300" />
+    <StaticResource x:Key="MdCompButtonMdBetweenIconLabelSpace" ResourceKey="MdSysSpacing100" />
     
     <!-- Size Large -->
     <x:Double x:Key="MdCompButtonLgContainerHeight">96</x:Double>
     <Thickness x:Key="MdCompButtonLgOutlineWidth">2</Thickness>
     <x:Double x:Key="MdCompButtonLgIconSize">32</x:Double>
-    <Thickness x:Key="MdCompButtonLgPadding">48 0</Thickness>
-    <x:Double x:Key="MdCompButtonLgBetweenIconLabelSpace">12</x:Double>
+    <StaticResource x:Key="MdCompButtonLgLeadingSpace" ResourceKey="MdSysSpacing600" />
+    <StaticResource x:Key="MdCompButtonLgVerticalSpace" ResourceKey="MdSysSpacing0" />
+    <StaticResource x:Key="MdCompButtonLgTrailingSpace" ResourceKey="MdSysSpacing600" />
+    <StaticResource x:Key="MdCompButtonLgBetweenIconLabelSpace" ResourceKey="MdSysSpacing150" />
     
     <!-- Size Extra Large -->
     <x:Double x:Key="MdCompButtonXlContainerHeight">136</x:Double>
     <Thickness x:Key="MdCompButtonXlOutlineWidth">3</Thickness>
     <x:Double x:Key="MdCompButtonXlIconSize">40</x:Double>
-    <Thickness x:Key="MdCompButtonXlPadding">64 0</Thickness>
-    <x:Double x:Key="MdCompButtonXlBetweenIconLabelSpace">16</x:Double>
+    <StaticResource x:Key="MdCompButtonXlLeadingSpace" ResourceKey="MdSysSpacing800" />
+    <StaticResource x:Key="MdCompButtonXlVerticalSpace" ResourceKey="MdSysSpacing0" />
+    <StaticResource x:Key="MdCompButtonXlTrailingSpace" ResourceKey="MdSysSpacing800" />
+    <StaticResource x:Key="MdCompButtonXlBetweenIconLabelSpace" ResourceKey="MdSysSpacing200" />
     
     <StaticResource x:Key="MdCompButtonDisabledContainerBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <StaticResource x:Key="MdCompButtonDisabledOutlineBrush" ResourceKey="MdSysOutlineVariantBrush" />

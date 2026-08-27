@@ -3,10 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:Material3.Avalonia.Controls;assembly=Material3.Avalonia"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Material3.Avalonia.Demo.Views.Cards" ClipToBounds="False">
-    <StackPanel Spacing="{DynamicResource MdCompCardSpacing}" Orientation="Vertical">
-        <StackPanel Spacing="{DynamicResource MdCompCardSpacing}" Orientation="Horizontal">
+              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+              x:Class="Material3.Avalonia.Demo.Views.Cards" ClipToBounds="False">
+    <StackPanel Spacing="{DynamicResource MdSysSpacing100}" Orientation="Vertical">
+        <StackPanel Spacing="{DynamicResource MdSysSpacing100}" Orientation="Horizontal">
             <controls:Card Classes="elevated" IsInteractive="False" Height="120" Width="300">
                 <TextBlock Classes="label-medium" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="Elevated" />
             </controls:Card>
@@ -17,7 +17,7 @@
                 <TextBlock Classes="label-medium" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="Outlined" />
             </controls:Card>
         </StackPanel>
-        <StackPanel Spacing="{DynamicResource MdCompCardSpacing}" Orientation="Horizontal">
+        <StackPanel Spacing="{DynamicResource MdSysSpacing100}" Orientation="Horizontal">
             <controls:Card Classes="elevated" IsInteractive="True" Height="120" Width="300">
                 <TextBlock Classes="label-medium" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="Elevated Interactive" />
             </controls:Card>
@@ -28,7 +28,7 @@
                 <TextBlock Classes="label-medium" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="Outlined Interactive" />
             </controls:Card>
         </StackPanel>
-        <StackPanel Spacing="{DynamicResource MdCompCardSpacing}" Orientation="Horizontal">
+        <StackPanel Spacing="{DynamicResource MdSysSpacing100}" Orientation="Horizontal">
             <controls:Card Classes="elevated" IsInteractive="True" Height="120" Width="300" IsEnabled="False">
                 <TextBlock Classes="label-medium" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="Elevated Disabled" />
             </controls:Card>

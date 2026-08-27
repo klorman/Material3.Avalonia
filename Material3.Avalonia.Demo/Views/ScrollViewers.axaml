@@ -5,6 +5,7 @@
              xmlns:assist="clr-namespace:Material3.Avalonia.Attached.Controls;assembly=Material3.Avalonia"
              xmlns:converters="clr-namespace:Material3.Avalonia.Converters;assembly=Material3.Avalonia"
              xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
+             xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
              mc:Ignorable="d"
              d:DesignWidth="800"
              d:DesignHeight="1600"
@@ -14,7 +15,7 @@
         <Style Selector="Border.demo-section">
             <Setter Property="Background" Value="{DynamicResource MdSysSurfaceContainerLowBrush}" />
             <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerLarge}" />
-            <Setter Property="Padding" Value="24" />
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdSysSpacing300}" />
         </Style>
 
         <Style Selector="Border.demo-viewport-frame">
@@ -28,14 +29,24 @@
         <Style Selector="Border.demo-row">
             <Setter Property="Background" Value="{DynamicResource MdSysSurfaceContainerBrush}" />
             <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerSmall}" />
-            <Setter Property="Padding" Value="12 10" />
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdSysSpacing150 MdSysSpacing125}" />
         </Style>
 
         <Style Selector="Border.demo-chip">
             <Setter Property="Background" Value="{DynamicResource MdSysSecondaryContainerBrush}" />
             <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerLarge}" />
-            <Setter Property="Padding" Value="14 10" />
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdSysSpacing175 MdSysSpacing125}" />
             <Setter Property="MinWidth" Value="116" />
+        </Style>
+
+        <Style Selector="StackPanel.demo-scroll-content">
+            <Setter Property="Margin" Value="{markup:DynamicThickness MdSysSpacing150}" />
+            <Setter Property="Spacing" Value="{DynamicResource MdSysSpacing100}" />
+        </Style>
+
+        <Style Selector="StackPanel.demo-nested-scroll-content">
+            <Setter Property="Margin" Value="{markup:DynamicThickness MdSysSpacing125}" />
+            <Setter Property="Spacing" Value="{DynamicResource MdSysSpacing75}" />
         </Style>
 
         <Style Selector="ScrollViewer.demo-viewport">
@@ -51,11 +62,10 @@
     </UserControl.Styles>
 
     <StackPanel Width="744"
-                Margin="24"
-                Spacing="32">
-
+                Margin="{markup:DynamicThickness MdSysSpacing300}"
+                Spacing="{DynamicResource MdSysSpacing400}">
         <!-- Header -->
-        <StackPanel Spacing="8">
+        <StackPanel Spacing="{DynamicResource MdSysSpacing100}">
             <TextBlock Text="Scroll viewers"
                        Foreground="{DynamicResource MdSysOnBackgroundBrush}"
                        helpers:Typography.TextStyle="HeadlineMedium" />
@@ -68,8 +78,8 @@
 
         <!-- Smooth Wheel -->
         <Border Classes="demo-section">
-            <StackPanel Spacing="20">
-                <StackPanel Spacing="4">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Smooth wheel scrolling"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
                                helpers:Typography.TextStyle="TitleLarge" />
@@ -80,11 +90,11 @@
                 </StackPanel>
 
                 <Grid ColumnDefinitions="336,24,336">
-                    <StackPanel Grid.Column="0" Spacing="12">
+                    <StackPanel Grid.Column="0" Spacing="{DynamicResource MdSysSpacing150}">
                         <TextBlock Classes="demo-label" Text="Default smooth wheel" />
                         <Border Classes="demo-viewport-frame">
                             <ScrollViewer Classes="demo-viewport" Height="220">
-                                <StackPanel Margin="12" Spacing="8">
+                                <StackPanel Classes="demo-scroll-content">
                                     <Border Classes="demo-row"><TextBlock Text="01  Wheel scroll should glide to this row." /></Border>
                                     <Border Classes="demo-row"><TextBlock Text="02  Repeated wheel input should retarget, not restart." /></Border>
                                     <Border Classes="demo-row"><TextBlock Text="03  Drag the thumb: content should follow immediately." /></Border>
@@ -102,13 +112,13 @@
                         </Border>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="2" Spacing="12">
+                    <StackPanel Grid.Column="2" Spacing="{DynamicResource MdSysSpacing150}">
                         <TextBlock Classes="demo-label" Text="Opt-out native wheel" />
                         <Border Classes="demo-viewport-frame">
                             <ScrollViewer Classes="demo-viewport"
                                           Height="220"
                                           assist:ScrollViewerAssist.IsSmoothWheelScrollingEnabled="False">
-                                <StackPanel Margin="12" Spacing="8">
+                                <StackPanel Classes="demo-scroll-content">
                                     <Border Classes="demo-row"><TextBlock Text="01  Native wheel scroll jumps immediately." /></Border>
                                     <Border Classes="demo-row"><TextBlock Text="02  This is useful for apps that prefer platform exactness." /></Border>
                                     <Border Classes="demo-row"><TextBlock Text="03  Drag and track-click behavior match the smooth sample." /></Border>
@@ -131,8 +141,8 @@
 
         <!-- Interaction -->
         <Border Classes="demo-section">
-            <StackPanel Spacing="20">
-                <StackPanel Spacing="4">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Scrollbar interaction states"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
                                helpers:Typography.TextStyle="TitleLarge" />
@@ -143,11 +153,11 @@
                 </StackPanel>
 
                 <Grid ColumnDefinitions="336,24,336">
-                    <StackPanel Grid.Column="0" Spacing="12">
+                    <StackPanel Grid.Column="0" Spacing="{DynamicResource MdSysSpacing150}">
                         <TextBlock Classes="demo-label" Text="Auto-hide overlay" />
                         <Border Classes="demo-viewport-frame">
                             <ScrollViewer Classes="demo-viewport" Height="180" AllowAutoHide="True">
-                                <StackPanel Margin="12" Spacing="8">
+                                <StackPanel Classes="demo-scroll-content">
                                     <Border Classes="demo-row"><TextBlock Text="Auto-hide sample 01" /></Border>
                                     <Border Classes="demo-row"><TextBlock Text="Auto-hide sample 02" /></Border>
                                     <Border Classes="demo-row"><TextBlock Text="Auto-hide sample 03" /></Border>
@@ -161,11 +171,11 @@
                         </Border>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="2" Spacing="12">
+                    <StackPanel Grid.Column="2" Spacing="{DynamicResource MdSysSpacing150}">
                         <TextBlock Classes="demo-label" Text="Always expanded" />
                         <Border Classes="demo-viewport-frame">
                             <ScrollViewer Classes="demo-viewport" Height="180" AllowAutoHide="False">
-                                <StackPanel Margin="12" Spacing="8">
+                                <StackPanel Classes="demo-scroll-content">
                                     <Border Classes="demo-row"><TextBlock Text="Always-expanded sample 01" /></Border>
                                     <Border Classes="demo-row"><TextBlock Text="Always-expanded sample 02" /></Border>
                                     <Border Classes="demo-row"><TextBlock Text="Always-expanded sample 03" /></Border>
@@ -181,7 +191,7 @@
                 </Grid>
 
                 <Grid ColumnDefinitions="336,24,336">
-                    <StackPanel Grid.Column="0" Spacing="12">
+                    <StackPanel Grid.Column="0" Spacing="{DynamicResource MdSysSpacing150}">
                         <TextBlock Classes="demo-label" Text="Standalone horizontal ScrollBar" />
                         <ScrollBar Orientation="Horizontal"
                                    AllowAutoHide="False"
@@ -193,7 +203,7 @@
                                    LargeChange="25" />
                     </StackPanel>
 
-                    <StackPanel Grid.Column="2" Spacing="12">
+                    <StackPanel Grid.Column="2" Spacing="{DynamicResource MdSysSpacing150}">
                         <TextBlock Classes="demo-label" Text="Standalone vertical ScrollBar" />
                         <ScrollBar Orientation="Vertical"
                                    AllowAutoHide="False"
@@ -212,8 +222,8 @@
 
         <!-- Nested Scrolling -->
         <Border Classes="demo-section">
-            <StackPanel Spacing="20">
-                <StackPanel Spacing="4">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Horizontal and nested scrolling"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
                                helpers:Typography.TextStyle="TitleLarge" />
@@ -223,13 +233,13 @@
                                helpers:Typography.TextStyle="BodySmall" />
                 </StackPanel>
 
-                <StackPanel Spacing="12">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing150}">
                     <TextBlock Classes="demo-label" Text="Horizontal content" />
                     <Border Classes="demo-viewport-frame">
                         <ScrollViewer Height="132"
                                       HorizontalScrollBarVisibility="Visible"
                                       VerticalScrollBarVisibility="Disabled">
-                            <StackPanel Orientation="Horizontal" Margin="12" Spacing="8">
+                            <StackPanel Classes="demo-scroll-content" Orientation="Horizontal">
                                 <Border Classes="demo-chip"><TextBlock Text="Segment 01" /></Border>
                                 <Border Classes="demo-chip"><TextBlock Text="Segment 02" /></Border>
                                 <Border Classes="demo-chip"><TextBlock Text="Segment 03" /></Border>
@@ -246,16 +256,16 @@
                 </StackPanel>
 
                 <Grid ColumnDefinitions="336,24,336">
-                    <StackPanel Grid.Column="0" Spacing="12">
+                    <StackPanel Grid.Column="0" Spacing="{DynamicResource MdSysSpacing150}">
                         <TextBlock Classes="demo-label" Text="Nested chaining enabled" />
                         <Border Classes="demo-viewport-frame">
                             <ScrollViewer Classes="demo-viewport" Height="220">
-                                <StackPanel Margin="12" Spacing="8">
+                                <StackPanel Classes="demo-scroll-content">
                                     <Border Classes="demo-row"><TextBlock Text="Outer before inner 01" /></Border>
                                     <Border Classes="demo-row"><TextBlock Text="Outer before inner 02" /></Border>
                                     <Border Classes="demo-viewport-frame">
                                         <ScrollViewer Classes="demo-viewport" Height="116" IsScrollChainingEnabled="True">
-                                            <StackPanel Margin="10" Spacing="6">
+                                            <StackPanel Classes="demo-nested-scroll-content">
                                                 <Border Classes="demo-row"><TextBlock Text="Inner chained 01" /></Border>
                                                 <Border Classes="demo-row"><TextBlock Text="Inner chained 02" /></Border>
                                                 <Border Classes="demo-row"><TextBlock Text="Inner chained 03" /></Border>
@@ -272,16 +282,16 @@
                         </Border>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="2" Spacing="12">
+                    <StackPanel Grid.Column="2" Spacing="{DynamicResource MdSysSpacing150}">
                         <TextBlock Classes="demo-label" Text="Nested chaining disabled" />
                         <Border Classes="demo-viewport-frame">
                             <ScrollViewer Classes="demo-viewport" Height="220">
-                                <StackPanel Margin="12" Spacing="8">
+                                <StackPanel Classes="demo-scroll-content">
                                     <Border Classes="demo-row"><TextBlock Text="Outer before inner 01" /></Border>
                                     <Border Classes="demo-row"><TextBlock Text="Outer before inner 02" /></Border>
                                     <Border Classes="demo-viewport-frame">
                                         <ScrollViewer Classes="demo-viewport" Height="116" IsScrollChainingEnabled="False">
-                                            <StackPanel Margin="10" Spacing="6">
+                                            <StackPanel Classes="demo-nested-scroll-content">
                                                 <Border Classes="demo-row"><TextBlock Text="Inner isolated 01" /></Border>
                                                 <Border Classes="demo-row"><TextBlock Text="Inner isolated 02" /></Border>
                                                 <Border Classes="demo-row"><TextBlock Text="Inner isolated 03" /></Border>
@@ -303,8 +313,8 @@
 
         <!-- Visibility -->
         <Border Classes="demo-section">
-            <StackPanel Spacing="20">
-                <StackPanel Spacing="4">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Visibility and disabled behavior"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
                                helpers:Typography.TextStyle="TitleLarge" />
@@ -315,11 +325,11 @@
                 </StackPanel>
 
                 <Grid ColumnDefinitions="216,12,216,12,216">
-                    <StackPanel Grid.Column="0" Spacing="12">
+                    <StackPanel Grid.Column="0" Spacing="{DynamicResource MdSysSpacing150}">
                         <TextBlock Classes="demo-label" Text="Auto: no overflow" />
                         <Border Classes="demo-viewport-frame">
                             <ScrollViewer Height="144" VerticalScrollBarVisibility="Auto">
-                                <StackPanel Margin="12" Spacing="8">
+                                <StackPanel Classes="demo-scroll-content">
                                     <Border Classes="demo-row"><TextBlock Text="Fits in viewport" /></Border>
                                     <Border Classes="demo-row"><TextBlock Text="No scrollbar expected" /></Border>
                                 </StackPanel>
@@ -327,11 +337,11 @@
                         </Border>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="2" Spacing="12">
+                    <StackPanel Grid.Column="2" Spacing="{DynamicResource MdSysSpacing150}">
                         <TextBlock Classes="demo-label" Text="Visible: overflow" />
                         <Border Classes="demo-viewport-frame">
                             <ScrollViewer Classes="demo-viewport" Height="144" VerticalScrollBarVisibility="Visible">
-                                <StackPanel Margin="12" Spacing="8">
+                                <StackPanel Classes="demo-scroll-content">
                                     <Border Classes="demo-row"><TextBlock Text="Visible 01" /></Border>
                                     <Border Classes="demo-row"><TextBlock Text="Visible 02" /></Border>
                                     <Border Classes="demo-row"><TextBlock Text="Visible 03" /></Border>
@@ -341,11 +351,11 @@
                         </Border>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="4" Spacing="12">
+                    <StackPanel Grid.Column="4" Spacing="{DynamicResource MdSysSpacing150}">
                         <TextBlock Classes="demo-label" Text="Disabled" />
                         <Border Classes="demo-viewport-frame">
                             <ScrollViewer Height="144" VerticalScrollBarVisibility="Disabled">
-                                <StackPanel Margin="12" Spacing="8">
+                                <StackPanel Classes="demo-scroll-content">
                                     <Border Classes="demo-row"><TextBlock Text="Disabled 01" /></Border>
                                     <Border Classes="demo-row"><TextBlock Text="Disabled 02" /></Border>
                                     <Border Classes="demo-row"><TextBlock Text="Overflow is clipped" /></Border>

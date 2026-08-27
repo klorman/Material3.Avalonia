@@ -3,6 +3,7 @@
     <ResourceDictionary.MergedDictionaries>
         <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/System/Color.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/System/Shape.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/System/Spacing.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/System/State.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/System/Typography.axaml" />
     </ResourceDictionary.MergedDictionaries>

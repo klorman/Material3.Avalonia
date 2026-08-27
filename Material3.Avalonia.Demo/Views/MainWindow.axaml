@@ -5,6 +5,7 @@
         xmlns:views="clr-namespace:Material3.Avalonia.Demo.Views"
         xmlns:controls="clr-namespace:Material3.Avalonia.Controls;assembly=Material3.Avalonia"
         xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
+        xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
         xmlns:controls1="clr-namespace:Material3.Avalonia.Attached.Controls;assembly=Material3.Avalonia"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Material3.Avalonia.Demo.Views.MainWindow"
@@ -15,8 +16,8 @@
     <ScrollViewer VerticalScrollBarVisibility="Visible"
                   controls1:ScrollViewerAssist.ScrollBarInset="0 18">
         <StackPanel Orientation="Vertical"
-                    Spacing="16"
-                    Margin="16">
+                    Margin="{markup:DynamicThickness MdSysSpacing200}"
+                    Spacing="{DynamicResource MdSysSpacing200}">
             <views:TonalPalettes IsVisible="False" />
 
             <views:SchemeColors HorizontalAlignment="Center" IsVisible="False" />
