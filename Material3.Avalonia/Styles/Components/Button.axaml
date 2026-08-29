@@ -77,7 +77,8 @@
 
         <!-- Size -->
         <Style Selector="^[(controls|ButtonAssist.Size)=ExtraSmall]">
-            <Setter Property="Height" Value="{DynamicResource MdCompButtonXsContainerHeight}" />
+            <Setter Property="Height"
+                    Value="{markup:DensityScalar MdCompButtonXsContainerHeight, MostDense=Dense2}" />
             <Setter Property="BorderThickness" Value="{DynamicResource MdCompButtonXsOutlineWidth}" />
             <Setter Property="helpers:Typography.TextStyle" Value="LabelLarge" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
@@ -91,7 +92,8 @@
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Size)=Small]">
-            <Setter Property="Height" Value="{DynamicResource MdCompButtonSmContainerHeight}" />
+            <Setter Property="Height"
+                    Value="{markup:DensityScalar MdCompButtonSmContainerHeight, MostDense=Dense3}" />
             <Setter Property="BorderThickness" Value="{DynamicResource MdCompButtonSmOutlineWidth}" />
             <Setter Property="helpers:Typography.TextStyle" Value="LabelLarge" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
@@ -105,7 +107,8 @@
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Size)=Medium]">
-            <Setter Property="Height" Value="{DynamicResource MdCompButtonMdContainerHeight}" />
+            <Setter Property="Height"
+                    Value="{markup:DensityScalar MdCompButtonMdContainerHeight, MostDense=Dense3}" />
             <Setter Property="BorderThickness" Value="{DynamicResource MdCompButtonMdOutlineWidth}" />
             <Setter Property="helpers:Typography.TextStyle" Value="TitleMedium" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
@@ -119,7 +122,8 @@
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Size)=Large]">
-            <Setter Property="Height" Value="{DynamicResource MdCompButtonLgContainerHeight}" />
+            <Setter Property="Height"
+                    Value="{markup:DensityScalar MdCompButtonLgContainerHeight, MostDense=Dense3}" />
             <Setter Property="BorderThickness" Value="{DynamicResource MdCompButtonLgOutlineWidth}" />
             <Setter Property="helpers:Typography.TextStyle" Value="HeadlineSmall" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
@@ -133,7 +137,8 @@
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Size)=ExtraLarge]">
-            <Setter Property="Height" Value="{DynamicResource MdCompButtonXlContainerHeight}" />
+            <Setter Property="Height"
+                    Value="{markup:DensityScalar MdCompButtonXlContainerHeight, MostDense=Dense3}" />
             <Setter Property="BorderThickness" Value="{DynamicResource MdCompButtonXlOutlineWidth}" />
             <Setter Property="helpers:Typography.TextStyle" Value="HeadlineLarge" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">

@@ -3,6 +3,7 @@
                     xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls"
                     xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
                     xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
                     xmlns:transitions="clr-namespace:Material3.Avalonia.Motion.Transitions">
 
     <!-- Material Web uses a 16dp gap between supporting text and counter. -->
@@ -58,7 +59,8 @@
         <Setter Property="LetterSpacing" Value="{DynamicResource MdCompFilledTextFieldInputTextTracking}" />
 
         <!-- Size -->
-        <Setter Property="MinHeight" Value="{DynamicResource MdCompFilledTextFieldContainerHeight}" />
+        <Setter Property="MinHeight"
+                Value="{markup:DensityScalar MdCompFilledTextFieldContainerHeight, MostDense=Dense4}" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -215,12 +217,10 @@
                                         <Grid x:Name="PART_InputVerticalLayout"
                                               RowDefinitions="Auto,Auto,*,Auto">
                                             <Border x:Name="PART_TopSpace"
-                                                    Grid.Row="0"
-                                                    Height="{DynamicResource MdCompFilledTextFieldTopSpace}" />
+                                                    Grid.Row="0" />
 
                                             <Border x:Name="PART_FilledFloatingLabelReserve"
                                                     Grid.Row="1"
-                                                    Height="{DynamicResource MdCompFilledTextFieldLabelTextPopulatedLineHeight}"
                                                     IsVisible="False" />
 
                                             <Grid x:Name="PART_InputAndRestingLabel"
@@ -345,8 +345,7 @@
                                             </Grid>
 
                                             <Border x:Name="PART_BottomSpace"
-                                                    Grid.Row="3"
-                                                    Height="{DynamicResource MdCompFilledTextFieldBottomSpace}" />
+                                                    Grid.Row="3" />
                                         </Grid>
 
                                         <!-- Expanded label endpoint. -->
@@ -378,7 +377,7 @@
                                               RowDefinitions="Auto,*"
                                               IsHitTestVisible="False">
                                             <Border Grid.Row="0"
-                                                    Height="{DynamicResource MdCompFilledTextFieldWithLabelTopSpace}" />
+                                                    Height="{markup:DensityScalar MdCompFilledTextFieldWithLabelTopSpace, MostDense=Dense2, DeltaScale=0.25}" />
                                             <Border x:Name="PART_FilledFloatingLabelMotionLayer"
                                                     Grid.Row="1"
                                                     IsVisible="{TemplateBinding controls:TextFieldAssist.Label, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
@@ -674,6 +673,8 @@
         -->
         <Style Selector="^.m3-text-field-has-label[(controls|TextFieldAssist.Variant)=Filled] /template/ Border#PART_FilledFloatingLabelReserve">
             <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Height"
+                    Value="{markup:DensityScalar MdCompFilledTextFieldLabelTextPopulatedLineHeight, MostDense=Dense2, DeltaScale=0.5}" />
         </Style>
 
         <!-- Outlined Label Motion -->
@@ -699,7 +700,13 @@
             <Setter Property="FontSize" Value="{DynamicResource MdCompFilledTextFieldInputTextSize}" />
             <Setter Property="LineHeight" Value="{DynamicResource MdCompFilledTextFieldInputTextLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdCompFilledTextFieldInputTextTracking}" />
-            <Setter Property="MinHeight" Value="{DynamicResource MdCompFilledTextFieldContainerHeight}" />
+            <Setter Property="MinHeight"
+                    Value="{markup:DensityScalar MdCompFilledTextFieldContainerHeight, MostDense=Dense4}" />
+
+            <Style Selector="^.m3-text-field-has-label">
+                <Setter Property="MinHeight"
+                        Value="{markup:DensityScalar MdCompFilledTextFieldContainerHeight, MostDense=Dense2}" />
+            </Style>
 
             <Style Selector="^ /template/ Border#PART_FilledContainer">
                 <Setter Property="IsVisible" Value="True" />
@@ -757,20 +764,24 @@
             </Style>
 
             <Style Selector="^ /template/ Border#PART_TopSpace">
-                <Setter Property="Height" Value="{DynamicResource MdCompFilledTextFieldTopSpace}" />
+                <Setter Property="Height"
+                        Value="{markup:DensityScalar MdCompFilledTextFieldTopSpace, MostDense=Dense4, DeltaScale=0.5}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_BottomSpace">
-                <Setter Property="Height" Value="{DynamicResource MdCompFilledTextFieldBottomSpace}" />
+                <Setter Property="Height"
+                        Value="{markup:DensityScalar MdCompFilledTextFieldBottomSpace, MostDense=Dense4, DeltaScale=0.5}" />
             </Style>
 
-            <!-- 8 + 16 + 24 + 8 remains 56dp in both resting and floating states. -->
+            <!-- Labelled fields distribute density across top, label, and bottom slots. -->
             <Style Selector="^.m3-text-field-has-label /template/ Border#PART_TopSpace">
-                <Setter Property="Height" Value="{DynamicResource MdCompFilledTextFieldWithLabelTopSpace}" />
+                <Setter Property="Height"
+                        Value="{markup:DensityScalar MdCompFilledTextFieldWithLabelTopSpace, MostDense=Dense2, DeltaScale=0.25}" />
             </Style>
 
             <Style Selector="^.m3-text-field-has-label /template/ Border#PART_BottomSpace">
-                <Setter Property="Height" Value="{DynamicResource MdCompFilledTextFieldWithLabelBottomSpace}" />
+                <Setter Property="Height"
+                        Value="{markup:DensityScalar MdCompFilledTextFieldWithLabelBottomSpace, MostDense=Dense2, DeltaScale=0.25}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_PrefixTrailingSpace">
@@ -1055,7 +1066,8 @@
             <Setter Property="FontSize" Value="{DynamicResource MdCompOutlinedTextFieldInputTextSize}" />
             <Setter Property="LineHeight" Value="{DynamicResource MdCompOutlinedTextFieldInputTextLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdCompOutlinedTextFieldInputTextTracking}" />
-            <Setter Property="MinHeight" Value="{DynamicResource MdCompOutlinedTextFieldContainerHeight}" />
+            <Setter Property="MinHeight"
+                    Value="{markup:DensityScalar MdCompOutlinedTextFieldContainerHeight, MostDense=Dense4}" />
 
             <Style Selector="^ /template/ Border#PART_FilledContainer">
                 <Setter Property="IsVisible" Value="False" />
@@ -1115,11 +1127,13 @@
             </Style>
 
             <Style Selector="^ /template/ Border#PART_TopSpace">
-                <Setter Property="Height" Value="{DynamicResource MdCompOutlinedTextFieldTopSpace}" />
+                <Setter Property="Height"
+                        Value="{markup:DensityScalar MdCompOutlinedTextFieldTopSpace, MostDense=Dense4, DeltaScale=0.5}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_BottomSpace">
-                <Setter Property="Height" Value="{DynamicResource MdCompOutlinedTextFieldBottomSpace}" />
+                <Setter Property="Height"
+                        Value="{markup:DensityScalar MdCompOutlinedTextFieldBottomSpace, MostDense=Dense4, DeltaScale=0.5}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_PrefixTrailingSpace">

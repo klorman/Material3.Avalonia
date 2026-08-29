@@ -3,6 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls;assembly=Material3.Avalonia"
+             xmlns:attached="clr-namespace:Material3.Avalonia.Attached;assembly=Material3.Avalonia"
+             xmlns:density="clr-namespace:Material3.Avalonia.Density;assembly=Material3.Avalonia"
              xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
              xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
              xmlns:viewModels="clr-namespace:Material3.Avalonia.Demo.ViewModels"
@@ -23,7 +25,8 @@
 
     <StackPanel Width="744"
                 Margin="{markup:DynamicThickness MdSysSpacing300}"
-                Spacing="{DynamicResource MdSysSpacing400}">
+                Spacing="{DynamicResource MdSysSpacing400}"
+                attached:DensityAssist.Density="{Binding SelectedDensity}">
         <!-- Header -->
         <StackPanel Spacing="{DynamicResource MdSysSpacing100}">
             <TextBlock Text="Text fields"
@@ -34,6 +37,40 @@
                        TextWrapping="Wrap"
                        Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
                        helpers:Typography.TextStyle="BodyMedium" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    Spacing="{DynamicResource MdSysSpacing100}"
+                    attached:DensityAssist.Density="{x:Static density:MaterialDensity.Default}">
+            <TextBlock Text="TextBox density"
+                       VerticalAlignment="Center"
+                       Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                       helpers:Typography.TextStyle="LabelLarge" />
+
+            <Button Content="0"
+                    Classes="outlined xs"
+                    Command="{Binding SetDensityCommand}"
+                    CommandParameter="{x:Static density:MaterialDensity.Default}" />
+            <Button Content="-1"
+                    Classes="outlined xs"
+                    Command="{Binding SetDensityCommand}"
+                    CommandParameter="{x:Static density:MaterialDensity.Dense1}" />
+            <Button Content="-2"
+                    Classes="outlined xs"
+                    Command="{Binding SetDensityCommand}"
+                    CommandParameter="{x:Static density:MaterialDensity.Dense2}" />
+            <Button Content="-3"
+                    Classes="outlined xs"
+                    Command="{Binding SetDensityCommand}"
+                    CommandParameter="{x:Static density:MaterialDensity.Dense3}" />
+            <Button Content="-4"
+                    Classes="outlined xs"
+                    Command="{Binding SetDensityCommand}"
+                    CommandParameter="{x:Static density:MaterialDensity.Dense4}" />
+            <Button Content="-5"
+                    Classes="outlined xs"
+                    Command="{Binding SetDensityCommand}"
+                    CommandParameter="{x:Static density:MaterialDensity.Dense5}" />
         </StackPanel>
 
         <!-- Variants -->
@@ -147,7 +184,8 @@
                     </TextBox.InnerLeftContent>
                     <TextBox.InnerRightContent>
                         <Button Content="Go"
-                                Classes="text xs" />
+                                Classes="text xs"
+                                attached:DensityAssist.Density="{x:Static density:MaterialDensity.Default}" />
                     </TextBox.InnerRightContent>
                 </TextBox>
             </StackPanel>
@@ -230,6 +268,7 @@
                             <TextBox.InnerRightContent>
                                 <Button controls:ButtonAssist.Icon="{StaticResource VisibilityIcon}"
                                         Classes="text xs"
+                                        attached:DensityAssist.Density="{x:Static density:MaterialDensity.Default}"
                                         Width="44"
                                         Height="44"
                                         Click="TogglePasswordReveal" />

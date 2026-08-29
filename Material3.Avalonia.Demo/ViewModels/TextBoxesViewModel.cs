@@ -1,5 +1,7 @@
 using System.Collections;
 using System.ComponentModel;
+using System.Windows.Input;
+using Material3.Avalonia.Density;
 
 namespace Material3.Avalonia.Demo.ViewModels;
 
@@ -9,6 +11,12 @@ namespace Material3.Avalonia.Demo.ViewModels;
 public sealed class TextBoxesViewModel : INotifyPropertyChanged, INotifyDataErrorInfo
 {
     private string _nativeValidationEmail = "material3.example.com";
+    private MaterialDensity _selectedDensity = MaterialDensity.Default;
+
+    public TextBoxesViewModel()
+    {
+        SetDensityCommand = new SetDensityCommandImpl(this);
+    }
 
     public string NativeValidationEmail
     {
@@ -19,11 +27,26 @@ public sealed class TextBoxesViewModel : INotifyPropertyChanged, INotifyDataErro
                 return;
 
             _nativeValidationEmail = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NativeValidationEmail)));
+            OnPropertyChanged(nameof(NativeValidationEmail));
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nameof(NativeValidationEmail)));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HasErrors)));
+            OnPropertyChanged(nameof(HasErrors));
         }
     }
+
+    public MaterialDensity SelectedDensity
+    {
+        get => _selectedDensity;
+        set
+        {
+            if (_selectedDensity == value)
+                return;
+
+            _selectedDensity = value;
+            OnPropertyChanged(nameof(SelectedDensity));
+        }
+    }
+
+    public ICommand SetDensityCommand { get; }
 
     public bool HasErrors => GetEmailError() is not null;
 
@@ -37,6 +60,11 @@ public sealed class TextBoxesViewModel : INotifyPropertyChanged, INotifyDataErro
 
         var error = GetEmailError();
         return error is null ? Array.Empty<string>() : new[] { error };
+    }
+
+    private void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
     private string? GetEmailError()
@@ -55,5 +83,34 @@ public sealed class TextBoxesViewModel : INotifyPropertyChanged, INotifyDataErro
             return "Enter a valid email address";
 
         return null;
+    }
+
+    private sealed class SetDensityCommandImpl : ICommand
+    {
+        private readonly TextBoxesViewModel _owner;
+
+        public SetDensityCommandImpl(TextBoxesViewModel owner)
+        {
+            _owner = owner;
+        }
+
+        public event EventHandler? CanExecuteChanged
+        {
+            add { }
+            remove { }
+        }
+
+        public bool CanExecute(object? parameter)
+        {
+            return parameter is MaterialDensity;
+        }
+
+        public void Execute(object? parameter)
+        {
+            _owner.SelectedDensity = parameter is MaterialDensity density
+                ? density
+                : throw new ArgumentException("Density command parameter must be a MaterialDensity.",
+                    nameof(parameter));
+        }
     }
 }
