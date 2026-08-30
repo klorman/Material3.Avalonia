@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Strings/InvariantResources.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/Reference/ReferenceTokens.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/System/SystemTokens.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/Component/ComponentTokens.axaml" />
