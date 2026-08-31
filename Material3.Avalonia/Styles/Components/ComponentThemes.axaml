@@ -7,7 +7,9 @@
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/HeaderedContentControl.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ItemsControl.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Label.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/OverlayPopupHost.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/PathIcon.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/PopupRoot.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ScrollBar.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ScrollViewer.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/TextBlock.axaml" />
