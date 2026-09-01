@@ -18,6 +18,8 @@
     <system:Double x:Key="MdSysTypeScaleHeadlineLargeSize">32</system:Double>
     <system:Double x:Key="MdSysTypeScaleHeadlineLargeLineHeight">40</system:Double>
     <system:Double x:Key="MdSysTypeScaleHeadlineLargeTracking">0</system:Double>
+    <StaticResource x:Key="MdSysTypeScaleHeadlineLargeFontFamily" ResourceKey="MdRefTypefaceBrand" />
+    <StaticResource x:Key="MdSysTypeScaleHeadlineLargeWeight" ResourceKey="MdRefTypefaceWeightRegular" />
 
     <system:Double x:Key="MdSysTypeScaleHeadlineMediumSize">28</system:Double>
     <system:Double x:Key="MdSysTypeScaleHeadlineMediumLineHeight">36</system:Double>
@@ -26,6 +28,8 @@
     <system:Double x:Key="MdSysTypeScaleHeadlineSmallSize">24</system:Double>
     <system:Double x:Key="MdSysTypeScaleHeadlineSmallLineHeight">32</system:Double>
     <system:Double x:Key="MdSysTypeScaleHeadlineSmallTracking">0</system:Double>
+    <StaticResource x:Key="MdSysTypeScaleHeadlineSmallFontFamily" ResourceKey="MdRefTypefaceBrand" />
+    <StaticResource x:Key="MdSysTypeScaleHeadlineSmallWeight" ResourceKey="MdRefTypefaceWeightRegular" />
 
     <!-- Title -->
     <system:Double x:Key="MdSysTypeScaleTitleLargeSize">22</system:Double>
@@ -35,6 +39,8 @@
     <system:Double x:Key="MdSysTypeScaleTitleMediumSize">16</system:Double>
     <system:Double x:Key="MdSysTypeScaleTitleMediumLineHeight">24</system:Double>
     <system:Double x:Key="MdSysTypeScaleTitleMediumTracking">0.15</system:Double>
+    <StaticResource x:Key="MdSysTypeScaleTitleMediumFontFamily" ResourceKey="MdRefTypefacePlain" />
+    <StaticResource x:Key="MdSysTypeScaleTitleMediumWeight" ResourceKey="MdRefTypefaceWeightMedium" />
 
     <system:Double x:Key="MdSysTypeScaleTitleSmallSize">14</system:Double>
     <system:Double x:Key="MdSysTypeScaleTitleSmallLineHeight">20</system:Double>
@@ -63,6 +69,8 @@
     <system:Double x:Key="MdSysTypeScaleLabelLargeSize">14</system:Double>
     <system:Double x:Key="MdSysTypeScaleLabelLargeLineHeight">20</system:Double>
     <system:Double x:Key="MdSysTypeScaleLabelLargeTracking">0.1</system:Double>
+    <StaticResource x:Key="MdSysTypeScaleLabelLargeFontFamily" ResourceKey="MdRefTypefacePlain" />
+    <StaticResource x:Key="MdSysTypeScaleLabelLargeWeight" ResourceKey="MdRefTypefaceWeightMedium" />
 
     <system:Double x:Key="MdSysTypeScaleLabelMediumSize">12</system:Double>
     <system:Double x:Key="MdSysTypeScaleLabelMediumLineHeight">16</system:Double>

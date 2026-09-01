@@ -5,11 +5,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceBrand}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightRegular}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleDisplayLargeSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=DisplayLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplayLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplayLargeTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=DisplayLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplayLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplayLargeTracking}" />
         </Style>
@@ -19,11 +19,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceBrand}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightRegular}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleDisplayMediumSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=DisplayMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplayMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplayMediumTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=DisplayMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplayMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplayMediumTracking}" />
         </Style>
@@ -33,11 +33,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceBrand}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightRegular}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleDisplaySmallSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=DisplaySmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplaySmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplaySmallTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=DisplaySmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplaySmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplaySmallTracking}" />
         </Style>
@@ -47,11 +47,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceBrand}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightRegular}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleHeadlineLargeSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=HeadlineLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineLargeTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=HeadlineLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineLargeTracking}" />
         </Style>
@@ -61,11 +61,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceBrand}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightRegular}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleHeadlineMediumSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=HeadlineMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineMediumTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=HeadlineMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineMediumTracking}" />
         </Style>
@@ -75,11 +75,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceBrand}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightRegular}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleHeadlineSmallSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=HeadlineSmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineSmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineSmallTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=HeadlineSmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineSmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineSmallTracking}" />
         </Style>
@@ -89,11 +89,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceBrand}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightRegular}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleTitleLargeSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=TitleLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleLargeTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=TitleLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleLargeTracking}" />
         </Style>
@@ -103,11 +103,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefacePlain}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightMedium}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleTitleMediumSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=TitleMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleMediumTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=TitleMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleMediumTracking}" />
         </Style>
@@ -117,11 +117,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefacePlain}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightMedium}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleTitleSmallSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=TitleSmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleSmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleSmallTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=TitleSmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleSmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleSmallTracking}" />
         </Style>
@@ -131,11 +131,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefacePlain}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightRegular}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleBodyLargeSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=BodyLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodyLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodyLargeTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=BodyLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodyLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodyLargeTracking}" />
         </Style>
@@ -145,11 +145,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefacePlain}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightRegular}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleBodyMediumSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=BodyMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodyMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodyMediumTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=BodyMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodyMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodyMediumTracking}" />
         </Style>
@@ -159,11 +159,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefacePlain}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightRegular}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleBodySmallSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=BodySmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodySmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodySmallTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=BodySmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodySmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodySmallTracking}" />
         </Style>
@@ -173,11 +173,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefacePlain}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightMedium}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleLabelLargeSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=LabelLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelLargeTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=LabelLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelLargeTracking}" />
         </Style>
@@ -187,11 +187,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefacePlain}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightMedium}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleLabelMediumSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=LabelMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelMediumTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=LabelMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelMediumTracking}" />
         </Style>
@@ -201,11 +201,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefacePlain}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightMedium}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleLabelSmallSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=LabelSmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelSmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelSmallTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=LabelSmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelSmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelSmallTracking}" />
         </Style>
@@ -216,11 +216,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceEmphasizedBrand}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightMedium}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleDisplayLargeSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=EmphasizedDisplayLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplayLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplayLargeTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=EmphasizedDisplayLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplayLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplayLargeTracking}" />
         </Style>
@@ -230,11 +230,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceEmphasizedBrand}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightMedium}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleDisplayMediumSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=EmphasizedDisplayMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplayMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplayMediumTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=EmphasizedDisplayMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplayMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplayMediumTracking}" />
         </Style>
@@ -244,11 +244,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceEmphasizedBrand}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightMedium}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleDisplaySmallSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=EmphasizedDisplaySmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplaySmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplaySmallTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=EmphasizedDisplaySmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplaySmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplaySmallTracking}" />
         </Style>
@@ -258,11 +258,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceEmphasizedBrand}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightMedium}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleHeadlineLargeSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=EmphasizedHeadlineLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineLargeTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=EmphasizedHeadlineLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineLargeTracking}" />
         </Style>
@@ -272,11 +272,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceEmphasizedBrand}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightMedium}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleHeadlineMediumSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=EmphasizedHeadlineMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineMediumTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=EmphasizedHeadlineMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineMediumTracking}" />
         </Style>
@@ -286,11 +286,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceEmphasizedBrand}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightMedium}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleHeadlineSmallSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=EmphasizedHeadlineSmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineSmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineSmallTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=EmphasizedHeadlineSmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineSmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineSmallTracking}" />
         </Style>
@@ -300,11 +300,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceEmphasizedBrand}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightMedium}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleTitleLargeSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=EmphasizedTitleLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleLargeTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=EmphasizedTitleLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleLargeTracking}" />
         </Style>
@@ -314,11 +314,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceEmphasizedPlain}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightBold}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleTitleMediumSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=EmphasizedTitleMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleMediumTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=EmphasizedTitleMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleMediumTracking}" />
         </Style>
@@ -328,11 +328,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceEmphasizedPlain}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightBold}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleTitleSmallSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=EmphasizedTitleSmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleSmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleSmallTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=EmphasizedTitleSmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleSmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleSmallTracking}" />
         </Style>
@@ -342,11 +342,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceEmphasizedPlain}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightMedium}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleBodyLargeSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=EmphasizedBodyLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodyLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodyLargeTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=EmphasizedBodyLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodyLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodyLargeTracking}" />
         </Style>
@@ -356,11 +356,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceEmphasizedPlain}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightMedium}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleBodyMediumSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=EmphasizedBodyMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodyMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodyMediumTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=EmphasizedBodyMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodyMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodyMediumTracking}" />
         </Style>
@@ -370,11 +370,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceEmphasizedPlain}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightMedium}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleBodySmallSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=EmphasizedBodySmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodySmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodySmallTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=EmphasizedBodySmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodySmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodySmallTracking}" />
         </Style>
@@ -384,11 +384,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceEmphasizedPlain}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightBold}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleLabelLargeSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=EmphasizedLabelLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelLargeTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=EmphasizedLabelLarge]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelLargeTracking}" />
         </Style>
@@ -398,11 +398,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceEmphasizedPlain}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightBold}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleLabelMediumSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=EmphasizedLabelMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelMediumTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=EmphasizedLabelMedium]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelMediumLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelMediumTracking}" />
         </Style>
@@ -412,11 +412,11 @@
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource MdRefTypefaceEmphasizedPlain}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource MdRefTypefaceWeightBold}" />
         <Setter Property="TextElement.FontSize" Value="{DynamicResource MdSysTypeScaleLabelSmallSize}" />
-        <Style Selector="^ /template/ ContentPresenter TextBlock">
+        <Style Selector="^ /template/ ContentPresenter TextBlock[(helpers|Typography.TextStyle)=EmphasizedLabelSmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelSmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelSmallTracking}" />
         </Style>
-        <Style Selector="^ /template/ TextPresenter">
+        <Style Selector="^ /template/ TextPresenter[(helpers|Typography.TextStyle)=EmphasizedLabelSmall]">
             <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelSmallLineHeight}" />
             <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelSmallTracking}" />
         </Style>

@@ -18,6 +18,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="helpers:Typography.TextStyle" Value="{x:Null}" />
         <Setter Property="Transitions">
             <Transitions>
                 <transitions:SpringCornerRadiusTransition Property="CornerRadius"
@@ -32,7 +33,8 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid x:Name="PART_Container"
-                      ClipToBounds="{TemplateBinding ClipToBounds}">
+                      ClipToBounds="{TemplateBinding ClipToBounds}"
+                      helpers:Typography.TextStyle="{x:Null}">
                     <Border x:Name="PART_Outline"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
@@ -80,7 +82,10 @@
             <Setter Property="Height"
                     Value="{markup:DensityScalar MdCompButtonXsContainerHeight, MostDense=Dense2}" />
             <Setter Property="BorderThickness" Value="{DynamicResource MdCompButtonXsOutlineWidth}" />
-            <Setter Property="helpers:Typography.TextStyle" Value="LabelLarge" />
+            <Setter Property="FontFamily" Value="{DynamicResource MdCompButtonXsLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{DynamicResource MdCompButtonXsLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{DynamicResource MdCompButtonXsLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{DynamicResource MdCompButtonXsLabelTextTracking}" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
                 <Setter Property="Height" Value="{DynamicResource MdCompButtonXsIconSize}" />
                 <Setter Property="Width" Value="{DynamicResource MdCompButtonXsIconSize}" />
@@ -89,13 +94,19 @@
             <Style Selector="^ /template/ StackPanel#PART_Content">
                 <Setter Property="Spacing" Value="{DynamicResource MdCompButtonXsBetweenIconLabelSpace}" />
             </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="LineHeight" Value="{DynamicResource MdCompButtonXsLabelTextLineHeight}" />
+            </Style>
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Size)=Small]">
             <Setter Property="Height"
                     Value="{markup:DensityScalar MdCompButtonSmContainerHeight, MostDense=Dense3}" />
             <Setter Property="BorderThickness" Value="{DynamicResource MdCompButtonSmOutlineWidth}" />
-            <Setter Property="helpers:Typography.TextStyle" Value="LabelLarge" />
+            <Setter Property="FontFamily" Value="{DynamicResource MdCompButtonSmLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{DynamicResource MdCompButtonSmLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{DynamicResource MdCompButtonSmLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{DynamicResource MdCompButtonSmLabelTextTracking}" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
                 <Setter Property="Height" Value="{DynamicResource MdCompButtonSmIconSize}" />
                 <Setter Property="Width" Value="{DynamicResource MdCompButtonSmIconSize}" />
@@ -104,13 +115,19 @@
             <Style Selector="^ /template/ StackPanel#PART_Content">
                 <Setter Property="Spacing" Value="{DynamicResource MdCompButtonSmBetweenIconLabelSpace}" />
             </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="LineHeight" Value="{DynamicResource MdCompButtonSmLabelTextLineHeight}" />
+            </Style>
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Size)=Medium]">
             <Setter Property="Height"
                     Value="{markup:DensityScalar MdCompButtonMdContainerHeight, MostDense=Dense3}" />
             <Setter Property="BorderThickness" Value="{DynamicResource MdCompButtonMdOutlineWidth}" />
-            <Setter Property="helpers:Typography.TextStyle" Value="TitleMedium" />
+            <Setter Property="FontFamily" Value="{DynamicResource MdCompButtonMdLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{DynamicResource MdCompButtonMdLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{DynamicResource MdCompButtonMdLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{DynamicResource MdCompButtonMdLabelTextTracking}" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
                 <Setter Property="Height" Value="{DynamicResource MdCompButtonMdIconSize}" />
                 <Setter Property="Width" Value="{DynamicResource MdCompButtonMdIconSize}" />
@@ -119,13 +136,19 @@
             <Style Selector="^ /template/ StackPanel#PART_Content">
                 <Setter Property="Spacing" Value="{DynamicResource MdCompButtonMdBetweenIconLabelSpace}" />
             </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="LineHeight" Value="{DynamicResource MdCompButtonMdLabelTextLineHeight}" />
+            </Style>
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Size)=Large]">
             <Setter Property="Height"
                     Value="{markup:DensityScalar MdCompButtonLgContainerHeight, MostDense=Dense3}" />
             <Setter Property="BorderThickness" Value="{DynamicResource MdCompButtonLgOutlineWidth}" />
-            <Setter Property="helpers:Typography.TextStyle" Value="HeadlineSmall" />
+            <Setter Property="FontFamily" Value="{DynamicResource MdCompButtonLgLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{DynamicResource MdCompButtonLgLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{DynamicResource MdCompButtonLgLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{DynamicResource MdCompButtonLgLabelTextTracking}" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
                 <Setter Property="Height" Value="{DynamicResource MdCompButtonLgIconSize}" />
                 <Setter Property="Width" Value="{DynamicResource MdCompButtonLgIconSize}" />
@@ -134,13 +157,19 @@
             <Style Selector="^ /template/ StackPanel#PART_Content">
                 <Setter Property="Spacing" Value="{DynamicResource MdCompButtonLgBetweenIconLabelSpace}" />
             </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="LineHeight" Value="{DynamicResource MdCompButtonLgLabelTextLineHeight}" />
+            </Style>
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Size)=ExtraLarge]">
             <Setter Property="Height"
                     Value="{markup:DensityScalar MdCompButtonXlContainerHeight, MostDense=Dense3}" />
             <Setter Property="BorderThickness" Value="{DynamicResource MdCompButtonXlOutlineWidth}" />
-            <Setter Property="helpers:Typography.TextStyle" Value="HeadlineLarge" />
+            <Setter Property="FontFamily" Value="{DynamicResource MdCompButtonXlLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{DynamicResource MdCompButtonXlLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{DynamicResource MdCompButtonXlLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{DynamicResource MdCompButtonXlLabelTextTracking}" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
                 <Setter Property="Height" Value="{DynamicResource MdCompButtonXlIconSize}" />
                 <Setter Property="Width" Value="{DynamicResource MdCompButtonXlIconSize}" />
@@ -148,6 +177,9 @@
             <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonXlLeadingSpace MdCompButtonXlVerticalSpace MdCompButtonXlTrailingSpace MdCompButtonXlVerticalSpace}" />
             <Style Selector="^ /template/ StackPanel#PART_Content">
                 <Setter Property="Spacing" Value="{DynamicResource MdCompButtonXlBetweenIconLabelSpace}" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="LineHeight" Value="{DynamicResource MdCompButtonXlLabelTextLineHeight}" />
             </Style>
         </Style>
 

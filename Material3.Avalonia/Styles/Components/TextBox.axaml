@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls"
+                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers"
                     xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
                     xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
                     xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
@@ -39,6 +40,7 @@
         <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="helpers:Typography.TextStyle" Value="{x:Null}" />
 
         <!-- Defaults -->
         <Setter Property="Background" Value="{DynamicResource MdCompFilledTextFieldContainerBrush}" />
@@ -71,7 +73,8 @@
                     <Grid x:Name="PART_Root"
                           RowDefinitions="Auto,Auto"
                           MinHeight="{TemplateBinding MinHeight}"
-                          Background="Transparent">
+                          Background="Transparent"
+                          helpers:Typography.TextStyle="{x:Null}">
 
                         <primitives:TextFieldHeightAnimator x:Name="PART_FieldHeightAnimator"
                                                             Grid.Row="0">

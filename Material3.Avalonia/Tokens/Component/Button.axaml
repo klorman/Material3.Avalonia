@@ -46,6 +46,11 @@
     <x:Double x:Key="MdCompButtonXsContainerHeight">32</x:Double>
     <Thickness x:Key="MdCompButtonXsOutlineWidth">1</Thickness>
     <x:Double x:Key="MdCompButtonXsIconSize">20</x:Double>
+    <StaticResource x:Key="MdCompButtonXsLabelTextFontFamily" ResourceKey="MdSysTypeScaleLabelLargeFontFamily" />
+    <StaticResource x:Key="MdCompButtonXsLabelTextWeight" ResourceKey="MdSysTypeScaleLabelLargeWeight" />
+    <StaticResource x:Key="MdCompButtonXsLabelTextSize" ResourceKey="MdSysTypeScaleLabelLargeSize" />
+    <StaticResource x:Key="MdCompButtonXsLabelTextLineHeight" ResourceKey="MdSysTypeScaleLabelLargeLineHeight" />
+    <StaticResource x:Key="MdCompButtonXsLabelTextTracking" ResourceKey="MdSysTypeScaleLabelLargeTracking" />
     <StaticResource x:Key="MdCompButtonXsLeadingSpace" ResourceKey="MdSysSpacing150" />
     <StaticResource x:Key="MdCompButtonXsVerticalSpace" ResourceKey="MdSysSpacing0" />
     <StaticResource x:Key="MdCompButtonXsTrailingSpace" ResourceKey="MdSysSpacing150" />
@@ -55,6 +60,11 @@
     <x:Double x:Key="MdCompButtonSmContainerHeight">40</x:Double>
     <Thickness x:Key="MdCompButtonSmOutlineWidth">1</Thickness>
     <x:Double x:Key="MdCompButtonSmIconSize">20</x:Double>
+    <StaticResource x:Key="MdCompButtonSmLabelTextFontFamily" ResourceKey="MdSysTypeScaleLabelLargeFontFamily" />
+    <StaticResource x:Key="MdCompButtonSmLabelTextWeight" ResourceKey="MdSysTypeScaleLabelLargeWeight" />
+    <StaticResource x:Key="MdCompButtonSmLabelTextSize" ResourceKey="MdSysTypeScaleLabelLargeSize" />
+    <StaticResource x:Key="MdCompButtonSmLabelTextLineHeight" ResourceKey="MdSysTypeScaleLabelLargeLineHeight" />
+    <StaticResource x:Key="MdCompButtonSmLabelTextTracking" ResourceKey="MdSysTypeScaleLabelLargeTracking" />
     <StaticResource x:Key="MdCompButtonSmLeadingSpace" ResourceKey="MdSysSpacing200" />
     <StaticResource x:Key="MdCompButtonSmVerticalSpace" ResourceKey="MdSysSpacing0" />
     <StaticResource x:Key="MdCompButtonSmTrailingSpace" ResourceKey="MdSysSpacing200" />
@@ -64,6 +74,11 @@
     <x:Double x:Key="MdCompButtonMdContainerHeight">56</x:Double>
     <Thickness x:Key="MdCompButtonMdOutlineWidth">1</Thickness>
     <x:Double x:Key="MdCompButtonMdIconSize">24</x:Double>
+    <StaticResource x:Key="MdCompButtonMdLabelTextFontFamily" ResourceKey="MdSysTypeScaleTitleMediumFontFamily" />
+    <StaticResource x:Key="MdCompButtonMdLabelTextWeight" ResourceKey="MdSysTypeScaleTitleMediumWeight" />
+    <StaticResource x:Key="MdCompButtonMdLabelTextSize" ResourceKey="MdSysTypeScaleTitleMediumSize" />
+    <StaticResource x:Key="MdCompButtonMdLabelTextLineHeight" ResourceKey="MdSysTypeScaleTitleMediumLineHeight" />
+    <StaticResource x:Key="MdCompButtonMdLabelTextTracking" ResourceKey="MdSysTypeScaleTitleMediumTracking" />
     <StaticResource x:Key="MdCompButtonMdLeadingSpace" ResourceKey="MdSysSpacing300" />
     <StaticResource x:Key="MdCompButtonMdVerticalSpace" ResourceKey="MdSysSpacing0" />
     <StaticResource x:Key="MdCompButtonMdTrailingSpace" ResourceKey="MdSysSpacing300" />
@@ -73,6 +88,11 @@
     <x:Double x:Key="MdCompButtonLgContainerHeight">96</x:Double>
     <Thickness x:Key="MdCompButtonLgOutlineWidth">2</Thickness>
     <x:Double x:Key="MdCompButtonLgIconSize">32</x:Double>
+    <StaticResource x:Key="MdCompButtonLgLabelTextFontFamily" ResourceKey="MdSysTypeScaleHeadlineSmallFontFamily" />
+    <StaticResource x:Key="MdCompButtonLgLabelTextWeight" ResourceKey="MdSysTypeScaleHeadlineSmallWeight" />
+    <StaticResource x:Key="MdCompButtonLgLabelTextSize" ResourceKey="MdSysTypeScaleHeadlineSmallSize" />
+    <StaticResource x:Key="MdCompButtonLgLabelTextLineHeight" ResourceKey="MdSysTypeScaleHeadlineSmallLineHeight" />
+    <StaticResource x:Key="MdCompButtonLgLabelTextTracking" ResourceKey="MdSysTypeScaleHeadlineSmallTracking" />
     <StaticResource x:Key="MdCompButtonLgLeadingSpace" ResourceKey="MdSysSpacing600" />
     <StaticResource x:Key="MdCompButtonLgVerticalSpace" ResourceKey="MdSysSpacing0" />
     <StaticResource x:Key="MdCompButtonLgTrailingSpace" ResourceKey="MdSysSpacing600" />
@@ -82,6 +102,11 @@
     <x:Double x:Key="MdCompButtonXlContainerHeight">136</x:Double>
     <Thickness x:Key="MdCompButtonXlOutlineWidth">3</Thickness>
     <x:Double x:Key="MdCompButtonXlIconSize">40</x:Double>
+    <StaticResource x:Key="MdCompButtonXlLabelTextFontFamily" ResourceKey="MdSysTypeScaleHeadlineLargeFontFamily" />
+    <StaticResource x:Key="MdCompButtonXlLabelTextWeight" ResourceKey="MdSysTypeScaleHeadlineLargeWeight" />
+    <StaticResource x:Key="MdCompButtonXlLabelTextSize" ResourceKey="MdSysTypeScaleHeadlineLargeSize" />
+    <StaticResource x:Key="MdCompButtonXlLabelTextLineHeight" ResourceKey="MdSysTypeScaleHeadlineLargeLineHeight" />
+    <StaticResource x:Key="MdCompButtonXlLabelTextTracking" ResourceKey="MdSysTypeScaleHeadlineLargeTracking" />
     <StaticResource x:Key="MdCompButtonXlLeadingSpace" ResourceKey="MdSysSpacing800" />
     <StaticResource x:Key="MdCompButtonXlVerticalSpace" ResourceKey="MdSysSpacing0" />
     <StaticResource x:Key="MdCompButtonXlTrailingSpace" ResourceKey="MdSysSpacing800" />
