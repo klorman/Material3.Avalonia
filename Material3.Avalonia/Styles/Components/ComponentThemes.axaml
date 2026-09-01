@@ -4,6 +4,7 @@
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/AdornerLayer.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Button.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Card.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/DataValidationErrors.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/HeaderedContentControl.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ItemsControl.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Label.axaml" />

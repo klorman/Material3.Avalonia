@@ -14,22 +14,6 @@
     <converters:TextFieldLabelConverter x:Key="TextFieldLabelConverter" />
     <converters:TextFieldScrollPaddingConverter x:Key="TextFieldScrollPaddingConverter" />
 
-    <!-- Keep DataValidationErrors attached for native binding validation. -->
-    <ControlTheme x:Key="MaterialTextFieldValidationHost"
-                  TargetType="DataValidationErrors">
-        <Setter Property="ClipToBounds" Value="False" />
-        <Setter Property="Template">
-            <ControlTemplate>
-                <ContentPresenter x:Name="PART_ContentPresenter"
-                                  ClipToBounds="False"
-                                  Content="{TemplateBinding Content}"
-                                  ContentTemplate="{TemplateBinding ContentTemplate}"
-                                  HorizontalContentAlignment="Stretch"
-                                  VerticalContentAlignment="Stretch" />
-            </ControlTemplate>
-        </Setter>
-    </ControlTheme>
-
     <ControlTheme x:Key="{x:Type TextBox}"
                   TargetType="TextBox">
 
@@ -69,7 +53,7 @@
 
         <Setter Property="Template">
             <ControlTemplate TargetType="TextBox">
-                <DataValidationErrors Theme="{StaticResource MaterialTextFieldValidationHost}">
+                <DataValidationErrors Theme="{StaticResource MdImplDataValidationErrorsContentOnly}">
                     <Grid x:Name="PART_Root"
                           RowDefinitions="Auto,Auto"
                           MinHeight="{TemplateBinding MinHeight}"
