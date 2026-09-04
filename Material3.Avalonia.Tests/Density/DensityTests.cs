@@ -2,16 +2,26 @@ using System.Globalization;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Data;
+using Avalonia.Input;
+using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.MarkupExtensions;
+using Avalonia.Threading;
+using Avalonia.VisualTree;
 using FluentAssertions;
 using Material3.Avalonia.Attached;
 using Material3.Avalonia.Density;
 using Material3.Avalonia.Markup;
+using Material3.Avalonia.Tokens;
 
 namespace Material3.Avalonia.Tests.Density;
 
 public sealed class DensityTests
 {
+    static DensityTests()
+    {
+        TestApp.EnsureStarted();
+    }
+
     [Fact]
     public void Density_ShouldInheritFromParentElement()
     {
@@ -91,14 +101,6 @@ public sealed class DensityTests
     }
 
     [Fact]
-    public void DensityScalar_ShouldUseDynamicResourceFromResourceKey()
-    {
-        var binding = GetScalarBinding(MaterialDensity.Dense3);
-
-        binding.Bindings[0].Should().BeOfType<DynamicResourceExtension>();
-    }
-
-    [Fact]
     public void DensityScalar_ShouldRejectResourceKeyAndBaseTogether()
     {
         var extension = new DensityScalarExtension("BaseScalar")
@@ -144,14 +146,6 @@ public sealed class DensityTests
     }
 
     [Fact]
-    public void DensityThickness_ShouldUseDynamicResourceFromResourceKey()
-    {
-        var binding = GetThicknessBinding(DensitySides.Vertical, MaterialDensity.Dense3);
-
-        binding.Bindings[0].Should().BeOfType<DynamicResourceExtension>();
-    }
-
-    [Fact]
     public void DensityThickness_ShouldRejectResourceKeyAndBaseTogether()
     {
         var extension = new DensityThicknessExtension("BaseThickness")
@@ -169,30 +163,166 @@ public sealed class DensityTests
     [Fact]
     public void DensityScalar_ShouldUseExplicitBaseBinding()
     {
-        var baseBinding = CreateSelfBinding(nameof(DensityTestControl.BaseScalar));
+        var control = new DensityTestControl
+        {
+            BaseScalar = 40d
+        };
+        DensityAssist.SetDensity(control, MaterialDensity.Dense1);
 
-        var binding = GetScalarBinding(MaterialDensity.Dense3, baseBinding);
+        control.Bind(
+            DensityTestControl.ScalarProperty,
+            GetScalarBinding(MaterialDensity.Dense3, CreateSelfBinding(nameof(DensityTestControl.BaseScalar))));
 
-        binding.Bindings[0].Should().BeSameAs(baseBinding);
+        control.Scalar.Should().Be(36d);
     }
 
     [Fact]
     public void DensityThickness_ShouldUseExplicitBaseBinding()
     {
-        var baseBinding = CreateSelfBinding(nameof(DensityTestControl.BaseThickness));
+        var control = new DensityTestControl
+        {
+            BaseThickness = new Thickness(4, 8, 12, 16)
+        };
+        DensityAssist.SetDensity(control, MaterialDensity.Dense1);
 
-        var binding = GetThicknessBinding(DensitySides.Vertical, MaterialDensity.Dense3, baseBinding);
+        control.Bind(
+            DensityTestControl.TestThicknessProperty,
+            GetThicknessBinding(
+                DensitySides.Vertical,
+                MaterialDensity.Dense3,
+                CreateSelfBinding(nameof(DensityTestControl.BaseThickness))));
 
-        binding.Bindings[0].Should().BeSameAs(baseBinding);
+        control.TestThickness.Should().Be(new Thickness(4, 6, 12, 14));
+    }
+
+    [Fact]
+    public void DensityScalar_ShouldResolveResourceKeyAlias()
+    {
+        var control = new DensityTestControl();
+        control.Resources["BaseScalar"] = new TokenAlias("BaseScalarLeaf");
+        control.Resources["BaseScalarLeaf"] = 40d;
+        DensityAssist.SetDensity(control, MaterialDensity.Dense1);
+
+        BindScalar(control, MaterialDensity.Dense3);
+
+        control.Scalar.Should().Be(36d);
+    }
+
+    [Fact]
+    public void DensityThickness_ShouldResolveResourceKeyAlias()
+    {
+        var control = new DensityTestControl();
+        control.Resources["BaseThickness"] = new TokenAlias("BaseThicknessLeaf");
+        control.Resources["BaseThicknessLeaf"] = new Thickness(4, 8, 12, 16);
+        DensityAssist.SetDensity(control, MaterialDensity.Dense1);
+
+        BindThickness(control, DensitySides.Vertical, MaterialDensity.Dense3);
+
+        control.TestThickness.Should().Be(new Thickness(4, 6, 12, 14));
+    }
+
+    [Fact]
+    public void DensityScalar_ShouldUpdateWhenLeafResourceChanges()
+    {
+        var control = new DensityTestControl();
+        control.Resources["BaseScalar"] = new TokenAlias("BaseScalarSys");
+        control.Resources["BaseScalarSys"] = new TokenAlias("BaseScalarLeaf");
+        control.Resources["BaseScalarLeaf"] = 40d;
+
+        BindScalar(control, MaterialDensity.Dense3);
+
+        control.Scalar.Should().Be(40d);
+
+        control.Resources["BaseScalarLeaf"] = 56d;
+
+        control.Scalar.Should().Be(56d);
+    }
+
+    [Fact]
+    public void DensityScalar_ShouldResolveNestedDynamicResourceKeyAliasAndLeafReplacement()
+    {
+        var control = new DensityTestControl();
+        control.Resources["BaseScalar"] = new TokenAlias("BaseScalarSys");
+        control.Resources["BaseScalarSys"] = new TokenAlias("BaseScalarLeaf");
+        control.Resources["BaseScalarLeaf"] = 40d;
+
+        BindScalar(control, MaterialDensity.Dense3, new DynamicResourceExtension("BaseScalar"));
+
+        control.Scalar.Should().Be(40d);
+
+        control.Resources["BaseScalarLeaf"] = 56d;
+
+        control.Scalar.Should().Be(56d);
+    }
+
+    [Fact]
+    public void DensityThickness_ShouldResolveNestedDynamicResourceKeyAliasAndLeafReplacement()
+    {
+        var control = new DensityTestControl();
+        control.Resources["BaseThickness"] = new TokenAlias("BaseThicknessSys");
+        control.Resources["BaseThicknessSys"] = new TokenAlias("BaseThicknessLeaf");
+        control.Resources["BaseThicknessLeaf"] = new Thickness(4, 8, 12, 16);
+
+        BindThickness(
+            control,
+            DensitySides.Vertical,
+            MaterialDensity.Dense3,
+            new DynamicResourceExtension("BaseThickness"));
+
+        control.TestThickness.Should().Be(new Thickness(4, 8, 12, 16));
+
+        control.Resources["BaseThicknessLeaf"] = new Thickness(4, 10, 12, 18);
+
+        control.TestThickness.Should().Be(new Thickness(4, 10, 12, 18));
+    }
+
+    [Fact]
+    public void DensityExtensions_ShouldUseTemplatePriorityWhenUsedDirectlyInsideControlTemplate()
+    {
+        var button = AvaloniaXamlLoader.Load(new Uri(
+                "avares://Material3.Avalonia.Tests/Density/DensityExtensionTemplateSmoke.axaml"))
+            .Should().BeOfType<Button>()
+            .Subject;
+        var window = new Window
+        {
+            Width = 200,
+            Height = 100,
+            Content = button
+        };
+
+        try
+        {
+            window.Show();
+            button.ApplyStyling();
+            button.ApplyTemplate();
+            Dispatcher.UIThread.RunJobs();
+
+            var scalar = GetTemplateBorder(button, "PART_DensityScalar");
+            var thickness = GetTemplateBorder(button, "PART_DensityThickness");
+            scalar.Height.Should().Be(10d);
+            thickness.Padding.Should().Be(new Thickness(1, 2, 3, 4));
+
+            button.Focus(NavigationMethod.Tab);
+            Dispatcher.UIThread.RunJobs();
+
+            button.IsFocused.Should().BeTrue();
+            scalar.Height.Should().Be(30d);
+            thickness.Padding.Should().Be(new Thickness(5, 6, 7, 8));
+        }
+        finally
+        {
+            window.Close();
+        }
     }
 
     private static MultiBinding GetScalarBinding(
         MaterialDensity mostDense,
         BindingBase? @base = null,
-        double deltaScale = 1d)
+        double deltaScale = 1d,
+        object? resourceKey = null)
     {
         var extension = @base is null
-            ? new DensityScalarExtension("BaseScalar")
+            ? new DensityScalarExtension(resourceKey ?? "BaseScalar")
             : new DensityScalarExtension { Base = @base };
 
         extension.MostDense = mostDense;
@@ -201,7 +331,6 @@ public sealed class DensityTests
         var value = extension.ProvideValue(null!);
 
         var binding = value.Should().BeOfType<MultiBinding>().Subject;
-        binding.Bindings.Should().HaveCount(2);
 
         return binding;
     }
@@ -209,10 +338,11 @@ public sealed class DensityTests
     private static MultiBinding GetThicknessBinding(
         DensitySides sides,
         MaterialDensity mostDense,
-        BindingBase? @base = null)
+        BindingBase? @base = null,
+        object? resourceKey = null)
     {
         var extension = @base is null
-            ? new DensityThicknessExtension("BaseThickness")
+            ? new DensityThicknessExtension(resourceKey ?? "BaseThickness")
             : new DensityThicknessExtension { Base = @base };
 
         extension.Sides = sides;
@@ -221,7 +351,6 @@ public sealed class DensityTests
         var value = extension.ProvideValue(null!);
 
         var binding = value.Should().BeOfType<MultiBinding>().Subject;
-        binding.Bindings.Should().HaveCount(2);
 
         return binding;
     }
@@ -237,12 +366,34 @@ public sealed class DensityTests
             CultureInfo.InvariantCulture);
     }
 
+    private static void BindScalar(DensityTestControl control, MaterialDensity mostDense, object? resourceKey = null)
+    {
+        control.Bind(DensityTestControl.ScalarProperty, GetScalarBinding(mostDense, resourceKey: resourceKey));
+    }
+
+    private static void BindThickness(
+        DensityTestControl control,
+        DensitySides sides,
+        MaterialDensity mostDense,
+        object? resourceKey = null)
+    {
+        control.Bind(DensityTestControl.TestThicknessProperty, GetThicknessBinding(sides, mostDense, resourceKey: resourceKey));
+    }
+
     private static Binding CreateSelfBinding(string path)
     {
         return new Binding(path)
         {
             RelativeSource = new RelativeSource(RelativeSourceMode.Self)
         };
+    }
+
+    private static Border GetTemplateBorder(Button button, string name)
+    {
+        return button.GetVisualDescendants()
+            .OfType<Border>()
+            .Should().ContainSingle(x => x.Name == name)
+            .Subject;
     }
 
     private sealed class DensityTestControl : Control

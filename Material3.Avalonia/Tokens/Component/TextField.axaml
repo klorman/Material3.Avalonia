@@ -1,290 +1,291 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens">
     <!-- Filled Text Field -->
 
     <!-- Container -->
     <x:Double x:Key="MdCompFilledTextFieldContainerHeight">56</x:Double>
-    <StaticResource x:Key="MdCompFilledTextFieldContainerBrush" ResourceKey="MdSysSurfaceContainerHighestBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldContainerShape" ResourceKey="MdSysShapeCornerExtraSmallTop" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldContainerBrush" ResourceKey="MdSysSurfaceContainerHighestBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldContainerShape" ResourceKey="MdSysShapeCornerExtraSmallTop" />
 
     <!-- Active indicator -->
-    <StaticResource x:Key="MdCompFilledTextFieldActiveIndicatorBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldActiveIndicatorBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
     <x:Double x:Key="MdCompFilledTextFieldActiveIndicatorHeight">1</x:Double>
 
     <!-- Caret -->
-    <StaticResource x:Key="MdCompFilledTextFieldCaretBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldCaretBrush" ResourceKey="MdSysPrimaryBrush" />
 
     <!-- Input text -->
-    <StaticResource x:Key="MdCompFilledTextFieldInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldInputTextPlaceholderBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldInputTextPrefixBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldInputTextSuffixBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldInputTextPlaceholderBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldInputTextPrefixBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldInputTextSuffixBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
 
-    <StaticResource x:Key="MdCompFilledTextFieldInputTextFontFamily" ResourceKey="MdSysTypeScaleBodyLargeFontFamily" />
-    <StaticResource x:Key="MdCompFilledTextFieldInputTextWeight" ResourceKey="MdSysTypeScaleBodyLargeWeight" />
-    <StaticResource x:Key="MdCompFilledTextFieldInputTextSize" ResourceKey="MdSysTypeScaleBodyLargeSize" />
-    <StaticResource x:Key="MdCompFilledTextFieldInputTextLineHeight" ResourceKey="MdSysTypeScaleBodyLargeLineHeight" />
-    <StaticResource x:Key="MdCompFilledTextFieldInputTextTracking" ResourceKey="MdSysTypeScaleBodyLargeTracking" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldInputTextFontFamily" ResourceKey="MdSysTypeScaleBodyLargeFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldInputTextWeight" ResourceKey="MdSysTypeScaleBodyLargeWeight" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldInputTextSize" ResourceKey="MdSysTypeScaleBodyLargeSize" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldInputTextLineHeight" ResourceKey="MdSysTypeScaleBodyLargeLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldInputTextTracking" ResourceKey="MdSysTypeScaleBodyLargeTracking" />
 
     <!-- Label text -->
-    <StaticResource x:Key="MdCompFilledTextFieldLabelTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldLabelTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
 
-    <StaticResource x:Key="MdCompFilledTextFieldLabelTextFontFamily" ResourceKey="MdSysTypeScaleBodyLargeFontFamily" />
-    <StaticResource x:Key="MdCompFilledTextFieldLabelTextWeight" ResourceKey="MdSysTypeScaleBodyLargeWeight" />
-    <StaticResource x:Key="MdCompFilledTextFieldLabelTextSize" ResourceKey="MdSysTypeScaleBodyLargeSize" />
-    <StaticResource x:Key="MdCompFilledTextFieldLabelTextLineHeight" ResourceKey="MdSysTypeScaleBodyLargeLineHeight" />
-    <StaticResource x:Key="MdCompFilledTextFieldLabelTextTracking" ResourceKey="MdSysTypeScaleBodyLargeTracking" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldLabelTextFontFamily" ResourceKey="MdSysTypeScaleBodyLargeFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldLabelTextWeight" ResourceKey="MdSysTypeScaleBodyLargeWeight" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldLabelTextSize" ResourceKey="MdSysTypeScaleBodyLargeSize" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldLabelTextLineHeight" ResourceKey="MdSysTypeScaleBodyLargeLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldLabelTextTracking" ResourceKey="MdSysTypeScaleBodyLargeTracking" />
 
-    <StaticResource x:Key="MdCompFilledTextFieldLabelTextPopulatedSize" ResourceKey="MdSysTypeScaleBodySmallSize" />
-    <StaticResource x:Key="MdCompFilledTextFieldLabelTextPopulatedLineHeight" ResourceKey="MdSysTypeScaleBodySmallLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldLabelTextPopulatedSize" ResourceKey="MdSysTypeScaleBodySmallSize" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldLabelTextPopulatedLineHeight" ResourceKey="MdSysTypeScaleBodySmallLineHeight" />
 
     <!-- Leading icon -->
-    <StaticResource x:Key="MdCompFilledTextFieldLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
     <x:Double x:Key="MdCompFilledTextFieldLeadingIconSize">24</x:Double>
 
     <!-- Trailing icon -->
-    <StaticResource x:Key="MdCompFilledTextFieldTrailingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldTrailingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
     <x:Double x:Key="MdCompFilledTextFieldTrailingIconSize">24</x:Double>
 
     <!-- Supporting text -->
-    <StaticResource x:Key="MdCompFilledTextFieldSupportingTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldSupportingTextFontFamily" ResourceKey="MdSysTypeScaleBodySmallFontFamily" />
-    <StaticResource x:Key="MdCompFilledTextFieldSupportingTextWeight" ResourceKey="MdSysTypeScaleBodySmallWeight" />
-    <StaticResource x:Key="MdCompFilledTextFieldSupportingTextSize" ResourceKey="MdSysTypeScaleBodySmallSize" />
-    <StaticResource x:Key="MdCompFilledTextFieldSupportingTextLineHeight" ResourceKey="MdSysTypeScaleBodySmallLineHeight" />
-    <StaticResource x:Key="MdCompFilledTextFieldSupportingTextTracking" ResourceKey="MdSysTypeScaleBodySmallTracking" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldSupportingTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldSupportingTextFontFamily" ResourceKey="MdSysTypeScaleBodySmallFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldSupportingTextWeight" ResourceKey="MdSysTypeScaleBodySmallWeight" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldSupportingTextSize" ResourceKey="MdSysTypeScaleBodySmallSize" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldSupportingTextLineHeight" ResourceKey="MdSysTypeScaleBodySmallLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldSupportingTextTracking" ResourceKey="MdSysTypeScaleBodySmallTracking" />
 
     <!-- Layout -->
-    <StaticResource x:Key="MdCompFilledTextFieldLeadingSpace" ResourceKey="MdSysSpacing200" />
-    <StaticResource x:Key="MdCompFilledTextFieldTrailingSpace" ResourceKey="MdSysSpacing200" />
-    <StaticResource x:Key="MdCompFilledTextFieldTopSpace" ResourceKey="MdSysSpacing200" />
-    <StaticResource x:Key="MdCompFilledTextFieldBottomSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldLeadingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldTrailingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldTopSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldBottomSpace" ResourceKey="MdSysSpacing200" />
 
-    <StaticResource x:Key="MdCompFilledTextFieldWithLeadingIconLeadingSpace" ResourceKey="MdSysSpacing150" />
-    <StaticResource x:Key="MdCompFilledTextFieldWithTrailingIconTrailingSpace" ResourceKey="MdSysSpacing150" />
-    <StaticResource x:Key="MdCompFilledTextFieldIconInputSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldWithLeadingIconLeadingSpace" ResourceKey="MdSysSpacing150" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldWithTrailingIconTrailingSpace" ResourceKey="MdSysSpacing150" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldIconInputSpace" ResourceKey="MdSysSpacing200" />
 
-    <StaticResource x:Key="MdCompFilledTextFieldInputTextPrefixTrailingSpace" ResourceKey="MdSysSpacing25" />
-    <StaticResource x:Key="MdCompFilledTextFieldInputTextSuffixLeadingSpace" ResourceKey="MdSysSpacing25" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldInputTextPrefixTrailingSpace" ResourceKey="MdSysSpacing25" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldInputTextSuffixLeadingSpace" ResourceKey="MdSysSpacing25" />
 
-    <StaticResource x:Key="MdCompFilledTextFieldWithLabelTopSpace" ResourceKey="MdSysSpacing100" />
-    <StaticResource x:Key="MdCompFilledTextFieldWithLabelBottomSpace" ResourceKey="MdSysSpacing100" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldWithLabelTopSpace" ResourceKey="MdSysSpacing100" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldWithLabelBottomSpace" ResourceKey="MdSysSpacing100" />
 
-    <StaticResource x:Key="MdCompFilledTextFieldSupportingTextLeadingSpace" ResourceKey="MdSysSpacing200" />
-    <StaticResource x:Key="MdCompFilledTextFieldSupportingTextTopSpace" ResourceKey="MdSysSpacing50" />
-    <StaticResource x:Key="MdCompFilledTextFieldSupportingTextTrailingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldSupportingTextLeadingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldSupportingTextTopSpace" ResourceKey="MdSysSpacing50" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldSupportingTextTrailingSpace" ResourceKey="MdSysSpacing200" />
 
     <!-- Filled: Hover -->
-    <StaticResource x:Key="MdCompFilledTextFieldHoverActiveIndicatorBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldHoverActiveIndicatorBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompFilledTextFieldHoverActiveIndicatorHeight">1</x:Double>
 
-    <StaticResource x:Key="MdCompFilledTextFieldHoverInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldHoverLabelTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldHoverLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldHoverTrailingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldHoverSupportingTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldHoverInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldHoverLabelTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldHoverLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldHoverTrailingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldHoverSupportingTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
 
-    <StaticResource x:Key="MdCompFilledTextFieldHoverStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldHoverStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldHoverStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldHoverStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
 
     <!-- Filled: Focus -->
-    <StaticResource x:Key="MdCompFilledTextFieldFocusActiveIndicatorBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldFocusActiveIndicatorBrush" ResourceKey="MdSysPrimaryBrush" />
     <x:Double x:Key="MdCompFilledTextFieldFocusActiveIndicatorHeight">3</x:Double>
 
-    <StaticResource x:Key="MdCompFilledTextFieldFocusCaretBrush" ResourceKey="MdSysPrimaryBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldFocusInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldFocusLabelTextBrush" ResourceKey="MdSysPrimaryBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldFocusLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldFocusTrailingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldFocusSupportingTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldFocusCaretBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldFocusInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldFocusLabelTextBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldFocusLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldFocusTrailingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldFocusSupportingTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
 
     <!-- Filled: Error -->
-    <StaticResource x:Key="MdCompFilledTextFieldErrorActiveIndicatorBrush" ResourceKey="MdSysErrorBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorLabelTextBrush" ResourceKey="MdSysErrorBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorTrailingIconBrush" ResourceKey="MdSysErrorBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorSupportingTextBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorActiveIndicatorBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorLabelTextBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorTrailingIconBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorSupportingTextBrush" ResourceKey="MdSysErrorBrush" />
 
     <!-- Filled: Error + Hover -->
-    <StaticResource x:Key="MdCompFilledTextFieldErrorHoverActiveIndicatorBrush" ResourceKey="MdSysOnErrorContainerBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorHoverInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorHoverLabelTextBrush" ResourceKey="MdSysOnErrorContainerBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorHoverLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorHoverTrailingIconBrush" ResourceKey="MdSysOnErrorContainerBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorHoverSupportingTextBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorHoverActiveIndicatorBrush" ResourceKey="MdSysOnErrorContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorHoverInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorHoverLabelTextBrush" ResourceKey="MdSysOnErrorContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorHoverLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorHoverTrailingIconBrush" ResourceKey="MdSysOnErrorContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorHoverSupportingTextBrush" ResourceKey="MdSysErrorBrush" />
 
-    <StaticResource x:Key="MdCompFilledTextFieldErrorHoverStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorHoverStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorHoverStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorHoverStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
 
     <!-- Filled: Error + Focus -->
-    <StaticResource x:Key="MdCompFilledTextFieldErrorFocusActiveIndicatorBrush" ResourceKey="MdSysErrorBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorFocusCaretBrush" ResourceKey="MdSysErrorBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorFocusInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorFocusLabelTextBrush" ResourceKey="MdSysErrorBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorFocusLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorFocusTrailingIconBrush" ResourceKey="MdSysErrorBrush" />
-    <StaticResource x:Key="MdCompFilledTextFieldErrorFocusSupportingTextBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorFocusActiveIndicatorBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorFocusCaretBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorFocusInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorFocusLabelTextBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorFocusLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorFocusTrailingIconBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldErrorFocusSupportingTextBrush" ResourceKey="MdSysErrorBrush" />
 
     <!-- Filled: Disabled -->
-    <StaticResource x:Key="MdCompFilledTextFieldDisabledContainerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldDisabledContainerBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompFilledTextFieldDisabledContainerOpacity">0.04</x:Double>
 
-    <StaticResource x:Key="MdCompFilledTextFieldDisabledActiveIndicatorBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldDisabledActiveIndicatorBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompFilledTextFieldDisabledActiveIndicatorHeight">1</x:Double>
     <x:Double x:Key="MdCompFilledTextFieldDisabledActiveIndicatorOpacity">0.38</x:Double>
 
-    <StaticResource x:Key="MdCompFilledTextFieldDisabledInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldDisabledInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompFilledTextFieldDisabledInputTextOpacity">0.38</x:Double>
 
-    <StaticResource x:Key="MdCompFilledTextFieldDisabledLabelTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldDisabledLabelTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompFilledTextFieldDisabledLabelTextOpacity">0.38</x:Double>
 
-    <StaticResource x:Key="MdCompFilledTextFieldDisabledLeadingIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldDisabledLeadingIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompFilledTextFieldDisabledLeadingIconOpacity">0.38</x:Double>
 
-    <StaticResource x:Key="MdCompFilledTextFieldDisabledTrailingIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldDisabledTrailingIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompFilledTextFieldDisabledTrailingIconOpacity">0.38</x:Double>
 
-    <StaticResource x:Key="MdCompFilledTextFieldDisabledSupportingTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompFilledTextFieldDisabledSupportingTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompFilledTextFieldDisabledSupportingTextOpacity">0.38</x:Double>
 
     <!-- Outlined Text Field -->
 
     <!-- Container -->
     <x:Double x:Key="MdCompOutlinedTextFieldContainerHeight">56</x:Double>
-    <StaticResource x:Key="MdCompOutlinedTextFieldContainerShape" ResourceKey="MdSysShapeCornerExtraSmall" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldContainerShape" ResourceKey="MdSysShapeCornerExtraSmall" />
 
     <!-- Outline -->
-    <StaticResource x:Key="MdCompOutlinedTextFieldOutlineBrush" ResourceKey="MdSysOutlineBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldOutlineBrush" ResourceKey="MdSysOutlineBrush" />
     <x:Double x:Key="MdCompOutlinedTextFieldOutlineWidth">1</x:Double>
 
     <!-- Caret -->
-    <StaticResource x:Key="MdCompOutlinedTextFieldCaretBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldCaretBrush" ResourceKey="MdSysPrimaryBrush" />
 
     <!-- Input text -->
-    <StaticResource x:Key="MdCompOutlinedTextFieldInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldInputTextPlaceholderBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldInputTextPrefixBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldInputTextSuffixBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldInputTextPlaceholderBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldInputTextPrefixBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldInputTextSuffixBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
 
-    <StaticResource x:Key="MdCompOutlinedTextFieldInputTextFontFamily" ResourceKey="MdSysTypeScaleBodyLargeFontFamily" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldInputTextWeight" ResourceKey="MdSysTypeScaleBodyLargeWeight" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldInputTextSize" ResourceKey="MdSysTypeScaleBodyLargeSize" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldInputTextLineHeight" ResourceKey="MdSysTypeScaleBodyLargeLineHeight" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldInputTextTracking" ResourceKey="MdSysTypeScaleBodyLargeTracking" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldInputTextFontFamily" ResourceKey="MdSysTypeScaleBodyLargeFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldInputTextWeight" ResourceKey="MdSysTypeScaleBodyLargeWeight" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldInputTextSize" ResourceKey="MdSysTypeScaleBodyLargeSize" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldInputTextLineHeight" ResourceKey="MdSysTypeScaleBodyLargeLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldInputTextTracking" ResourceKey="MdSysTypeScaleBodyLargeTracking" />
 
     <!-- Label text -->
-    <StaticResource x:Key="MdCompOutlinedTextFieldLabelTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldLabelTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
 
-    <StaticResource x:Key="MdCompOutlinedTextFieldLabelTextFontFamily" ResourceKey="MdSysTypeScaleBodyLargeFontFamily" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldLabelTextWeight" ResourceKey="MdSysTypeScaleBodyLargeWeight" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldLabelTextSize" ResourceKey="MdSysTypeScaleBodyLargeSize" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldLabelTextLineHeight" ResourceKey="MdSysTypeScaleBodyLargeLineHeight" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldLabelTextTracking" ResourceKey="MdSysTypeScaleBodyLargeTracking" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldLabelTextFontFamily" ResourceKey="MdSysTypeScaleBodyLargeFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldLabelTextWeight" ResourceKey="MdSysTypeScaleBodyLargeWeight" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldLabelTextSize" ResourceKey="MdSysTypeScaleBodyLargeSize" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldLabelTextLineHeight" ResourceKey="MdSysTypeScaleBodyLargeLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldLabelTextTracking" ResourceKey="MdSysTypeScaleBodyLargeTracking" />
 
-    <StaticResource x:Key="MdCompOutlinedTextFieldLabelTextPopulatedSize" ResourceKey="MdSysTypeScaleBodySmallSize" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldLabelTextPopulatedLineHeight" ResourceKey="MdSysTypeScaleBodySmallLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldLabelTextPopulatedSize" ResourceKey="MdSysTypeScaleBodySmallSize" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldLabelTextPopulatedLineHeight" ResourceKey="MdSysTypeScaleBodySmallLineHeight" />
 
     <!-- Leading icon -->
-    <StaticResource x:Key="MdCompOutlinedTextFieldLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
     <x:Double x:Key="MdCompOutlinedTextFieldLeadingIconSize">24</x:Double>
 
     <!-- Trailing icon -->
-    <StaticResource x:Key="MdCompOutlinedTextFieldTrailingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldTrailingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
     <x:Double x:Key="MdCompOutlinedTextFieldTrailingIconSize">24</x:Double>
 
     <!-- Supporting text -->
-    <StaticResource x:Key="MdCompOutlinedTextFieldSupportingTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldSupportingTextFontFamily" ResourceKey="MdSysTypeScaleBodySmallFontFamily" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldSupportingTextWeight" ResourceKey="MdSysTypeScaleBodySmallWeight" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldSupportingTextSize" ResourceKey="MdSysTypeScaleBodySmallSize" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldSupportingTextLineHeight" ResourceKey="MdSysTypeScaleBodySmallLineHeight" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldSupportingTextTracking" ResourceKey="MdSysTypeScaleBodySmallTracking" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldSupportingTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldSupportingTextFontFamily" ResourceKey="MdSysTypeScaleBodySmallFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldSupportingTextWeight" ResourceKey="MdSysTypeScaleBodySmallWeight" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldSupportingTextSize" ResourceKey="MdSysTypeScaleBodySmallSize" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldSupportingTextLineHeight" ResourceKey="MdSysTypeScaleBodySmallLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldSupportingTextTracking" ResourceKey="MdSysTypeScaleBodySmallTracking" />
 
     <!-- Layout -->
-    <StaticResource x:Key="MdCompOutlinedTextFieldLeadingSpace" ResourceKey="MdSysSpacing200" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldTrailingSpace" ResourceKey="MdSysSpacing200" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldTopSpace" ResourceKey="MdSysSpacing200" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldBottomSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldLeadingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldTrailingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldTopSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldBottomSpace" ResourceKey="MdSysSpacing200" />
 
-    <StaticResource x:Key="MdCompOutlinedTextFieldWithLeadingIconLeadingSpace" ResourceKey="MdSysSpacing150" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldWithTrailingIconTrailingSpace" ResourceKey="MdSysSpacing150" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldIconInputSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldWithLeadingIconLeadingSpace" ResourceKey="MdSysSpacing150" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldWithTrailingIconTrailingSpace" ResourceKey="MdSysSpacing150" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldIconInputSpace" ResourceKey="MdSysSpacing200" />
 
-    <StaticResource x:Key="MdCompOutlinedTextFieldInputTextPrefixTrailingSpace" ResourceKey="MdSysSpacing25" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldInputTextSuffixLeadingSpace" ResourceKey="MdSysSpacing25" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldInputTextPrefixTrailingSpace" ResourceKey="MdSysSpacing25" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldInputTextSuffixLeadingSpace" ResourceKey="MdSysSpacing25" />
 
-    <StaticResource x:Key="MdCompOutlinedTextFieldSupportingTextLeadingSpace" ResourceKey="MdSysSpacing200" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldSupportingTextTopSpace" ResourceKey="MdSysSpacing50" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldSupportingTextTrailingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldSupportingTextLeadingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldSupportingTextTopSpace" ResourceKey="MdSysSpacing50" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldSupportingTextTrailingSpace" ResourceKey="MdSysSpacing200" />
 
     <!-- Outlined: Hover -->
-    <StaticResource x:Key="MdCompOutlinedTextFieldHoverOutlineBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldHoverOutlineBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompOutlinedTextFieldHoverOutlineWidth">1</x:Double>
 
-    <StaticResource x:Key="MdCompOutlinedTextFieldHoverInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldHoverLabelTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldHoverLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldHoverTrailingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldHoverSupportingTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldHoverInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldHoverLabelTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldHoverLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldHoverTrailingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldHoverSupportingTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
 
     <!-- Outlined: Focus -->
-    <StaticResource x:Key="MdCompOutlinedTextFieldFocusOutlineBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldFocusOutlineBrush" ResourceKey="MdSysPrimaryBrush" />
     <x:Double x:Key="MdCompOutlinedTextFieldFocusOutlineWidth">3</x:Double>
 
-    <StaticResource x:Key="MdCompOutlinedTextFieldFocusCaretBrush" ResourceKey="MdSysPrimaryBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldFocusInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldFocusLabelTextBrush" ResourceKey="MdSysPrimaryBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldFocusLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldFocusTrailingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldFocusSupportingTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldFocusCaretBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldFocusInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldFocusLabelTextBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldFocusLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldFocusTrailingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldFocusSupportingTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
 
     <!-- Outlined: Error -->
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorOutlineBrush" ResourceKey="MdSysErrorBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorLabelTextBrush" ResourceKey="MdSysErrorBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorTrailingIconBrush" ResourceKey="MdSysErrorBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorSupportingTextBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorOutlineBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorLabelTextBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorTrailingIconBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorSupportingTextBrush" ResourceKey="MdSysErrorBrush" />
 
     <!-- Outlined: Error + Hover -->
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorHoverOutlineBrush" ResourceKey="MdSysOnErrorContainerBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorHoverInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorHoverLabelTextBrush" ResourceKey="MdSysOnErrorContainerBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorHoverLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorHoverTrailingIconBrush" ResourceKey="MdSysOnErrorContainerBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorHoverSupportingTextBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorHoverOutlineBrush" ResourceKey="MdSysOnErrorContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorHoverInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorHoverLabelTextBrush" ResourceKey="MdSysOnErrorContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorHoverLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorHoverTrailingIconBrush" ResourceKey="MdSysOnErrorContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorHoverSupportingTextBrush" ResourceKey="MdSysErrorBrush" />
 
     <!-- Outlined: Error + Focus -->
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorFocusOutlineBrush" ResourceKey="MdSysErrorBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorFocusCaretBrush" ResourceKey="MdSysErrorBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorFocusInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorFocusLabelTextBrush" ResourceKey="MdSysErrorBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorFocusLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorFocusTrailingIconBrush" ResourceKey="MdSysErrorBrush" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldErrorFocusSupportingTextBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorFocusOutlineBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorFocusCaretBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorFocusInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorFocusLabelTextBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorFocusLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorFocusTrailingIconBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldErrorFocusSupportingTextBrush" ResourceKey="MdSysErrorBrush" />
 
     <!-- Outlined: Disabled -->
-    <StaticResource x:Key="MdCompOutlinedTextFieldDisabledOutlineBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldDisabledOutlineBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompOutlinedTextFieldDisabledOutlineWidth">1</x:Double>
     <x:Double x:Key="MdCompOutlinedTextFieldDisabledOutlineOpacity">0.12</x:Double>
 
-    <StaticResource x:Key="MdCompOutlinedTextFieldDisabledInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldDisabledInputTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompOutlinedTextFieldDisabledInputTextOpacity">0.38</x:Double>
 
-    <StaticResource x:Key="MdCompOutlinedTextFieldDisabledLabelTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldDisabledLabelTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompOutlinedTextFieldDisabledLabelTextOpacity">0.38</x:Double>
 
-    <StaticResource x:Key="MdCompOutlinedTextFieldDisabledLeadingIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldDisabledLeadingIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompOutlinedTextFieldDisabledLeadingIconOpacity">0.38</x:Double>
 
-    <StaticResource x:Key="MdCompOutlinedTextFieldDisabledTrailingIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldDisabledTrailingIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompOutlinedTextFieldDisabledTrailingIconOpacity">0.38</x:Double>
 
-    <StaticResource x:Key="MdCompOutlinedTextFieldDisabledSupportingTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldDisabledSupportingTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompOutlinedTextFieldDisabledSupportingTextOpacity">0.38</x:Double>
 
-    <StaticResource x:Key="MdCompOutlinedTextFieldOutlineLabelPadding" ResourceKey="MdSysSpacing50" />
-    <StaticResource x:Key="MdCompOutlinedTextFieldLabelTextPaddingBottom" ResourceKey="MdSysSpacing100" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldOutlineLabelPadding" ResourceKey="MdSysSpacing50" />
+    <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldLabelTextPaddingBottom" ResourceKey="MdSysSpacing100" />
 </ResourceDictionary>

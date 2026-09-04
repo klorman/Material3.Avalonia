@@ -1,7 +1,8 @@
 using Avalonia;
 using Avalonia.Data;
-using Avalonia.Markup.Xaml.MarkupExtensions;
 using Material3.Avalonia.Converters;
+using Material3.Avalonia.Markup.Internal;
+using Material3.Avalonia.Tokens.Internal;
 
 namespace Material3.Avalonia.Markup;
 
@@ -60,7 +61,10 @@ public sealed class DynamicThicknessExtension
             Converter = ThicknessConverter.Instance
         };
 
-        foreach (var resourceKey in _resourceKeys) binding.Bindings.Add(new DynamicResourceExtension(resourceKey));
+        foreach (var resourceKey in _resourceKeys)
+            binding.Bindings.Add(TokenBindingFactory.Create(resourceKey, TokenValueKind.Numeric, serviceProvider));
+
+        XamlBindingPriority.ApplyTemplatePriorityIfNeeded(binding, serviceProvider);
 
         return binding;
     }

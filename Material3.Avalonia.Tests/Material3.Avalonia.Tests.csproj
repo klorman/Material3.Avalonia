@@ -28,4 +28,8 @@
       <ProjectReference Include="..\Material3.Avalonia\Material3.Avalonia.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+
 </Project>

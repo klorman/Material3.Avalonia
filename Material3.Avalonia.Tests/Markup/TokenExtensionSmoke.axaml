@@ -1,0 +1,15 @@
+<Button xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:markup="using:Material3.Avalonia.Markup"
+        xmlns:tokens="using:Material3.Avalonia.Tokens"
+        Tag="{markup:Token {DynamicResource Comp}}"
+        Margin="{markup:DynamicThickness {DynamicResource Space}}">
+    <Button.Resources>
+        <ResourceDictionary>
+            <tokens:TokenAlias x:Key="Comp" ResourceKey="Sys" />
+            <x:Double x:Key="Sys">42</x:Double>
+            <tokens:TokenAlias x:Key="Space" ResourceKey="SysSpace" />
+            <x:Double x:Key="SysSpace">8</x:Double>
+        </ResourceDictionary>
+    </Button.Resources>
+</Button>

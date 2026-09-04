@@ -1,66 +1,79 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
     <!-- Display -->
     <system:Double x:Key="MdSysTypeScaleDisplayLargeSize">57</system:Double>
     <system:Double x:Key="MdSysTypeScaleDisplayLargeLineHeight">64</system:Double>
     <system:Double x:Key="MdSysTypeScaleDisplayLargeTracking">-0.25</system:Double>
+    <tokens:TokenAlias x:Key="MdSysTypeScaleDisplayLargeFontFamily" ResourceKey="MdRefTypefaceBrand" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleDisplayLargeWeight" ResourceKey="MdRefTypefaceWeightRegular" />
 
     <system:Double x:Key="MdSysTypeScaleDisplayMediumSize">45</system:Double>
     <system:Double x:Key="MdSysTypeScaleDisplayMediumLineHeight">52</system:Double>
     <system:Double x:Key="MdSysTypeScaleDisplayMediumTracking">0</system:Double>
+    <tokens:TokenAlias x:Key="MdSysTypeScaleDisplayMediumFontFamily" ResourceKey="MdRefTypefaceBrand" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleDisplayMediumWeight" ResourceKey="MdRefTypefaceWeightRegular" />
 
     <system:Double x:Key="MdSysTypeScaleDisplaySmallSize">36</system:Double>
     <system:Double x:Key="MdSysTypeScaleDisplaySmallLineHeight">44</system:Double>
     <system:Double x:Key="MdSysTypeScaleDisplaySmallTracking">0</system:Double>
+    <tokens:TokenAlias x:Key="MdSysTypeScaleDisplaySmallFontFamily" ResourceKey="MdRefTypefaceBrand" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleDisplaySmallWeight" ResourceKey="MdRefTypefaceWeightRegular" />
 
     <!-- Headline -->
     <system:Double x:Key="MdSysTypeScaleHeadlineLargeSize">32</system:Double>
     <system:Double x:Key="MdSysTypeScaleHeadlineLargeLineHeight">40</system:Double>
     <system:Double x:Key="MdSysTypeScaleHeadlineLargeTracking">0</system:Double>
-    <StaticResource x:Key="MdSysTypeScaleHeadlineLargeFontFamily" ResourceKey="MdRefTypefaceBrand" />
-    <StaticResource x:Key="MdSysTypeScaleHeadlineLargeWeight" ResourceKey="MdRefTypefaceWeightRegular" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleHeadlineLargeFontFamily" ResourceKey="MdRefTypefaceBrand" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleHeadlineLargeWeight" ResourceKey="MdRefTypefaceWeightRegular" />
 
     <system:Double x:Key="MdSysTypeScaleHeadlineMediumSize">28</system:Double>
     <system:Double x:Key="MdSysTypeScaleHeadlineMediumLineHeight">36</system:Double>
     <system:Double x:Key="MdSysTypeScaleHeadlineMediumTracking">0</system:Double>
+    <tokens:TokenAlias x:Key="MdSysTypeScaleHeadlineMediumFontFamily" ResourceKey="MdRefTypefaceBrand" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleHeadlineMediumWeight" ResourceKey="MdRefTypefaceWeightRegular" />
 
     <system:Double x:Key="MdSysTypeScaleHeadlineSmallSize">24</system:Double>
     <system:Double x:Key="MdSysTypeScaleHeadlineSmallLineHeight">32</system:Double>
     <system:Double x:Key="MdSysTypeScaleHeadlineSmallTracking">0</system:Double>
-    <StaticResource x:Key="MdSysTypeScaleHeadlineSmallFontFamily" ResourceKey="MdRefTypefaceBrand" />
-    <StaticResource x:Key="MdSysTypeScaleHeadlineSmallWeight" ResourceKey="MdRefTypefaceWeightRegular" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleHeadlineSmallFontFamily" ResourceKey="MdRefTypefaceBrand" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleHeadlineSmallWeight" ResourceKey="MdRefTypefaceWeightRegular" />
 
     <!-- Title -->
     <system:Double x:Key="MdSysTypeScaleTitleLargeSize">22</system:Double>
     <system:Double x:Key="MdSysTypeScaleTitleLargeLineHeight">28</system:Double>
     <system:Double x:Key="MdSysTypeScaleTitleLargeTracking">0</system:Double>
+    <tokens:TokenAlias x:Key="MdSysTypeScaleTitleLargeFontFamily" ResourceKey="MdRefTypefaceBrand" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleTitleLargeWeight" ResourceKey="MdRefTypefaceWeightRegular" />
 
     <system:Double x:Key="MdSysTypeScaleTitleMediumSize">16</system:Double>
     <system:Double x:Key="MdSysTypeScaleTitleMediumLineHeight">24</system:Double>
     <system:Double x:Key="MdSysTypeScaleTitleMediumTracking">0.15</system:Double>
-    <StaticResource x:Key="MdSysTypeScaleTitleMediumFontFamily" ResourceKey="MdRefTypefacePlain" />
-    <StaticResource x:Key="MdSysTypeScaleTitleMediumWeight" ResourceKey="MdRefTypefaceWeightMedium" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleTitleMediumFontFamily" ResourceKey="MdRefTypefacePlain" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleTitleMediumWeight" ResourceKey="MdRefTypefaceWeightMedium" />
 
     <system:Double x:Key="MdSysTypeScaleTitleSmallSize">14</system:Double>
     <system:Double x:Key="MdSysTypeScaleTitleSmallLineHeight">20</system:Double>
     <system:Double x:Key="MdSysTypeScaleTitleSmallTracking">0.1</system:Double>
+    <tokens:TokenAlias x:Key="MdSysTypeScaleTitleSmallFontFamily" ResourceKey="MdRefTypefacePlain" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleTitleSmallWeight" ResourceKey="MdRefTypefaceWeightMedium" />
 
     <!-- Body -->
-    <StaticResource x:Key="MdSysTypeScaleBodyLargeFontFamily" ResourceKey="MdRefTypefacePlain" />
-    <StaticResource x:Key="MdSysTypeScaleBodyLargeWeight" ResourceKey="MdRefTypefaceWeightRegular" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleBodyLargeFontFamily" ResourceKey="MdRefTypefacePlain" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleBodyLargeWeight" ResourceKey="MdRefTypefaceWeightRegular" />
     <system:Double x:Key="MdSysTypeScaleBodyLargeSize">16</system:Double>
     <system:Double x:Key="MdSysTypeScaleBodyLargeLineHeight">24</system:Double>
     <system:Double x:Key="MdSysTypeScaleBodyLargeTracking">0.5</system:Double>
 
-    <StaticResource x:Key="MdSysTypeScaleBodyMediumFontFamily" ResourceKey="MdRefTypefacePlain" />
-    <StaticResource x:Key="MdSysTypeScaleBodyMediumWeight" ResourceKey="MdRefTypefaceWeightRegular" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleBodyMediumFontFamily" ResourceKey="MdRefTypefacePlain" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleBodyMediumWeight" ResourceKey="MdRefTypefaceWeightRegular" />
     <system:Double x:Key="MdSysTypeScaleBodyMediumSize">14</system:Double>
     <system:Double x:Key="MdSysTypeScaleBodyMediumLineHeight">20</system:Double>
     <system:Double x:Key="MdSysTypeScaleBodyMediumTracking">0.25</system:Double>
 
-    <StaticResource x:Key="MdSysTypeScaleBodySmallFontFamily" ResourceKey="MdRefTypefacePlain" />
-    <StaticResource x:Key="MdSysTypeScaleBodySmallWeight" ResourceKey="MdRefTypefaceWeightRegular" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleBodySmallFontFamily" ResourceKey="MdRefTypefacePlain" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleBodySmallWeight" ResourceKey="MdRefTypefaceWeightRegular" />
     <system:Double x:Key="MdSysTypeScaleBodySmallSize">12</system:Double>
     <system:Double x:Key="MdSysTypeScaleBodySmallLineHeight">16</system:Double>
     <system:Double x:Key="MdSysTypeScaleBodySmallTracking">0.4</system:Double>
@@ -69,14 +82,18 @@
     <system:Double x:Key="MdSysTypeScaleLabelLargeSize">14</system:Double>
     <system:Double x:Key="MdSysTypeScaleLabelLargeLineHeight">20</system:Double>
     <system:Double x:Key="MdSysTypeScaleLabelLargeTracking">0.1</system:Double>
-    <StaticResource x:Key="MdSysTypeScaleLabelLargeFontFamily" ResourceKey="MdRefTypefacePlain" />
-    <StaticResource x:Key="MdSysTypeScaleLabelLargeWeight" ResourceKey="MdRefTypefaceWeightMedium" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleLabelLargeFontFamily" ResourceKey="MdRefTypefacePlain" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleLabelLargeWeight" ResourceKey="MdRefTypefaceWeightMedium" />
 
     <system:Double x:Key="MdSysTypeScaleLabelMediumSize">12</system:Double>
     <system:Double x:Key="MdSysTypeScaleLabelMediumLineHeight">16</system:Double>
     <system:Double x:Key="MdSysTypeScaleLabelMediumTracking">0.5</system:Double>
+    <tokens:TokenAlias x:Key="MdSysTypeScaleLabelMediumFontFamily" ResourceKey="MdRefTypefacePlain" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleLabelMediumWeight" ResourceKey="MdRefTypefaceWeightMedium" />
 
     <system:Double x:Key="MdSysTypeScaleLabelSmallSize">11</system:Double>
     <system:Double x:Key="MdSysTypeScaleLabelSmallLineHeight">16</system:Double>
     <system:Double x:Key="MdSysTypeScaleLabelSmallTracking">0.5</system:Double>
+    <tokens:TokenAlias x:Key="MdSysTypeScaleLabelSmallFontFamily" ResourceKey="MdRefTypefacePlain" />
+    <tokens:TokenAlias x:Key="MdSysTypeScaleLabelSmallWeight" ResourceKey="MdRefTypefaceWeightMedium" />
 </ResourceDictionary>

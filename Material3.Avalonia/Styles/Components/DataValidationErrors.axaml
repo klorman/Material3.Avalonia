@@ -35,7 +35,7 @@
         <Setter Property="ErrorTemplate">
             <DataTemplate x:DataType="collections:IEnumerable">
                 <ItemsControl ItemsSource="{Binding}"
-                              Foreground="{DynamicResource MdSysErrorBrush}"
+                              Foreground="{markup:Token MdSysErrorBrush}"
                               helpers:Typography.TextStyle="BodySmall">
                     <ItemsControl.Styles>
                         <Style Selector="TextBlock">

@@ -1,43 +1,44 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens">
     <!-- Variant Elevated -->
-    <StaticResource x:Key="MdCompCardElevatedContainerBrush" ResourceKey="MdSysSurfaceContainerLowBrush" />
-    <StaticResource x:Key="MdCompCardOnElevatedContainerBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompCardElevatedElevationLevel2ContainerBrush" ResourceKey="MdSysSurfaceContainerLowestBrush" />
-    <StaticResource x:Key="MdCompCardElevatedIconBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardElevatedContainerBrush" ResourceKey="MdSysSurfaceContainerLowBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardOnElevatedContainerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardElevatedElevationLevel2ContainerBrush" ResourceKey="MdSysSurfaceContainerLowestBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardElevatedIconBrush" ResourceKey="MdSysPrimaryBrush" />
     <x:Double x:Key="MdCompCardElevatedIconSize">24</x:Double>
-    <StaticResource x:Key="MdCompCardElevatedDisabledContainerBrush" ResourceKey="MdSysSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardElevatedDisabledContainerBrush" ResourceKey="MdSysSurfaceBrush" />
     <x:Double x:Key="MdCompCardElevatedDisabledContainerOpacity">0.38</x:Double>
     
     <!-- Variant Filled -->
-    <StaticResource x:Key="MdCompCardFilledContainerBrush" ResourceKey="MdSysSurfaceContainerHighestBrush" />
-    <StaticResource x:Key="MdCompCardFilledElevationLevel1ContainerBrush" ResourceKey="MdSysSurfaceContainerHighBrush" />
-    <StaticResource x:Key="MdCompCardOnFilledContainerBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompCardFilledIconBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardFilledContainerBrush" ResourceKey="MdSysSurfaceContainerHighestBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardFilledElevationLevel1ContainerBrush" ResourceKey="MdSysSurfaceContainerHighBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardOnFilledContainerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardFilledIconBrush" ResourceKey="MdSysPrimaryBrush" />
     <x:Double x:Key="MdCompCardFilledIconSize">24</x:Double>
-    <StaticResource x:Key="MdCompCardFilledDisabledContainerBrush" ResourceKey="MdSysSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardFilledDisabledContainerBrush" ResourceKey="MdSysSurfaceVariantBrush" />
     <x:Double x:Key="MdCompCardFilledDisabledContainerOpacity">0.38</x:Double>
     
     <!-- Variant Outlined -->
-    <StaticResource x:Key="MdCompCardOutlinedContainerBrush" ResourceKey="MdSysSurfaceBrush" />
-    <StaticResource x:Key="MdCompCardOutlinedElevationLevel1ContainerBrush" ResourceKey="MdSysSurfaceDimBrush" />
-    <StaticResource x:Key="MdCompCardOnOutlinedContainerBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompCardOutlinedIconBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardOutlinedContainerBrush" ResourceKey="MdSysSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardOutlinedElevationLevel1ContainerBrush" ResourceKey="MdSysSurfaceDimBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardOnOutlinedContainerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardOutlinedIconBrush" ResourceKey="MdSysPrimaryBrush" />
     <x:Double x:Key="MdCompCardOutlinedIconSize">24</x:Double>
     <Thickness x:Key="MdCompCardOutlinedOutlineThickness">1</Thickness>
-    <StaticResource x:Key="MdCompCardOutlinedOutlineBrush" ResourceKey="MdSysOutlineVariantBrush" />
-    <StaticResource x:Key="MdCompCardOutlinedDisabledOutlineBrush" ResourceKey="MdSysOutlineBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardOutlinedOutlineBrush" ResourceKey="MdSysOutlineVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardOutlinedDisabledOutlineBrush" ResourceKey="MdSysOutlineBrush" />
     <x:Double x:Key="MdCompCardOutlinedDisabledOutlineOpacity">0.12</x:Double>
     
-    <StaticResource x:Key="MdCompCardStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
     
     <Thickness x:Key="MdCompCardFocusRingThickness">3</Thickness>
     <Thickness x:Key="MdCompCardFocusRingOffset">2</Thickness>
-    <StaticResource x:Key="MdCompCardFocusRingBrush" ResourceKey="MdSysSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompCardFocusRingBrush" ResourceKey="MdSysSecondaryBrush" />
     
-    <StaticResource x:Key="MdCompCardContentLeadingSpace" ResourceKey="MdSysSpacing200" />
-    <StaticResource x:Key="MdCompCardContentTopSpace" ResourceKey="MdSysSpacing200" />
-    <StaticResource x:Key="MdCompCardContentTrailingSpace" ResourceKey="MdSysSpacing200" />
-    <StaticResource x:Key="MdCompCardContentBottomSpace" ResourceKey="MdSysSpacing200" />
-    <StaticResource x:Key="MdCompCardSpacing" ResourceKey="MdSysSpacing100" />
+    <tokens:TokenAlias x:Key="MdCompCardContentLeadingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompCardContentTopSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompCardContentTrailingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompCardContentBottomSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompCardSpacing" ResourceKey="MdSysSpacing100" />
 </ResourceDictionary>

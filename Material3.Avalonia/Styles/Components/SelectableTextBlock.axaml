@@ -1,5 +1,6 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup">
     <MenuFlyout x:Key="SelectableTextBlockContextFlyout"
                 Placement="Bottom">
         <MenuItem Header="{DynamicResource StringTextFlyoutCopyText}"
@@ -11,7 +12,7 @@
     <ControlTheme x:Key="{x:Type SelectableTextBlock}"
                   TargetType="SelectableTextBlock"
                   BasedOn="{StaticResource {x:Type TextBlock}}">
-        <Setter Property="SelectionBrush" Value="{DynamicResource MdImplTextSelectionBrush}" />
+        <Setter Property="SelectionBrush" Value="{markup:Token MdImplTextSelectionBrush}" />
 
         <Style Selector="^[IsEnabled=True]">
             <Setter Property="Cursor" Value="IBeam" />

@@ -1,8 +1,9 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                     xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls"
-                     xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
-                     xmlns:transitions="clr-namespace:Material3.Avalonia.Motion.Transitions">
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls"
+                      xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
+                      xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
+                      xmlns:transitions="clr-namespace:Material3.Avalonia.Motion.Transitions">
 
     <converters:FullCornerRadiusConverter x:Key="ScrollBarFullCornerRadiusConverter" />
 
@@ -32,7 +33,7 @@
     <ControlTheme x:Key="MaterialVerticalScrollBarThumb"
                   TargetType="Thumb">
         <Setter Property="Focusable" Value="False" />
-        <Setter Property="Background" Value="{DynamicResource MdSysOnSurfaceVariantBrush}" />
+        <Setter Property="Background" Value="{markup:Token MdSysOnSurfaceVariantBrush}" />
         <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbOpacity}" />
         <Setter Property="Width" Value="{StaticResource MdImplScrollBarThickness}" />
         <Setter Property="MinHeight" Value="{StaticResource MdImplScrollBarThumbMinimumLength}" />
@@ -90,7 +91,7 @@
     <ControlTheme x:Key="MaterialHorizontalScrollBarThumb"
                   TargetType="Thumb">
         <Setter Property="Focusable" Value="False" />
-        <Setter Property="Background" Value="{DynamicResource MdSysOnSurfaceVariantBrush}" />
+        <Setter Property="Background" Value="{markup:Token MdSysOnSurfaceVariantBrush}" />
         <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbOpacity}" />
         <Setter Property="Height" Value="{StaticResource MdImplScrollBarThickness}" />
         <Setter Property="MinWidth" Value="{StaticResource MdImplScrollBarThumbMinimumLength}" />

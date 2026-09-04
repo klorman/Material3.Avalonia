@@ -4,19 +4,19 @@
                       xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
                       xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
                       xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
-                     xmlns:attachedControls="clr-namespace:Material3.Avalonia.Attached.Controls"
-                     xmlns:attached="clr-namespace:Material3.Avalonia.Attached">
+                      xmlns:attachedControls="clr-namespace:Material3.Avalonia.Attached.Controls"
+                      xmlns:attached="clr-namespace:Material3.Avalonia.Attached">
     <ControlTheme x:Key="{x:Type controls:Card}" TargetType="controls:Card">
         <Setter Property="ClipToBounds" Value="False" />
         <Setter Property="Focusable" Value="{Binding $self.IsInteractive}" />
-        <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerMedium}" />
+        <Setter Property="CornerRadius" Value="{markup:Token MdSysShapeCornerMedium}" />
         <Setter Property="Padding" Value="{markup:DynamicThickness MdCompCardContentLeadingSpace MdCompCardContentTopSpace MdCompCardContentTrailingSpace MdCompCardContentBottomSpace}" />
         <Setter Property="attachedControls:ScrollViewerAssist.ScrollBarInset"
                 Value="{Binding $self.CornerRadius, Converter={x:Static converters:ScrollBarConverters.InsetFromCornerRadius}}" />
-        <Setter Property="attached:FocusRing.Thickness" Value="{DynamicResource MdCompCardFocusRingThickness}" />
-        <Setter Property="attached:FocusRing.Offset" Value="{DynamicResource MdCompCardFocusRingOffset}" />
+        <Setter Property="attached:FocusRing.Thickness" Value="{markup:Token MdCompCardFocusRingThickness}" />
+        <Setter Property="attached:FocusRing.Offset" Value="{markup:Token MdCompCardFocusRingOffset}" />
         <Setter Property="attached:FocusRing.CornerRadius" Value="{Binding $self.CornerRadius}" />
-        <Setter Property="attached:FocusRing.Brush" Value="{DynamicResource MdCompCardFocusRingBrush}" />
+        <Setter Property="attached:FocusRing.Brush" Value="{markup:Token MdCompCardFocusRingBrush}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid x:Name="PART_Container"
@@ -32,56 +32,56 @@
                     </Border>
 
                     <primitives:StateLayer x:Name="PART_StateLayer"
-                                           CornerRadius="{TemplateBinding CornerRadius}"
-                                           Brush="{DynamicResource MdCompCardStateLayerBrush}"
-                                           Opacity="0" />
+                                            CornerRadius="{TemplateBinding CornerRadius}"
+                                            Brush="{markup:Token MdCompCardStateLayerBrush}"
+                                            Opacity="0" />
 
                     <ContentPresenter x:Name="PART_Content"
                                       Margin="{TemplateBinding Padding}"
-                                       Content="{TemplateBinding Content}" />
+                                      Content="{TemplateBinding Content}" />
 
                     <primitives:InkRipple x:Name="PART_Ripple"
-                                          IsVisible="{TemplateBinding IsInteractive}"
-                                          CornerRadius="{TemplateBinding CornerRadius}"
-                                          Brush="{DynamicResource MdCompCardStateLayerBrush}"
-                                          BaseOpacity="{DynamicResource MdSysStatePressedOpacity}" />
+                                           IsVisible="{TemplateBinding IsInteractive}"
+                                           CornerRadius="{TemplateBinding CornerRadius}"
+                                           Brush="{markup:Token MdCompCardStateLayerBrush}"
+                                           BaseOpacity="{markup:Token MdSysStatePressedOpacity}" />
                 </Grid>
             </ControlTemplate>
         </Setter>
 
         <!-- State -->
         <Style Selector="^[IsInteractive=True]:focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
-            <Setter Property="Opacity" Value="{DynamicResource MdSysStateFocusOpacity}" />
+            <Setter Property="Opacity" Value="{markup:Token MdSysStateFocusOpacity}" />
         </Style>
 
         <Style Selector="^[IsInteractive=True]:pointerover:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
-            <Setter Property="Opacity" Value="{DynamicResource MdSysStatePointerOverOpacity}" />
+            <Setter Property="Opacity" Value="{markup:Token MdSysStatePointerOverOpacity}" />
         </Style>
 
         <!-- Variant -->
         <Style Selector="^[Variant=Elevated]">
-            <Setter Property="Background" Value="{DynamicResource MdCompCardElevatedContainerBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource MdCompCardOnElevatedContainerBrush}" />
+            <Setter Property="Background" Value="{markup:Token MdCompCardElevatedContainerBrush}" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompCardOnElevatedContainerBrush}" />
             <Setter Property="BorderThickness" Value="0" />
             <Style Selector="^ /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel1}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel1}" />
             </Style>
             <Style Selector="^[IsInteractive=True]:focus-visible /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel1}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel1}" />
             </Style>
             <Style Selector="^[IsInteractive=True]:pointerover:not(:pressed):not(:disabled) /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^[IsInteractive=True]:pressed /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel1}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel1}" />
             </Style>
             <Style Selector="^:disabled">
-                <Setter Property="Background" Value="{DynamicResource MdCompCardElevatedDisabledContainerBrush}" />
+                <Setter Property="Background" Value="{markup:Token MdCompCardElevatedDisabledContainerBrush}" />
                 <Style Selector="^ /template/ Border#PART_Outline">
-                    <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel1}" />
+                    <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel1}" />
                 </Style>
                 <Style Selector="^ /template/ Border#PART_Outline">
-                    <Setter Property="Opacity" Value="{DynamicResource MdCompCardElevatedDisabledContainerOpacity}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompCardElevatedDisabledContainerOpacity}" />
                 </Style>
                 <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
                     <Setter Property="Brush" Value="{x:Null}" />
@@ -90,28 +90,28 @@
         </Style>
 
         <Style Selector="^[Variant=Filled]">
-            <Setter Property="Background" Value="{DynamicResource MdCompCardFilledContainerBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource MdCompCardOnFilledContainerBrush}" />
+            <Setter Property="Background" Value="{markup:Token MdCompCardFilledContainerBrush}" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompCardOnFilledContainerBrush}" />
             <Setter Property="BorderThickness" Value="0" />
             <Style Selector="^ /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^[IsInteractive=True]:focus-visible /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^[IsInteractive=True]:pointerover:not(:pressed):not(:disabled) /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel1}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel1}" />
             </Style>
             <Style Selector="^[IsInteractive=True]:pressed /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^:disabled">
-                <Setter Property="Background" Value="{DynamicResource MdCompCardFilledDisabledContainerBrush}" />
+                <Setter Property="Background" Value="{markup:Token MdCompCardFilledDisabledContainerBrush}" />
                 <Style Selector="^ /template/ Border#PART_Outline">
-                    <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                    <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
                 </Style>
                 <Style Selector="^ /template/ Border#PART_Background">
-                    <Setter Property="Opacity" Value="{DynamicResource MdCompCardFilledDisabledContainerOpacity}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompCardFilledDisabledContainerOpacity}" />
                 </Style>
                 <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
                     <Setter Property="Brush" Value="{x:Null}" />
@@ -120,29 +120,29 @@
         </Style>
 
         <Style Selector="^[Variant=Outlined]">
-            <Setter Property="Background" Value="{DynamicResource MdCompCardOutlinedContainerBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource MdCompCardOnOutlinedContainerBrush}" />
-            <Setter Property="BorderThickness" Value="{DynamicResource MdCompCardOutlinedOutlineThickness}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource MdCompCardOutlinedOutlineBrush}" />
+            <Setter Property="Background" Value="{markup:Token MdCompCardOutlinedContainerBrush}" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompCardOnOutlinedContainerBrush}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompCardOutlinedOutlineThickness}" />
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompCardOutlinedOutlineBrush}" />
             <Style Selector="^ /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^[IsInteractive=True]:focus-visible /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^[IsInteractive=True]:pointerover:not(:pressed):not(:disabled) /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel1}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel1}" />
             </Style>
             <Style Selector="^[IsInteractive=True]:pressed /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^:disabled">
-                <Setter Property="BorderBrush" Value="{DynamicResource MdCompCardOutlinedDisabledOutlineBrush}" />
+                <Setter Property="BorderBrush" Value="{markup:Token MdCompCardOutlinedDisabledOutlineBrush}" />
                 <Style Selector="^ /template/ Border#PART_Outline">
-                    <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                    <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
                 </Style>
                 <Style Selector="^ /template/ Border#PART_Outline">
-                    <Setter Property="Opacity" Value="{DynamicResource MdCompCardOutlinedDisabledOutlineOpacity}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompCardOutlinedDisabledOutlineOpacity}" />
                 </Style>
                 <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
                     <Setter Property="Brush" Value="{x:Null}" />

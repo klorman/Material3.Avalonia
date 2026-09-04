@@ -4,18 +4,18 @@ using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using Material3.Avalonia.Attached;
 
-namespace Material3.Avalonia.Markup;
+namespace Material3.Avalonia.Density.Internal;
 
 internal static class DensityBinding
 {
+    private static readonly CompiledBindingPath DensityPath = new CompiledBindingPathBuilder()
+        .Self()
+        .Property(DensityAssist.DensityProperty, CreateAvaloniaPropertyAccessor)
+        .Build();
+
     public static BindingBase CreateDensityBinding()
     {
-        var path = new CompiledBindingPathBuilder()
-            .Self()
-            .Property(DensityAssist.DensityProperty, CreateAvaloniaPropertyAccessor)
-            .Build();
-
-        return new CompiledBinding(path)
+        return new CompiledBinding(DensityPath)
         {
             Mode = BindingMode.OneWay
         };
@@ -28,7 +28,7 @@ internal static class DensityBinding
         return new AvaloniaObjectPropertyAccessor(target, (AvaloniaProperty)property);
     }
 
-    private sealed class AvaloniaObjectPropertyAccessor : IPropertyAccessor, IObserver<AvaloniaPropertyChangedEventArgs>
+    private sealed class AvaloniaObjectPropertyAccessor : IPropertyAccessor, IObserver<object?>
     {
         private readonly WeakReference<object?> _target;
         private readonly AvaloniaProperty _property;
@@ -59,7 +59,12 @@ internal static class DensityBinding
         public void Subscribe(Action<object?> listener)
         {
             _listener = listener;
-            _subscription = _property.Changed.Subscribe(this);
+            if (Target is { } target)
+            {
+                _subscription = target.GetObservable(_property).Subscribe(this);
+                return;
+            }
+
             listener(Value);
         }
 
@@ -83,9 +88,9 @@ internal static class DensityBinding
         {
         }
 
-        public void OnNext(AvaloniaPropertyChangedEventArgs value)
+        public void OnNext(object? value)
         {
-            if (ReferenceEquals(value.Sender, Target)) _listener?.Invoke(Value);
+            _listener?.Invoke(value);
         }
     }
 }

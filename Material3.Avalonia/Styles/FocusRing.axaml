@@ -1,7 +1,8 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:attached="clr-namespace:Material3.Avalonia.Attached">
+        xmlns:attached="clr-namespace:Material3.Avalonia.Attached"
+        xmlns:markup="clr-namespace:Material3.Avalonia.Markup">
     <Style Selector="Control">
-        <Setter Property="attached:FocusRing.Brush" Value="{DynamicResource MdSysSecondaryBrush}" />
+        <Setter Property="attached:FocusRing.Brush" Value="{markup:Token MdSysSecondaryBrush}" />
     </Style>
 </Styles>

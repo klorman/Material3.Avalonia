@@ -5,10 +5,11 @@
                     xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
                     xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
                     xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
+                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens"
                     xmlns:transitions="clr-namespace:Material3.Avalonia.Motion.Transitions">
 
     <!-- Material Web uses a 16dp gap between supporting text and counter. -->
-    <StaticResource x:Key="MdImplTextFieldSupportingTextGap" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdImplTextFieldSupportingTextGap" ResourceKey="MdSysSpacing200" />
 
     <converters:TextFieldSupportingTextConverter x:Key="TextFieldSupportingTextConverter" />
     <converters:TextFieldLabelConverter x:Key="TextFieldLabelConverter" />
@@ -27,22 +28,22 @@
         <Setter Property="helpers:Typography.TextStyle" Value="{x:Null}" />
 
         <!-- Defaults -->
-        <Setter Property="Background" Value="{DynamicResource MdCompFilledTextFieldContainerBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource MdCompFilledTextFieldActiveIndicatorBrush}" />
-        <Setter Property="CornerRadius" Value="{DynamicResource MdCompFilledTextFieldContainerShape}" />
+        <Setter Property="Background" Value="{markup:Token MdCompFilledTextFieldContainerBrush}" />
+        <Setter Property="BorderBrush" Value="{markup:Token MdCompFilledTextFieldActiveIndicatorBrush}" />
+        <Setter Property="CornerRadius" Value="{markup:Token MdCompFilledTextFieldContainerShape}" />
         <Setter Property="controls:ScrollViewerAssist.ScrollBarInset"
                 Value="{Binding $self.CornerRadius, Converter={x:Static converters:ScrollBarConverters.InsetFromCornerRadius}}" />
-        <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldInputTextBrush}" />
-        <Setter Property="CaretBrush" Value="{DynamicResource MdCompFilledTextFieldCaretBrush}" />
-        <Setter Property="PlaceholderForeground" Value="{DynamicResource MdCompFilledTextFieldInputTextPlaceholderBrush}" />
-        <Setter Property="SelectionBrush" Value="{DynamicResource MdImplTextSelectionBrush}" />
+        <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldInputTextBrush}" />
+        <Setter Property="CaretBrush" Value="{markup:Token MdCompFilledTextFieldCaretBrush}" />
+        <Setter Property="PlaceholderForeground" Value="{markup:Token MdCompFilledTextFieldInputTextPlaceholderBrush}" />
+        <Setter Property="SelectionBrush" Value="{markup:Token MdImplTextSelectionBrush}" />
 
         <!-- Typography -->
-        <Setter Property="FontFamily" Value="{DynamicResource MdCompFilledTextFieldInputTextFontFamily}" />
-        <Setter Property="FontWeight" Value="{DynamicResource MdCompFilledTextFieldInputTextWeight}" />
-        <Setter Property="FontSize" Value="{DynamicResource MdCompFilledTextFieldInputTextSize}" />
-        <Setter Property="LineHeight" Value="{DynamicResource MdCompFilledTextFieldInputTextLineHeight}" />
-        <Setter Property="LetterSpacing" Value="{DynamicResource MdCompFilledTextFieldInputTextTracking}" />
+        <Setter Property="FontFamily" Value="{markup:Token MdCompFilledTextFieldInputTextFontFamily}" />
+        <Setter Property="FontWeight" Value="{markup:Token MdCompFilledTextFieldInputTextWeight}" />
+        <Setter Property="FontSize" Value="{markup:Token MdCompFilledTextFieldInputTextSize}" />
+        <Setter Property="LineHeight" Value="{markup:Token MdCompFilledTextFieldInputTextLineHeight}" />
+        <Setter Property="LetterSpacing" Value="{markup:Token MdCompFilledTextFieldInputTextTracking}" />
 
         <!-- Size -->
         <Setter Property="MinHeight"
@@ -75,26 +76,21 @@
                                 <primitives:StateLayer x:Name="PART_FilledStateLayer"
                                                        Grid.Row="0"
                                                        IsHitTestVisible="False"
-                                                       Brush="{DynamicResource MdCompFilledTextFieldHoverStateLayerBrush}"
                                                        CornerRadius="{TemplateBinding CornerRadius}"
                                                        Opacity="0" />
 
                                 <primitives:TextFieldIndicatorLine x:Name="PART_FilledIndicator"
                                                                    Grid.Row="0"
-                                                                   Brush="{TemplateBinding BorderBrush}"
-                                                                   Thickness="{DynamicResource MdCompFilledTextFieldActiveIndicatorHeight}" />
+                                                                   Brush="{TemplateBinding BorderBrush}" />
 
                                 <!-- Outlined Chrome -->
                                 <primitives:NotchedOutline x:Name="PART_OutlinedOutline"
                                                            Grid.Row="0"
                                                            IsVisible="False"
                                                            Stroke="{TemplateBinding BorderBrush}"
-                                                           StrokeThickness="{DynamicResource MdCompOutlinedTextFieldOutlineWidth}"
                                                            CornerRadius="{TemplateBinding CornerRadius}"
                                                            NotchStart="{Binding #PART_LeadingSection.Bounds.Width}"
                                                            NotchEnd="{Binding #PART_TrailingSection.Bounds.Width}"
-                                                           NotchPadding="{DynamicResource MdCompOutlinedTextFieldOutlineLabelPadding}"
-                                                           LabelBottomPadding="{DynamicResource MdCompOutlinedTextFieldLabelTextPaddingBottom}"
                                                            NotchProgress="{Binding #PART_LabelMotion.Progress}">
                                     <!-- NotchedOutline measures its child to size the floating-label gap. -->
                                     <Border x:Name="PART_OutlinedFloatingLabelMotionLayer"
@@ -103,13 +99,7 @@
                                             IsHitTestVisible="False"
                                             HorizontalAlignment="Left">
                                         <TextBlock x:Name="PART_OutlinedFloatingLabel"
-                                                   IsHitTestVisible="False"
-                                                   Foreground="{DynamicResource MdCompOutlinedTextFieldLabelTextBrush}"
-                                                   FontFamily="{DynamicResource MdCompOutlinedTextFieldLabelTextFontFamily}"
-                                                   FontWeight="{DynamicResource MdCompOutlinedTextFieldLabelTextWeight}"
-                                                   FontSize="{DynamicResource MdCompOutlinedTextFieldLabelTextPopulatedSize}"
-                                                   LineHeight="{DynamicResource MdCompOutlinedTextFieldLabelTextPopulatedLineHeight}"
-                                                   LetterSpacing="{DynamicResource MdCompOutlinedTextFieldLabelTextTracking}">
+                                                   IsHitTestVisible="False">
                                             <TextBlock.Text>
                                                 <MultiBinding Converter="{StaticResource TextFieldLabelConverter}">
                                                     <Binding Path="$parent[TextBox].(controls:TextFieldAssist.Label)" />
@@ -129,8 +119,7 @@
                                     <StackPanel x:Name="PART_LeadingSection"
                                                 Grid.Column="0"
                                                 Orientation="Horizontal">
-                                        <Border x:Name="PART_LeadingSpaceWithoutContent"
-                                                Width="{DynamicResource MdCompFilledTextFieldLeadingSpace}">
+                                        <Border x:Name="PART_LeadingSpaceWithoutContent">
                                             <Border.IsVisible>
                                                 <MultiBinding Converter="{x:Static BoolConverters.And}">
                                                     <Binding Path="$parent[TextBox].InnerLeftContent"
@@ -141,8 +130,7 @@
                                             </Border.IsVisible>
                                         </Border>
 
-                                        <Border x:Name="PART_LeadingSpaceWithContent"
-                                                Width="{DynamicResource MdCompFilledTextFieldWithLeadingIconLeadingSpace}">
+                                        <Border x:Name="PART_LeadingSpaceWithContent">
                                             <Border.IsVisible>
                                                 <MultiBinding Converter="{x:Static BoolConverters.Or}">
                                                     <Binding Path="$parent[TextBox].InnerLeftContent"
@@ -159,11 +147,9 @@
                                                           VerticalAlignment="Center"
                                                           VerticalContentAlignment="Center"
                                                           Content="{TemplateBinding InnerLeftContent}"
-                                                          TextElement.Foreground="{DynamicResource MdCompFilledTextFieldLeadingIconBrush}"
                                                           IsVisible="{TemplateBinding InnerLeftContent, Converter={x:Static ObjectConverters.IsNotNull}}" />
 
-                                        <Border x:Name="PART_LeadingContentIconSpace"
-                                                Width="{DynamicResource MdCompFilledTextFieldIconInputSpace}">
+                                        <Border x:Name="PART_LeadingContentIconSpace">
                                             <Border.IsVisible>
                                                 <MultiBinding Converter="{x:Static BoolConverters.And}">
                                                     <Binding Path="$parent[TextBox].InnerLeftContent"
@@ -178,13 +164,9 @@
                                                                   IsHitTestVisible="False"
                                                                   VerticalAlignment="Center"
                                                                   Value="{TemplateBinding controls:TextFieldAssist.LeadingIcon}"
-                                                                  Foreground="{DynamicResource MdCompFilledTextFieldLeadingIconBrush}"
-                                                                  Width="{DynamicResource MdCompFilledTextFieldLeadingIconSize}"
-                                                                  Height="{DynamicResource MdCompFilledTextFieldLeadingIconSize}"
                                                                   IsVisible="{TemplateBinding controls:TextFieldAssist.LeadingIcon, Converter={x:Static ObjectConverters.IsNotNull}}" />
 
-                                        <Border x:Name="PART_LeadingIconInputSpace"
-                                                Width="{DynamicResource MdCompFilledTextFieldIconInputSpace}">
+                                        <Border x:Name="PART_LeadingIconInputSpace">
                                             <Border.IsVisible>
                                                 <MultiBinding Converter="{x:Static BoolConverters.Or}">
                                                     <Binding Path="$parent[TextBox].InnerLeftContent"
@@ -223,7 +205,6 @@
                                                                Grid.Column="0"
                                                                VerticalAlignment="Center"
                                                                Text="{TemplateBinding controls:TextFieldAssist.PrefixText}"
-                                                               Foreground="{DynamicResource MdCompFilledTextFieldInputTextPrefixBrush}"
                                                                FontFamily="{TemplateBinding FontFamily}"
                                                                FontWeight="{TemplateBinding FontWeight}"
                                                                FontSize="{TemplateBinding FontSize}"
@@ -237,7 +218,6 @@
 
                                                     <Border x:Name="PART_PrefixTrailingSpace"
                                                             Grid.Column="1"
-                                                            Width="{DynamicResource MdCompFilledTextFieldInputTextPrefixTrailingSpace}"
                                                             IsVisible="{Binding #PART_Prefix.IsVisible}" />
 
                                                      <ScrollViewer x:Name="PART_ScrollViewer"
@@ -310,14 +290,12 @@
 
                                                     <Border x:Name="PART_SuffixLeadingSpace"
                                                             Grid.Column="3"
-                                                            Width="{DynamicResource MdCompFilledTextFieldInputTextSuffixLeadingSpace}"
                                                             IsVisible="{Binding #PART_Suffix.IsVisible}" />
 
                                                     <TextBlock x:Name="PART_Suffix"
                                                                Grid.Column="4"
                                                                VerticalAlignment="Center"
                                                                Text="{TemplateBinding controls:TextFieldAssist.SuffixText}"
-                                                               Foreground="{DynamicResource MdCompFilledTextFieldInputTextSuffixBrush}"
                                                                FontFamily="{TemplateBinding FontFamily}"
                                                                FontWeight="{TemplateBinding FontWeight}"
                                                                FontSize="{TemplateBinding FontSize}"
@@ -343,13 +321,7 @@
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Left">
                                             <TextBlock x:Name="PART_RestingLabel"
-                                                       IsHitTestVisible="False"
-                                                       Foreground="{DynamicResource MdCompFilledTextFieldLabelTextBrush}"
-                                                       FontFamily="{DynamicResource MdCompFilledTextFieldLabelTextFontFamily}"
-                                                       FontWeight="{DynamicResource MdCompFilledTextFieldLabelTextWeight}"
-                                                       FontSize="{DynamicResource MdCompFilledTextFieldLabelTextSize}"
-                                                       LineHeight="{DynamicResource MdCompFilledTextFieldLabelTextLineHeight}"
-                                                       LetterSpacing="{DynamicResource MdCompFilledTextFieldLabelTextTracking}">
+                                                       IsHitTestVisible="False">
                                                 <TextBlock.Text>
                                                     <MultiBinding Converter="{StaticResource TextFieldLabelConverter}">
                                                         <Binding Path="$parent[TextBox].(controls:TextFieldAssist.Label)" />
@@ -372,13 +344,7 @@
                                                     VerticalAlignment="Top"
                                                     HorizontalAlignment="Left">
                                                 <TextBlock x:Name="PART_FilledFloatingLabel"
-                                                           IsHitTestVisible="False"
-                                                           Foreground="{DynamicResource MdCompFilledTextFieldLabelTextBrush}"
-                                                           FontFamily="{DynamicResource MdCompFilledTextFieldLabelTextFontFamily}"
-                                                           FontWeight="{DynamicResource MdCompFilledTextFieldLabelTextWeight}"
-                                                           FontSize="{DynamicResource MdCompFilledTextFieldLabelTextPopulatedSize}"
-                                                           LineHeight="{DynamicResource MdCompFilledTextFieldLabelTextPopulatedLineHeight}"
-                                                           LetterSpacing="{DynamicResource MdCompFilledTextFieldLabelTextTracking}">
+                                                           IsHitTestVisible="False">
                                                     <TextBlock.Text>
                                                         <MultiBinding Converter="{StaticResource TextFieldLabelConverter}">
                                                             <Binding Path="$parent[TextBox].(controls:TextFieldAssist.Label)" />
@@ -394,8 +360,7 @@
                                     <StackPanel x:Name="PART_TrailingSection"
                                                 Grid.Column="2"
                                                 Orientation="Horizontal">
-                                        <Border x:Name="PART_TrailingIconInputSpace"
-                                                Width="{DynamicResource MdCompFilledTextFieldIconInputSpace}">
+                                        <Border x:Name="PART_TrailingIconInputSpace">
                                             <Border.IsVisible>
                                                 <MultiBinding Converter="{x:Static BoolConverters.Or}">
                                                     <Binding Path="$parent[TextBox].(controls:TextFieldAssist.TrailingIcon)"
@@ -410,13 +375,9 @@
                                                                   IsHitTestVisible="False"
                                                                   VerticalAlignment="Center"
                                                                   Value="{TemplateBinding controls:TextFieldAssist.TrailingIcon}"
-                                                                  Foreground="{DynamicResource MdCompFilledTextFieldTrailingIconBrush}"
-                                                                  Width="{DynamicResource MdCompFilledTextFieldTrailingIconSize}"
-                                                                  Height="{DynamicResource MdCompFilledTextFieldTrailingIconSize}"
                                                                   IsVisible="{TemplateBinding controls:TextFieldAssist.TrailingIcon, Converter={x:Static ObjectConverters.IsNotNull}}" />
 
-                                        <Border x:Name="PART_TrailingIconContentSpace"
-                                                Width="{DynamicResource MdCompFilledTextFieldIconInputSpace}">
+                                        <Border x:Name="PART_TrailingIconContentSpace">
                                             <Border.IsVisible>
                                                 <MultiBinding Converter="{x:Static BoolConverters.And}">
                                                     <Binding Path="$parent[TextBox].(controls:TextFieldAssist.TrailingIcon)"
@@ -432,11 +393,9 @@
                                                           VerticalAlignment="Center"
                                                           VerticalContentAlignment="Center"
                                                           Content="{TemplateBinding InnerRightContent}"
-                                                          TextElement.Foreground="{DynamicResource MdCompFilledTextFieldTrailingIconBrush}"
                                                           IsVisible="{TemplateBinding InnerRightContent, Converter={x:Static ObjectConverters.IsNotNull}}" />
 
-                                        <Border x:Name="PART_TrailingSpaceWithoutContent"
-                                                Width="{DynamicResource MdCompFilledTextFieldTrailingSpace}">
+                                        <Border x:Name="PART_TrailingSpaceWithoutContent">
                                             <Border.IsVisible>
                                                 <MultiBinding Converter="{x:Static BoolConverters.And}">
                                                     <Binding Path="$parent[TextBox].(controls:TextFieldAssist.TrailingIcon)"
@@ -447,8 +406,7 @@
                                             </Border.IsVisible>
                                         </Border>
 
-                                        <Border x:Name="PART_TrailingSpaceWithContent"
-                                                Width="{DynamicResource MdCompFilledTextFieldWithTrailingIconTrailingSpace}">
+                                        <Border x:Name="PART_TrailingSpaceWithContent">
                                             <Border.IsVisible>
                                                 <MultiBinding Converter="{x:Static BoolConverters.Or}">
                                                     <Binding Path="$parent[TextBox].(controls:TextFieldAssist.TrailingIcon)"
@@ -487,25 +445,17 @@
                               Grid.Row="1"
                               RowDefinitions="Auto,Auto">
                             <Border x:Name="PART_SupportingTopSpace"
-                                    Grid.Row="0"
-                                    Height="{DynamicResource MdCompFilledTextFieldSupportingTextTopSpace}" />
+                                    Grid.Row="0" />
 
                             <Grid x:Name="PART_SupportingContent"
                                   Grid.Row="1"
                                   ColumnDefinitions="Auto,*,Auto,Auto,Auto">
                                 <Border x:Name="PART_SupportingLeadingSpace"
-                                        Grid.Column="0"
-                                        Width="{DynamicResource MdCompFilledTextFieldSupportingTextLeadingSpace}" />
+                                        Grid.Column="0" />
 
                                 <TextBlock x:Name="PART_SupportingText"
                                            Grid.Column="1"
-                                           TextWrapping="Wrap"
-                                           Foreground="{DynamicResource MdCompFilledTextFieldSupportingTextBrush}"
-                                           FontFamily="{DynamicResource MdCompFilledTextFieldSupportingTextFontFamily}"
-                                           FontWeight="{DynamicResource MdCompFilledTextFieldSupportingTextWeight}"
-                                           FontSize="{DynamicResource MdCompFilledTextFieldSupportingTextSize}"
-                                           LineHeight="{DynamicResource MdCompFilledTextFieldSupportingTextLineHeight}"
-                                           LetterSpacing="{DynamicResource MdCompFilledTextFieldSupportingTextTracking}">
+                                           TextWrapping="Wrap">
                                     <TextBlock.Text>
                                         <MultiBinding Converter="{StaticResource TextFieldSupportingTextConverter}">
                                             <Binding Path="$parent[TextBox].(controls:TextFieldAssist.IsError)" />
@@ -522,7 +472,7 @@
 
                                 <Border x:Name="PART_SupportingCounterGap"
                                         Grid.Column="2"
-                                        Width="{StaticResource MdImplTextFieldSupportingTextGap}">
+                                        Width="{markup:Token MdImplTextFieldSupportingTextGap}">
                                     <Border.IsVisible>
                                         <MultiBinding Converter="{x:Static BoolConverters.And}">
                                             <Binding Path="#PART_SupportingText.IsVisible" />
@@ -534,12 +484,6 @@
                                 <TextBlock x:Name="PART_CharacterCounter"
                                            Grid.Column="3"
                                            TextAlignment="End"
-                                           Foreground="{DynamicResource MdCompFilledTextFieldSupportingTextBrush}"
-                                           FontFamily="{DynamicResource MdCompFilledTextFieldSupportingTextFontFamily}"
-                                           FontWeight="{DynamicResource MdCompFilledTextFieldSupportingTextWeight}"
-                                           FontSize="{DynamicResource MdCompFilledTextFieldSupportingTextSize}"
-                                           LineHeight="{DynamicResource MdCompFilledTextFieldSupportingTextLineHeight}"
-                                           LetterSpacing="{DynamicResource MdCompFilledTextFieldSupportingTextTracking}"
                                            IsVisible="{Binding !!$parent[TextBox].MaxLength}">
                                     <TextBlock.Text>
                                         <MultiBinding StringFormat="{}{0} / {1}">
@@ -550,8 +494,7 @@
                                 </TextBlock>
 
                                 <Border x:Name="PART_SupportingTrailingSpace"
-                                        Grid.Column="4"
-                                        Width="{DynamicResource MdCompFilledTextFieldSupportingTextTrailingSpace}" />
+                                        Grid.Column="4" />
                             </Grid>
 
                             <Grid.IsVisible>
@@ -676,17 +619,17 @@
 
         <!-- Variant: Filled -->
         <Style Selector="^[(controls|TextFieldAssist.Variant)=Filled]">
-            <Setter Property="Background" Value="{DynamicResource MdCompFilledTextFieldContainerBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource MdCompFilledTextFieldActiveIndicatorBrush}" />
-            <Setter Property="CornerRadius" Value="{DynamicResource MdCompFilledTextFieldContainerShape}" />
-            <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldInputTextBrush}" />
-            <Setter Property="CaretBrush" Value="{DynamicResource MdCompFilledTextFieldCaretBrush}" />
-            <Setter Property="PlaceholderForeground" Value="{DynamicResource MdCompFilledTextFieldInputTextPlaceholderBrush}" />
-            <Setter Property="FontFamily" Value="{DynamicResource MdCompFilledTextFieldInputTextFontFamily}" />
-            <Setter Property="FontWeight" Value="{DynamicResource MdCompFilledTextFieldInputTextWeight}" />
-            <Setter Property="FontSize" Value="{DynamicResource MdCompFilledTextFieldInputTextSize}" />
-            <Setter Property="LineHeight" Value="{DynamicResource MdCompFilledTextFieldInputTextLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdCompFilledTextFieldInputTextTracking}" />
+            <Setter Property="Background" Value="{markup:Token MdCompFilledTextFieldContainerBrush}" />
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompFilledTextFieldActiveIndicatorBrush}" />
+            <Setter Property="CornerRadius" Value="{markup:Token MdCompFilledTextFieldContainerShape}" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldInputTextBrush}" />
+            <Setter Property="CaretBrush" Value="{markup:Token MdCompFilledTextFieldCaretBrush}" />
+            <Setter Property="PlaceholderForeground" Value="{markup:Token MdCompFilledTextFieldInputTextPlaceholderBrush}" />
+            <Setter Property="FontFamily" Value="{markup:Token MdCompFilledTextFieldInputTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{markup:Token MdCompFilledTextFieldInputTextWeight}" />
+            <Setter Property="FontSize" Value="{markup:Token MdCompFilledTextFieldInputTextSize}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdCompFilledTextFieldInputTextLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdCompFilledTextFieldInputTextTracking}" />
             <Setter Property="MinHeight"
                     Value="{markup:DensityScalar MdCompFilledTextFieldContainerHeight, MostDense=Dense4}" />
 
@@ -705,7 +648,7 @@
 
             <Style Selector="^ /template/ primitives|TextFieldIndicatorLine#PART_FilledIndicator">
                 <Setter Property="IsVisible" Value="True" />
-                <Setter Property="Thickness" Value="{DynamicResource MdCompFilledTextFieldActiveIndicatorHeight}" />
+                <Setter Property="Thickness" Value="{markup:Token MdCompFilledTextFieldActiveIndicatorHeight}" />
                 <Setter Property="Transitions">
                     <Transitions>
                         <transitions:SpringBrushTransition Property="Brush" Style="Effects" Speed="Fast" />
@@ -719,35 +662,35 @@
             </Style>
 
             <Style Selector="^ /template/ Border#PART_LeadingSpaceWithoutContent">
-                <Setter Property="Width" Value="{DynamicResource MdCompFilledTextFieldLeadingSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompFilledTextFieldLeadingSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_LeadingSpaceWithContent">
-                <Setter Property="Width" Value="{DynamicResource MdCompFilledTextFieldWithLeadingIconLeadingSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompFilledTextFieldWithLeadingIconLeadingSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_LeadingIconInputSpace">
-                <Setter Property="Width" Value="{DynamicResource MdCompFilledTextFieldIconInputSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompFilledTextFieldIconInputSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_LeadingContentIconSpace">
-                <Setter Property="Width" Value="{DynamicResource MdCompFilledTextFieldIconInputSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompFilledTextFieldIconInputSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_TrailingIconInputSpace">
-                <Setter Property="Width" Value="{DynamicResource MdCompFilledTextFieldIconInputSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompFilledTextFieldIconInputSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_TrailingIconContentSpace">
-                <Setter Property="Width" Value="{DynamicResource MdCompFilledTextFieldIconInputSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompFilledTextFieldIconInputSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_TrailingSpaceWithoutContent">
-                <Setter Property="Width" Value="{DynamicResource MdCompFilledTextFieldTrailingSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompFilledTextFieldTrailingSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_TrailingSpaceWithContent">
-                <Setter Property="Width" Value="{DynamicResource MdCompFilledTextFieldWithTrailingIconTrailingSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompFilledTextFieldWithTrailingIconTrailingSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_TopSpace">
@@ -772,287 +715,287 @@
             </Style>
 
             <Style Selector="^ /template/ Border#PART_PrefixTrailingSpace">
-                <Setter Property="Width" Value="{DynamicResource MdCompFilledTextFieldInputTextPrefixTrailingSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompFilledTextFieldInputTextPrefixTrailingSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_SuffixLeadingSpace">
-                <Setter Property="Width" Value="{DynamicResource MdCompFilledTextFieldInputTextSuffixLeadingSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompFilledTextFieldInputTextSuffixLeadingSpace}" />
             </Style>
 
             <Style Selector="^ /template/ ContentPresenter#PART_LeadingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldLeadingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldLeadingIconBrush}" />
             </Style>
 
             <Style Selector="^ /template/ primitives|IconPresenter#PART_LeadingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldLeadingIconBrush}" />
-                <Setter Property="Width" Value="{DynamicResource MdCompFilledTextFieldLeadingIconSize}" />
-                <Setter Property="Height" Value="{DynamicResource MdCompFilledTextFieldLeadingIconSize}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldLeadingIconBrush}" />
+                <Setter Property="Width" Value="{markup:Token MdCompFilledTextFieldLeadingIconSize}" />
+                <Setter Property="Height" Value="{markup:Token MdCompFilledTextFieldLeadingIconSize}" />
             </Style>
 
             <Style Selector="^ /template/ ContentPresenter#PART_TrailingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldTrailingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldTrailingIconBrush}" />
             </Style>
 
             <Style Selector="^ /template/ primitives|IconPresenter#PART_TrailingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldTrailingIconBrush}" />
-                <Setter Property="Width" Value="{DynamicResource MdCompFilledTextFieldTrailingIconSize}" />
-                <Setter Property="Height" Value="{DynamicResource MdCompFilledTextFieldTrailingIconSize}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldTrailingIconBrush}" />
+                <Setter Property="Width" Value="{markup:Token MdCompFilledTextFieldTrailingIconSize}" />
+                <Setter Property="Height" Value="{markup:Token MdCompFilledTextFieldTrailingIconSize}" />
             </Style>
 
             <Style Selector="^ /template/ TextBlock#PART_RestingLabel">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldLabelTextBrush}" />
-                <Setter Property="FontFamily" Value="{DynamicResource MdCompFilledTextFieldLabelTextFontFamily}" />
-                <Setter Property="FontWeight" Value="{DynamicResource MdCompFilledTextFieldLabelTextWeight}" />
-                <Setter Property="FontSize" Value="{DynamicResource MdCompFilledTextFieldLabelTextSize}" />
-                <Setter Property="LineHeight" Value="{DynamicResource MdCompFilledTextFieldLabelTextLineHeight}" />
-                <Setter Property="LetterSpacing" Value="{DynamicResource MdCompFilledTextFieldLabelTextTracking}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldLabelTextBrush}" />
+                <Setter Property="FontFamily" Value="{markup:Token MdCompFilledTextFieldLabelTextFontFamily}" />
+                <Setter Property="FontWeight" Value="{markup:Token MdCompFilledTextFieldLabelTextWeight}" />
+                <Setter Property="FontSize" Value="{markup:Token MdCompFilledTextFieldLabelTextSize}" />
+                <Setter Property="LineHeight" Value="{markup:Token MdCompFilledTextFieldLabelTextLineHeight}" />
+                <Setter Property="LetterSpacing" Value="{markup:Token MdCompFilledTextFieldLabelTextTracking}" />
             </Style>
 
             <Style Selector="^ /template/ TextBlock#PART_FilledFloatingLabel">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldLabelTextBrush}" />
-                <Setter Property="FontFamily" Value="{DynamicResource MdCompFilledTextFieldLabelTextFontFamily}" />
-                <Setter Property="FontWeight" Value="{DynamicResource MdCompFilledTextFieldLabelTextWeight}" />
-                <Setter Property="FontSize" Value="{DynamicResource MdCompFilledTextFieldLabelTextPopulatedSize}" />
-                <Setter Property="LineHeight" Value="{DynamicResource MdCompFilledTextFieldLabelTextPopulatedLineHeight}" />
-                <Setter Property="LetterSpacing" Value="{DynamicResource MdCompFilledTextFieldLabelTextTracking}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldLabelTextBrush}" />
+                <Setter Property="FontFamily" Value="{markup:Token MdCompFilledTextFieldLabelTextFontFamily}" />
+                <Setter Property="FontWeight" Value="{markup:Token MdCompFilledTextFieldLabelTextWeight}" />
+                <Setter Property="FontSize" Value="{markup:Token MdCompFilledTextFieldLabelTextPopulatedSize}" />
+                <Setter Property="LineHeight" Value="{markup:Token MdCompFilledTextFieldLabelTextPopulatedLineHeight}" />
+                <Setter Property="LetterSpacing" Value="{markup:Token MdCompFilledTextFieldLabelTextTracking}" />
             </Style>
 
             <Style Selector="^ /template/ TextBlock#PART_Prefix">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldInputTextPrefixBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldInputTextPrefixBrush}" />
             </Style>
 
             <Style Selector="^ /template/ TextBlock#PART_Suffix">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldInputTextSuffixBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldInputTextSuffixBrush}" />
             </Style>
 
             <!-- Supporting row uses Filled component tokens. -->
             <Style Selector="^ /template/ Border#PART_SupportingTopSpace">
-                <Setter Property="Height" Value="{DynamicResource MdCompFilledTextFieldSupportingTextTopSpace}" />
+                <Setter Property="Height" Value="{markup:Token MdCompFilledTextFieldSupportingTextTopSpace}" />
             </Style>
             <Style Selector="^ /template/ Border#PART_SupportingLeadingSpace">
-                <Setter Property="Width" Value="{DynamicResource MdCompFilledTextFieldSupportingTextLeadingSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompFilledTextFieldSupportingTextLeadingSpace}" />
             </Style>
             <Style Selector="^ /template/ Border#PART_SupportingTrailingSpace">
-                <Setter Property="Width" Value="{DynamicResource MdCompFilledTextFieldSupportingTextTrailingSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompFilledTextFieldSupportingTextTrailingSpace}" />
             </Style>
             <Style Selector="^ /template/ TextBlock#PART_SupportingText, ^ /template/ TextBlock#PART_CharacterCounter">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldSupportingTextBrush}" />
-                <Setter Property="FontFamily" Value="{DynamicResource MdCompFilledTextFieldSupportingTextFontFamily}" />
-                <Setter Property="FontWeight" Value="{DynamicResource MdCompFilledTextFieldSupportingTextWeight}" />
-                <Setter Property="FontSize" Value="{DynamicResource MdCompFilledTextFieldSupportingTextSize}" />
-                <Setter Property="LineHeight" Value="{DynamicResource MdCompFilledTextFieldSupportingTextLineHeight}" />
-                <Setter Property="LetterSpacing" Value="{DynamicResource MdCompFilledTextFieldSupportingTextTracking}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldSupportingTextBrush}" />
+                <Setter Property="FontFamily" Value="{markup:Token MdCompFilledTextFieldSupportingTextFontFamily}" />
+                <Setter Property="FontWeight" Value="{markup:Token MdCompFilledTextFieldSupportingTextWeight}" />
+                <Setter Property="FontSize" Value="{markup:Token MdCompFilledTextFieldSupportingTextSize}" />
+                <Setter Property="LineHeight" Value="{markup:Token MdCompFilledTextFieldSupportingTextLineHeight}" />
+                <Setter Property="LetterSpacing" Value="{markup:Token MdCompFilledTextFieldSupportingTextTracking}" />
             </Style>
 
             <!-- Hover: the state layer remains visible while focused; focus colors still override content colors. -->
             <Style Selector="^:pointerover:not(:disabled) /template/ primitives|StateLayer#PART_FilledStateLayer, ^.m3-text-field-hover:not(:disabled) /template/ primitives|StateLayer#PART_FilledStateLayer">
-                <Setter Property="Brush" Value="{DynamicResource MdCompFilledTextFieldHoverStateLayerBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompFilledTextFieldHoverStateLayerOpacity}" />
+                <Setter Property="Brush" Value="{markup:Token MdCompFilledTextFieldHoverStateLayerBrush}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompFilledTextFieldHoverStateLayerOpacity}" />
             </Style>
             <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ primitives|TextFieldIndicatorLine#PART_FilledIndicator">
-                <Setter Property="Brush" Value="{DynamicResource MdCompFilledTextFieldHoverActiveIndicatorBrush}" />
-                <Setter Property="Thickness" Value="{DynamicResource MdCompFilledTextFieldHoverActiveIndicatorHeight}" />
+                <Setter Property="Brush" Value="{markup:Token MdCompFilledTextFieldHoverActiveIndicatorBrush}" />
+                <Setter Property="Thickness" Value="{markup:Token MdCompFilledTextFieldHoverActiveIndicatorHeight}" />
             </Style>
             <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldHoverInputTextBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldHoverInputTextBrush}" />
             </Style>
             <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_FilledFloatingLabel">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldHoverLabelTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldHoverLabelTextBrush}" />
             </Style>
             <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldHoverLeadingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldHoverLeadingIconBrush}" />
             </Style>
             <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldHoverLeadingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldHoverLeadingIconBrush}" />
             </Style>
             <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldHoverTrailingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldHoverTrailingIconBrush}" />
             </Style>
             <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldHoverTrailingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldHoverTrailingIconBrush}" />
             </Style>
             <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldHoverSupportingTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldHoverSupportingTextBrush}" />
             </Style>
 
             <!-- Focus. -->
             <Style Selector="^:focus:not(:disabled) /template/ TextPresenter#PART_TextPresenter">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldFocusInputTextBrush}" />
-                <Setter Property="CaretBrush" Value="{DynamicResource MdCompFilledTextFieldFocusCaretBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldFocusInputTextBrush}" />
+                <Setter Property="CaretBrush" Value="{markup:Token MdCompFilledTextFieldFocusCaretBrush}" />
             </Style>
             <Style Selector="^:focus:not(:disabled) /template/ TextBlock#PART_RestingLabel, ^:focus:not(:disabled) /template/ TextBlock#PART_FilledFloatingLabel">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldFocusLabelTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldFocusLabelTextBrush}" />
             </Style>
             <Style Selector="^:focus:not(:disabled) /template/ ContentPresenter#PART_LeadingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldFocusLeadingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldFocusLeadingIconBrush}" />
             </Style>
             <Style Selector="^:focus:not(:disabled) /template/ primitives|IconPresenter#PART_LeadingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldFocusLeadingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldFocusLeadingIconBrush}" />
             </Style>
             <Style Selector="^:focus:not(:disabled) /template/ ContentPresenter#PART_TrailingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldFocusTrailingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldFocusTrailingIconBrush}" />
             </Style>
             <Style Selector="^:focus:not(:disabled) /template/ primitives|IconPresenter#PART_TrailingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldFocusTrailingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldFocusTrailingIconBrush}" />
             </Style>
             <Style Selector="^:focus:not(:disabled) /template/ TextBlock#PART_SupportingText, ^:focus:not(:disabled) /template/ TextBlock#PART_CharacterCounter">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldFocusSupportingTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldFocusSupportingTextBrush}" />
             </Style>
             <Style Selector="^:focus:not(:disabled) /template/ primitives|TextFieldIndicatorLine#PART_FilledIndicator">
-                <Setter Property="Brush" Value="{DynamicResource MdCompFilledTextFieldFocusActiveIndicatorBrush}" />
-                <Setter Property="Thickness" Value="{DynamicResource MdCompFilledTextFieldFocusActiveIndicatorHeight}" />
+                <Setter Property="Brush" Value="{markup:Token MdCompFilledTextFieldFocusActiveIndicatorBrush}" />
+                <Setter Property="Thickness" Value="{markup:Token MdCompFilledTextFieldFocusActiveIndicatorHeight}" />
             </Style>
 
             <!-- Error: native Avalonia :error OR manual TextFieldAssist.IsError. -->
             <Style Selector="^:error:not(:disabled) /template/ primitives|TextFieldIndicatorLine#PART_FilledIndicator, ^.m3-text-field-manual-error:not(:disabled) /template/ primitives|TextFieldIndicatorLine#PART_FilledIndicator">
-                <Setter Property="Brush" Value="{DynamicResource MdCompFilledTextFieldErrorActiveIndicatorBrush}" />
+                <Setter Property="Brush" Value="{markup:Token MdCompFilledTextFieldErrorActiveIndicatorBrush}" />
             </Style>
             <Style Selector="^:error:not(:disabled) /template/ TextPresenter#PART_TextPresenter, ^.m3-text-field-manual-error:not(:disabled) /template/ TextPresenter#PART_TextPresenter">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorInputTextBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldErrorInputTextBrush}" />
             </Style>
             <Style Selector="^:error:not(:disabled) /template/ TextBlock#PART_RestingLabel, ^:error:not(:disabled) /template/ TextBlock#PART_FilledFloatingLabel, ^.m3-text-field-manual-error:not(:disabled) /template/ TextBlock#PART_RestingLabel, ^.m3-text-field-manual-error:not(:disabled) /template/ TextBlock#PART_FilledFloatingLabel">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorLabelTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldErrorLabelTextBrush}" />
             </Style>
             <Style Selector="^:error:not(:disabled) /template/ ContentPresenter#PART_LeadingContent, ^.m3-text-field-manual-error:not(:disabled) /template/ ContentPresenter#PART_LeadingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorLeadingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldErrorLeadingIconBrush}" />
             </Style>
             <Style Selector="^:error:not(:disabled) /template/ primitives|IconPresenter#PART_LeadingIcon, ^.m3-text-field-manual-error:not(:disabled) /template/ primitives|IconPresenter#PART_LeadingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorLeadingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldErrorLeadingIconBrush}" />
             </Style>
             <Style Selector="^:error:not(:disabled) /template/ ContentPresenter#PART_TrailingContent, ^.m3-text-field-manual-error:not(:disabled) /template/ ContentPresenter#PART_TrailingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorTrailingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldErrorTrailingIconBrush}" />
             </Style>
             <Style Selector="^:error:not(:disabled) /template/ primitives|IconPresenter#PART_TrailingIcon, ^.m3-text-field-manual-error:not(:disabled) /template/ primitives|IconPresenter#PART_TrailingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorTrailingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldErrorTrailingIconBrush}" />
             </Style>
             <Style Selector="^:error:not(:disabled) /template/ TextBlock#PART_SupportingText, ^:error:not(:disabled) /template/ TextBlock#PART_CharacterCounter, ^.m3-text-field-manual-error:not(:disabled) /template/ TextBlock#PART_SupportingText, ^.m3-text-field-manual-error:not(:disabled) /template/ TextBlock#PART_CharacterCounter">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorSupportingTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldErrorSupportingTextBrush}" />
             </Style>
 
             <!-- Error + Hover. -->
             <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ primitives|TextFieldIndicatorLine#PART_FilledIndicator, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ primitives|TextFieldIndicatorLine#PART_FilledIndicator">
-                <Setter Property="Brush" Value="{DynamicResource MdCompFilledTextFieldErrorHoverActiveIndicatorBrush}" />
-                <Setter Property="Thickness" Value="{DynamicResource MdCompFilledTextFieldHoverActiveIndicatorHeight}" />
+                <Setter Property="Brush" Value="{markup:Token MdCompFilledTextFieldErrorHoverActiveIndicatorBrush}" />
+                <Setter Property="Thickness" Value="{markup:Token MdCompFilledTextFieldHoverActiveIndicatorHeight}" />
             </Style>
             <Style Selector="^:error:pointerover:not(:disabled) /template/ primitives|StateLayer#PART_FilledStateLayer, ^.m3-text-field-hover:error:not(:disabled) /template/ primitives|StateLayer#PART_FilledStateLayer, ^.m3-text-field-manual-error:pointerover:not(:disabled) /template/ primitives|StateLayer#PART_FilledStateLayer, ^.m3-text-field-manual-error.m3-text-field-hover:not(:disabled) /template/ primitives|StateLayer#PART_FilledStateLayer">
-                <Setter Property="Brush" Value="{DynamicResource MdCompFilledTextFieldErrorHoverStateLayerBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompFilledTextFieldErrorHoverStateLayerOpacity}" />
+                <Setter Property="Brush" Value="{markup:Token MdCompFilledTextFieldErrorHoverStateLayerBrush}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompFilledTextFieldErrorHoverStateLayerOpacity}" />
             </Style>
             <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorHoverInputTextBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldErrorHoverInputTextBrush}" />
             </Style>
             <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^:error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_FilledFloatingLabel, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_FilledFloatingLabel">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorHoverLabelTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldErrorHoverLabelTextBrush}" />
             </Style>
             <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorHoverLeadingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldErrorHoverLeadingIconBrush}" />
             </Style>
             <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorHoverLeadingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldErrorHoverLeadingIconBrush}" />
             </Style>
             <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorHoverTrailingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldErrorHoverTrailingIconBrush}" />
             </Style>
             <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorHoverTrailingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldErrorHoverTrailingIconBrush}" />
             </Style>
             <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^:error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorHoverSupportingTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldErrorHoverSupportingTextBrush}" />
             </Style>
 
             <!-- Error + Focus. -->
             <Style Selector="^:error:focus:not(:disabled) /template/ primitives|TextFieldIndicatorLine#PART_FilledIndicator, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ primitives|TextFieldIndicatorLine#PART_FilledIndicator">
-                <Setter Property="Brush" Value="{DynamicResource MdCompFilledTextFieldErrorFocusActiveIndicatorBrush}" />
-                <Setter Property="Thickness" Value="{DynamicResource MdCompFilledTextFieldFocusActiveIndicatorHeight}" />
+                <Setter Property="Brush" Value="{markup:Token MdCompFilledTextFieldErrorFocusActiveIndicatorBrush}" />
+                <Setter Property="Thickness" Value="{markup:Token MdCompFilledTextFieldFocusActiveIndicatorHeight}" />
             </Style>
             <Style Selector="^:error:focus:not(:disabled) /template/ TextPresenter#PART_TextPresenter, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ TextPresenter#PART_TextPresenter">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorFocusInputTextBrush}" />
-                <Setter Property="CaretBrush" Value="{DynamicResource MdCompFilledTextFieldErrorFocusCaretBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldErrorFocusInputTextBrush}" />
+                <Setter Property="CaretBrush" Value="{markup:Token MdCompFilledTextFieldErrorFocusCaretBrush}" />
             </Style>
             <Style Selector="^:error:focus:not(:disabled) /template/ TextBlock#PART_RestingLabel, ^:error:focus:not(:disabled) /template/ TextBlock#PART_FilledFloatingLabel, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ TextBlock#PART_RestingLabel, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ TextBlock#PART_FilledFloatingLabel">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorFocusLabelTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldErrorFocusLabelTextBrush}" />
             </Style>
             <Style Selector="^:error:focus:not(:disabled) /template/ ContentPresenter#PART_LeadingContent, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ ContentPresenter#PART_LeadingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorFocusLeadingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldErrorFocusLeadingIconBrush}" />
             </Style>
             <Style Selector="^:error:focus:not(:disabled) /template/ primitives|IconPresenter#PART_LeadingIcon, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ primitives|IconPresenter#PART_LeadingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorFocusLeadingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldErrorFocusLeadingIconBrush}" />
             </Style>
             <Style Selector="^:error:focus:not(:disabled) /template/ ContentPresenter#PART_TrailingContent, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ ContentPresenter#PART_TrailingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorFocusTrailingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldErrorFocusTrailingIconBrush}" />
             </Style>
             <Style Selector="^:error:focus:not(:disabled) /template/ primitives|IconPresenter#PART_TrailingIcon, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ primitives|IconPresenter#PART_TrailingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorFocusTrailingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldErrorFocusTrailingIconBrush}" />
             </Style>
             <Style Selector="^:error:focus:not(:disabled) /template/ TextBlock#PART_SupportingText, ^:error:focus:not(:disabled) /template/ TextBlock#PART_CharacterCounter, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ TextBlock#PART_SupportingText, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ TextBlock#PART_CharacterCounter">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldErrorFocusSupportingTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldErrorFocusSupportingTextBrush}" />
             </Style>
 
             <!-- Disabled has the highest visual priority. -->
             <Style Selector="^:disabled /template/ Border#PART_FilledContainer">
-                <Setter Property="Background" Value="{DynamicResource MdCompFilledTextFieldDisabledContainerBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompFilledTextFieldDisabledContainerOpacity}" />
+                <Setter Property="Background" Value="{markup:Token MdCompFilledTextFieldDisabledContainerBrush}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompFilledTextFieldDisabledContainerOpacity}" />
             </Style>
             <Style Selector="^:disabled /template/ primitives|StateLayer#PART_FilledStateLayer">
                 <Setter Property="Opacity" Value="0" />
             </Style>
             <Style Selector="^:disabled /template/ primitives|TextFieldIndicatorLine#PART_FilledIndicator">
-                <Setter Property="Brush" Value="{DynamicResource MdCompFilledTextFieldDisabledActiveIndicatorBrush}" />
-                <Setter Property="Thickness" Value="{DynamicResource MdCompFilledTextFieldDisabledActiveIndicatorHeight}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompFilledTextFieldDisabledActiveIndicatorOpacity}" />
+                <Setter Property="Brush" Value="{markup:Token MdCompFilledTextFieldDisabledActiveIndicatorBrush}" />
+                <Setter Property="Thickness" Value="{markup:Token MdCompFilledTextFieldDisabledActiveIndicatorHeight}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompFilledTextFieldDisabledActiveIndicatorOpacity}" />
                 <Setter Property="Transitions" Value="{x:Null}" />
             </Style>
             <Style Selector="^:disabled /template/ Grid#PART_InputContent">
-                <Setter Property="Opacity" Value="{DynamicResource MdCompFilledTextFieldDisabledInputTextOpacity}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompFilledTextFieldDisabledInputTextOpacity}" />
             </Style>
             <Style Selector="^.m3-text-field-has-label:disabled:empty /template/ Grid#PART_InputContent">
                 <Setter Property="Opacity" Value="0" />
             </Style>
             <Style Selector="^:disabled /template/ TextPresenter#PART_TextPresenter">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldDisabledInputTextBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldDisabledInputTextBrush}" />
             </Style>
             <Style Selector="^:disabled /template/ TextBlock#PART_Placeholder, ^:disabled /template/ TextBlock#PART_Prefix, ^:disabled /template/ TextBlock#PART_Suffix">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldDisabledInputTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldDisabledInputTextBrush}" />
             </Style>
             <Style Selector="^:disabled /template/ ContentPresenter#PART_LeadingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldDisabledLeadingIconBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompFilledTextFieldDisabledLeadingIconOpacity}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldDisabledLeadingIconBrush}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompFilledTextFieldDisabledLeadingIconOpacity}" />
             </Style>
             <Style Selector="^:disabled /template/ primitives|IconPresenter#PART_LeadingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldDisabledLeadingIconBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompFilledTextFieldDisabledLeadingIconOpacity}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldDisabledLeadingIconBrush}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompFilledTextFieldDisabledLeadingIconOpacity}" />
             </Style>
             <Style Selector="^:disabled /template/ ContentPresenter#PART_TrailingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompFilledTextFieldDisabledTrailingIconBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompFilledTextFieldDisabledTrailingIconOpacity}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldDisabledTrailingIconBrush}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompFilledTextFieldDisabledTrailingIconOpacity}" />
             </Style>
             <Style Selector="^:disabled /template/ primitives|IconPresenter#PART_TrailingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldDisabledTrailingIconBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompFilledTextFieldDisabledTrailingIconOpacity}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldDisabledTrailingIconBrush}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompFilledTextFieldDisabledTrailingIconOpacity}" />
             </Style>
             <Style Selector="^:disabled /template/ TextBlock#PART_SupportingText, ^:disabled /template/ TextBlock#PART_CharacterCounter">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldDisabledSupportingTextBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompFilledTextFieldDisabledSupportingTextOpacity}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldDisabledSupportingTextBrush}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompFilledTextFieldDisabledSupportingTextOpacity}" />
             </Style>
             <Style Selector="^:disabled /template/ TextBlock#PART_RestingLabel, ^:disabled /template/ TextBlock#PART_FilledFloatingLabel">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompFilledTextFieldDisabledLabelTextBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompFilledTextFieldDisabledLabelTextOpacity}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldDisabledLabelTextBrush}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompFilledTextFieldDisabledLabelTextOpacity}" />
             </Style>
         </Style>
 
         <!-- Variant: Outlined -->
         <Style Selector="^[(controls|TextFieldAssist.Variant)=Outlined]">
             <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderBrush" Value="{DynamicResource MdCompOutlinedTextFieldOutlineBrush}" />
-            <Setter Property="CornerRadius" Value="{DynamicResource MdCompOutlinedTextFieldContainerShape}" />
-            <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldInputTextBrush}" />
-            <Setter Property="CaretBrush" Value="{DynamicResource MdCompOutlinedTextFieldCaretBrush}" />
-            <Setter Property="PlaceholderForeground" Value="{DynamicResource MdCompOutlinedTextFieldInputTextPlaceholderBrush}" />
-            <Setter Property="FontFamily" Value="{DynamicResource MdCompOutlinedTextFieldInputTextFontFamily}" />
-            <Setter Property="FontWeight" Value="{DynamicResource MdCompOutlinedTextFieldInputTextWeight}" />
-            <Setter Property="FontSize" Value="{DynamicResource MdCompOutlinedTextFieldInputTextSize}" />
-            <Setter Property="LineHeight" Value="{DynamicResource MdCompOutlinedTextFieldInputTextLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdCompOutlinedTextFieldInputTextTracking}" />
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompOutlinedTextFieldOutlineBrush}" />
+            <Setter Property="CornerRadius" Value="{markup:Token MdCompOutlinedTextFieldContainerShape}" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldInputTextBrush}" />
+            <Setter Property="CaretBrush" Value="{markup:Token MdCompOutlinedTextFieldCaretBrush}" />
+            <Setter Property="PlaceholderForeground" Value="{markup:Token MdCompOutlinedTextFieldInputTextPlaceholderBrush}" />
+            <Setter Property="FontFamily" Value="{markup:Token MdCompOutlinedTextFieldInputTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{markup:Token MdCompOutlinedTextFieldInputTextWeight}" />
+            <Setter Property="FontSize" Value="{markup:Token MdCompOutlinedTextFieldInputTextSize}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdCompOutlinedTextFieldInputTextLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdCompOutlinedTextFieldInputTextTracking}" />
             <Setter Property="MinHeight"
                     Value="{markup:DensityScalar MdCompOutlinedTextFieldContainerHeight, MostDense=Dense4}" />
 
@@ -1070,9 +1013,9 @@
 
             <Style Selector="^ /template/ primitives|NotchedOutline#PART_OutlinedOutline">
                 <Setter Property="IsVisible" Value="True" />
-                <Setter Property="StrokeThickness" Value="{DynamicResource MdCompOutlinedTextFieldOutlineWidth}" />
-                <Setter Property="NotchPadding" Value="{DynamicResource MdCompOutlinedTextFieldOutlineLabelPadding}" />
-                <Setter Property="LabelBottomPadding" Value="{DynamicResource MdCompOutlinedTextFieldLabelTextPaddingBottom}" />
+                <Setter Property="StrokeThickness" Value="{markup:Token MdCompOutlinedTextFieldOutlineWidth}" />
+                <Setter Property="NotchPadding" Value="{markup:Token MdCompOutlinedTextFieldOutlineLabelPadding}" />
+                <Setter Property="LabelBottomPadding" Value="{markup:Token MdCompOutlinedTextFieldLabelTextPaddingBottom}" />
                 <Setter Property="Transitions">
                     <Transitions>
                         <transitions:SpringBrushTransition Property="Stroke" Style="Effects" Speed="Fast" />
@@ -1082,35 +1025,35 @@
             </Style>
 
             <Style Selector="^ /template/ Border#PART_LeadingSpaceWithoutContent">
-                <Setter Property="Width" Value="{DynamicResource MdCompOutlinedTextFieldLeadingSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompOutlinedTextFieldLeadingSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_LeadingSpaceWithContent">
-                <Setter Property="Width" Value="{DynamicResource MdCompOutlinedTextFieldWithLeadingIconLeadingSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompOutlinedTextFieldWithLeadingIconLeadingSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_LeadingIconInputSpace">
-                <Setter Property="Width" Value="{DynamicResource MdCompOutlinedTextFieldIconInputSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompOutlinedTextFieldIconInputSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_LeadingContentIconSpace">
-                <Setter Property="Width" Value="{DynamicResource MdCompOutlinedTextFieldIconInputSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompOutlinedTextFieldIconInputSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_TrailingIconInputSpace">
-                <Setter Property="Width" Value="{DynamicResource MdCompOutlinedTextFieldIconInputSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompOutlinedTextFieldIconInputSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_TrailingIconContentSpace">
-                <Setter Property="Width" Value="{DynamicResource MdCompOutlinedTextFieldIconInputSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompOutlinedTextFieldIconInputSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_TrailingSpaceWithoutContent">
-                <Setter Property="Width" Value="{DynamicResource MdCompOutlinedTextFieldTrailingSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompOutlinedTextFieldTrailingSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_TrailingSpaceWithContent">
-                <Setter Property="Width" Value="{DynamicResource MdCompOutlinedTextFieldWithTrailingIconTrailingSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompOutlinedTextFieldWithTrailingIconTrailingSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_TopSpace">
@@ -1124,256 +1067,256 @@
             </Style>
 
             <Style Selector="^ /template/ Border#PART_PrefixTrailingSpace">
-                <Setter Property="Width" Value="{DynamicResource MdCompOutlinedTextFieldInputTextPrefixTrailingSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompOutlinedTextFieldInputTextPrefixTrailingSpace}" />
             </Style>
 
             <Style Selector="^ /template/ Border#PART_SuffixLeadingSpace">
-                <Setter Property="Width" Value="{DynamicResource MdCompOutlinedTextFieldInputTextSuffixLeadingSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompOutlinedTextFieldInputTextSuffixLeadingSpace}" />
             </Style>
 
             <Style Selector="^ /template/ ContentPresenter#PART_LeadingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldLeadingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldLeadingIconBrush}" />
             </Style>
 
             <Style Selector="^ /template/ primitives|IconPresenter#PART_LeadingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldLeadingIconBrush}" />
-                <Setter Property="Width" Value="{DynamicResource MdCompOutlinedTextFieldLeadingIconSize}" />
-                <Setter Property="Height" Value="{DynamicResource MdCompOutlinedTextFieldLeadingIconSize}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldLeadingIconBrush}" />
+                <Setter Property="Width" Value="{markup:Token MdCompOutlinedTextFieldLeadingIconSize}" />
+                <Setter Property="Height" Value="{markup:Token MdCompOutlinedTextFieldLeadingIconSize}" />
             </Style>
 
             <Style Selector="^ /template/ ContentPresenter#PART_TrailingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldTrailingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldTrailingIconBrush}" />
             </Style>
 
             <Style Selector="^ /template/ primitives|IconPresenter#PART_TrailingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldTrailingIconBrush}" />
-                <Setter Property="Width" Value="{DynamicResource MdCompOutlinedTextFieldTrailingIconSize}" />
-                <Setter Property="Height" Value="{DynamicResource MdCompOutlinedTextFieldTrailingIconSize}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldTrailingIconBrush}" />
+                <Setter Property="Width" Value="{markup:Token MdCompOutlinedTextFieldTrailingIconSize}" />
+                <Setter Property="Height" Value="{markup:Token MdCompOutlinedTextFieldTrailingIconSize}" />
             </Style>
 
             <Style Selector="^ /template/ TextBlock#PART_RestingLabel">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldLabelTextBrush}" />
-                <Setter Property="FontFamily" Value="{DynamicResource MdCompOutlinedTextFieldLabelTextFontFamily}" />
-                <Setter Property="FontWeight" Value="{DynamicResource MdCompOutlinedTextFieldLabelTextWeight}" />
-                <Setter Property="FontSize" Value="{DynamicResource MdCompOutlinedTextFieldLabelTextSize}" />
-                <Setter Property="LineHeight" Value="{DynamicResource MdCompOutlinedTextFieldLabelTextLineHeight}" />
-                <Setter Property="LetterSpacing" Value="{DynamicResource MdCompOutlinedTextFieldLabelTextTracking}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldLabelTextBrush}" />
+                <Setter Property="FontFamily" Value="{markup:Token MdCompOutlinedTextFieldLabelTextFontFamily}" />
+                <Setter Property="FontWeight" Value="{markup:Token MdCompOutlinedTextFieldLabelTextWeight}" />
+                <Setter Property="FontSize" Value="{markup:Token MdCompOutlinedTextFieldLabelTextSize}" />
+                <Setter Property="LineHeight" Value="{markup:Token MdCompOutlinedTextFieldLabelTextLineHeight}" />
+                <Setter Property="LetterSpacing" Value="{markup:Token MdCompOutlinedTextFieldLabelTextTracking}" />
             </Style>
 
             <Style Selector="^ /template/ TextBlock#PART_OutlinedFloatingLabel">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldLabelTextBrush}" />
-                <Setter Property="FontFamily" Value="{DynamicResource MdCompOutlinedTextFieldLabelTextFontFamily}" />
-                <Setter Property="FontWeight" Value="{DynamicResource MdCompOutlinedTextFieldLabelTextWeight}" />
-                <Setter Property="FontSize" Value="{DynamicResource MdCompOutlinedTextFieldLabelTextPopulatedSize}" />
-                <Setter Property="LineHeight" Value="{DynamicResource MdCompOutlinedTextFieldLabelTextPopulatedLineHeight}" />
-                <Setter Property="LetterSpacing" Value="{DynamicResource MdCompOutlinedTextFieldLabelTextTracking}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldLabelTextBrush}" />
+                <Setter Property="FontFamily" Value="{markup:Token MdCompOutlinedTextFieldLabelTextFontFamily}" />
+                <Setter Property="FontWeight" Value="{markup:Token MdCompOutlinedTextFieldLabelTextWeight}" />
+                <Setter Property="FontSize" Value="{markup:Token MdCompOutlinedTextFieldLabelTextPopulatedSize}" />
+                <Setter Property="LineHeight" Value="{markup:Token MdCompOutlinedTextFieldLabelTextPopulatedLineHeight}" />
+                <Setter Property="LetterSpacing" Value="{markup:Token MdCompOutlinedTextFieldLabelTextTracking}" />
             </Style>
 
             <Style Selector="^ /template/ TextBlock#PART_Prefix">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldInputTextPrefixBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldInputTextPrefixBrush}" />
             </Style>
 
             <Style Selector="^ /template/ TextBlock#PART_Suffix">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldInputTextSuffixBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldInputTextSuffixBrush}" />
             </Style>
 
             <!-- Supporting row uses Outlined component tokens. -->
             <Style Selector="^ /template/ Border#PART_SupportingTopSpace">
-                <Setter Property="Height" Value="{DynamicResource MdCompOutlinedTextFieldSupportingTextTopSpace}" />
+                <Setter Property="Height" Value="{markup:Token MdCompOutlinedTextFieldSupportingTextTopSpace}" />
             </Style>
             <Style Selector="^ /template/ Border#PART_SupportingLeadingSpace">
-                <Setter Property="Width" Value="{DynamicResource MdCompOutlinedTextFieldSupportingTextLeadingSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompOutlinedTextFieldSupportingTextLeadingSpace}" />
             </Style>
             <Style Selector="^ /template/ Border#PART_SupportingTrailingSpace">
-                <Setter Property="Width" Value="{DynamicResource MdCompOutlinedTextFieldSupportingTextTrailingSpace}" />
+                <Setter Property="Width" Value="{markup:Token MdCompOutlinedTextFieldSupportingTextTrailingSpace}" />
             </Style>
             <Style Selector="^ /template/ TextBlock#PART_SupportingText, ^ /template/ TextBlock#PART_CharacterCounter">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldSupportingTextBrush}" />
-                <Setter Property="FontFamily" Value="{DynamicResource MdCompOutlinedTextFieldSupportingTextFontFamily}" />
-                <Setter Property="FontWeight" Value="{DynamicResource MdCompOutlinedTextFieldSupportingTextWeight}" />
-                <Setter Property="FontSize" Value="{DynamicResource MdCompOutlinedTextFieldSupportingTextSize}" />
-                <Setter Property="LineHeight" Value="{DynamicResource MdCompOutlinedTextFieldSupportingTextLineHeight}" />
-                <Setter Property="LetterSpacing" Value="{DynamicResource MdCompOutlinedTextFieldSupportingTextTracking}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldSupportingTextBrush}" />
+                <Setter Property="FontFamily" Value="{markup:Token MdCompOutlinedTextFieldSupportingTextFontFamily}" />
+                <Setter Property="FontWeight" Value="{markup:Token MdCompOutlinedTextFieldSupportingTextWeight}" />
+                <Setter Property="FontSize" Value="{markup:Token MdCompOutlinedTextFieldSupportingTextSize}" />
+                <Setter Property="LineHeight" Value="{markup:Token MdCompOutlinedTextFieldSupportingTextLineHeight}" />
+                <Setter Property="LetterSpacing" Value="{markup:Token MdCompOutlinedTextFieldSupportingTextTracking}" />
             </Style>
 
             <!-- Hover. -->
             <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ primitives|NotchedOutline#PART_OutlinedOutline">
-                <Setter Property="Stroke" Value="{DynamicResource MdCompOutlinedTextFieldHoverOutlineBrush}" />
-                <Setter Property="StrokeThickness" Value="{DynamicResource MdCompOutlinedTextFieldHoverOutlineWidth}" />
+                <Setter Property="Stroke" Value="{markup:Token MdCompOutlinedTextFieldHoverOutlineBrush}" />
+                <Setter Property="StrokeThickness" Value="{markup:Token MdCompOutlinedTextFieldHoverOutlineWidth}" />
             </Style>
             <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldHoverInputTextBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldHoverInputTextBrush}" />
             </Style>
             <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_OutlinedFloatingLabel">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldHoverLabelTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldHoverLabelTextBrush}" />
             </Style>
             <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldHoverLeadingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldHoverLeadingIconBrush}" />
             </Style>
             <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldHoverLeadingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldHoverLeadingIconBrush}" />
             </Style>
             <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldHoverTrailingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldHoverTrailingIconBrush}" />
             </Style>
             <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldHoverTrailingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldHoverTrailingIconBrush}" />
             </Style>
             <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldHoverSupportingTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldHoverSupportingTextBrush}" />
             </Style>
 
             <!-- Focus. -->
             <Style Selector="^:focus:not(:disabled) /template/ primitives|NotchedOutline#PART_OutlinedOutline">
-                <Setter Property="Stroke" Value="{DynamicResource MdCompOutlinedTextFieldFocusOutlineBrush}" />
-                <Setter Property="StrokeThickness" Value="{DynamicResource MdCompOutlinedTextFieldFocusOutlineWidth}" />
+                <Setter Property="Stroke" Value="{markup:Token MdCompOutlinedTextFieldFocusOutlineBrush}" />
+                <Setter Property="StrokeThickness" Value="{markup:Token MdCompOutlinedTextFieldFocusOutlineWidth}" />
             </Style>
             <Style Selector="^:focus:not(:disabled) /template/ TextPresenter#PART_TextPresenter">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldFocusInputTextBrush}" />
-                <Setter Property="CaretBrush" Value="{DynamicResource MdCompOutlinedTextFieldFocusCaretBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldFocusInputTextBrush}" />
+                <Setter Property="CaretBrush" Value="{markup:Token MdCompOutlinedTextFieldFocusCaretBrush}" />
             </Style>
             <Style Selector="^:focus:not(:disabled) /template/ TextBlock#PART_RestingLabel, ^:focus:not(:disabled) /template/ TextBlock#PART_OutlinedFloatingLabel">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldFocusLabelTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldFocusLabelTextBrush}" />
             </Style>
             <Style Selector="^:focus:not(:disabled) /template/ ContentPresenter#PART_LeadingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldFocusLeadingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldFocusLeadingIconBrush}" />
             </Style>
             <Style Selector="^:focus:not(:disabled) /template/ primitives|IconPresenter#PART_LeadingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldFocusLeadingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldFocusLeadingIconBrush}" />
             </Style>
             <Style Selector="^:focus:not(:disabled) /template/ ContentPresenter#PART_TrailingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldFocusTrailingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldFocusTrailingIconBrush}" />
             </Style>
             <Style Selector="^:focus:not(:disabled) /template/ primitives|IconPresenter#PART_TrailingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldFocusTrailingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldFocusTrailingIconBrush}" />
             </Style>
             <Style Selector="^:focus:not(:disabled) /template/ TextBlock#PART_SupportingText, ^:focus:not(:disabled) /template/ TextBlock#PART_CharacterCounter">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldFocusSupportingTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldFocusSupportingTextBrush}" />
             </Style>
 
             <!-- Error. -->
             <Style Selector="^:error:not(:disabled) /template/ primitives|NotchedOutline#PART_OutlinedOutline, ^.m3-text-field-manual-error:not(:disabled) /template/ primitives|NotchedOutline#PART_OutlinedOutline">
-                <Setter Property="Stroke" Value="{DynamicResource MdCompOutlinedTextFieldErrorOutlineBrush}" />
+                <Setter Property="Stroke" Value="{markup:Token MdCompOutlinedTextFieldErrorOutlineBrush}" />
             </Style>
             <Style Selector="^:error:not(:disabled) /template/ TextPresenter#PART_TextPresenter, ^.m3-text-field-manual-error:not(:disabled) /template/ TextPresenter#PART_TextPresenter">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorInputTextBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorInputTextBrush}" />
             </Style>
             <Style Selector="^:error:not(:disabled) /template/ TextBlock#PART_RestingLabel, ^:error:not(:disabled) /template/ TextBlock#PART_OutlinedFloatingLabel, ^.m3-text-field-manual-error:not(:disabled) /template/ TextBlock#PART_RestingLabel, ^.m3-text-field-manual-error:not(:disabled) /template/ TextBlock#PART_OutlinedFloatingLabel">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorLabelTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorLabelTextBrush}" />
             </Style>
             <Style Selector="^:error:not(:disabled) /template/ ContentPresenter#PART_LeadingContent, ^.m3-text-field-manual-error:not(:disabled) /template/ ContentPresenter#PART_LeadingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorLeadingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorLeadingIconBrush}" />
             </Style>
             <Style Selector="^:error:not(:disabled) /template/ primitives|IconPresenter#PART_LeadingIcon, ^.m3-text-field-manual-error:not(:disabled) /template/ primitives|IconPresenter#PART_LeadingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorLeadingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorLeadingIconBrush}" />
             </Style>
             <Style Selector="^:error:not(:disabled) /template/ ContentPresenter#PART_TrailingContent, ^.m3-text-field-manual-error:not(:disabled) /template/ ContentPresenter#PART_TrailingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorTrailingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorTrailingIconBrush}" />
             </Style>
             <Style Selector="^:error:not(:disabled) /template/ primitives|IconPresenter#PART_TrailingIcon, ^.m3-text-field-manual-error:not(:disabled) /template/ primitives|IconPresenter#PART_TrailingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorTrailingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorTrailingIconBrush}" />
             </Style>
             <Style Selector="^:error:not(:disabled) /template/ TextBlock#PART_SupportingText, ^:error:not(:disabled) /template/ TextBlock#PART_CharacterCounter, ^.m3-text-field-manual-error:not(:disabled) /template/ TextBlock#PART_SupportingText, ^.m3-text-field-manual-error:not(:disabled) /template/ TextBlock#PART_CharacterCounter">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorSupportingTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorSupportingTextBrush}" />
             </Style>
 
             <!-- Error + Hover. -->
             <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ primitives|NotchedOutline#PART_OutlinedOutline, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ primitives|NotchedOutline#PART_OutlinedOutline">
-                <Setter Property="Stroke" Value="{DynamicResource MdCompOutlinedTextFieldErrorHoverOutlineBrush}" />
-                <Setter Property="StrokeThickness" Value="{DynamicResource MdCompOutlinedTextFieldHoverOutlineWidth}" />
+                <Setter Property="Stroke" Value="{markup:Token MdCompOutlinedTextFieldErrorHoverOutlineBrush}" />
+                <Setter Property="StrokeThickness" Value="{markup:Token MdCompOutlinedTextFieldHoverOutlineWidth}" />
             </Style>
             <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorHoverInputTextBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorHoverInputTextBrush}" />
             </Style>
             <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^:error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_OutlinedFloatingLabel, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_OutlinedFloatingLabel">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorHoverLabelTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorHoverLabelTextBrush}" />
             </Style>
             <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorHoverLeadingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorHoverLeadingIconBrush}" />
             </Style>
             <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorHoverLeadingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorHoverLeadingIconBrush}" />
             </Style>
             <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorHoverTrailingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorHoverTrailingIconBrush}" />
             </Style>
             <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorHoverTrailingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorHoverTrailingIconBrush}" />
             </Style>
             <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^:error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorHoverSupportingTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorHoverSupportingTextBrush}" />
             </Style>
 
             <!-- Error + Focus. -->
             <Style Selector="^:error:focus:not(:disabled) /template/ primitives|NotchedOutline#PART_OutlinedOutline, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ primitives|NotchedOutline#PART_OutlinedOutline">
-                <Setter Property="Stroke" Value="{DynamicResource MdCompOutlinedTextFieldErrorFocusOutlineBrush}" />
-                <Setter Property="StrokeThickness" Value="{DynamicResource MdCompOutlinedTextFieldFocusOutlineWidth}" />
+                <Setter Property="Stroke" Value="{markup:Token MdCompOutlinedTextFieldErrorFocusOutlineBrush}" />
+                <Setter Property="StrokeThickness" Value="{markup:Token MdCompOutlinedTextFieldFocusOutlineWidth}" />
             </Style>
             <Style Selector="^:error:focus:not(:disabled) /template/ TextPresenter#PART_TextPresenter, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ TextPresenter#PART_TextPresenter">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorFocusInputTextBrush}" />
-                <Setter Property="CaretBrush" Value="{DynamicResource MdCompOutlinedTextFieldErrorFocusCaretBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorFocusInputTextBrush}" />
+                <Setter Property="CaretBrush" Value="{markup:Token MdCompOutlinedTextFieldErrorFocusCaretBrush}" />
             </Style>
             <Style Selector="^:error:focus:not(:disabled) /template/ TextBlock#PART_RestingLabel, ^:error:focus:not(:disabled) /template/ TextBlock#PART_OutlinedFloatingLabel, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ TextBlock#PART_RestingLabel, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ TextBlock#PART_OutlinedFloatingLabel">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorFocusLabelTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorFocusLabelTextBrush}" />
             </Style>
             <Style Selector="^:error:focus:not(:disabled) /template/ ContentPresenter#PART_LeadingContent, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ ContentPresenter#PART_LeadingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorFocusLeadingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorFocusLeadingIconBrush}" />
             </Style>
             <Style Selector="^:error:focus:not(:disabled) /template/ primitives|IconPresenter#PART_LeadingIcon, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ primitives|IconPresenter#PART_LeadingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorFocusLeadingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorFocusLeadingIconBrush}" />
             </Style>
             <Style Selector="^:error:focus:not(:disabled) /template/ ContentPresenter#PART_TrailingContent, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ ContentPresenter#PART_TrailingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorFocusTrailingIconBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorFocusTrailingIconBrush}" />
             </Style>
             <Style Selector="^:error:focus:not(:disabled) /template/ primitives|IconPresenter#PART_TrailingIcon, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ primitives|IconPresenter#PART_TrailingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorFocusTrailingIconBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorFocusTrailingIconBrush}" />
             </Style>
             <Style Selector="^:error:focus:not(:disabled) /template/ TextBlock#PART_SupportingText, ^:error:focus:not(:disabled) /template/ TextBlock#PART_CharacterCounter, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ TextBlock#PART_SupportingText, ^.m3-text-field-manual-error:focus:not(:disabled) /template/ TextBlock#PART_CharacterCounter">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldErrorFocusSupportingTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorFocusSupportingTextBrush}" />
             </Style>
 
             <!-- Disabled. -->
             <Style Selector="^:disabled /template/ primitives|NotchedOutline#PART_OutlinedOutline">
-                <Setter Property="Stroke" Value="{DynamicResource MdCompOutlinedTextFieldDisabledOutlineBrush}" />
-                <Setter Property="StrokeThickness" Value="{DynamicResource MdCompOutlinedTextFieldDisabledOutlineWidth}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompOutlinedTextFieldDisabledOutlineOpacity}" />
+                <Setter Property="Stroke" Value="{markup:Token MdCompOutlinedTextFieldDisabledOutlineBrush}" />
+                <Setter Property="StrokeThickness" Value="{markup:Token MdCompOutlinedTextFieldDisabledOutlineWidth}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompOutlinedTextFieldDisabledOutlineOpacity}" />
                 <Setter Property="Transitions" Value="{x:Null}" />
             </Style>
             <Style Selector="^:disabled /template/ Grid#PART_InputContent">
-                <Setter Property="Opacity" Value="{DynamicResource MdCompOutlinedTextFieldDisabledInputTextOpacity}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompOutlinedTextFieldDisabledInputTextOpacity}" />
             </Style>
             <Style Selector="^.m3-text-field-has-label:disabled:empty /template/ Grid#PART_InputContent">
                 <Setter Property="Opacity" Value="0" />
             </Style>
             <Style Selector="^:disabled /template/ TextPresenter#PART_TextPresenter">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldDisabledInputTextBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldDisabledInputTextBrush}" />
             </Style>
             <Style Selector="^:disabled /template/ TextBlock#PART_Placeholder, ^:disabled /template/ TextBlock#PART_Prefix, ^:disabled /template/ TextBlock#PART_Suffix">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldDisabledInputTextBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldDisabledInputTextBrush}" />
             </Style>
             <Style Selector="^:disabled /template/ ContentPresenter#PART_LeadingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldDisabledLeadingIconBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompOutlinedTextFieldDisabledLeadingIconOpacity}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldDisabledLeadingIconBrush}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompOutlinedTextFieldDisabledLeadingIconOpacity}" />
             </Style>
             <Style Selector="^:disabled /template/ primitives|IconPresenter#PART_LeadingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldDisabledLeadingIconBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompOutlinedTextFieldDisabledLeadingIconOpacity}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldDisabledLeadingIconBrush}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompOutlinedTextFieldDisabledLeadingIconOpacity}" />
             </Style>
             <Style Selector="^:disabled /template/ ContentPresenter#PART_TrailingContent">
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource MdCompOutlinedTextFieldDisabledTrailingIconBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompOutlinedTextFieldDisabledTrailingIconOpacity}" />
+                <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldDisabledTrailingIconBrush}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompOutlinedTextFieldDisabledTrailingIconOpacity}" />
             </Style>
             <Style Selector="^:disabled /template/ primitives|IconPresenter#PART_TrailingIcon">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldDisabledTrailingIconBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompOutlinedTextFieldDisabledTrailingIconOpacity}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldDisabledTrailingIconBrush}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompOutlinedTextFieldDisabledTrailingIconOpacity}" />
             </Style>
             <Style Selector="^:disabled /template/ TextBlock#PART_SupportingText, ^:disabled /template/ TextBlock#PART_CharacterCounter">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldDisabledSupportingTextBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompOutlinedTextFieldDisabledSupportingTextOpacity}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldDisabledSupportingTextBrush}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompOutlinedTextFieldDisabledSupportingTextOpacity}" />
             </Style>
             <Style Selector="^:disabled /template/ TextBlock#PART_RestingLabel, ^:disabled /template/ TextBlock#PART_OutlinedFloatingLabel">
-                <Setter Property="Foreground" Value="{DynamicResource MdCompOutlinedTextFieldDisabledLabelTextBrush}" />
-                <Setter Property="Opacity" Value="{DynamicResource MdCompOutlinedTextFieldDisabledLabelTextOpacity}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldDisabledLabelTextBrush}" />
+                <Setter Property="Opacity" Value="{markup:Token MdCompOutlinedTextFieldDisabledLabelTextOpacity}" />
             </Style>
         </Style>
 

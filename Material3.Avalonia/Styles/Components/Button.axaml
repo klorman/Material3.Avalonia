@@ -26,10 +26,10 @@
                                                           Speed="Fast" />
             </Transitions>
         </Setter>
-        <Setter Property="attached:FocusRing.Thickness" Value="{DynamicResource MdCompButtonFocusRingThickness}" />
-        <Setter Property="attached:FocusRing.Offset" Value="{DynamicResource MdCompButtonFocusRingOffset}" />
+        <Setter Property="attached:FocusRing.Thickness" Value="{markup:Token MdCompButtonFocusRingThickness}" />
+        <Setter Property="attached:FocusRing.Offset" Value="{markup:Token MdCompButtonFocusRingOffset}" />
         <Setter Property="attached:FocusRing.CornerRadius" Value="{Binding $self.CornerRadius}" />
-        <Setter Property="attached:FocusRing.Brush" Value="{DynamicResource MdCompButtonFocusRingBrush}" />
+        <Setter Property="attached:FocusRing.Brush" Value="{markup:Token MdCompButtonFocusRingBrush}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid x:Name="PART_Container"
@@ -70,7 +70,7 @@
                     <primitives:InkRipple x:Name="PART_Ripple"
                                           Brush="{TemplateBinding Foreground}"
                                           CornerRadius="{TemplateBinding CornerRadius}"
-                                          BaseOpacity="{DynamicResource MdSysStatePressedOpacity}" />
+                                           BaseOpacity="{markup:Token MdSysStatePressedOpacity}" />
                 </Grid>
             </ControlTemplate>
         </Setter>
@@ -81,105 +81,105 @@
         <Style Selector="^[(controls|ButtonAssist.Size)=ExtraSmall]">
             <Setter Property="Height"
                     Value="{markup:DensityScalar MdCompButtonXsContainerHeight, MostDense=Dense2}" />
-            <Setter Property="BorderThickness" Value="{DynamicResource MdCompButtonXsOutlineWidth}" />
-            <Setter Property="FontFamily" Value="{DynamicResource MdCompButtonXsLabelTextFontFamily}" />
-            <Setter Property="FontWeight" Value="{DynamicResource MdCompButtonXsLabelTextWeight}" />
-            <Setter Property="FontSize" Value="{DynamicResource MdCompButtonXsLabelTextSize}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdCompButtonXsLabelTextTracking}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompButtonXsOutlineWidth}" />
+            <Setter Property="FontFamily" Value="{markup:Token MdCompButtonXsLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{markup:Token MdCompButtonXsLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{markup:Token MdCompButtonXsLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdCompButtonXsLabelTextTracking}" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
-                <Setter Property="Height" Value="{DynamicResource MdCompButtonXsIconSize}" />
-                <Setter Property="Width" Value="{DynamicResource MdCompButtonXsIconSize}" />
+                <Setter Property="Height" Value="{markup:Token MdCompButtonXsIconSize}" />
+                <Setter Property="Width" Value="{markup:Token MdCompButtonXsIconSize}" />
             </Style>
             <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonXsLeadingSpace MdCompButtonXsVerticalSpace MdCompButtonXsTrailingSpace MdCompButtonXsVerticalSpace}" />
             <Style Selector="^ /template/ StackPanel#PART_Content">
-                <Setter Property="Spacing" Value="{DynamicResource MdCompButtonXsBetweenIconLabelSpace}" />
+                <Setter Property="Spacing" Value="{markup:Token MdCompButtonXsBetweenIconLabelSpace}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="LineHeight" Value="{DynamicResource MdCompButtonXsLabelTextLineHeight}" />
+                <Setter Property="LineHeight" Value="{markup:Token MdCompButtonXsLabelTextLineHeight}" />
             </Style>
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Size)=Small]">
             <Setter Property="Height"
                     Value="{markup:DensityScalar MdCompButtonSmContainerHeight, MostDense=Dense3}" />
-            <Setter Property="BorderThickness" Value="{DynamicResource MdCompButtonSmOutlineWidth}" />
-            <Setter Property="FontFamily" Value="{DynamicResource MdCompButtonSmLabelTextFontFamily}" />
-            <Setter Property="FontWeight" Value="{DynamicResource MdCompButtonSmLabelTextWeight}" />
-            <Setter Property="FontSize" Value="{DynamicResource MdCompButtonSmLabelTextSize}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdCompButtonSmLabelTextTracking}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompButtonSmOutlineWidth}" />
+            <Setter Property="FontFamily" Value="{markup:Token MdCompButtonSmLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{markup:Token MdCompButtonSmLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{markup:Token MdCompButtonSmLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdCompButtonSmLabelTextTracking}" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
-                <Setter Property="Height" Value="{DynamicResource MdCompButtonSmIconSize}" />
-                <Setter Property="Width" Value="{DynamicResource MdCompButtonSmIconSize}" />
+                <Setter Property="Height" Value="{markup:Token MdCompButtonSmIconSize}" />
+                <Setter Property="Width" Value="{markup:Token MdCompButtonSmIconSize}" />
             </Style>
             <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonSmLeadingSpace MdCompButtonSmVerticalSpace MdCompButtonSmTrailingSpace MdCompButtonSmVerticalSpace}" />
             <Style Selector="^ /template/ StackPanel#PART_Content">
-                <Setter Property="Spacing" Value="{DynamicResource MdCompButtonSmBetweenIconLabelSpace}" />
+                <Setter Property="Spacing" Value="{markup:Token MdCompButtonSmBetweenIconLabelSpace}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="LineHeight" Value="{DynamicResource MdCompButtonSmLabelTextLineHeight}" />
+                <Setter Property="LineHeight" Value="{markup:Token MdCompButtonSmLabelTextLineHeight}" />
             </Style>
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Size)=Medium]">
             <Setter Property="Height"
                     Value="{markup:DensityScalar MdCompButtonMdContainerHeight, MostDense=Dense3}" />
-            <Setter Property="BorderThickness" Value="{DynamicResource MdCompButtonMdOutlineWidth}" />
-            <Setter Property="FontFamily" Value="{DynamicResource MdCompButtonMdLabelTextFontFamily}" />
-            <Setter Property="FontWeight" Value="{DynamicResource MdCompButtonMdLabelTextWeight}" />
-            <Setter Property="FontSize" Value="{DynamicResource MdCompButtonMdLabelTextSize}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdCompButtonMdLabelTextTracking}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompButtonMdOutlineWidth}" />
+            <Setter Property="FontFamily" Value="{markup:Token MdCompButtonMdLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{markup:Token MdCompButtonMdLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{markup:Token MdCompButtonMdLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdCompButtonMdLabelTextTracking}" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
-                <Setter Property="Height" Value="{DynamicResource MdCompButtonMdIconSize}" />
-                <Setter Property="Width" Value="{DynamicResource MdCompButtonMdIconSize}" />
+                <Setter Property="Height" Value="{markup:Token MdCompButtonMdIconSize}" />
+                <Setter Property="Width" Value="{markup:Token MdCompButtonMdIconSize}" />
             </Style>
             <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonMdLeadingSpace MdCompButtonMdVerticalSpace MdCompButtonMdTrailingSpace MdCompButtonMdVerticalSpace}" />
             <Style Selector="^ /template/ StackPanel#PART_Content">
-                <Setter Property="Spacing" Value="{DynamicResource MdCompButtonMdBetweenIconLabelSpace}" />
+                <Setter Property="Spacing" Value="{markup:Token MdCompButtonMdBetweenIconLabelSpace}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="LineHeight" Value="{DynamicResource MdCompButtonMdLabelTextLineHeight}" />
+                <Setter Property="LineHeight" Value="{markup:Token MdCompButtonMdLabelTextLineHeight}" />
             </Style>
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Size)=Large]">
             <Setter Property="Height"
                     Value="{markup:DensityScalar MdCompButtonLgContainerHeight, MostDense=Dense3}" />
-            <Setter Property="BorderThickness" Value="{DynamicResource MdCompButtonLgOutlineWidth}" />
-            <Setter Property="FontFamily" Value="{DynamicResource MdCompButtonLgLabelTextFontFamily}" />
-            <Setter Property="FontWeight" Value="{DynamicResource MdCompButtonLgLabelTextWeight}" />
-            <Setter Property="FontSize" Value="{DynamicResource MdCompButtonLgLabelTextSize}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdCompButtonLgLabelTextTracking}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompButtonLgOutlineWidth}" />
+            <Setter Property="FontFamily" Value="{markup:Token MdCompButtonLgLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{markup:Token MdCompButtonLgLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{markup:Token MdCompButtonLgLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdCompButtonLgLabelTextTracking}" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
-                <Setter Property="Height" Value="{DynamicResource MdCompButtonLgIconSize}" />
-                <Setter Property="Width" Value="{DynamicResource MdCompButtonLgIconSize}" />
+                <Setter Property="Height" Value="{markup:Token MdCompButtonLgIconSize}" />
+                <Setter Property="Width" Value="{markup:Token MdCompButtonLgIconSize}" />
             </Style>
             <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonLgLeadingSpace MdCompButtonLgVerticalSpace MdCompButtonLgTrailingSpace MdCompButtonLgVerticalSpace}" />
             <Style Selector="^ /template/ StackPanel#PART_Content">
-                <Setter Property="Spacing" Value="{DynamicResource MdCompButtonLgBetweenIconLabelSpace}" />
+                <Setter Property="Spacing" Value="{markup:Token MdCompButtonLgBetweenIconLabelSpace}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="LineHeight" Value="{DynamicResource MdCompButtonLgLabelTextLineHeight}" />
+                <Setter Property="LineHeight" Value="{markup:Token MdCompButtonLgLabelTextLineHeight}" />
             </Style>
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Size)=ExtraLarge]">
             <Setter Property="Height"
                     Value="{markup:DensityScalar MdCompButtonXlContainerHeight, MostDense=Dense3}" />
-            <Setter Property="BorderThickness" Value="{DynamicResource MdCompButtonXlOutlineWidth}" />
-            <Setter Property="FontFamily" Value="{DynamicResource MdCompButtonXlLabelTextFontFamily}" />
-            <Setter Property="FontWeight" Value="{DynamicResource MdCompButtonXlLabelTextWeight}" />
-            <Setter Property="FontSize" Value="{DynamicResource MdCompButtonXlLabelTextSize}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdCompButtonXlLabelTextTracking}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompButtonXlOutlineWidth}" />
+            <Setter Property="FontFamily" Value="{markup:Token MdCompButtonXlLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{markup:Token MdCompButtonXlLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{markup:Token MdCompButtonXlLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdCompButtonXlLabelTextTracking}" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
-                <Setter Property="Height" Value="{DynamicResource MdCompButtonXlIconSize}" />
-                <Setter Property="Width" Value="{DynamicResource MdCompButtonXlIconSize}" />
+                <Setter Property="Height" Value="{markup:Token MdCompButtonXlIconSize}" />
+                <Setter Property="Width" Value="{markup:Token MdCompButtonXlIconSize}" />
             </Style>
             <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonXlLeadingSpace MdCompButtonXlVerticalSpace MdCompButtonXlTrailingSpace MdCompButtonXlVerticalSpace}" />
             <Style Selector="^ /template/ StackPanel#PART_Content">
-                <Setter Property="Spacing" Value="{DynamicResource MdCompButtonXlBetweenIconLabelSpace}" />
+                <Setter Property="Spacing" Value="{markup:Token MdCompButtonXlBetweenIconLabelSpace}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="LineHeight" Value="{DynamicResource MdCompButtonXlLabelTextLineHeight}" />
+                <Setter Property="LineHeight" Value="{markup:Token MdCompButtonXlLabelTextLineHeight}" />
             </Style>
         </Style>
 
@@ -221,93 +221,93 @@
 
         <Style Selector="^[(controls|ButtonAssist.Shape)=Square]">
             <Style Selector="^[(controls|ButtonAssist.Size)=ExtraSmall]">
-                <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerMedium}" />
+                <Setter Property="CornerRadius" Value="{markup:Token MdSysShapeCornerMedium}" />
             </Style>
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Shape)=Square]">
             <Style Selector="^[(controls|ButtonAssist.Size)=Small]">
-                <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerMedium}" />
+                <Setter Property="CornerRadius" Value="{markup:Token MdSysShapeCornerMedium}" />
             </Style>
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Shape)=Square]">
             <Style Selector="^[(controls|ButtonAssist.Size)=Medium]">
-                <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerLarge}" />
+                <Setter Property="CornerRadius" Value="{markup:Token MdSysShapeCornerLarge}" />
             </Style>
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Shape)=Square]">
             <Style Selector="^[(controls|ButtonAssist.Size)=Large]">
-                <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerExtraLarge}" />
+                <Setter Property="CornerRadius" Value="{markup:Token MdSysShapeCornerExtraLarge}" />
             </Style>
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Shape)=Square]">
             <Style Selector="^[(controls|ButtonAssist.Size)=ExtraLarge]">
-                <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerExtraLarge}" />
+                <Setter Property="CornerRadius" Value="{markup:Token MdSysShapeCornerExtraLarge}" />
             </Style>
         </Style>
 
         <Style Selector="^:pressed:not(:disabled)">
             <Style Selector="^[(controls|ButtonAssist.Size)=ExtraSmall]">
-                <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerSmall}" />
+                <Setter Property="CornerRadius" Value="{markup:Token MdSysShapeCornerSmall}" />
             </Style>
 
             <Style Selector="^[(controls|ButtonAssist.Size)=Small]">
-                <Setter Property="CornerRadius" Value="{DynamicResource  MdSysShapeCornerSmall}" />
+                <Setter Property="CornerRadius" Value="{markup:Token MdSysShapeCornerSmall}" />
             </Style>
 
             <Style Selector="^[(controls|ButtonAssist.Size)=Medium]">
-                <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerMedium}" />
+                <Setter Property="CornerRadius" Value="{markup:Token MdSysShapeCornerMedium}" />
             </Style>
 
             <Style Selector="^[(controls|ButtonAssist.Size)=Large]">
-                <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerLarge}" />
+                <Setter Property="CornerRadius" Value="{markup:Token MdSysShapeCornerLarge}" />
             </Style>
 
             <Style Selector="^[(controls|ButtonAssist.Size)=ExtraLarge]">
-                <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerLarge}" />
+                <Setter Property="CornerRadius" Value="{markup:Token MdSysShapeCornerLarge}" />
             </Style>
         </Style>
-        
+
         <!-- State -->
         <Style Selector="^:focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
-            <Setter Property="Opacity" Value="{DynamicResource MdSysStateFocusOpacity}" />
+            <Setter Property="Opacity" Value="{markup:Token MdSysStateFocusOpacity}" />
         </Style>
 
         <Style Selector="^:pointerover:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
-            <Setter Property="Opacity" Value="{DynamicResource MdSysStatePointerOverOpacity}" />
+            <Setter Property="Opacity" Value="{markup:Token MdSysStatePointerOverOpacity}" />
         </Style>
 
         <!-- Variant -->
         <Style Selector="^[(controls|ButtonAssist.Variant)=Elevated]">
-            <Setter Property="Background" Value="{DynamicResource MdCompButtonElevatedContainerBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource MdCompButtonElevatedLabelBrush}" />
+            <Setter Property="Background" Value="{markup:Token MdCompButtonElevatedContainerBrush}" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedLabelBrush}" />
             <Setter Property="BorderThickness" Value="0" />
             <Style Selector="^ /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel1}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel1}" />
             </Style>
             <Style Selector="^:focus-visible /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel1}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel1}" />
             </Style>
             <Style Selector="^:pointerover /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel2}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel2}" />
             </Style>
             <Style Selector="^:pressed /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel1}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel1}" />
             </Style>
             <Style Selector="^:disabled">
-                <Setter Property="Background" Value="{DynamicResource MdCompButtonDisabledContainerBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource MdCompButtonDisabledLabelBrush}" />
+                <Setter Property="Background" Value="{markup:Token MdCompButtonDisabledContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonDisabledLabelBrush}" />
                 <Style Selector="^ /template/ Border#PART_Outline">
-                    <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                    <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
                 </Style>
                 <Style Selector="^ /template/ Border#PART_Background">
-                    <Setter Property="Opacity" Value="{DynamicResource MdCompButtonDisabledContainerOpacity}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledContainerOpacity}" />
                 </Style>
                 <Style Selector="^ /template/ StackPanel#PART_Content">
-                    <Setter Property="Opacity" Value="{DynamicResource MdCompButtonDisabledLabelOpacity}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledLabelOpacity}" />
                 </Style>
                 <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
                     <Setter Property="Brush" Value="{x:Null}" />
@@ -316,32 +316,32 @@
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Variant)=Filled]">
-            <Setter Property="Background" Value="{DynamicResource MdCompButtonFilledContainerBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource MdCompButtonFilledLabelBrush}" />
+            <Setter Property="Background" Value="{markup:Token MdCompButtonFilledContainerBrush}" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledLabelBrush}" />
             <Setter Property="BorderThickness" Value="0" />
             <Style Selector="^ /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^:focus-visible /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^:pointerover /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel1}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel1}" />
             </Style>
             <Style Selector="^:pressed /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^:disabled">
-                <Setter Property="Background" Value="{DynamicResource MdCompButtonDisabledContainerBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource MdCompButtonDisabledLabelBrush}" />
+                <Setter Property="Background" Value="{markup:Token MdCompButtonDisabledContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonDisabledLabelBrush}" />
                 <Style Selector="^ /template/ Border#PART_Outline">
-                    <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                    <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
                 </Style>
                 <Style Selector="^ /template/ Border#PART_Background">
-                    <Setter Property="Opacity" Value="{DynamicResource MdCompButtonDisabledContainerOpacity}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledContainerOpacity}" />
                 </Style>
                 <Style Selector="^ /template/ StackPanel#PART_Content">
-                    <Setter Property="Opacity" Value="{DynamicResource MdCompButtonDisabledLabelOpacity}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledLabelOpacity}" />
                 </Style>
                 <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
                     <Setter Property="Brush" Value="{x:Null}" />
@@ -350,32 +350,32 @@
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Variant)=Tonal]">
-            <Setter Property="Background" Value="{DynamicResource MdCompButtonTonalContainerBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource MdCompButtonTonalLabelBrush}" />
+            <Setter Property="Background" Value="{markup:Token MdCompButtonTonalContainerBrush}" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalLabelBrush}" />
             <Setter Property="BorderThickness" Value="0" />
             <Style Selector="^ /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^:focus-visible /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^:pointerover /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel1}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel1}" />
             </Style>
             <Style Selector="^:pressed /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^:disabled">
-                <Setter Property="Background" Value="{DynamicResource MdCompButtonDisabledContainerBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource MdCompButtonDisabledLabelBrush}" />
+                <Setter Property="Background" Value="{markup:Token MdCompButtonDisabledContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonDisabledLabelBrush}" />
                 <Style Selector="^ /template/ Border#PART_Outline">
-                    <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                    <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
                 </Style>
                 <Style Selector="^ /template/ Border#PART_Background">
-                    <Setter Property="Opacity" Value="{DynamicResource MdCompButtonDisabledContainerOpacity}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledContainerOpacity}" />
                 </Style>
                 <Style Selector="^ /template/ StackPanel#PART_Content">
-                    <Setter Property="Opacity" Value="{DynamicResource MdCompButtonDisabledLabelOpacity}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledLabelOpacity}" />
                 </Style>
                 <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
                     <Setter Property="Brush" Value="{x:Null}" />
@@ -384,32 +384,32 @@
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Variant)=Outlined]">
-            <Setter Property="BorderBrush" Value="{DynamicResource MdCompButtonOutlinedOutlineBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource MdCompButtonOutlinedLabelBrush}" />
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompButtonOutlinedOutlineBrush}" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedLabelBrush}" />
             <Style Selector="^ /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^:focus-visible /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^:pointerover /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^:pressed /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^:disabled">
-                <Setter Property="BorderBrush" Value="{DynamicResource MdCompButtonDisabledOutlineBrush}" />
-                <Setter Property="Background" Value="{DynamicResource MdCompButtonDisabledContainerBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource MdCompButtonDisabledLabelBrush}" />
+                <Setter Property="BorderBrush" Value="{markup:Token MdCompButtonDisabledOutlineBrush}" />
+                <Setter Property="Background" Value="{markup:Token MdCompButtonDisabledContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonDisabledLabelBrush}" />
                 <Style Selector="^ /template/ Border#PART_Outline">
-                    <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                    <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
                 </Style>
                 <Style Selector="^ /template/ Border#PART_Background">
-                    <Setter Property="Opacity" Value="{DynamicResource MdCompButtonDisabledContainerOpacity}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledContainerOpacity}" />
                 </Style>
                 <Style Selector="^ /template/ StackPanel#PART_Content">
-                    <Setter Property="Opacity" Value="{DynamicResource MdCompButtonDisabledLabelOpacity}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledLabelOpacity}" />
                 </Style>
                 <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
                     <Setter Property="Brush" Value="{x:Null}" />
@@ -418,31 +418,31 @@
         </Style>
 
         <Style Selector="^[(controls|ButtonAssist.Variant)=Text]">
-            <Setter Property="Foreground" Value="{DynamicResource MdCompButtonTextLabelBrush}" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompButtonTextLabelBrush}" />
             <Setter Property="BorderThickness" Value="0" />
             <Style Selector="^ /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^:focus-visible /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^:pointerover /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^:pressed /template/ Border#PART_Outline">
-                <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^:disabled">
-                <Setter Property="Background" Value="{DynamicResource MdCompButtonDisabledContainerBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource MdCompButtonDisabledLabelBrush}" />
+                <Setter Property="Background" Value="{markup:Token MdCompButtonDisabledContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonDisabledLabelBrush}" />
                 <Style Selector="^ /template/ Border#PART_Outline">
-                    <Setter Property="BoxShadow" Value="{DynamicResource MdSysShadowLevel0}" />
+                    <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
                 </Style>
                 <Style Selector="^ /template/ Border#PART_Background">
-                    <Setter Property="Opacity" Value="{DynamicResource MdCompButtonDisabledContainerOpacity}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledContainerOpacity}" />
                 </Style>
                 <Style Selector="^ /template/ StackPanel#PART_Content">
-                    <Setter Property="Opacity" Value="{DynamicResource MdCompButtonDisabledLabelOpacity}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledLabelOpacity}" />
                 </Style>
                 <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
                     <Setter Property="Brush" Value="{x:Null}" />

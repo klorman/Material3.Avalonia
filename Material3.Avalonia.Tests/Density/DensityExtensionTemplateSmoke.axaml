@@ -1,0 +1,40 @@
+<Button xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:markup="using:Material3.Avalonia.Markup"
+        xmlns:tokens="using:Material3.Avalonia.Tokens"
+        Theme="{StaticResource ReproTheme}">
+    <Button.Resources>
+        <ResourceDictionary>
+            <tokens:TokenAlias x:Key="NormalHeight" ResourceKey="NormalHeightLeaf" />
+            <tokens:TokenAlias x:Key="FocusHeight" ResourceKey="FocusHeightLeaf" />
+            <tokens:TokenAlias x:Key="NormalPadding" ResourceKey="NormalPaddingLeaf" />
+            <tokens:TokenAlias x:Key="FocusPadding" ResourceKey="FocusPaddingLeaf" />
+            <x:Double x:Key="NormalHeightLeaf">10</x:Double>
+            <x:Double x:Key="FocusHeightLeaf">30</x:Double>
+            <Thickness x:Key="NormalPaddingLeaf">1,2,3,4</Thickness>
+            <Thickness x:Key="FocusPaddingLeaf">5,6,7,8</Thickness>
+
+            <ControlTheme x:Key="ReproTheme" TargetType="Button">
+                <Setter Property="Template">
+                    <ControlTemplate>
+                        <StackPanel>
+                            <Border x:Name="PART_DensityScalar"
+                                    Height="{markup:DensityScalar NormalHeight, MostDense=Dense3}" />
+
+                            <Border x:Name="PART_DensityThickness"
+                                    Padding="{markup:DensityThickness NormalPadding, MostDense=Dense3, Sides=Vertical}" />
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter>
+
+                <Style Selector="^:focus /template/ Border#PART_DensityScalar">
+                    <Setter Property="Height" Value="{markup:DensityScalar FocusHeight, MostDense=Dense3}" />
+                </Style>
+
+                <Style Selector="^:focus /template/ Border#PART_DensityThickness">
+                    <Setter Property="Padding" Value="{markup:DensityThickness FocusPadding, MostDense=Dense3, Sides=Vertical}" />
+                </Style>
+            </ControlTheme>
+        </ResourceDictionary>
+    </Button.Resources>
+</Button>

@@ -1,124 +1,125 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens">
     <!-- Variant Elevated -->
-    <StaticResource x:Key="MdCompButtonElevatedContainerBrush" ResourceKey="MdSysSurfaceContainerLowBrush" />
-    <StaticResource x:Key="MdCompButtonElevatedContainerToggleUnselectedBrush" ResourceKey="MdSysSurfaceContainerLowBrush" />
-    <StaticResource x:Key="MdCompButtonElevatedContainerToggleSelectedBrush" ResourceKey="MdSysPrimaryBrush" />
-    <StaticResource x:Key="MdCompButtonElevatedLabelBrush" ResourceKey="MdSysPrimaryBrush" />
-    <StaticResource x:Key="MdCompButtonElevatedLabelToggleUnselectedBrush" ResourceKey="MdSysPrimaryBrush" />
-    <StaticResource x:Key="MdCompButtonElevatedLabelToggleSelectedBrush" ResourceKey="MdSysOnPrimaryBrush" />
-    <StaticResource x:Key="MdCompButtonElevatedIconToggleUnselectedBrush" ResourceKey="MdSysPrimaryBrush" />
-    <StaticResource x:Key="MdCompButtonElevatedIconToggleSelectedBrush" ResourceKey="MdSysOnPrimaryBrush" />
-    
+    <tokens:TokenAlias x:Key="MdCompButtonElevatedContainerBrush" ResourceKey="MdSysSurfaceContainerLowBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonElevatedContainerToggleUnselectedBrush" ResourceKey="MdSysSurfaceContainerLowBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonElevatedContainerToggleSelectedBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonElevatedLabelBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonElevatedLabelToggleUnselectedBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonElevatedLabelToggleSelectedBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonElevatedIconToggleUnselectedBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonElevatedIconToggleSelectedBrush" ResourceKey="MdSysOnPrimaryBrush" />
+
     <!-- Variant Filled -->
-    <StaticResource x:Key="MdCompButtonFilledContainerBrush" ResourceKey="MdSysPrimaryBrush" />
-    <StaticResource x:Key="MdCompButtonFilledContainerToggleUnselectedBrush" ResourceKey="MdSysSurfaceContainerBrush" />
-    <StaticResource x:Key="MdCompButtonFilledContainerToggleSelectedBrush" ResourceKey="MdSysPrimaryBrush" />
-    <StaticResource x:Key="MdCompButtonFilledLabelBrush" ResourceKey="MdSysOnPrimaryBrush" />
-    <StaticResource x:Key="MdCompButtonFilledLabelToggleUnselectedBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompButtonFilledLabelToggleSelectedBrush" ResourceKey="MdSysOnPrimaryBrush" />
-    <StaticResource x:Key="MdCompButtonFilledIconToggleUnselectedBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompButtonFilledIconToggleSelectedBrush" ResourceKey="MdSysOnPrimaryBrush" />
-    
+    <tokens:TokenAlias x:Key="MdCompButtonFilledContainerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonFilledContainerToggleUnselectedBrush" ResourceKey="MdSysSurfaceContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonFilledContainerToggleSelectedBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonFilledLabelBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonFilledLabelToggleUnselectedBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonFilledLabelToggleSelectedBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonFilledIconToggleUnselectedBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonFilledIconToggleSelectedBrush" ResourceKey="MdSysOnPrimaryBrush" />
+
     <!-- Variant Tonal -->
-    <StaticResource x:Key="MdCompButtonTonalContainerBrush" ResourceKey="MdSysSecondaryContainerBrush" />
-    <StaticResource x:Key="MdCompButtonTonalContainerToggleUnselectedBrush" ResourceKey="MdSysSecondaryContainerBrush" />
-    <StaticResource x:Key="MdCompButtonTonalContainerToggleSelectedBrush" ResourceKey="MdSysSecondaryBrush" />
-    <StaticResource x:Key="MdCompButtonTonalLabelBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
-    <StaticResource x:Key="MdCompButtonTonalLabelToggleUnselectedBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
-    <StaticResource x:Key="MdCompButtonTonalLabelToggleSelectedBrush" ResourceKey="MdSysOnSecondaryBrush" />
-    <StaticResource x:Key="MdCompButtonTonalIconToggleUnselectedBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
-    <StaticResource x:Key="MdCompButtonTonalIconToggleSelectedBrush" ResourceKey="MdSysOnSecondaryBrush" />
-    
+    <tokens:TokenAlias x:Key="MdCompButtonTonalContainerBrush" ResourceKey="MdSysSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonTonalContainerToggleUnselectedBrush" ResourceKey="MdSysSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonTonalContainerToggleSelectedBrush" ResourceKey="MdSysSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonTonalLabelBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonTonalLabelToggleUnselectedBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonTonalLabelToggleSelectedBrush" ResourceKey="MdSysOnSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonTonalIconToggleUnselectedBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonTonalIconToggleSelectedBrush" ResourceKey="MdSysOnSecondaryBrush" />
+
     <!-- Variant Outlined -->
-    <StaticResource x:Key="MdCompButtonOutlinedOutlineBrush" ResourceKey="MdSysOutlineVariantBrush" />
-    <StaticResource x:Key="MdCompButtonOutlinedContainerToggleSelectedBrush" ResourceKey="MdSysInverseSurfaceBrush" />
-    <StaticResource x:Key="MdCompButtonOutlinedLabelBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompButtonOutlinedLabelToggleUnselectedBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompButtonOutlinedLabelToggleSelectedBrush" ResourceKey="MdSysInverseOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompButtonOutlinedIconToggleUnselectedBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
-    <StaticResource x:Key="MdCompButtonOutlinedIconToggleSelectedBrush" ResourceKey="MdSysInverseOnSurfaceBrush" />
-    
+    <tokens:TokenAlias x:Key="MdCompButtonOutlinedOutlineBrush" ResourceKey="MdSysOutlineVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonOutlinedContainerToggleSelectedBrush" ResourceKey="MdSysInverseSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonOutlinedLabelBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonOutlinedLabelToggleUnselectedBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonOutlinedLabelToggleSelectedBrush" ResourceKey="MdSysInverseOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonOutlinedIconToggleUnselectedBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonOutlinedIconToggleSelectedBrush" ResourceKey="MdSysInverseOnSurfaceBrush" />
+
     <!-- Variant Text -->
-    <StaticResource x:Key="MdCompButtonTextLabelBrush" ResourceKey="MdSysPrimaryBrush" />
-    
+    <tokens:TokenAlias x:Key="MdCompButtonTextLabelBrush" ResourceKey="MdSysPrimaryBrush" />
+
     <!-- Size Extra Small -->
     <x:Double x:Key="MdCompButtonXsContainerHeight">32</x:Double>
     <Thickness x:Key="MdCompButtonXsOutlineWidth">1</Thickness>
     <x:Double x:Key="MdCompButtonXsIconSize">20</x:Double>
-    <StaticResource x:Key="MdCompButtonXsLabelTextFontFamily" ResourceKey="MdSysTypeScaleLabelLargeFontFamily" />
-    <StaticResource x:Key="MdCompButtonXsLabelTextWeight" ResourceKey="MdSysTypeScaleLabelLargeWeight" />
-    <StaticResource x:Key="MdCompButtonXsLabelTextSize" ResourceKey="MdSysTypeScaleLabelLargeSize" />
-    <StaticResource x:Key="MdCompButtonXsLabelTextLineHeight" ResourceKey="MdSysTypeScaleLabelLargeLineHeight" />
-    <StaticResource x:Key="MdCompButtonXsLabelTextTracking" ResourceKey="MdSysTypeScaleLabelLargeTracking" />
-    <StaticResource x:Key="MdCompButtonXsLeadingSpace" ResourceKey="MdSysSpacing150" />
-    <StaticResource x:Key="MdCompButtonXsVerticalSpace" ResourceKey="MdSysSpacing0" />
-    <StaticResource x:Key="MdCompButtonXsTrailingSpace" ResourceKey="MdSysSpacing150" />
-    <StaticResource x:Key="MdCompButtonXsBetweenIconLabelSpace" ResourceKey="MdSysSpacing100" />
-    
+    <tokens:TokenAlias x:Key="MdCompButtonXsLabelTextFontFamily" ResourceKey="MdSysTypeScaleLabelLargeFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompButtonXsLabelTextWeight" ResourceKey="MdSysTypeScaleLabelLargeWeight" />
+    <tokens:TokenAlias x:Key="MdCompButtonXsLabelTextSize" ResourceKey="MdSysTypeScaleLabelLargeSize" />
+    <tokens:TokenAlias x:Key="MdCompButtonXsLabelTextLineHeight" ResourceKey="MdSysTypeScaleLabelLargeLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompButtonXsLabelTextTracking" ResourceKey="MdSysTypeScaleLabelLargeTracking" />
+    <tokens:TokenAlias x:Key="MdCompButtonXsLeadingSpace" ResourceKey="MdSysSpacing150" />
+    <tokens:TokenAlias x:Key="MdCompButtonXsVerticalSpace" ResourceKey="MdSysSpacing0" />
+    <tokens:TokenAlias x:Key="MdCompButtonXsTrailingSpace" ResourceKey="MdSysSpacing150" />
+    <tokens:TokenAlias x:Key="MdCompButtonXsBetweenIconLabelSpace" ResourceKey="MdSysSpacing100" />
+
     <!-- Size Small -->
     <x:Double x:Key="MdCompButtonSmContainerHeight">40</x:Double>
     <Thickness x:Key="MdCompButtonSmOutlineWidth">1</Thickness>
     <x:Double x:Key="MdCompButtonSmIconSize">20</x:Double>
-    <StaticResource x:Key="MdCompButtonSmLabelTextFontFamily" ResourceKey="MdSysTypeScaleLabelLargeFontFamily" />
-    <StaticResource x:Key="MdCompButtonSmLabelTextWeight" ResourceKey="MdSysTypeScaleLabelLargeWeight" />
-    <StaticResource x:Key="MdCompButtonSmLabelTextSize" ResourceKey="MdSysTypeScaleLabelLargeSize" />
-    <StaticResource x:Key="MdCompButtonSmLabelTextLineHeight" ResourceKey="MdSysTypeScaleLabelLargeLineHeight" />
-    <StaticResource x:Key="MdCompButtonSmLabelTextTracking" ResourceKey="MdSysTypeScaleLabelLargeTracking" />
-    <StaticResource x:Key="MdCompButtonSmLeadingSpace" ResourceKey="MdSysSpacing200" />
-    <StaticResource x:Key="MdCompButtonSmVerticalSpace" ResourceKey="MdSysSpacing0" />
-    <StaticResource x:Key="MdCompButtonSmTrailingSpace" ResourceKey="MdSysSpacing200" />
-    <StaticResource x:Key="MdCompButtonSmBetweenIconLabelSpace" ResourceKey="MdSysSpacing100" />
-    
+    <tokens:TokenAlias x:Key="MdCompButtonSmLabelTextFontFamily" ResourceKey="MdSysTypeScaleLabelLargeFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompButtonSmLabelTextWeight" ResourceKey="MdSysTypeScaleLabelLargeWeight" />
+    <tokens:TokenAlias x:Key="MdCompButtonSmLabelTextSize" ResourceKey="MdSysTypeScaleLabelLargeSize" />
+    <tokens:TokenAlias x:Key="MdCompButtonSmLabelTextLineHeight" ResourceKey="MdSysTypeScaleLabelLargeLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompButtonSmLabelTextTracking" ResourceKey="MdSysTypeScaleLabelLargeTracking" />
+    <tokens:TokenAlias x:Key="MdCompButtonSmLeadingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompButtonSmVerticalSpace" ResourceKey="MdSysSpacing0" />
+    <tokens:TokenAlias x:Key="MdCompButtonSmTrailingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompButtonSmBetweenIconLabelSpace" ResourceKey="MdSysSpacing100" />
+
     <!-- Size Medium -->
     <x:Double x:Key="MdCompButtonMdContainerHeight">56</x:Double>
     <Thickness x:Key="MdCompButtonMdOutlineWidth">1</Thickness>
     <x:Double x:Key="MdCompButtonMdIconSize">24</x:Double>
-    <StaticResource x:Key="MdCompButtonMdLabelTextFontFamily" ResourceKey="MdSysTypeScaleTitleMediumFontFamily" />
-    <StaticResource x:Key="MdCompButtonMdLabelTextWeight" ResourceKey="MdSysTypeScaleTitleMediumWeight" />
-    <StaticResource x:Key="MdCompButtonMdLabelTextSize" ResourceKey="MdSysTypeScaleTitleMediumSize" />
-    <StaticResource x:Key="MdCompButtonMdLabelTextLineHeight" ResourceKey="MdSysTypeScaleTitleMediumLineHeight" />
-    <StaticResource x:Key="MdCompButtonMdLabelTextTracking" ResourceKey="MdSysTypeScaleTitleMediumTracking" />
-    <StaticResource x:Key="MdCompButtonMdLeadingSpace" ResourceKey="MdSysSpacing300" />
-    <StaticResource x:Key="MdCompButtonMdVerticalSpace" ResourceKey="MdSysSpacing0" />
-    <StaticResource x:Key="MdCompButtonMdTrailingSpace" ResourceKey="MdSysSpacing300" />
-    <StaticResource x:Key="MdCompButtonMdBetweenIconLabelSpace" ResourceKey="MdSysSpacing100" />
-    
+    <tokens:TokenAlias x:Key="MdCompButtonMdLabelTextFontFamily" ResourceKey="MdSysTypeScaleTitleMediumFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompButtonMdLabelTextWeight" ResourceKey="MdSysTypeScaleTitleMediumWeight" />
+    <tokens:TokenAlias x:Key="MdCompButtonMdLabelTextSize" ResourceKey="MdSysTypeScaleTitleMediumSize" />
+    <tokens:TokenAlias x:Key="MdCompButtonMdLabelTextLineHeight" ResourceKey="MdSysTypeScaleTitleMediumLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompButtonMdLabelTextTracking" ResourceKey="MdSysTypeScaleTitleMediumTracking" />
+    <tokens:TokenAlias x:Key="MdCompButtonMdLeadingSpace" ResourceKey="MdSysSpacing300" />
+    <tokens:TokenAlias x:Key="MdCompButtonMdVerticalSpace" ResourceKey="MdSysSpacing0" />
+    <tokens:TokenAlias x:Key="MdCompButtonMdTrailingSpace" ResourceKey="MdSysSpacing300" />
+    <tokens:TokenAlias x:Key="MdCompButtonMdBetweenIconLabelSpace" ResourceKey="MdSysSpacing100" />
+
     <!-- Size Large -->
     <x:Double x:Key="MdCompButtonLgContainerHeight">96</x:Double>
     <Thickness x:Key="MdCompButtonLgOutlineWidth">2</Thickness>
     <x:Double x:Key="MdCompButtonLgIconSize">32</x:Double>
-    <StaticResource x:Key="MdCompButtonLgLabelTextFontFamily" ResourceKey="MdSysTypeScaleHeadlineSmallFontFamily" />
-    <StaticResource x:Key="MdCompButtonLgLabelTextWeight" ResourceKey="MdSysTypeScaleHeadlineSmallWeight" />
-    <StaticResource x:Key="MdCompButtonLgLabelTextSize" ResourceKey="MdSysTypeScaleHeadlineSmallSize" />
-    <StaticResource x:Key="MdCompButtonLgLabelTextLineHeight" ResourceKey="MdSysTypeScaleHeadlineSmallLineHeight" />
-    <StaticResource x:Key="MdCompButtonLgLabelTextTracking" ResourceKey="MdSysTypeScaleHeadlineSmallTracking" />
-    <StaticResource x:Key="MdCompButtonLgLeadingSpace" ResourceKey="MdSysSpacing600" />
-    <StaticResource x:Key="MdCompButtonLgVerticalSpace" ResourceKey="MdSysSpacing0" />
-    <StaticResource x:Key="MdCompButtonLgTrailingSpace" ResourceKey="MdSysSpacing600" />
-    <StaticResource x:Key="MdCompButtonLgBetweenIconLabelSpace" ResourceKey="MdSysSpacing150" />
-    
+    <tokens:TokenAlias x:Key="MdCompButtonLgLabelTextFontFamily" ResourceKey="MdSysTypeScaleHeadlineSmallFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompButtonLgLabelTextWeight" ResourceKey="MdSysTypeScaleHeadlineSmallWeight" />
+    <tokens:TokenAlias x:Key="MdCompButtonLgLabelTextSize" ResourceKey="MdSysTypeScaleHeadlineSmallSize" />
+    <tokens:TokenAlias x:Key="MdCompButtonLgLabelTextLineHeight" ResourceKey="MdSysTypeScaleHeadlineSmallLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompButtonLgLabelTextTracking" ResourceKey="MdSysTypeScaleHeadlineSmallTracking" />
+    <tokens:TokenAlias x:Key="MdCompButtonLgLeadingSpace" ResourceKey="MdSysSpacing600" />
+    <tokens:TokenAlias x:Key="MdCompButtonLgVerticalSpace" ResourceKey="MdSysSpacing0" />
+    <tokens:TokenAlias x:Key="MdCompButtonLgTrailingSpace" ResourceKey="MdSysSpacing600" />
+    <tokens:TokenAlias x:Key="MdCompButtonLgBetweenIconLabelSpace" ResourceKey="MdSysSpacing150" />
+
     <!-- Size Extra Large -->
     <x:Double x:Key="MdCompButtonXlContainerHeight">136</x:Double>
     <Thickness x:Key="MdCompButtonXlOutlineWidth">3</Thickness>
     <x:Double x:Key="MdCompButtonXlIconSize">40</x:Double>
-    <StaticResource x:Key="MdCompButtonXlLabelTextFontFamily" ResourceKey="MdSysTypeScaleHeadlineLargeFontFamily" />
-    <StaticResource x:Key="MdCompButtonXlLabelTextWeight" ResourceKey="MdSysTypeScaleHeadlineLargeWeight" />
-    <StaticResource x:Key="MdCompButtonXlLabelTextSize" ResourceKey="MdSysTypeScaleHeadlineLargeSize" />
-    <StaticResource x:Key="MdCompButtonXlLabelTextLineHeight" ResourceKey="MdSysTypeScaleHeadlineLargeLineHeight" />
-    <StaticResource x:Key="MdCompButtonXlLabelTextTracking" ResourceKey="MdSysTypeScaleHeadlineLargeTracking" />
-    <StaticResource x:Key="MdCompButtonXlLeadingSpace" ResourceKey="MdSysSpacing800" />
-    <StaticResource x:Key="MdCompButtonXlVerticalSpace" ResourceKey="MdSysSpacing0" />
-    <StaticResource x:Key="MdCompButtonXlTrailingSpace" ResourceKey="MdSysSpacing800" />
-    <StaticResource x:Key="MdCompButtonXlBetweenIconLabelSpace" ResourceKey="MdSysSpacing200" />
-    
-    <StaticResource x:Key="MdCompButtonDisabledContainerBrush" ResourceKey="MdSysOnSurfaceBrush" />
-    <StaticResource x:Key="MdCompButtonDisabledOutlineBrush" ResourceKey="MdSysOutlineVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonXlLabelTextFontFamily" ResourceKey="MdSysTypeScaleHeadlineLargeFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompButtonXlLabelTextWeight" ResourceKey="MdSysTypeScaleHeadlineLargeWeight" />
+    <tokens:TokenAlias x:Key="MdCompButtonXlLabelTextSize" ResourceKey="MdSysTypeScaleHeadlineLargeSize" />
+    <tokens:TokenAlias x:Key="MdCompButtonXlLabelTextLineHeight" ResourceKey="MdSysTypeScaleHeadlineLargeLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompButtonXlLabelTextTracking" ResourceKey="MdSysTypeScaleHeadlineLargeTracking" />
+    <tokens:TokenAlias x:Key="MdCompButtonXlLeadingSpace" ResourceKey="MdSysSpacing800" />
+    <tokens:TokenAlias x:Key="MdCompButtonXlVerticalSpace" ResourceKey="MdSysSpacing0" />
+    <tokens:TokenAlias x:Key="MdCompButtonXlTrailingSpace" ResourceKey="MdSysSpacing800" />
+    <tokens:TokenAlias x:Key="MdCompButtonXlBetweenIconLabelSpace" ResourceKey="MdSysSpacing200" />
+
+    <tokens:TokenAlias x:Key="MdCompButtonDisabledContainerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonDisabledOutlineBrush" ResourceKey="MdSysOutlineVariantBrush" />
     <x:Double x:Key="MdCompButtonDisabledContainerOpacity">0.1</x:Double>
-    <StaticResource x:Key="MdCompButtonDisabledLabelBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonDisabledLabelBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompButtonDisabledLabelOpacity">0.38</x:Double>
-    
+
     <Thickness x:Key="MdCompButtonFocusRingThickness">3</Thickness>
     <Thickness x:Key="MdCompButtonFocusRingOffset">2</Thickness>
-    <StaticResource x:Key="MdCompButtonFocusRingBrush" ResourceKey="MdSysSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompButtonFocusRingBrush" ResourceKey="MdSysSecondaryBrush" />
 </ResourceDictionary>

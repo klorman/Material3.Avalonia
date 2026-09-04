@@ -1,156 +1,157 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers">
+                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup">
     <ControlTheme x:Key="{x:Type TextBlock}"
                   TargetType="TextBlock">
         <Style Selector="^[(helpers|Typography.TextStyle)=DisplayLarge]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplayLargeLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplayLargeTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleDisplayLargeLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleDisplayLargeTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=DisplayMedium]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplayMediumLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplayMediumTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleDisplayMediumLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleDisplayMediumTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=DisplaySmall]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplaySmallLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplaySmallTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleDisplaySmallLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleDisplaySmallTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=HeadlineLarge]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineLargeLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineLargeTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleHeadlineLargeLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleHeadlineLargeTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=HeadlineMedium]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineMediumLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineMediumTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleHeadlineMediumLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleHeadlineMediumTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=HeadlineSmall]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineSmallLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineSmallTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleHeadlineSmallLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleHeadlineSmallTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=TitleLarge]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleLargeLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleLargeTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleTitleLargeLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleTitleLargeTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=TitleMedium]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleMediumLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleMediumTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleTitleMediumLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleTitleMediumTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=TitleSmall]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleSmallLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleSmallTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleTitleSmallLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleTitleSmallTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=BodyLarge]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodyLargeLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodyLargeTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleBodyLargeLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleBodyLargeTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=BodyMedium]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodyMediumLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodyMediumTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleBodyMediumLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleBodyMediumTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=BodySmall]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodySmallLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodySmallTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleBodySmallLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleBodySmallTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=LabelLarge]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelLargeLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelLargeTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleLabelLargeLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleLabelLargeTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=LabelMedium]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelMediumLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelMediumTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleLabelMediumLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleLabelMediumTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=LabelSmall]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelSmallLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelSmallTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleLabelSmallLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleLabelSmallTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=EmphasizedDisplayLarge]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplayLargeLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplayLargeTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleDisplayLargeLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleDisplayLargeTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=EmphasizedDisplayMedium]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplayMediumLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplayMediumTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleDisplayMediumLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleDisplayMediumTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=EmphasizedDisplaySmall]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleDisplaySmallLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleDisplaySmallTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleDisplaySmallLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleDisplaySmallTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=EmphasizedHeadlineLarge]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineLargeLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineLargeTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleHeadlineLargeLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleHeadlineLargeTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=EmphasizedHeadlineMedium]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineMediumLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineMediumTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleHeadlineMediumLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleHeadlineMediumTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=EmphasizedHeadlineSmall]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleHeadlineSmallLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleHeadlineSmallTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleHeadlineSmallLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleHeadlineSmallTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=EmphasizedTitleLarge]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleLargeLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleLargeTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleTitleLargeLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleTitleLargeTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=EmphasizedTitleMedium]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleMediumLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleMediumTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleTitleMediumLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleTitleMediumTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=EmphasizedTitleSmall]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleTitleSmallLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleTitleSmallTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleTitleSmallLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleTitleSmallTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=EmphasizedBodyLarge]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodyLargeLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodyLargeTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleBodyLargeLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleBodyLargeTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=EmphasizedBodyMedium]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodyMediumLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodyMediumTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleBodyMediumLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleBodyMediumTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=EmphasizedBodySmall]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleBodySmallLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleBodySmallTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleBodySmallLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleBodySmallTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=EmphasizedLabelLarge]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelLargeLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelLargeTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleLabelLargeLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleLabelLargeTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=EmphasizedLabelMedium]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelMediumLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelMediumTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleLabelMediumLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleLabelMediumTracking}" />
         </Style>
         
         <Style Selector="^[(helpers|Typography.TextStyle)=EmphasizedLabelSmall]">
-            <Setter Property="LineHeight" Value="{DynamicResource MdSysTypeScaleLabelSmallLineHeight}" />
-            <Setter Property="LetterSpacing" Value="{DynamicResource MdSysTypeScaleLabelSmallTracking}" />
+            <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleLabelSmallLineHeight}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleLabelSmallTracking}" />
         </Style>
 
         
