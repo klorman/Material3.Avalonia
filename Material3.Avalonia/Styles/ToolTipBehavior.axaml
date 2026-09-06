@@ -1,0 +1,20 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
+        xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls">
+    <Style Selector=":is(TopLevel):not(PopupRoot)">
+        <Setter Property="controls:ToolTipAssist.IsMaterialBehaviorEnabled" Value="True" />
+    </Style>
+    <Style Selector=":is(Control)">
+        <Setter Property="ToolTip.Placement" Value="Top" />
+    </Style>
+    <Style Selector=":is(Control):not(TextBlock):not(SelectableTextBlock):not(Label)">
+        <Setter Property="ToolTip.VerticalOffset">
+            <MultiBinding Converter="{x:Static internal:ToolTipPlacement.PlainOffset}">
+                <DynamicResource ResourceKey="MdImplPlainToolTipAnchorGap" />
+                <Binding RelativeSource="{RelativeSource Self}" />
+                <Binding Path="(ToolTip.Placement)" RelativeSource="{RelativeSource Self}" />
+            </MultiBinding>
+        </Setter>
+    </Style>
+</Styles>

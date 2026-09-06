@@ -1,5 +1,6 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
                       xmlns:controls="clr-namespace:Material3.Avalonia.Controls"
                       xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
                       xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
@@ -7,6 +8,7 @@
                       xmlns:attachedControls="clr-namespace:Material3.Avalonia.Attached.Controls"
                       xmlns:attached="clr-namespace:Material3.Avalonia.Attached">
     <ControlTheme x:Key="{x:Type controls:Card}" TargetType="controls:Card">
+        <Setter Property="internal:HoverState.IsEnabled" Value="True" />
         <Setter Property="ClipToBounds" Value="False" />
         <Setter Property="Focusable" Value="{Binding $self.IsInteractive}" />
         <Setter Property="CornerRadius" Value="{markup:Token MdSysShapeCornerMedium}" />
@@ -54,7 +56,7 @@
             <Setter Property="Opacity" Value="{markup:Token MdSysStateFocusOpacity}" />
         </Style>
 
-        <Style Selector="^[IsInteractive=True]:pointerover:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+        <Style Selector="^[IsInteractive=True].m3-hovered:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
             <Setter Property="Opacity" Value="{markup:Token MdSysStatePointerOverOpacity}" />
         </Style>
 
@@ -69,7 +71,7 @@
             <Style Selector="^[IsInteractive=True]:focus-visible /template/ Border#PART_Outline">
                 <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel1}" />
             </Style>
-            <Style Selector="^[IsInteractive=True]:pointerover:not(:pressed):not(:disabled) /template/ Border#PART_Outline">
+            <Style Selector="^[IsInteractive=True].m3-hovered:not(:pressed):not(:disabled) /template/ Border#PART_Outline">
                 <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
             <Style Selector="^[IsInteractive=True]:pressed /template/ Border#PART_Outline">
@@ -99,7 +101,7 @@
             <Style Selector="^[IsInteractive=True]:focus-visible /template/ Border#PART_Outline">
                 <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
-            <Style Selector="^[IsInteractive=True]:pointerover:not(:pressed):not(:disabled) /template/ Border#PART_Outline">
+            <Style Selector="^[IsInteractive=True].m3-hovered:not(:pressed):not(:disabled) /template/ Border#PART_Outline">
                 <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel1}" />
             </Style>
             <Style Selector="^[IsInteractive=True]:pressed /template/ Border#PART_Outline">
@@ -130,7 +132,7 @@
             <Style Selector="^[IsInteractive=True]:focus-visible /template/ Border#PART_Outline">
                 <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
             </Style>
-            <Style Selector="^[IsInteractive=True]:pointerover:not(:pressed):not(:disabled) /template/ Border#PART_Outline">
+            <Style Selector="^[IsInteractive=True].m3-hovered:not(:pressed):not(:disabled) /template/ Border#PART_Outline">
                 <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel1}" />
             </Style>
             <Style Selector="^[IsInteractive=True]:pressed /template/ Border#PART_Outline">

@@ -1,6 +1,5 @@
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Input;
 
 namespace Material3.Avalonia.Attached.Controls;
 
@@ -26,13 +25,7 @@ public enum TextFieldVariant
 public static class TextFieldAssist
 {
     private const string HasLabelClass = "m3-text-field-has-label";
-    private const string HoverClass = "m3-text-field-hover";
     private const string ManualErrorClass = "m3-text-field-manual-error";
-
-    private static readonly AttachedProperty<Point?> LastPointerPositionProperty =
-        AvaloniaProperty.RegisterAttached<TextBox, Point?>(
-            "LastPointerPosition",
-            typeof(TextFieldAssist));
 
     static TextFieldAssist()
     {
@@ -50,49 +43,7 @@ public static class TextFieldAssist
                     textBox,
                     ManualErrorClass,
                     change.GetNewValue<bool>()));
-
-        InputElement.PointerEnteredEvent.AddClassHandler<TextBox>(
-            static (textBox, e) => UpdateHoverClass(textBox, e),
-            handledEventsToo: true);
-
-        InputElement.PointerExitedEvent.AddClassHandler<TextBox>(
-            static (textBox, e) => UpdateHoverClass(textBox, e),
-            handledEventsToo: true);
-
-        InputElement.PointerMovedEvent.AddClassHandler<TextBox>(
-            static (textBox, e) =>
-            {
-                if (e.Pointer.Captured is not null || e.GetCurrentPoint(textBox).Properties.IsLeftButtonPressed)
-                {
-                    UpdateHoverClass(textBox, e);
-                }
-            },
-            handledEventsToo: true);
-
-        InputElement.PointerReleasedEvent.AddClassHandler<TextBox>(
-            static (textBox, e) => UpdateHoverClass(textBox, e),
-            handledEventsToo: true);
-
-        InputElement.PointerCaptureLostEvent.AddClassHandler<TextBox>(
-            static (textBox, _) => UpdateHoverClassFromLastPointerPosition(textBox),
-            handledEventsToo: true);
     }
-
-    private static void UpdateHoverClass(TextBox textBox, PointerEventArgs e)
-    {
-        var position = e.GetPosition(textBox);
-        textBox.SetValue(LastPointerPositionProperty, position);
-        SetPresentationClass(textBox, HoverClass, IsInsideBounds(textBox, position));
-    }
-
-    private static void UpdateHoverClassFromLastPointerPosition(TextBox textBox)
-    {
-        var position = textBox.GetValue(LastPointerPositionProperty);
-        SetPresentationClass(textBox, HoverClass, position.HasValue && IsInsideBounds(textBox, position.Value));
-    }
-
-    private static bool IsInsideBounds(TextBox textBox, Point position) =>
-        new Rect(textBox.Bounds.Size).ContainsExclusive(position);
 
     private static void SetPresentationClass(TextBox textBox, string className, bool value)
     {

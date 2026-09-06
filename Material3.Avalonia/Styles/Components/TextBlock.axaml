@@ -1,9 +1,19 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:tooltipInternal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers"
                     xmlns:markup="clr-namespace:Material3.Avalonia.Markup">
     <ControlTheme x:Key="{x:Type TextBlock}"
                   TargetType="TextBlock">
+        <Setter Property="ToolTip.VerticalOffset">
+            <MultiBinding Converter="{x:Static tooltipInternal:ToolTipPlacement.PlainOffset}"
+                          ConverterParameter="MdImplPlainToolTipUnboundedAnchorGap">
+                <DynamicResource ResourceKey="MdImplPlainToolTipUnboundedAnchorGap" />
+                <Binding RelativeSource="{RelativeSource Self}" />
+                <Binding Path="(ToolTip.Placement)" RelativeSource="{RelativeSource Self}" />
+            </MultiBinding>
+        </Setter>
+
         <Style Selector="^[(helpers|Typography.TextStyle)=DisplayLarge]">
             <Setter Property="LineHeight" Value="{markup:Token MdSysTypeScaleDisplayLargeLineHeight}" />
             <Setter Property="LetterSpacing" Value="{markup:Token MdSysTypeScaleDisplayLargeTracking}" />

@@ -1,5 +1,6 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
                     xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls"
                     xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers"
                     xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
@@ -17,6 +18,7 @@
 
     <ControlTheme x:Key="{x:Type TextBox}"
                   TargetType="TextBox">
+        <Setter Property="internal:HoverState.IsEnabled" Value="True" />
 
         <!-- Behavior -->
         <Setter Property="FocusAdorner" Value="{x:Null}" />
@@ -788,33 +790,33 @@
             </Style>
 
             <!-- Hover: the state layer remains visible while focused; focus colors still override content colors. -->
-            <Style Selector="^:pointerover:not(:disabled) /template/ primitives|StateLayer#PART_FilledStateLayer, ^.m3-text-field-hover:not(:disabled) /template/ primitives|StateLayer#PART_FilledStateLayer">
+            <Style Selector="^.m3-hovered:not(:disabled) /template/ primitives|StateLayer#PART_FilledStateLayer">
                 <Setter Property="Brush" Value="{markup:Token MdCompFilledTextFieldHoverStateLayerBrush}" />
                 <Setter Property="Opacity" Value="{markup:Token MdCompFilledTextFieldHoverStateLayerOpacity}" />
             </Style>
-            <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ primitives|TextFieldIndicatorLine#PART_FilledIndicator">
+            <Style Selector="^.m3-hovered:not(:disabled):not(:focus) /template/ primitives|TextFieldIndicatorLine#PART_FilledIndicator">
                 <Setter Property="Brush" Value="{markup:Token MdCompFilledTextFieldHoverActiveIndicatorBrush}" />
                 <Setter Property="Thickness" Value="{markup:Token MdCompFilledTextFieldHoverActiveIndicatorHeight}" />
             </Style>
-            <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter">
+            <Style Selector="^.m3-hovered:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter">
                 <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldHoverInputTextBrush}" />
             </Style>
-            <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_FilledFloatingLabel">
+            <Style Selector="^.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_FilledFloatingLabel">
                 <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldHoverLabelTextBrush}" />
             </Style>
-            <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent">
+            <Style Selector="^.m3-hovered:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent">
                 <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldHoverLeadingIconBrush}" />
             </Style>
-            <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon">
+            <Style Selector="^.m3-hovered:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon">
                 <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldHoverLeadingIconBrush}" />
             </Style>
-            <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent">
+            <Style Selector="^.m3-hovered:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent">
                 <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldHoverTrailingIconBrush}" />
             </Style>
-            <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon">
+            <Style Selector="^.m3-hovered:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon">
                 <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldHoverTrailingIconBrush}" />
             </Style>
-            <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter">
+            <Style Selector="^.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter">
                 <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldHoverSupportingTextBrush}" />
             </Style>
 
@@ -873,33 +875,33 @@
             </Style>
 
             <!-- Error + Hover. -->
-            <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ primitives|TextFieldIndicatorLine#PART_FilledIndicator, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ primitives|TextFieldIndicatorLine#PART_FilledIndicator">
+            <Style Selector="^:error.m3-hovered:not(:disabled):not(:focus) /template/ primitives|TextFieldIndicatorLine#PART_FilledIndicator, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ primitives|TextFieldIndicatorLine#PART_FilledIndicator">
                 <Setter Property="Brush" Value="{markup:Token MdCompFilledTextFieldErrorHoverActiveIndicatorBrush}" />
                 <Setter Property="Thickness" Value="{markup:Token MdCompFilledTextFieldHoverActiveIndicatorHeight}" />
             </Style>
-            <Style Selector="^:error:pointerover:not(:disabled) /template/ primitives|StateLayer#PART_FilledStateLayer, ^.m3-text-field-hover:error:not(:disabled) /template/ primitives|StateLayer#PART_FilledStateLayer, ^.m3-text-field-manual-error:pointerover:not(:disabled) /template/ primitives|StateLayer#PART_FilledStateLayer, ^.m3-text-field-manual-error.m3-text-field-hover:not(:disabled) /template/ primitives|StateLayer#PART_FilledStateLayer">
+            <Style Selector="^:error.m3-hovered:not(:disabled) /template/ primitives|StateLayer#PART_FilledStateLayer, ^.m3-hovered:error:not(:disabled) /template/ primitives|StateLayer#PART_FilledStateLayer, ^.m3-text-field-manual-error.m3-hovered:not(:disabled) /template/ primitives|StateLayer#PART_FilledStateLayer">
                 <Setter Property="Brush" Value="{markup:Token MdCompFilledTextFieldErrorHoverStateLayerBrush}" />
                 <Setter Property="Opacity" Value="{markup:Token MdCompFilledTextFieldErrorHoverStateLayerOpacity}" />
             </Style>
-            <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter">
+            <Style Selector="^:error.m3-hovered:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter">
                 <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldErrorHoverInputTextBrush}" />
             </Style>
-            <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^:error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_FilledFloatingLabel, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_FilledFloatingLabel">
+            <Style Selector="^:error.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^:error.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_FilledFloatingLabel, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_FilledFloatingLabel">
                 <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldErrorHoverLabelTextBrush}" />
             </Style>
-            <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent">
+            <Style Selector="^:error.m3-hovered:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent">
                 <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldErrorHoverLeadingIconBrush}" />
             </Style>
-            <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon">
+            <Style Selector="^:error.m3-hovered:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon">
                 <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldErrorHoverLeadingIconBrush}" />
             </Style>
-            <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent">
+            <Style Selector="^:error.m3-hovered:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent">
                 <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompFilledTextFieldErrorHoverTrailingIconBrush}" />
             </Style>
-            <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon">
+            <Style Selector="^:error.m3-hovered:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon">
                 <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldErrorHoverTrailingIconBrush}" />
             </Style>
-            <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^:error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter">
+            <Style Selector="^:error.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^:error.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter">
                 <Setter Property="Foreground" Value="{markup:Token MdCompFilledTextFieldErrorHoverSupportingTextBrush}" />
             </Style>
 
@@ -1140,29 +1142,29 @@
             </Style>
 
             <!-- Hover. -->
-            <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ primitives|NotchedOutline#PART_OutlinedOutline">
+            <Style Selector="^.m3-hovered:not(:disabled):not(:focus) /template/ primitives|NotchedOutline#PART_OutlinedOutline">
                 <Setter Property="Stroke" Value="{markup:Token MdCompOutlinedTextFieldHoverOutlineBrush}" />
                 <Setter Property="StrokeThickness" Value="{markup:Token MdCompOutlinedTextFieldHoverOutlineWidth}" />
             </Style>
-            <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter">
+            <Style Selector="^.m3-hovered:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter">
                 <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldHoverInputTextBrush}" />
             </Style>
-            <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_OutlinedFloatingLabel">
+            <Style Selector="^.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_OutlinedFloatingLabel">
                 <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldHoverLabelTextBrush}" />
             </Style>
-            <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent">
+            <Style Selector="^.m3-hovered:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent">
                 <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldHoverLeadingIconBrush}" />
             </Style>
-            <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon">
+            <Style Selector="^.m3-hovered:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon">
                 <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldHoverLeadingIconBrush}" />
             </Style>
-            <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent">
+            <Style Selector="^.m3-hovered:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent">
                 <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldHoverTrailingIconBrush}" />
             </Style>
-            <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon">
+            <Style Selector="^.m3-hovered:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon">
                 <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldHoverTrailingIconBrush}" />
             </Style>
-            <Style Selector="^:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter">
+            <Style Selector="^.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter">
                 <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldHoverSupportingTextBrush}" />
             </Style>
 
@@ -1221,29 +1223,29 @@
             </Style>
 
             <!-- Error + Hover. -->
-            <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ primitives|NotchedOutline#PART_OutlinedOutline, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ primitives|NotchedOutline#PART_OutlinedOutline">
+            <Style Selector="^:error.m3-hovered:not(:disabled):not(:focus) /template/ primitives|NotchedOutline#PART_OutlinedOutline, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ primitives|NotchedOutline#PART_OutlinedOutline">
                 <Setter Property="Stroke" Value="{markup:Token MdCompOutlinedTextFieldErrorHoverOutlineBrush}" />
                 <Setter Property="StrokeThickness" Value="{markup:Token MdCompOutlinedTextFieldHoverOutlineWidth}" />
             </Style>
-            <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter">
+            <Style Selector="^:error.m3-hovered:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ TextPresenter#PART_TextPresenter">
                 <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorHoverInputTextBrush}" />
             </Style>
-            <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^:error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_OutlinedFloatingLabel, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_OutlinedFloatingLabel">
+            <Style Selector="^:error.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^:error.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_OutlinedFloatingLabel, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_RestingLabel, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_OutlinedFloatingLabel">
                 <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorHoverLabelTextBrush}" />
             </Style>
-            <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent">
+            <Style Selector="^:error.m3-hovered:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ ContentPresenter#PART_LeadingContent">
                 <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorHoverLeadingIconBrush}" />
             </Style>
-            <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon">
+            <Style Selector="^:error.m3-hovered:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_LeadingIcon">
                 <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorHoverLeadingIconBrush}" />
             </Style>
-            <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent">
+            <Style Selector="^:error.m3-hovered:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ ContentPresenter#PART_TrailingContent">
                 <Setter Property="TextElement.Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorHoverTrailingIconBrush}" />
             </Style>
-            <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon">
+            <Style Selector="^:error.m3-hovered:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ primitives|IconPresenter#PART_TrailingIcon">
                 <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorHoverTrailingIconBrush}" />
             </Style>
-            <Style Selector="^:error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^:error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^.m3-text-field-manual-error:pointerover:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter">
+            <Style Selector="^:error.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^:error.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_SupportingText, ^.m3-text-field-manual-error.m3-hovered:not(:disabled):not(:focus) /template/ TextBlock#PART_CharacterCounter">
                 <Setter Property="Foreground" Value="{markup:Token MdCompOutlinedTextFieldErrorHoverSupportingTextBrush}" />
             </Style>
 

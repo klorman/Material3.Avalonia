@@ -1,4 +1,5 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:tooltipInternal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:markup="clr-namespace:Material3.Avalonia.Markup">
     <MenuFlyout x:Key="SelectableTextBlockContextFlyout"
@@ -12,6 +13,15 @@
     <ControlTheme x:Key="{x:Type SelectableTextBlock}"
                   TargetType="SelectableTextBlock"
                   BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="ToolTip.VerticalOffset">
+            <MultiBinding Converter="{x:Static tooltipInternal:ToolTipPlacement.PlainOffset}"
+                          ConverterParameter="MdImplPlainToolTipUnboundedAnchorGap">
+                <DynamicResource ResourceKey="MdImplPlainToolTipUnboundedAnchorGap" />
+                <Binding RelativeSource="{RelativeSource Self}" />
+                <Binding Path="(ToolTip.Placement)" RelativeSource="{RelativeSource Self}" />
+            </MultiBinding>
+        </Setter>
+
         <Setter Property="SelectionBrush" Value="{markup:Token MdImplTextSelectionBrush}" />
 
         <Style Selector="^[IsEnabled=True]">

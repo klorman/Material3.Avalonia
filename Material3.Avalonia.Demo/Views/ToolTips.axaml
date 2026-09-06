@@ -1,0 +1,141 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:assist="clr-namespace:Material3.Avalonia.Attached.Controls;assembly=Material3.Avalonia"
+             xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
+             xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
+             x:Class="Material3.Avalonia.Demo.Views.ToolTips">
+    <StackPanel Width="744"
+                Margin="{markup:DynamicThickness MdSysSpacing300}"
+                Spacing="{markup:Token MdSysSpacing200}">
+        <TextBlock Text="ToolTips and flyouts" helpers:Typography.TextStyle="HeadlineMedium" />
+        <TextBlock Text="Hover, use Tab, or hold on touch. Move into a rich tooltip to use its actions. Escape dismisses it."
+                   TextWrapping="Wrap" />
+
+        <StackPanel Orientation="Horizontal" Spacing="{markup:Token MdSysSpacing150}">
+            <Button x:Name="PopupHostButton" Content="Popup host: platform" Click="TogglePopupHost" />
+            <TextBlock x:Name="ActualPopupHost" Text="Open a tooltip to see its host" VerticalAlignment="Center" />
+        </StackPanel>
+
+        <TextBlock Text="Plain tooltips" helpers:Typography.TextStyle="TitleMedium" />
+        <WrapPanel>
+            <Button Content="Short label" ToolTip.Tip="Save changes" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="Long text" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}"
+                    ToolTip.Tip="Longer localized text wraps without clipping or forcing a fixed tooltip height." />
+            <Button Content="Disabled" IsEnabled="False" ToolTip.ShowOnDisabled="True"
+                    ToolTip.Tip="Connect to a workspace before sharing." Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+        </WrapPanel>
+
+        <TextBlock Text="Rich tooltips" helpers:Typography.TextStyle="TitleMedium" />
+        <WrapPanel>
+            <Button Content="Body only" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}">
+                <Button.Flyout>
+                    <Flyout FlyoutPresenterClasses="rich-tooltip">
+                        An explanation with no subhead or actions.
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <Button Content="Subhead and body" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}">
+                <Button.Flyout>
+                    <Flyout assist:FlyoutAssist.Variant="RichToolTip"
+                            assist:FlyoutAssist.Subhead="Shared workspace">
+                        Keep your team's documents together in one workspace.
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <Button Content="One action" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}">
+                <Button.Flyout>
+                    <Flyout FlyoutPresenterClasses="rich-tooltip">
+                        <assist:FlyoutAssist.Actions>
+                            <Button Content="Got it" Click="DismissToolTip" />
+                        </assist:FlyoutAssist.Actions>
+                        This rich tooltip has an action and no subhead.
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <Button Content="Two actions" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}">
+                <Button.Flyout>
+                    <Flyout FlyoutPresenterClasses="rich-tooltip"
+                            assist:FlyoutAssist.Subhead="Share your work">
+                        <assist:FlyoutAssist.Actions>
+                            <StackPanel Orientation="Horizontal" Spacing="{markup:Token MdSysSpacing100}">
+                                <Button Content="Later" Click="DismissToolTip" />
+                                <Button Content="Learn more" Click="ShowActionResult" />
+                            </StackPanel>
+                        </assist:FlyoutAssist.Actions>
+                        Invite people to view or edit documents in your workspace.
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <Button Content="Persistent · click" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}">
+                <Button.Flyout>
+                    <Flyout FlyoutPresenterClasses="rich-tooltip" ShowMode="Standard"
+                            assist:FlyoutAssist.Subhead="New sharing settings">
+                        <assist:FlyoutAssist.Actions>
+                            <Button Content="Dismiss" Click="DismissToolTip" />
+                        </assist:FlyoutAssist.Actions>
+                        This message stays open when you move the pointer away.
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+        </WrapPanel>
+
+        <Border Background="{markup:Token MdSysSurfaceContainerLowBrush}"
+                CornerRadius="{markup:Token MdSysShapeCornerMedium}"
+                Padding="{markup:DynamicThickness MdSysSpacing200}">
+            <StackPanel Spacing="{markup:Token MdSysSpacing100}" FlowDirection="RightToLeft">
+                <TextBlock Text="RTL / טקסט ארוך" helpers:Typography.TextStyle="TitleMedium" />
+                <Button Content="מידע נוסף" ToolTip.Tip="שמירת השינויים">
+                    <Button.Flyout>
+                        <Flyout FlyoutPresenterClasses="rich-tooltip" assist:FlyoutAssist.Subhead="עבודה משותפת">
+                            <assist:FlyoutAssist.Actions>
+                                <Button Content="סגירה" Click="DismissToolTip" />
+                            </assist:FlyoutAssist.Actions>
+                            הזמינו אנשים נוספים לצפות במסמכים ולערוך אותם יחד.
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <TextBlock Text="Anchor context and triggers" helpers:Typography.TextStyle="TitleMedium" />
+        <TextBlock Text="Hover this text: its theme supplies the larger gap" ToolTip.Tip="Text uses an 8-unit gap." />
+        <WrapPanel>
+            <Button Content="Focus only" ToolTip.Tip="Opened by keyboard navigation."
+                    assist:ToolTipAssist.ShowTriggers="Focus" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="Hover only" ToolTip.Tip="Opened by a hovering pointer."
+                    assist:ToolTipAssist.ShowTriggers="Hover" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="No retained hover" ToolTip.Tip="The anchor follows the pointer immediately."
+                    assist:ToolTipAssist.KeepAnchorHovered="False" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+        </WrapPanel>
+
+        <TextBlock Text="Native overrides and ordinary flyouts" helpers:Typography.TextStyle="TitleMedium" />
+        <WrapPanel>
+            <Button Content="Native tooltip behavior" ToolTip.Tip="Avalonia controls the timing."
+                    assist:ToolTipAssist.IsMaterialBehaviorEnabled="False" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="Right placement" ToolTip.Tip="Explicit placement and delay"
+                    ToolTip.Placement="Right" ToolTip.VerticalOffset="0" ToolTip.ShowDelay="800" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="Ordinary flyout · click" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}">
+                <Button.Flyout>
+                    <Flyout>
+                        <StackPanel Spacing="{markup:Token MdSysSpacing100}">
+                            <TextBlock Text="Display name" />
+                            <TextBox Text="Workspace" />
+                            <Button Content="Apply" Click="DismissToolTip" />
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+        </WrapPanel>
+        <TextBlock x:Name="ActionResult" Text="No action selected" />
+        <Button Content="Hold for context menu" ToolTip.Tip="Hover still shows a tooltip.">
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Native context action" />
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+        <TextBox Text="Touch selection and the native context menu take priority over tooltips."
+                 ToolTip.Tip="Select and edit text normally." />
+        <Button Content="Check screen edges" Click="ShowEdgeWindow" />
+    </StackPanel>
+</UserControl>

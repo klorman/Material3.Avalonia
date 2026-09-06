@@ -1,5 +1,6 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
                       xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls"
                       xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
                       xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
@@ -20,6 +21,7 @@
 
     <ControlTheme x:Key="MaterialScrollBarPageButton"
                   TargetType="RepeatButton">
+        <Setter Property="internal:HoverState.IsEnabled" Value="True" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Cursor" Value="Arrow" />
         <Setter Property="Background" Value="Transparent" />
@@ -32,6 +34,7 @@
 
     <ControlTheme x:Key="MaterialVerticalScrollBarThumb"
                   TargetType="Thumb">
+        <Setter Property="internal:HoverState.IsEnabled" Value="True" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Background" Value="{markup:Token MdSysOnSurfaceVariantBrush}" />
         <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbOpacity}" />
@@ -67,7 +70,7 @@
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^:pointerover">
+        <Style Selector="^.m3-hovered">
             <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbPointerOverOpacity}" />
         </Style>
 
@@ -90,6 +93,7 @@
 
     <ControlTheme x:Key="MaterialHorizontalScrollBarThumb"
                   TargetType="Thumb">
+        <Setter Property="internal:HoverState.IsEnabled" Value="True" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Background" Value="{markup:Token MdSysOnSurfaceVariantBrush}" />
         <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbOpacity}" />
@@ -125,7 +129,7 @@
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^:pointerover">
+        <Style Selector="^.m3-hovered">
             <Setter Property="Opacity" Value="{StaticResource MdImplScrollBarThumbPointerOverOpacity}" />
         </Style>
 
@@ -148,6 +152,7 @@
 
     <ControlTheme x:Key="{x:Type ScrollBar}"
                   TargetType="ScrollBar">
+        <Setter Property="internal:HoverState.IsEnabled" Value="True" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Cursor" Value="Arrow" />
         <Setter Property="Background" Value="Transparent" />

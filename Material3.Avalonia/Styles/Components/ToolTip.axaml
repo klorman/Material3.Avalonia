@@ -1,0 +1,46 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
+                    xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
+                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers"
+                    xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup">
+    <ControlTheme x:Key="{x:Type ToolTip}" TargetType="ToolTip">
+        <Setter Property="internal:ToolTipPresentation.IsEnabled" Value="True" />
+        <Setter Property="helpers:Typography.TextStyle" Value="{x:Null}" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="Background" Value="{markup:Token MdCompPlainToolTipContainerBrush}" />
+        <Setter Property="Foreground" Value="{markup:Token MdCompPlainToolTipSupportingTextBrush}" />
+        <Setter Property="CornerRadius" Value="{markup:Token MdCompPlainToolTipContainerShape}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="MinHeight" Value="{markup:Token MdImplPlainToolTipMinHeight}" />
+        <Setter Property="MinWidth" Value="{markup:Token MdImplPlainToolTipMinWidth}" />
+        <Setter Property="MaxWidth" Value="{markup:Token MdImplPlainToolTipMaxWidth}" />
+        <Setter Property="Padding" Value="{markup:DynamicThickness MdImplPlainToolTipHorizontalPadding MdImplPlainToolTipVerticalPadding}" />
+        <Setter Property="FontFamily" Value="{markup:Token MdCompPlainToolTipSupportingTextFontFamily}" />
+        <Setter Property="FontWeight" Value="{markup:Token MdCompPlainToolTipSupportingTextWeight}" />
+        <Setter Property="FontSize" Value="{markup:Token MdCompPlainToolTipSupportingTextSize}" />
+        <Setter Property="LetterSpacing" Value="{markup:Token MdCompPlainToolTipSupportingTextTracking}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <primitives:ToolTipReveal x:Name="PART_Surface"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Padding="{TemplateBinding Padding}"
+                        helpers:Typography.TextStyle="{x:Null}">
+                    <ContentPresenter x:Name="PART_ContentPresenter"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      TextWrapping="Wrap"
+                                      LineHeight="{markup:Token MdCompPlainToolTipSupportingTextLineHeight}" />
+                </primitives:ToolTipReveal>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

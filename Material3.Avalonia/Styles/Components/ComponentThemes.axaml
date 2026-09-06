@@ -5,6 +5,7 @@
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Button.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Card.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/DataValidationErrors.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/FlyoutPresenter.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/HeaderedContentControl.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ItemsControl.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Label.axaml" />
@@ -16,6 +17,7 @@
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/TextBlock.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/SelectableTextBlock.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/TextBox.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ToolTip.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Window.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

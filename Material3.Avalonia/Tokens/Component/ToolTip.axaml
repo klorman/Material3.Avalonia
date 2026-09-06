@@ -1,0 +1,66 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens">
+    <!-- Plain tooltip -->
+    <tokens:TokenAlias x:Key="MdCompPlainToolTipContainerBrush" ResourceKey="MdSysInverseSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompPlainToolTipContainerShape" ResourceKey="MdSysShapeCornerExtraSmall" />
+    <tokens:TokenAlias x:Key="MdCompPlainToolTipSupportingTextBrush" ResourceKey="MdSysInverseOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompPlainToolTipSupportingTextFontFamily" ResourceKey="MdSysTypeScaleBodySmallFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompPlainToolTipSupportingTextWeight" ResourceKey="MdSysTypeScaleBodySmallWeight" />
+    <tokens:TokenAlias x:Key="MdCompPlainToolTipSupportingTextSize" ResourceKey="MdSysTypeScaleBodySmallSize" />
+    <tokens:TokenAlias x:Key="MdCompPlainToolTipSupportingTextLineHeight" ResourceKey="MdSysTypeScaleBodySmallLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompPlainToolTipSupportingTextTracking" ResourceKey="MdSysTypeScaleBodySmallTracking" />
+
+    <!-- Rich tooltip -->
+    <tokens:TokenAlias x:Key="MdCompRichToolTipContainerBrush" ResourceKey="MdSysSurfaceContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipContainerShape" ResourceKey="MdSysShapeCornerMedium" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipContainerElevation" ResourceKey="MdSysShadowLevel2" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipSubheadBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipSubheadFontFamily" ResourceKey="MdSysTypeScaleTitleSmallFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipSubheadWeight" ResourceKey="MdSysTypeScaleTitleSmallWeight" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipSubheadSize" ResourceKey="MdSysTypeScaleTitleSmallSize" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipSubheadLineHeight" ResourceKey="MdSysTypeScaleTitleSmallLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipSubheadTracking" ResourceKey="MdSysTypeScaleTitleSmallTracking" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipSupportingTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipSupportingTextFontFamily" ResourceKey="MdSysTypeScaleBodyMediumFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipSupportingTextWeight" ResourceKey="MdSysTypeScaleBodyMediumWeight" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipSupportingTextSize" ResourceKey="MdSysTypeScaleBodyMediumSize" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipSupportingTextLineHeight" ResourceKey="MdSysTypeScaleBodyMediumLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipSupportingTextTracking" ResourceKey="MdSysTypeScaleBodyMediumTracking" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipActionLabelTextBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipActionLabelTextFontFamily" ResourceKey="MdSysTypeScaleLabelLargeFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipActionLabelTextWeight" ResourceKey="MdSysTypeScaleLabelLargeWeight" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipActionLabelTextSize" ResourceKey="MdSysTypeScaleLabelLargeSize" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipActionLabelTextLineHeight" ResourceKey="MdSysTypeScaleLabelLargeLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipActionLabelTextTracking" ResourceKey="MdSysTypeScaleLabelLargeTracking" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipActionHoverLabelTextBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipActionHoverStateLayerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipActionHoverStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipActionFocusLabelTextBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipActionFocusStateLayerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipActionFocusStateLayerOpacity" ResourceKey="MdSysStateFocusOpacity" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipActionPressedLabelTextBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipActionPressedStateLayerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompRichToolTipActionPressedStateLayerOpacity" ResourceKey="MdSysStatePressedOpacity" />
+
+    <!-- Layout -->
+    <x:Double x:Key="MdImplPlainToolTipMinHeight">24</x:Double>
+    <x:Double x:Key="MdImplPlainToolTipMinWidth">40</x:Double>
+    <x:Double x:Key="MdImplPlainToolTipMaxWidth">200</x:Double>
+    <tokens:TokenAlias x:Key="MdImplPlainToolTipAnchorGap" ResourceKey="MdSysSpacing50" />
+    <tokens:TokenAlias x:Key="MdImplPlainToolTipUnboundedAnchorGap" ResourceKey="MdSysSpacing100" />
+    <tokens:TokenAlias x:Key="MdImplRichToolTipAnchorGap" ResourceKey="MdSysSpacing100" />
+    <x:Double x:Key="MdImplRichToolTipPositionStep">8</x:Double>
+    <x:Double x:Key="MdImplRichToolTipMaxWidth">320</x:Double>
+    <x:Double x:Key="MdImplFlyoutMaxWidth">456</x:Double>
+    <x:Double x:Key="MdImplFlyoutMaxHeight">758</x:Double>
+    <!-- Reserve the level-2 shadow bounds independently of the anchor gap. -->
+    <Thickness x:Key="MdImplRichToolTipShadowPadding">8,8,8,10</Thickness>
+    <tokens:TokenAlias x:Key="MdImplPlainToolTipHorizontalPadding" ResourceKey="MdSysSpacing100" />
+    <tokens:TokenAlias x:Key="MdImplPlainToolTipVerticalPadding" ResourceKey="MdSysSpacing50" />
+    <tokens:TokenAlias x:Key="MdImplRichToolTipHorizontalPadding" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdImplRichToolTipTopPadding" ResourceKey="MdSysSpacing150" />
+    <tokens:TokenAlias x:Key="MdImplRichToolTipBottomPadding" ResourceKey="MdSysSpacing100" />
+    <tokens:TokenAlias x:Key="MdImplRichToolTipSubheadGap" ResourceKey="MdSysSpacing50" />
+    <tokens:TokenAlias x:Key="MdImplRichToolTipActionsGap" ResourceKey="MdSysSpacing100" />
+</ResourceDictionary>

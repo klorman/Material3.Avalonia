@@ -1,0 +1,140 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
+                    xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
+                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers"
+                    xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
+                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens"
+                    xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives">
+    <ControlTheme x:Key="{x:Type FlyoutPresenter}" TargetType="FlyoutPresenter">
+        <Setter Property="internal:HoverState.IsEnabled" Value="True" />
+        <Setter Property="internal:ToolTipPresentation.IsEnabled" Value="True" />
+        <Setter Property="Background" Value="{markup:Token MdSysSurfaceContainerBrush}" />
+        <Setter Property="CornerRadius" Value="{markup:Token MdSysShapeCornerMedium}" />
+        <Setter Property="controls:ScrollViewerAssist.ScrollBarInset"
+                Value="{Binding $self.CornerRadius, Converter={x:Static converters:ScrollBarConverters.InsetFromCornerRadius}}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="{markup:DynamicThickness MdSysSpacing200}" />
+        <Setter Property="MaxWidth" Value="{markup:Token MdImplFlyoutMaxWidth}" />
+        <Setter Property="MaxHeight" Value="{markup:Token MdImplFlyoutMaxHeight}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                    <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                  VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                        <ContentPresenter x:Name="PART_ContentPresenter"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </ScrollViewer>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Rich tooltip -->
+        <Style Selector="^[(controls|FlyoutAssist.Variant)=RichToolTip]">
+            <Setter Property="helpers:Typography.TextStyle" Value="{x:Null}" />
+            <Setter Property="Cursor" Value="Arrow" />
+            <Setter Property="AutomationProperties.ControlTypeOverride" Value="ToolTip" />
+            <Setter Property="Background" Value="{markup:Token MdCompRichToolTipContainerBrush}" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompRichToolTipSupportingTextBrush}" />
+            <Setter Property="CornerRadius" Value="{markup:Token MdCompRichToolTipContainerShape}" />
+            <Setter Property="MaxWidth" Value="{markup:Token MdImplRichToolTipMaxWidth}" />
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdImplRichToolTipHorizontalPadding MdImplRichToolTipTopPadding MdImplRichToolTipHorizontalPadding MdImplRichToolTipBottomPadding}" />
+            <Setter Property="FontFamily" Value="{markup:Token MdCompRichToolTipSupportingTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{markup:Token MdCompRichToolTipSupportingTextWeight}" />
+            <Setter Property="FontSize" Value="{markup:Token MdCompRichToolTipSupportingTextSize}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdCompRichToolTipSupportingTextTracking}" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <primitives:ToolTipReveal x:Name="PART_Surface"
+                            Margin="{markup:Token MdImplRichToolTipShadowPadding}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            BoxShadow="{markup:Token MdCompRichToolTipContainerElevation}"
+                            helpers:Typography.TextStyle="{x:Null}">
+                        <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                      VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                            <StackPanel Margin="{TemplateBinding Padding}">
+                                <ContentPresenter x:Name="PART_Subhead"
+                                                  Content="{TemplateBinding controls:FlyoutAssist.Subhead}"
+                                                  ContentTemplate="{TemplateBinding controls:FlyoutAssist.SubheadTemplate}"
+                                                  IsVisible="{TemplateBinding controls:FlyoutAssist.Subhead, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                                  Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing0 MdImplRichToolTipSubheadGap}"
+                                                  Foreground="{markup:Token MdCompRichToolTipSubheadBrush}"
+                                                  FontFamily="{markup:Token MdCompRichToolTipSubheadFontFamily}"
+                                                  FontWeight="{markup:Token MdCompRichToolTipSubheadWeight}"
+                                                  FontSize="{markup:Token MdCompRichToolTipSubheadSize}"
+                                                  LineHeight="{markup:Token MdCompRichToolTipSubheadLineHeight}"
+                                                  LetterSpacing="{markup:Token MdCompRichToolTipSubheadTracking}"
+                                                  TextWrapping="Wrap" />
+                                <ContentPresenter x:Name="PART_ContentPresenter"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  LineHeight="{markup:Token MdCompRichToolTipSupportingTextLineHeight}"
+                                                  TextWrapping="Wrap" />
+                                <ContentPresenter x:Name="PART_Actions"
+                                                  Content="{TemplateBinding controls:FlyoutAssist.Actions}"
+                                                  ContentTemplate="{TemplateBinding controls:FlyoutAssist.ActionsTemplate}"
+                                                  IsVisible="{TemplateBinding controls:FlyoutAssist.Actions, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                                  Margin="{markup:DynamicThickness MdSysSpacing0 MdImplRichToolTipActionsGap MdSysSpacing0 MdSysSpacing0}"
+                                                  HorizontalContentAlignment="Left">
+                                    <ContentPresenter.Resources>
+                                        <tokens:TokenAlias x:Key="MdCompButtonTextLabelBrush" ResourceKey="MdCompRichToolTipActionLabelTextBrush" />
+                                        <tokens:TokenAlias x:Key="MdCompButtonSmLabelTextFontFamily" ResourceKey="MdCompRichToolTipActionLabelTextFontFamily" />
+                                        <tokens:TokenAlias x:Key="MdCompButtonSmLabelTextWeight" ResourceKey="MdCompRichToolTipActionLabelTextWeight" />
+                                        <tokens:TokenAlias x:Key="MdCompButtonSmLabelTextSize" ResourceKey="MdCompRichToolTipActionLabelTextSize" />
+                                        <tokens:TokenAlias x:Key="MdCompButtonSmLabelTextLineHeight" ResourceKey="MdCompRichToolTipActionLabelTextLineHeight" />
+                                        <tokens:TokenAlias x:Key="MdCompButtonSmLabelTextTracking" ResourceKey="MdCompRichToolTipActionLabelTextTracking" />
+                                    </ContentPresenter.Resources>
+                                    <ContentPresenter.Styles>
+                                        <Style Selector="Button">
+                                            <Setter Property="controls:ButtonAssist.Variant" Value="Text" />
+                                            <Setter Property="controls:ButtonAssist.Size" Value="Small" />
+                                        </Style>
+                                        <Style Selector="Button.m3-hovered:not(:disabled)">
+                                            <Setter Property="Foreground" Value="{markup:Token MdCompRichToolTipActionHoverLabelTextBrush}" />
+                                        </Style>
+                                        <Style Selector="Button:focus-visible:not(:disabled)">
+                                            <Setter Property="Foreground" Value="{markup:Token MdCompRichToolTipActionFocusLabelTextBrush}" />
+                                        </Style>
+                                        <Style Selector="Button:pressed:not(:disabled)">
+                                            <Setter Property="Foreground" Value="{markup:Token MdCompRichToolTipActionPressedLabelTextBrush}" />
+                                        </Style>
+                                        <Style Selector="Button.m3-hovered:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+                                            <Setter Property="Brush" Value="{markup:Token MdCompRichToolTipActionHoverStateLayerBrush}" />
+                                            <Setter Property="Opacity" Value="{markup:Token MdCompRichToolTipActionHoverStateLayerOpacity}" />
+                                        </Style>
+                                        <Style Selector="Button:focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+                                            <Setter Property="Brush" Value="{markup:Token MdCompRichToolTipActionFocusStateLayerBrush}" />
+                                            <Setter Property="Opacity" Value="{markup:Token MdCompRichToolTipActionFocusStateLayerOpacity}" />
+                                        </Style>
+                                        <Style Selector="Button:not(:disabled) /template/ primitives|InkRipple#PART_Ripple">
+                                            <Setter Property="Brush" Value="{markup:Token MdCompRichToolTipActionPressedStateLayerBrush}" />
+                                            <Setter Property="BaseOpacity" Value="{markup:Token MdCompRichToolTipActionPressedStateLayerOpacity}" />
+                                        </Style>
+                                    </ContentPresenter.Styles>
+                                </ContentPresenter>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </primitives:ToolTipReveal>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
