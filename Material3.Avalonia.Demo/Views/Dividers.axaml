@@ -1,0 +1,137 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:assist="clr-namespace:Material3.Avalonia.Attached.Controls;assembly=Material3.Avalonia"
+             xmlns:controls="clr-namespace:Material3.Avalonia.Controls;assembly=Material3.Avalonia"
+             xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
+             xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
+             xmlns:theme="clr-namespace:Material3.Avalonia.Theme;assembly=Material3.Avalonia"
+             xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens;assembly=Material3.Avalonia"
+             x:Class="Material3.Avalonia.Demo.Views.Dividers">
+    <StackPanel MaxWidth="744"
+                Margin="{markup:DynamicThickness MdSysSpacing300}"
+                Spacing="{markup:Token MdSysSpacing200}">
+        <TextBlock Text="Dividers" helpers:Typography.TextStyle="HeadlineMedium" />
+        <TextBlock Text="Group related content with a subtle line. Use open space when a divider is unnecessary."
+                   TextWrapping="Wrap" />
+
+        <TextBlock Text="Horizontal variants" helpers:Typography.TextStyle="TitleMedium" />
+        <Border Background="{markup:Token MdSysSurfaceContainerLowBrush}">
+            <StackPanel Spacing="{markup:Token MdSysSpacing200}">
+                <TextBlock Text="&lt;Separator /&gt; — full width" Margin="{markup:DynamicThickness MdSysSpacing200 MdSysSpacing0}" />
+                <Separator />
+                <TextBlock Text="Classes=&quot;inset&quot; — start 16" Margin="{markup:DynamicThickness MdSysSpacing200 MdSysSpacing0}" />
+                <Separator Classes="inset" />
+                <TextBlock Text="DividerAssist.Variant=&quot;MiddleInset&quot; — both ends 16"
+                           TextWrapping="Wrap" Margin="{markup:DynamicThickness MdSysSpacing200 MdSysSpacing0}" />
+                <Separator assist:DividerAssist.Variant="MiddleInset" />
+            </StackPanel>
+        </Border>
+
+        <TextBlock Text="Related items and card actions" helpers:Typography.TextStyle="TitleMedium" />
+        <controls:Card IsInteractive="False" Padding="0">
+            <StackPanel>
+                <Grid ColumnDefinitions="40,*" ColumnSpacing="{markup:Token MdSysSpacing200}"
+                      Margin="{markup:DynamicThickness MdSysSpacing200}">
+                    <Border Width="40" Height="40" CornerRadius="20" Background="{markup:Token MdSysPrimaryContainerBrush}">
+                        <TextBlock Text="AL" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="Alex Lee" helpers:Typography.TextStyle="TitleMedium" />
+                        <TextBlock Text="Design review · Today" />
+                    </StackPanel>
+                </Grid>
+                <Separator Classes="inset" assist:DividerAssist.InsetStart="72" />
+                <Grid ColumnDefinitions="40,*" ColumnSpacing="{markup:Token MdSysSpacing200}"
+                      Margin="{markup:DynamicThickness MdSysSpacing200}">
+                    <Border Width="40" Height="40" CornerRadius="20" Background="{markup:Token MdSysSecondaryContainerBrush}">
+                        <TextBlock Text="SK" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="Sam Kim" helpers:Typography.TextStyle="TitleMedium" />
+                        <TextBlock Text="Project notes · Yesterday" />
+                    </StackPanel>
+                </Grid>
+                <Separator />
+                <Button Content="View all messages" Classes="text" HorizontalAlignment="Right"
+                        Margin="{markup:DynamicThickness MdSysSpacing100}" />
+            </StackPanel>
+        </controls:Card>
+
+        <TextBlock Text="Vertical divider in a Grid" helpers:Typography.TextStyle="TitleMedium" />
+        <Grid ColumnDefinitions="*,Auto,*" ColumnSpacing="{markup:Token MdSysSpacing200}">
+            <Border MinHeight="120" Background="{markup:Token MdSysSurfaceContainerHighBrush}"
+                    Padding="{markup:DynamicThickness MdSysSpacing200}">
+                <TextBlock Text="Preview" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Border>
+            <Separator Grid.Column="1" Classes="vertical middle-inset" />
+            <StackPanel Grid.Column="2" Spacing="{markup:Token MdSysSpacing100}">
+                <TextBlock Text="Details" helpers:Typography.TextStyle="TitleMedium" />
+                <TextBlock Text="The row supplies the height. Insets apply to the top and bottom; no fixed divider height is needed."
+                           TextWrapping="Wrap" />
+            </StackPanel>
+        </Grid>
+
+        <TextBlock Text="Try orientation, insets and RTL" helpers:Typography.TextStyle="TitleMedium" />
+        <WrapPanel Orientation="Horizontal">
+            <Button Content="Next variant" Click="ChangeVariant" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="Rotate" Click="ChangeOrientation" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="LTR / RTL" Click="ChangeFlowDirection" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="Start +8" Click="IncreaseStart" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="End +8" Click="IncreaseEnd" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="Reset insets" Click="ResetInsets" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+        </WrapPanel>
+        <TextBlock x:Name="PreviewStatus" TextWrapping="Wrap" helpers:Typography.TextStyle="BodyMedium" />
+        <Grid x:Name="PreviewHost" Height="144" Background="{markup:Token MdSysSurfaceContainerLowBrush}">
+            <Separator x:Name="PreviewDivider" Classes="middle-inset" />
+        </Grid>
+
+        <TextBlock Text="Local tokens and external spacing" helpers:Typography.TextStyle="TitleMedium" />
+        <StackPanel x:Name="TokenScope" Spacing="{markup:Token MdSysSpacing100}">
+            <StackPanel.Resources>
+                <tokens:TokenAlias x:Key="MdCompDividerBrush" ResourceKey="MdSysPrimaryBrush" />
+                <x:Double x:Key="MdCompDividerThickness">2</x:Double>
+            </StackPanel.Resources>
+            <Button Content="Remap color and thickness" Click="RemapTokens" HorizontalAlignment="Left" />
+            <Separator Classes="middle-inset" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing100}" />
+            <TextBlock Text="Margin adds space around the divider. InsetStart / InsetEnd shorten the line; a local Padding overrides them."
+                       TextWrapping="Wrap" />
+        </StackPanel>
+
+        <Grid ColumnDefinitions="*,*" ColumnSpacing="{markup:Token MdSysSpacing200}">
+            <Border Background="{markup:Token MdSysSurfaceBrush}" Padding="{markup:DynamicThickness MdSysSpacing200}">
+                <Border.Styles>
+                    <theme:MaterialTheme Mode="Light" SourceColor="#6750A4" />
+                </Border.Styles>
+                <Border.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceInclude Source="avares://Material3.Avalonia/Tokens/System/Color.axaml" />
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                </Border.Resources>
+                <StackPanel Spacing="{markup:Token MdSysSpacing200}">
+                    <TextBlock Text="Light" Foreground="{markup:Token MdSysOnSurfaceBrush}" />
+                    <Separator Classes="middle-inset" />
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="1" Background="{markup:Token MdSysSurfaceBrush}" Padding="{markup:DynamicThickness MdSysSpacing200}">
+                <Border.Styles>
+                    <theme:MaterialTheme Mode="Dark" SourceColor="#6750A4" />
+                </Border.Styles>
+                <Border.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceInclude Source="avares://Material3.Avalonia/Tokens/System/Color.axaml" />
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                </Border.Resources>
+                <StackPanel Spacing="{markup:Token MdSysSpacing200}">
+                    <TextBlock Text="Dark · disabled parent" Foreground="{markup:Token MdSysOnSurfaceBrush}" TextWrapping="Wrap" />
+                    <StackPanel IsEnabled="False">
+                        <Separator Classes="middle-inset" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,9 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens">
+    <tokens:TokenAlias x:Key="MdCompDividerBrush" ResourceKey="MdSysOutlineVariantBrush" />
+    <x:Double x:Key="MdCompDividerThickness">1</x:Double>
+
+    <!-- M3 specifies a 16dp inset measurement without a component token. -->
+    <tokens:TokenAlias x:Key="MdImplDividerInset" ResourceKey="MdSysSpacing200" />
+</ResourceDictionary>

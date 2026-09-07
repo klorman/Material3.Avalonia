@@ -38,6 +38,8 @@
             <views:Shapes HorizontalAlignment="Center" IsVisible="True" />
 
             <views:Cards HorizontalAlignment="Center" IsVisible="True" />
+
+            <views:Dividers HorizontalAlignment="Stretch" />
         </StackPanel>
     </ScrollViewer>
 </Window>

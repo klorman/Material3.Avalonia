@@ -1,0 +1,76 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:assist="clr-namespace:Material3.Avalonia.Attached.Controls"
+                    xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup">
+    <ControlTheme x:Key="{x:Type Separator}" TargetType="Separator">
+        <Setter Property="Background" Value="{markup:Token MdCompDividerBrush}" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Padding">
+            <MultiBinding Converter="{x:Static converters:DividerInsetConverter.Instance}">
+                <Binding Path="$self.(assist:DividerAssist.Orientation)" />
+                <Binding Path="$self.(assist:DividerAssist.InsetStart)" />
+                <Binding Path="$self.(assist:DividerAssist.InsetEnd)" />
+            </MultiBinding>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Padding="{TemplateBinding Padding}"
+                        ClipToBounds="True">
+                    <Border x:Name="PART_Line"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Size -->
+        <Style Selector="^ /template/ Border#PART_Line">
+            <Setter Property="MinHeight" Value="{markup:Token MdCompDividerThickness}" />
+        </Style>
+
+        <Style Selector="^[(assist|DividerAssist.Orientation)=Vertical]">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Style Selector="^ /template/ Border#PART_Line">
+                <Setter Property="MinHeight" Value="0" />
+                <Setter Property="MinWidth" Value="{markup:Token MdCompDividerThickness}" />
+            </Style>
+        </Style>
+
+        <!-- Variant -->
+        <Style Selector="^[(assist|DividerAssist.Variant)=Inset]">
+            <Setter Property="assist:DividerAssist.InsetStart" Value="{markup:Token MdImplDividerInset}" />
+        </Style>
+
+        <Style Selector="^[(assist|DividerAssist.Variant)=MiddleInset]">
+            <Setter Property="assist:DividerAssist.InsetStart" Value="{markup:Token MdImplDividerInset}" />
+            <Setter Property="assist:DividerAssist.InsetEnd" Value="{markup:Token MdImplDividerInset}" />
+        </Style>
+
+        <!-- Classes -->
+        <Style Selector="^.full-width">
+            <Setter Property="assist:DividerAssist.Variant" Value="FullWidth" />
+        </Style>
+
+        <Style Selector="^.inset">
+            <Setter Property="assist:DividerAssist.Variant" Value="Inset" />
+        </Style>
+
+        <Style Selector="^.middle-inset">
+            <Setter Property="assist:DividerAssist.Variant" Value="MiddleInset" />
+        </Style>
+
+        <Style Selector="^.horizontal">
+            <Setter Property="assist:DividerAssist.Orientation" Value="Horizontal" />
+        </Style>
+
+        <Style Selector="^.vertical">
+            <Setter Property="assist:DividerAssist.Orientation" Value="Vertical" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

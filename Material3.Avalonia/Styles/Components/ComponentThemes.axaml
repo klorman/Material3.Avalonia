@@ -14,6 +14,7 @@
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/PopupRoot.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ScrollBar.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ScrollViewer.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Separator.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/TextBlock.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/SelectableTextBlock.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/TextBox.axaml" />
