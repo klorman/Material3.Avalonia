@@ -1,0 +1,22 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens">
+    <tokens:TokenAlias x:Key="MdCompBadgeBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompBadgeShape" ResourceKey="MdSysShapeCornerFull" />
+    <x:Double x:Key="MdCompBadgeSize">6</x:Double>
+
+    <tokens:TokenAlias x:Key="MdCompBadgeLargeBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompBadgeLargeShape" ResourceKey="MdSysShapeCornerFull" />
+    <x:Double x:Key="MdCompBadgeLargeSize">16</x:Double>
+    <tokens:TokenAlias x:Key="MdCompBadgeLargeLabelTextBrush" ResourceKey="MdSysOnErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompBadgeLargeLabelTextFontFamily" ResourceKey="MdSysTypeScaleLabelSmallFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompBadgeLargeLabelTextSize" ResourceKey="MdSysTypeScaleLabelSmallSize" />
+    <tokens:TokenAlias x:Key="MdCompBadgeLargeLabelTextLineHeight" ResourceKey="MdSysTypeScaleLabelSmallLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompBadgeLargeLabelTextTracking" ResourceKey="MdSysTypeScaleLabelSmallTracking" />
+    <tokens:TokenAlias x:Key="MdCompBadgeLargeLabelTextWeight" ResourceKey="MdSysTypeScaleLabelSmallWeight" />
+
+    <!-- M3 measurements without component tokens: text padding and icon overlap (horizontal, vertical). -->
+    <tokens:TokenAlias x:Key="MdImplBadgeHorizontalPadding" ResourceKey="MdSysSpacing50" />
+    <Vector x:Key="MdImplBadgeSmallOverlap">6,6</Vector>
+    <Vector x:Key="MdImplBadgeLargeOverlap">12,14</Vector>
+</ResourceDictionary>

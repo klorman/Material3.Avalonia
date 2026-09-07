@@ -24,6 +24,8 @@
 
             <views:Buttons HorizontalAlignment="Center" IsVisible="True" />
 
+            <views:Badges HorizontalAlignment="Stretch" />
+
             <views:TextBoxes HorizontalAlignment="Center" IsVisible="True" />
 
             <views:ToolTips HorizontalAlignment="Center" />

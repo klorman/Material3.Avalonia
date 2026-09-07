@@ -1,0 +1,145 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:Material3.Avalonia.Controls;assembly=Material3.Avalonia"
+             xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives;assembly=Material3.Avalonia"
+             xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
+             xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
+             xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens;assembly=Material3.Avalonia"
+             xmlns:theme="clr-namespace:Material3.Avalonia.Theme;assembly=Material3.Avalonia"
+             xmlns:vm="clr-namespace:Material3.Avalonia.Demo.ViewModels"
+             x:Class="Material3.Avalonia.Demo.Views.Badges"
+             x:DataType="vm:BadgesViewModel"
+             MaxWidth="840">
+    <UserControl.DataContext>
+        <vm:BadgesViewModel />
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <StreamGeometry x:Key="BadgeMailIcon">M4,4H20A2,2 0 0 1 22,6V18A2,2 0 0 1 20,20H4A2,2 0 0 1 2,18V6A2,2 0 0 1 4,4Z M4,8V18H20V8L12,13Z M4,6L12,11L20,6Z</StreamGeometry>
+    </UserControl.Resources>
+    <StackPanel Spacing="{markup:Token MdSysSpacing200}">
+        <TextBlock Text="Badges" helpers:Typography.TextStyle="HeadlineSmall" />
+        <TextBlock Text="Notification dots, counts and short labels. A badge adds information to an action; it is not a separate action."
+                   TextWrapping="Wrap" />
+
+        <TextBlock Text="Small and large" helpers:Typography.TextStyle="TitleMedium" />
+        <WrapPanel>
+            <controls:Badge Margin="{markup:DynamicThickness MdSysSpacing150}" />
+            <controls:Badge Count="1" Margin="{markup:DynamicThickness MdSysSpacing150}" />
+            <controls:Badge Count="9" Margin="{markup:DynamicThickness MdSysSpacing150}" />
+            <controls:Badge Count="10" Margin="{markup:DynamicThickness MdSysSpacing150}" />
+            <controls:Badge Count="99" Margin="{markup:DynamicThickness MdSysSpacing150}" />
+            <controls:Badge Count="999" Margin="{markup:DynamicThickness MdSysSpacing150}" />
+            <controls:Badge Count="1200" Margin="{markup:DynamicThickness MdSysSpacing150}" />
+            <controls:Badge Content="New" Margin="{markup:DynamicThickness MdSysSpacing150}" />
+        </WrapPanel>
+
+        <TextBlock Text="Try the counter" helpers:Typography.TextStyle="TitleMedium" />
+        <WrapPanel>
+            <Button Content="+1" Click="Increment" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="9 → 10 → 999 → 1000" Click="NextBoundary" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="Clear" Click="ClearCount" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="Show / hide zero" Click="ToggleZero" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="Show / hide badge" Click="ToggleBadge" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="Auto / small / large" Click="NextVariant" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="LTR / RTL" Click="ToggleDirection" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+            <Button Content="Enable / disable action" Click="ToggleOwner" Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing100 MdSysSpacing100}" />
+        </WrapPanel>
+        <TextBlock TextWrapping="Wrap">
+            <Run Text="Count: " /><Run Text="{Binding UnreadCount}" />
+            <Run Text=" · Variant: " /><Run Text="{Binding Variant}" />
+            <Run Text=" · ShowZero: " /><Run Text="{Binding ShowZero}" />
+            <Run Text=" · Visible: " /><Run Text="{Binding IsBadgeVisible}" />
+            <Run Text=" · " /><Run Text="{Binding FlowDirection}" />
+        </TextBlock>
+        <Border Padding="{markup:DynamicThickness MdSysSpacing300}"
+                Background="{markup:Token MdSysSurfaceContainerLowBrush}"
+                CornerRadius="{markup:Token MdSysShapeCornerMedium}">
+            <StackPanel FlowDirection="{Binding FlowDirection}" Spacing="{markup:Token MdSysSpacing300}">
+                <WrapPanel>
+                    <Button x:Name="InboxButton" Classes="tonal" Click="OpenInbox" IsEnabled="{Binding IsOwnerEnabled}"
+                            AutomationProperties.Name="{Binding InboxAccessibleName}" ToolTip.Tip="Open inbox"
+                            Margin="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdSysSpacing300 MdSysSpacing100}">
+                        <controls:Badged>
+                            <controls:Badged.Badge>
+                                <controls:Badge Count="{Binding UnreadCount}" Variant="{Binding Variant}"
+                                                ShowZero="{Binding ShowZero}" IsActive="{Binding IsBadgeVisible}"
+                                                AutomationProperties.AccessibilityView="Raw" />
+                            </controls:Badged.Badge>
+                            <primitives:IconPresenter Size="20" Width="24" Height="24"
+                                                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                                      Value="{StaticResource BadgeMailIcon}" />
+                        </controls:Badged>
+                    </Button>
+                    <TextBlock Text="Click the icon or its badge, or use Tab and Space. Opening the inbox clears the count."
+                               MaxWidth="400" VerticalAlignment="Center" TextWrapping="Wrap" />
+                </WrapPanel>
+                <Grid ColumnDefinitions="Auto,Auto,Auto,*" ColumnSpacing="{markup:Token MdSysSpacing150}">
+                    <primitives:IconPresenter Size="20" Width="24" Height="24"
+                                              HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                              Value="{StaticResource BadgeMailIcon}" />
+                    <TextBlock Grid.Column="1" Text="Inbox" VerticalAlignment="Center" />
+                    <controls:Badge Grid.Column="2" Count="{Binding UnreadCount}" ShowZero="{Binding ShowZero}"
+                                    IsActive="{Binding IsBadgeVisible}" />
+                </Grid>
+                <TextBlock Text="A badge displays notification counts or status information."
+                           TextWrapping="Wrap" helpers:Typography.TextStyle="BodySmall" />
+            </StackPanel>
+        </Border>
+        <TextBlock x:Name="ActionStatus" Text="The inbox has not been opened." TextWrapping="Wrap" />
+        <TextBlock Text="{Binding InboxAccessibleName, StringFormat='Accessible action name: {0}'}" TextWrapping="Wrap" />
+
+        <TextBlock Text="Local tokens and typography" helpers:Typography.TextStyle="TitleMedium" />
+        <StackPanel x:Name="TokenScope" Spacing="{markup:Token MdSysSpacing200}">
+            <StackPanel.Resources>
+                <tokens:TokenAlias x:Key="MdCompBadgeLargeShape" ResourceKey="MdSysShapeCornerFull" />
+                <x:Double x:Key="MdCompBadgeLargeSize">16</x:Double>
+            </StackPanel.Resources>
+            <Button Content="Remap local size and shape" Click="RemapTokens" HorizontalAlignment="Left" />
+            <StackPanel Orientation="Horizontal" Spacing="{markup:Token MdSysSpacing300}"
+                        helpers:Typography.TextStyle="HeadlineSmall">
+                <TextBlock Text="Inbox" />
+                <controls:Badge Content="New" />
+            </StackPanel>
+            <TextBlock Text="The badge keeps its component text style inside a larger text scope. Local token changes apply immediately."
+                       TextWrapping="Wrap" />
+        </StackPanel>
+
+        <TextBlock Text="Light and dark" helpers:Typography.TextStyle="TitleMedium" />
+        <WrapPanel>
+            <Border Padding="{markup:DynamicThickness MdSysSpacing300}" MinWidth="220"
+                    Background="{markup:Token MdSysSurfaceBrush}">
+                <Border.Styles>
+                    <theme:MaterialTheme Mode="Light" SourceColor="#6750A4" />
+                </Border.Styles>
+                <Border.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceInclude Source="avares://Material3.Avalonia/Tokens/System/Color.axaml" />
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                </Border.Resources>
+                <StackPanel Orientation="Horizontal" Spacing="{markup:Token MdSysSpacing200}">
+                    <TextBlock Text="Light" Foreground="{markup:Token MdSysOnSurfaceBrush}" />
+                    <controls:Badge /><controls:Badge Count="1200" />
+                </StackPanel>
+            </Border>
+            <Border Padding="{markup:DynamicThickness MdSysSpacing300}" MinWidth="220"
+                    Background="{markup:Token MdSysSurfaceBrush}">
+                <Border.Styles>
+                    <theme:MaterialTheme Mode="Dark" SourceColor="#6750A4" />
+                </Border.Styles>
+                <Border.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceInclude Source="avares://Material3.Avalonia/Tokens/System/Color.axaml" />
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                </Border.Resources>
+                <StackPanel Orientation="Horizontal" Spacing="{markup:Token MdSysSpacing200}">
+                    <TextBlock Text="Dark" Foreground="{markup:Token MdSysOnSurfaceBrush}" />
+                    <controls:Badge /><controls:Badge Count="1200" />
+                </StackPanel>
+            </Border>
+        </WrapPanel>
+    </StackPanel>
+</UserControl>

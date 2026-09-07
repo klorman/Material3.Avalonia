@@ -1,6 +1,8 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <CornerRadius x:Key="MdSysShapeCornerNone">0</CornerRadius>
+    <!-- Avalonia fits oversized radii to the border bounds, producing the full corner shape. -->
+    <CornerRadius x:Key="MdSysShapeCornerFull">9999</CornerRadius>
     <CornerRadius x:Key="MdSysShapeCornerExtraSmall">4</CornerRadius>
     <CornerRadius x:Key="MdSysShapeCornerSmall">8</CornerRadius>
     <CornerRadius x:Key="MdSysShapeCornerMedium">12</CornerRadius>

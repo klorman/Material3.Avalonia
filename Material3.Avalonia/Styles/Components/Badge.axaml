@@ -1,0 +1,72 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Material3.Avalonia.Controls"
+                    xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
+                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup">
+    <ControlTheme x:Key="{x:Type controls:Badge}" TargetType="controls:Badge">
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="helpers:Typography.TextStyle" Value="{x:Null}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="{markup:Token MdCompBadgeBrush}" />
+        <Setter Property="CornerRadius" Value="{markup:Token MdCompBadgeShape}" />
+        <Setter Property="MinWidth" Value="{markup:Token MdCompBadgeSize}" />
+        <Setter Property="MinHeight" Value="{markup:Token MdCompBadgeSize}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Foreground" Value="{markup:Token MdCompBadgeLargeLabelTextBrush}" />
+        <Setter Property="FontFamily" Value="{markup:Token MdCompBadgeLargeLabelTextFontFamily}" />
+        <Setter Property="FontSize" Value="{markup:Token MdCompBadgeLargeLabelTextSize}" />
+        <Setter Property="FontWeight" Value="{markup:Token MdCompBadgeLargeLabelTextWeight}" />
+        <Setter Property="LetterSpacing" Value="{markup:Token MdCompBadgeLargeLabelTextTracking}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <primitives:BadgeReveal x:Name="PART_Reveal"
+                                        Background="{TemplateBinding Background}"
+                                        BackgroundSizing="{TemplateBinding BackgroundSizing}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{TemplateBinding CornerRadius}"
+                                        Padding="{TemplateBinding Padding}"
+                                        helpers:Typography.TextStyle="{x:Null}">
+                    <ContentPresenter x:Name="PART_ContentPresenter"
+                                      UseLayoutRounding="False"
+                                      Content="{TemplateBinding DisplayContent}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      LineHeight="{markup:Token MdCompBadgeLargeLabelTextLineHeight}"
+                                      TextWrapping="NoWrap" />
+                </primitives:BadgeReveal>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- Variant -->
+        <Style Selector="^:large /template/ primitives|BadgeReveal#PART_Reveal">
+            <Setter Property="IsLarge" Value="True" />
+        </Style>
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+        <Style Selector="^:large">
+            <Setter Property="Background" Value="{markup:Token MdCompBadgeLargeBrush}" />
+            <Setter Property="CornerRadius" Value="{markup:Token MdCompBadgeLargeShape}" />
+            <Setter Property="MinWidth" Value="{markup:Token MdCompBadgeLargeSize}" />
+            <Setter Property="MinHeight" Value="{markup:Token MdCompBadgeLargeSize}" />
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdImplBadgeHorizontalPadding MdSysSpacing0}" />
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+        </Style>
+
+        <!-- Classes -->
+        <Style Selector="^.small">
+            <Setter Property="Variant" Value="Small" />
+        </Style>
+        <Style Selector="^.large">
+            <Setter Property="Variant" Value="Large" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
