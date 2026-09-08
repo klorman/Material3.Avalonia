@@ -5,8 +5,10 @@ A modern Material Design 3 theme library for Avalonia applications.
 > Controls coverage is still limited; the M3 theming foundation is mostly in place.
 
 ## Requirements
-- **Avalonia:** 11.3.7+
+- **Avalonia:** 12.1.2+
 - **Target Framework:** .NET 8.0
+
+Progress on implemented controls is tracked in [issue #1](https://github.com/klorman/Material3.Avalonia/issues/1).
 
 ## Getting started
 
