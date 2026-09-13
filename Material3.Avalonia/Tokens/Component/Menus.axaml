@@ -1,6 +1,14 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens">
+    <tokens:TokenAlias x:Key="MdImplMenuBarItemHoveredShape" ResourceKey="MdSysShapeCornerSmall" />
+    <tokens:TokenAlias x:Key="MdImplMenuBarItemFocusedShape" ResourceKey="MdSysShapeCornerSmall" />
+    <tokens:TokenAlias x:Key="MdImplMenuBarItemPressedShape" ResourceKey="MdSysShapeCornerSmall" />
+    <tokens:TokenAlias x:Key="MdImplMenuBarItemLeadingSpace" ResourceKey="MdSysSpacing150" />
+    <tokens:TokenAlias x:Key="MdImplMenuBarItemTrailingSpace" ResourceKey="MdSysSpacing150" />
+    <tokens:TokenAlias x:Key="MdImplMenuBarItemTopSpace" ResourceKey="MdSysSpacing100" />
+    <tokens:TokenAlias x:Key="MdImplMenuBarItemBottomSpace" ResourceKey="MdSysSpacing100" />
+    <x:Double x:Key="MdImplMenuBarPopupGap">-4</x:Double>
     <tokens:TokenAlias x:Key="MdCompMenusContainerShape" ResourceKey="MdSysShapeCornerLarge" />
     <tokens:TokenAlias x:Key="MdCompMenusActiveContainerShape" ResourceKey="MdCompMenusContainerShape" />
     <tokens:TokenAlias x:Key="MdCompMenusInactiveContainerShape" ResourceKey="MdSysShapeCornerSmall" />

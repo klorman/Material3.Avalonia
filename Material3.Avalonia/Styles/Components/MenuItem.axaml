@@ -27,7 +27,7 @@
         <Setter Property="Background" Value="{markup:Token MdCompMenusStandardContainerBrush}" />
         <Setter Property="Template">
             <ControlTemplate>
-                <primitives:MenuSurface x:Name="PART_MenuSurface" Background="{TemplateBinding Background}" AnchorGap="{markup:Token MdImplMenusSubmenuGap}"
+                <primitives:MenuSurface x:Name="PART_MenuSurface" Background="{TemplateBinding Background}"
                                         Padding="{markup:Token MdImplMenusShadowPadding}"
                                              CornerRadius="{markup:Token MdCompMenusActiveContainerShape}"
                                         InnerCornerRadius="{markup:Token MdCompMenusGroupShape}"
@@ -42,6 +42,12 @@
                 </primitives:MenuSurface>
             </ControlTemplate>
         </Setter>
+        <Style Selector="^ /template/ primitives|MenuSurface#PART_MenuSurface">
+            <Setter Property="AnchorGap" Value="{markup:Token MdImplMenusSubmenuGap}" />
+        </Style>
+        <Style Selector="^.m3-menu-bar-popup /template/ primitives|MenuSurface#PART_MenuSurface">
+            <Setter Property="AnchorGap" Value="{markup:Token MdImplMenuBarPopupGap}" />
+        </Style>
         <Style Selector="^[(assist|MenuAssist.ColorStyle)=Vibrant]">
             <Setter Property="Background" Value="{markup:Token MdCompMenusVibrantContainerBrush}" />
         </Style>
@@ -87,7 +93,7 @@
                                 <ColumnDefinition Width="Auto" SharedSizeGroup="MenuBadge" />
                                 <ColumnDefinition Width="Auto" SharedSizeGroup="MenuTrailingText" />
                                 <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" SharedSizeGroup="MenuChevron" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Panel x:Name="PART_LeadingSlot" Grid.Column="0" Height="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}">
                                 <Panel x:Name="PART_LeadingIconHost" HorizontalAlignment="Left" Width="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}">

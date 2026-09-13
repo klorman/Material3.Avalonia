@@ -108,8 +108,60 @@
                 </ResourceDictionary>
             </WrapPanel.Resources>
 
-            <Border Classes="menu-card" DataContext="{Binding File}" x:DataType="vm:MenuScenarioViewModel">
+            <Border Classes="menu-card" Width="736">
                 <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Document menu" />
+                    <TextBlock Classes="menu-caption" Text="Edit the document, then use File, Edit, View or Format. Try Alt mnemonics, arrow keys and Escape." />
+                    <WrapPanel>
+                        <Button Content="Standard / vibrant" Click="ToggleBarColor" Margin="0,0,8,8" />
+                        <Button Content="LTR / RTL" Click="ToggleBarDirection" Margin="0,0,8,8" />
+                        <Button Content="Motion on / off" Click="ToggleBarMotion" Margin="0,0,8,8" />
+                    </WrapPanel>
+                    <StackPanel x:Name="DocumentArea" Spacing="{markup:Token MdSysSpacing100}">
+                        <Menu x:Name="DocumentMenu">
+                            <MenuItem Header="_File">
+                                <MenuItem x:Name="NewDocumentItem" Header="_New document" InputGesture="Ctrl+N" HotKey="Ctrl+N" />
+                                <MenuItem x:Name="SaveDocumentItem" Header="_Save" InputGesture="Ctrl+Shift+S" HotKey="Ctrl+Shift+S" />
+                                <Separator />
+                                <MenuItem Header="Export" Icon="{StaticResource MenuSymbol_file_download}">
+                                    <MenuItem Header="Plain text" Click="ExportDocument" />
+                                    <MenuItem Header="PDF" IsEnabled="False" />
+                                </MenuItem>
+                            </MenuItem>
+                            <MenuItem Header="_Edit">
+                                <MenuItem x:Name="UndoDocumentItem" Header="_Undo" InputGesture="Ctrl+Z"
+                                          IsEnabled="{Binding #MenuEditor.CanUndo}" />
+                                <Separator />
+                                <MenuItem x:Name="SelectDocumentItem" Header="Select _all" InputGesture="Ctrl+A" />
+                                <MenuItem Header="Find and replace" IsEnabled="False" />
+                            </MenuItem>
+                            <MenuItem Header="_View">
+                                <MenuItem Header="Read only" ToggleType="CheckBox"
+                                          IsChecked="{Binding #MenuEditor.IsReadOnly, Mode=TwoWay}" />
+                                <MenuItem Header="Show status" ToggleType="CheckBox" IsChecked="True"
+                                          Click="ToggleDocumentStatus" />
+                            </MenuItem>
+                            <MenuItem Header="F_ormat">
+                                <MenuItem Header="Bold" ToggleType="CheckBox" Click="ToggleDocumentBold" />
+                                <MenuItem Header="Alignment">
+                                    <MenuItem Header="Left" ToggleType="Radio" GroupName="DocumentAlignment"
+                                              IsChecked="True" Click="AlignDocument" Tag="Left" />
+                                    <MenuItem Header="Center" ToggleType="Radio" GroupName="DocumentAlignment"
+                                              Click="AlignDocument" Tag="Center" />
+                                    <MenuItem Header="Right" ToggleType="Radio" GroupName="DocumentAlignment"
+                                              Click="AlignDocument" Tag="Right" />
+                                </MenuItem>
+                            </MenuItem>
+                        </Menu>
+                        <TextBox x:Name="MenuEditor" Text="A document with a Material menu. Select text and explore the commands."
+                                 AcceptsReturn="True" TextWrapping="Wrap" MinHeight="120" />
+                        <TextBlock x:Name="DocumentStatus" Classes="menu-caption" Text="Ready" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding File}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Project document" />
                     <TextBlock Classes="menu-caption"
                                Text="A contextual menu belongs to the selected file. Right-click the document, or use the menu key." />
@@ -142,8 +194,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Export}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Export}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Export report" />
                     <TextBlock Classes="menu-caption" Text="Choose a format, then a destination in the nested menu." />
                     <TextBlock Classes="menu-caption" Text="{Binding Status}" />
@@ -186,8 +238,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Sort}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Sort}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Sort documents" />
                     <TextBlock Classes="menu-caption"
                                Text="Radio selection applies one ordering and closes the menu." />
@@ -218,8 +270,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Editor}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Editor}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Editor view" />
                     <TextBlock Classes="menu-caption" Text="Keep the menu open while choosing which aids to display." />
                     <TextBlock Classes="menu-caption" Text="{Binding Status}" />
@@ -252,8 +304,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Availability}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Availability}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Document availability" />
                     <TextBlock Classes="menu-caption"
                                Text="Selected actions replace their leading icon with a checkmark." />
@@ -279,8 +331,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Destinations}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Destinations}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Export destinations" />
                     <TextBlock Classes="menu-caption"
                                Text="Keep the destination icons while showing selection on the trailing side." />
@@ -312,8 +364,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Calendars}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Calendars}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Calendar layers" />
                     <TextBlock Classes="menu-caption"
                                Text="Selection uses color and shape without an additional checkmark." />
@@ -342,8 +394,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Mail}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Mail}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Mail folders" />
                     <TextBlock Classes="menu-caption"
                                Text="Quiet counters show unread messages without implying an error." />
@@ -383,8 +435,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Priority}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Priority}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Priority inbox" />
                     <TextBlock Classes="menu-caption" Text="A vibrant menu draws attention to priority mail." />
                     <TextBlock Classes="menu-caption" Text="{Binding Status}" />
@@ -424,8 +476,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Devices}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Devices}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Present on a device" />
                     <TextBlock Classes="menu-caption"
                                Text="Supporting text explains the destination; trailing text shows its availability." />
@@ -473,8 +525,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Workspace}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Workspace}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Workspace" />
                     <TextBlock Classes="menu-caption"
                                Text="Related actions share a surface. Recent items can change while this menu is open." />
@@ -524,8 +576,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Text}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Text}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Edit text" />
                     <TextBlock Classes="menu-caption"
                                Text="Native editing commands follow selection, read-only and password rules." />
@@ -537,8 +589,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Archive}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Archive}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Recent projects" />
                     <TextBlock Classes="menu-caption"
                                Text="Scroll through the archive. Group gaps become dividers when space is limited." />
@@ -581,8 +633,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Density}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Density}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Workspace density" />
                     <TextBlock Classes="menu-caption"
                                Text="The same actions at each density. Text size remains unchanged." />
@@ -674,8 +726,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Touch}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Touch}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Touch targets" />
                     <TextBlock Classes="menu-caption" Text="Explicit 48 DIP targets for a touch-oriented layout." />
                     <TextBlock Classes="menu-caption" Text="{Binding Status}" />
@@ -703,8 +755,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Motion}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Motion}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Motion comparison" />
                     <TextBlock Classes="menu-caption"
                                Text="Reduced motion keeps a short fade; No animation shows the menu immediately. The launcher has its own feedback." />
@@ -797,8 +849,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Placement}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Placement}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Placement and RTL" />
                     <TextBlock Classes="menu-caption"
                                Text="Menus remain anchored when space is tight or reading direction changes." />
@@ -825,8 +877,8 @@
                 </StackPanel>
             </Border>
 
-            <Border Classes="menu-card" DataContext="{Binding Tokens}" x:DataType="vm:MenuScenarioViewModel">
-                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+            <Border Classes="menu-card" DataContext="{Binding Tokens}">
+                <StackPanel x:DataType="vm:MenuScenarioViewModel" Spacing="{markup:Token MdSysSpacing150}">
                     <TextBlock Classes="menu-title" Text="Local theme" />
                     <TextBlock Classes="menu-caption"
                                Text="A local token override affects only this menu and updates while it is open." />

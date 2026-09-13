@@ -219,6 +219,8 @@ internal sealed class MenuSurface : Decorator
             }
         }
 
+        if (change.Property == AnchorGapProperty) Presentation?.UpdateAnchor();
+
         if (change.Property == ProgressProperty || change.Property == BoundsProperty ||
             change.Property == ActiveProgressProperty || change.Property == CornerRadiusProperty ||
             change.Property == InnerCornerRadiusProperty || change.Property == InactiveCornerRadiusProperty)

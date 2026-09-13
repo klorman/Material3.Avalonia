@@ -50,6 +50,246 @@ public sealed class MenuTests : IDisposable
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
+    public void MenuBar_ShouldShowFocusThroughNativeKeyboardNavigation(bool overlay)
+    {
+        var child = new MenuItem { Header = "Open" };
+        var first = new MenuItem { Header = "_File", Items = { new MenuItem { Header = "Save" } } };
+        var second = new MenuItem { Header = "_Edit", Items = { child } };
+        var bar = new Menu { Items = { first, second } };
+        MenuAssist.SetIsAnimationEnabled(bar, false);
+        var editor = new TextBox { Text = "Document" };
+        var window = Window(new StackPanel { Children = { bar, editor } });
+        foreach (var item in new[] { first, second })
+            item.GetVisualDescendants().OfType<Popup>().Single().ShouldUseOverlayLayer = overlay;
+        editor.Focus();
+        window.KeyPress(Key.LeftAlt, RawInputModifiers.Alt, PhysicalKey.AltLeft, null);
+        window.KeyRelease(Key.LeftAlt, RawInputModifiers.None, PhysicalKey.AltLeft, null);
+        Layout();
+        first.IsFocused.Should().BeTrue();
+        Part(first, "PART_MenuFocus").IsVisible.Should().BeTrue();
+        window.KeyPress(Key.Right, RawInputModifiers.None, PhysicalKey.ArrowRight, null);
+        second.IsFocused.Should().BeTrue();
+        Part(first, "PART_MenuFocus").IsVisible.Should().BeFalse();
+        Part(second, "PART_MenuFocus").IsVisible.Should().BeTrue();
+        window.KeyPress(Key.Down, RawInputModifiers.None, PhysicalKey.ArrowDown, null);
+        Layout();
+        child.IsFocused.Should().BeTrue();
+        Part(second, "PART_MenuFocus").IsVisible.Should().BeFalse();
+        TopLevel.GetTopLevel(child)!.KeyPress(Key.Escape, RawInputModifiers.None, PhysicalKey.Escape, null);
+        Layout();
+        second.IsFocused.Should().BeTrue();
+        Part(second, "PART_MenuFocus").IsVisible.Should().BeTrue();
+        foreach (var key in new[] { Key.Enter, Key.Space })
+        {
+            var physical = key == Key.Enter ? PhysicalKey.Enter : PhysicalKey.Space;
+            window.KeyPress(key, RawInputModifiers.None, physical, null);
+            window.KeyRelease(key, RawInputModifiers.None, physical, null);
+            Layout();
+            second.IsSubMenuOpen.Should().BeTrue();
+            TopLevel.GetTopLevel(child)!.KeyPress(Key.Escape, RawInputModifiers.None, PhysicalKey.Escape, null);
+            Layout();
+            Part(second, "PART_MenuFocus").IsVisible.Should().BeTrue();
+        }
+
+        var point = second.TranslatePoint(new Point(second.Bounds.Width / 2, second.Bounds.Height / 2), window)!.Value;
+        window.MouseMove(point);
+        Part(second, "PART_MenuFocus").IsVisible.Should().BeFalse();
+        window.KeyPress(Key.Left, RawInputModifiers.None, PhysicalKey.ArrowLeft, null);
+        Part(first, "PART_MenuFocus").IsVisible.Should().BeTrue();
+        window.KeyPress(Key.Escape, RawInputModifiers.None, PhysicalKey.Escape, null);
+        Layout();
+        editor.IsFocused.Should().BeTrue();
+        window.KeyPress(Key.Tab, RawInputModifiers.Shift, PhysicalKey.Tab, null);
+        Layout();
+        first.IsFocused.Should().BeTrue();
+        Part(first, "PART_MenuFocus").IsVisible.Should().BeTrue();
+        window.KeyPress(Key.Tab, RawInputModifiers.None, PhysicalKey.Tab, null);
+        Layout();
+        editor.IsFocused.Should().BeTrue();
+    }
+
+    [Fact]
+    public void Shortcut_ShouldReachTrailingEdgeWithoutReservingSiblingChevron()
+    {
+        var command = new MenuItem { Header = "Command", InputGesture = new KeyGesture(Key.F5) };
+        var sibling = new MenuItem { Header = "Export" };
+        var menu = new ContextMenu { Items = { command, sibling } };
+        MenuAssist.SetIsAnimationEnabled(menu, false);
+        var target = new Button { Content = "Open", ContextMenu = menu };
+        Window(target);
+        menu.Open(target);
+        Layout();
+        var text = (TextBlock)Part(command, "PART_TrailingText");
+        var row = Part(command, "PART_Content");
+        var originalGap = row.Bounds.Width - text.Bounds.Right;
+        originalGap.Should().BeApproximately(0, .01);
+        sibling.Items.Add(new MenuItem { Header = "Nested" });
+        Layout();
+        (row.Bounds.Width - text.Bounds.Right).Should().BeApproximately(originalGap, .01);
+        target.FlowDirection = FlowDirection.RightToLeft;
+        menu.Close();
+        menu.Open(target);
+        Layout();
+        text.FlowDirection.Should().Be(FlowDirection.RightToLeft);
+        text.TextLayout.TextLines[0].Start.Should().BeApproximately(0, .01);
+        (row.Bounds.Width - text.Bounds.Right).Should().BeApproximately(originalGap, .01);
+        menu.Close();
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void MenuBar_ShouldKeepHeaderPressedAndRestoreEditorFocus(bool overlay)
+    {
+        var command = new MenuItem { Header = "Command" };
+        var header = new MenuItem { Header = "_File", Items = { command } };
+        var bar = new Menu { Items = { header } };
+        MenuAssist.SetIsAnimationEnabled(bar, false);
+        var editor = new TextBox { Text = "Document" };
+        var window = Window(new StackPanel { Children = { bar, editor } });
+        var popup = header.GetVisualDescendants().OfType<Popup>().Single();
+        popup.ShouldUseOverlayLayer = overlay;
+        editor.Focus();
+        header.Focus(NavigationMethod.Directional);
+        Part(header, "PART_MenuFocus").IsVisible.Should().BeTrue();
+        window.KeyPress(Key.Down, RawInputModifiers.None, PhysicalKey.ArrowDown, null);
+        Layout();
+        header.IsSubMenuOpen.Should().BeTrue();
+        popup.ShouldUseOverlayLayer.Should().Be(overlay);
+        header.IsChecked.Should().BeFalse();
+        ((ISolidColorBrush)header.Background!).Color.A.Should().Be(0);
+        Part(header, "PART_StateLayer").Opacity.Should().BeApproximately(.1, .001);
+        command.IsFocused.Should().BeTrue();
+        Part(header, "PART_MenuFocus").IsVisible.Should().BeFalse();
+        PressEnter(command);
+        bar.IsOpen.Should().BeFalse();
+        editor.IsFocused.Should().BeTrue();
+    }
+
+    [Fact]
+    public void MenuBar_CloseShouldNotOverrideCommandFocusOrScrollTheEditor()
+    {
+        var editor = new TextBox { Text = "Original editor" };
+        var target = new TextBox { Text = "Command target" };
+        var command = new MenuItem { Header = "Move focus" };
+        command.Click += (_, _) => target.Focus();
+        var header = new MenuItem { Header = "File", Items = { command } };
+        var bar = new Menu { Items = { header } };
+        var panel = new StackPanel { Children = { editor, new Border { Height = 550 }, bar, target } };
+        var scroll = new ScrollViewer { Content = panel };
+        Window(scroll);
+        editor.Focus();
+        scroll.Offset = new Vector(0, 250);
+        header.Focus(NavigationMethod.Directional);
+        header.IsSubMenuOpen = true;
+        Pump(400);
+        var offset = scroll.Offset;
+        bar.Close();
+        Pump(600);
+        editor.IsFocused.Should().BeTrue();
+        scroll.Offset.Should().Be(offset);
+        header.Focus(NavigationMethod.Directional);
+        header.IsSubMenuOpen = true;
+        Pump(400);
+        PressEnter(command);
+        Pump(600);
+        target.IsFocused.Should().BeTrue();
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void MenuBar_ShouldResolveGeometryTokensAndPreservePopupOverrides(bool rtl)
+    {
+        var child = new MenuItem { Header = "Child" };
+        var header = new MenuItem { Header = "Format", Items = { child } };
+        var bar = new Menu
+            { Items = { header }, FlowDirection = rtl ? FlowDirection.RightToLeft : FlowDirection.LeftToRight };
+        MenuAssist.SetIsAnimationEnabled(bar, false);
+        Window(new StackPanel { Margin = new Thickness(40), Children = { bar } });
+        var popup = header.GetVisualDescendants().OfType<Popup>().Single();
+        header.IsSubMenuOpen = true;
+        Layout();
+        var content = popup.Child!.GetVisualDescendants().OfType<ScrollViewer>().First();
+        var headerStart = header.PointToScreen(default);
+        var headerEnd = header.PointToScreen(new Point(header.Bounds.Width, header.Bounds.Height));
+        var contentStart = content.PointToScreen(default);
+        var contentEnd = content.PointToScreen(new Point(content.Bounds.Width, content.Bounds.Height));
+        if (rtl)
+            Math.Max(contentStart.X, contentEnd.X).Should().Be(Math.Max(headerStart.X, headerEnd.X));
+        else
+            Math.Min(contentStart.X, contentEnd.X).Should().Be(Math.Min(headerStart.X, headerEnd.X));
+        Math.Min(contentStart.Y, contentEnd.Y).Should().Be(Math.Max(headerStart.Y, headerEnd.Y) - 4);
+        header.CornerRadius.Should().Be(new CornerRadius(8));
+        header.Padding.Should().Be(new Thickness(12, 8));
+        header.Bounds.Height.Should().BeLessThan(44);
+        child.Bounds.Height.Should().BeGreaterThanOrEqualTo(44);
+        var originalOffset = popup.VerticalOffset;
+        bar.Resources["MdImplMenuBarItemPressedShape"] = new CornerRadius(5);
+        bar.Resources["MdImplMenuBarItemLeadingSpace"] = new TokenAlias { ResourceKey = "CustomMenuInset" };
+        bar.Resources["CustomMenuInset"] = 23d;
+        Layout();
+        header.CornerRadius.Should().Be(new CornerRadius(5));
+        header.Padding.Left.Should().Be(23);
+        popup.VerticalOffset.Should().Be(originalOffset);
+        bar.Resources["MdImplMenuBarPopupGap"] = -2d;
+        Layout();
+        popup.VerticalOffset.Should().Be(originalOffset + 2);
+        popup.HorizontalOffset = 31;
+        popup.VerticalOffset = 17;
+        bar.Resources["MdImplMenuBarItemPressedShape"] = new CornerRadius(9);
+        Layout();
+        popup.HorizontalOffset.Should().Be(31);
+        popup.VerticalOffset.Should().Be(17);
+        bar.Close();
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void MenuBar_ShouldAllowPointerReopeningDuringExit(bool overlay)
+    {
+        var header = new MenuItem { Header = "File", Items = { new MenuItem { Header = "Open" } } };
+        var next = new MenuItem { Header = "Edit", Items = { new MenuItem { Header = "Copy" } } };
+        var bar = new Menu { Items = { header, next } };
+        var editor = new TextBox();
+        var window = Window(new StackPanel { Children = { bar, editor } });
+        editor.Focus();
+        foreach (var item in new[] { header, next })
+            item.GetVisualDescendants().OfType<Popup>().Single().ShouldUseOverlayLayer = overlay;
+        var point = header.TranslatePoint(new Point(header.Bounds.Width / 2, header.Bounds.Height / 2), window)!.Value;
+        window.MouseDown(point, MouseButton.Left);
+        window.MouseUp(point, MouseButton.Left);
+        Pump(250);
+        header.IsSubMenuOpen.Should().BeTrue();
+        bar.Close();
+        Pump(25);
+        var popup = header.GetVisualDescendants().OfType<Popup>().Single();
+        popup.IsOpen.Should().BeTrue();
+        window.MouseDown(point, MouseButton.Left);
+        window.MouseUp(point, MouseButton.Left);
+        Pump(600);
+        header.IsSubMenuOpen.Should().BeTrue();
+        popup.IsOpen.Should().BeTrue();
+        var nextPoint = next.TranslatePoint(new Point(next.Bounds.Width / 2, next.Bounds.Height / 2), window)!.Value;
+        window.MouseMove(nextPoint);
+        Pump(600);
+        next.IsSubMenuOpen.Should().BeTrue();
+        header.IsSubMenuOpen.Should().BeFalse();
+        var outside = editor.TranslatePoint(new Point(editor.Bounds.Width - 10, editor.Bounds.Height / 2), window)!
+            .Value;
+        window.MouseDown(outside, MouseButton.Left);
+        window.MouseUp(outside, MouseButton.Left);
+        Pump(25);
+        bar.IsOpen.Should().BeFalse();
+        next.GetVisualDescendants().OfType<Popup>().Single().IsOpen.Should().BeTrue();
+        Pump(600);
+        editor.IsFocused.Should().BeTrue();
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
     public void KeyboardRipple_ShouldReleaseAndRestartAcrossMenuNavigation(bool overlay)
     {
         MotionSettings.ReduceMotion = false;

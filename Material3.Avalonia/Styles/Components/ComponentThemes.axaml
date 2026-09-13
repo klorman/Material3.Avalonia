@@ -25,6 +25,7 @@
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/MenuGap.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/MenuGroupLabel.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/MenuItem.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Menu.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ContextMenu.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/MenuFlyoutPresenter.axaml" />
     </ResourceDictionary.MergedDictionaries>

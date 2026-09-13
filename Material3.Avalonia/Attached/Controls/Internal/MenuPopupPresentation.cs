@@ -37,9 +37,9 @@ internal sealed class MenuPopupPresentation : IDisposable
     static MenuPopupPresentation()
     {
         InputElement.KeyDownEvent.AddClassHandler<TopLevel>((root, _) =>
-            InputModes.GetOrCreateValue(root).Keyboard = true, RoutingStrategies.Tunnel, true);
+            SetInputMode(root, true), RoutingStrategies.Tunnel, true);
         InputElement.PointerPressedEvent.AddClassHandler<TopLevel>((root, _) =>
-            InputModes.GetOrCreateValue(root).Keyboard = false, RoutingStrategies.Tunnel, true);
+            SetInputMode(root, false), RoutingStrategies.Tunnel, true);
         Control.ContextRequestedEvent.AddClassHandler<TopLevel>((root, e) =>
         {
             if (!e.TryGetPosition(root, out var point)) return;
@@ -60,6 +60,18 @@ internal sealed class MenuPopupPresentation : IDisposable
             if (change.GetNewValue<bool>() && flyout.Popup.Child is Control child && GetIsEnabled(child))
                 MenuFlyoutRegistration.Get(flyout).Connect();
         });
+    }
+
+    internal static bool IsKeyboardInput(Control control) =>
+        TopLevel.GetTopLevel(control) is { } root &&
+        InputModes.TryGetValue(root, out var mode) && mode.Keyboard;
+
+    internal static void SetInputMode(Control control, bool keyboard)
+    {
+        if (TopLevel.GetTopLevel(control) is not { } root) return;
+        InputModes.GetOrCreateValue(root).Keyboard = keyboard;
+        if (root.FocusManager?.GetFocusedElement() is MenuItem { IsTopLevel: true } header)
+            header.Classes.Set("m3-menu-keyboard-focus", keyboard && header.IsEffectivelyEnabled);
     }
 
     internal static MenuPopupPresentation? Find(Control control) =>
@@ -139,7 +151,7 @@ internal sealed class MenuPopupPresentation : IDisposable
             _closing = false;
             if (!Popup.IsOpen)
             {
-                if (_owner is MenuItem && TopLevel.GetTopLevel(_owner) is { } parentHost)
+                if (_owner is MenuItem { IsTopLevel: false } && TopLevel.GetTopLevel(_owner) is { } parentHost)
                     Popup.SetValue(Popup.ShouldUseOverlayLayerProperty, parentHost is not PopupRoot,
                         BindingPriority.Style);
                 UpdateAnchor();
@@ -153,6 +165,25 @@ internal sealed class MenuPopupPresentation : IDisposable
 
     internal void UpdateAnchor()
     {
+        if (_owner is MenuItem { IsTopLevel: true } header)
+        {
+            if (_surface is not { } headerSurface || Popup.CustomPopupPlacementCallback is not null ||
+                Popup.Placement is not (PlacementMode.BottomEdgeAlignedLeft or PlacementMode.BottomEdgeAlignedRight))
+                return;
+            var right = header.FlowDirection == global::Avalonia.Media.FlowDirection.RightToLeft
+                ? Popup.Placement == PlacementMode.BottomEdgeAlignedLeft
+                : Popup.Placement == PlacementMode.BottomEdgeAlignedRight;
+            var above = headerSurface.Direction == PlacementMode.Top;
+            Popup.SetValue(Popup.HorizontalOffsetProperty,
+                right ? headerSurface.ContentPadding.Right : -headerSurface.ContentPadding.Left, BindingPriority.Style);
+            Popup.SetValue(Popup.VerticalOffsetProperty,
+                above
+                    ? headerSurface.ContentPadding.Bottom - headerSurface.AnchorGap
+                    : -headerSurface.ContentPadding.Top + headerSurface.AnchorGap,
+                BindingPriority.Style);
+            return;
+        }
+
         if (_owner is not MenuItem || Popup.CustomPopupPlacementCallback is not null ||
             Popup.Placement is not (PlacementMode.RightEdgeAlignedTop or PlacementMode.LeftEdgeAlignedTop)) return;
         var surface = _surface;
@@ -382,6 +413,7 @@ internal sealed class MenuPopupPresentation : IDisposable
 
     private void SetKeyboardNavigation(bool keyboard, bool refreshCurrent = true)
     {
+        if (_chain is not null) SetInputMode(_chain, keyboard);
         foreach (var weak in OpenMenus)
             if (weak.TryGetTarget(out var menu) && menu._chain == _chain)
             {
@@ -506,21 +538,23 @@ internal sealed class MenuPopupPresentation : IDisposable
     private void OnOwnerChanged(object? sender, AvaloniaPropertyChangedEventArgs e)
     {
         if (e.Property == MenuAssist.IsAnimationEnabledProperty) Tick();
+        if (e.Property == TemplatedControl.CornerRadiusProperty || e.Property == Visual.BoundsProperty)
+            UpdateAnchor();
     }
 
     private void BlockExitingInput(object? sender, KeyEventArgs e)
     {
-        if (_closing) e.Handled = true;
+        if (_closing && (_owner is not MenuItem { IsTopLevel: true } || OwnsSource(e.Source))) e.Handled = true;
     }
 
     private void BlockExitingPointer(object? sender, PointerPressedEventArgs e)
     {
-        if (_closing) e.Handled = true;
+        if (_closing && (_owner is not MenuItem { IsTopLevel: true } || OwnsSource(e.Source))) e.Handled = true;
     }
 
     private void BlockExitingRelease(object? sender, PointerReleasedEventArgs e)
     {
-        if (_closing) e.Handled = true;
+        if (_closing && (_owner is not MenuItem { IsTopLevel: true } || OwnsSource(e.Source))) e.Handled = true;
     }
 
     private void OnWindowClosed(object? sender, EventArgs e) => Dispose();

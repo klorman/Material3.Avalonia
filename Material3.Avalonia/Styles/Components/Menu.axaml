@@ -1,0 +1,101 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
+                    xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
+                    xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
+                    xmlns:attached="clr-namespace:Material3.Avalonia.Attached"
+                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers">
+    <ControlTheme x:Key="MaterialTopLevelMenuItem" TargetType="MenuItem">
+        <Setter Property="internal:MenuItemPresentation.IsEnabled" Value="True" />
+        <Setter Property="internal:HoverState.IsEnabled" Value="True" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
+        <Setter Property="helpers:Typography.TextStyle" Value="{x:Null}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="{markup:DynamicThickness MdImplMenuBarItemLeadingSpace MdImplMenuBarItemTopSpace MdImplMenuBarItemTrailingSpace MdImplMenuBarItemBottomSpace}" />
+        <Setter Property="CornerRadius" Value="{markup:Token MdImplMenuBarItemHoveredShape}" />
+        <Setter Property="FontFamily" Value="{markup:Token MdCompMenusItemLabelTextFontFamily}" />
+        <Setter Property="FontSize" Value="{markup:Token MdCompMenusItemLabelTextSize}" />
+        <Setter Property="FontWeight" Value="{markup:Token MdCompMenusItemLabelTextWeight}" />
+        <Setter Property="LetterSpacing" Value="{markup:Token MdCompMenusItemLabelTextTracking}" />
+        <Setter Property="attached:FocusRing.Brush" Value="{markup:Token MdCompMenusItemFocusIndicatorBrush}" />
+        <Setter Property="attached:FocusRing.Thickness" Value="{markup:Token MdCompMenusItemFocusIndicatorThickness}" />
+        <Setter Property="attached:FocusRing.Offset" Value="{markup:Token MdCompMenusItemFocusIndicatorOffset}" />
+        <Setter Property="attached:FocusRing.CornerRadius" Value="{Binding $self.CornerRadius}" />
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate><primitives:MenuItemsPanel /></ItemsPanelTemplate>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <Grid x:Name="PART_Row" Background="Transparent">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" />
+                        <primitives:StateLayer x:Name="PART_StateLayer" CornerRadius="{TemplateBinding CornerRadius}" />
+                        <ContentPresenter x:Name="PART_HeaderPresenter"
+                                          Content="{TemplateBinding Header}"
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                          Foreground="{TemplateBinding Foreground}"
+                                          Margin="{TemplateBinding Padding}"
+                                          VerticalAlignment="Center"
+                                          RecognizesAccessKey="True"
+                                          LineHeight="{markup:Token MdCompMenusItemLabelTextLineHeight}" />
+                        <primitives:InkRipple x:Name="PART_Ripple" CornerRadius="{TemplateBinding CornerRadius}" />
+                        <Border x:Name="PART_MenuFocus" IsHitTestVisible="False"
+                                BorderBrush="{TemplateBinding attached:FocusRing.Brush}"
+                                BorderThickness="{TemplateBinding attached:FocusRing.Thickness}"
+                                CornerRadius="{TemplateBinding attached:FocusRing.EffectiveCornerRadius}"
+                                Margin="{TemplateBinding attached:FocusRing.EffectiveMargin}" />
+                    </Grid>
+                    <!-- Native Menu dismissal preserves the popup exit animation. -->
+                    <Popup x:Name="PART_Popup" PlacementTarget="{Binding $parent[MenuItem]}"
+                           IsLightDismissEnabled="False" WindowManagerAddShadowHint="False"
+                           OverlayInputPassThroughElement="{Binding $parent[Menu]}"
+                           MinWidth="{Binding $parent[MenuItem].Bounds.Width}">
+                        <primitives:MenuSubmenuHost Classes="m3-menu-bar-popup" Theme="{StaticResource MaterialMenuSubmenu}">
+                            <ItemsPresenter x:Name="PART_ItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}"
+                                            Grid.IsSharedSizeScope="True" />
+                        </primitives:MenuSubmenuHost>
+                    </Popup>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- State -->
+        <Style Selector="^ /template/ Border#PART_MenuFocus">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+        <Style Selector="^.m3-menu-keyboard-focus">
+            <Setter Property="CornerRadius" Value="{markup:Token MdImplMenuBarItemFocusedShape}" />
+        </Style>
+        <Style Selector="^.m3-menu-keyboard-focus /template/ Border#PART_MenuFocus">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+        <Style Selector="^.m3-menu-pressed, ^:open">
+            <Setter Property="CornerRadius" Value="{markup:Token MdImplMenuBarItemPressedShape}" />
+        </Style>
+        <Style Selector="^:disabled /template/ primitives|InkRipple#PART_Ripple">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+        <Style Selector="^ /template/ Popup#PART_Popup">
+            <Setter Property="Placement" Value="BottomEdgeAlignedLeft" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="{x:Type Menu}" TargetType="Menu">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="internal:MenuBarPresentation.IsEnabled" Value="True" />
+        <Setter Property="ItemContainerTheme" Value="{StaticResource MaterialTopLevelMenuItem}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}"
+                        BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                    <ItemsPresenter x:Name="PART_ItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

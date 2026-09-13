@@ -5,6 +5,10 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
 using Avalonia.Interactivity;
 using Avalonia.LogicalTree;
+using Avalonia.Media;
+using Avalonia.VisualTree;
+using ReactiveUI;
+using Material3.Avalonia.Attached.Controls;
 using Avalonia.Threading;
 using Material3.Avalonia.Demo.ViewModels;
 using Material3.Avalonia.Motion;
@@ -32,6 +36,17 @@ public partial class Menus : UserControl
     public Menus()
     {
         InitializeComponent();
+        NewDocumentItem.Command = ReactiveCommand.Create(() =>
+        {
+            MenuEditor.Text = string.Empty;
+            DocumentStatus.Text = "New document";
+        });
+        SaveDocumentItem.Command =
+            ReactiveCommand.Create(() => DocumentStatus.Text = "Document saved in this demo session");
+        UndoDocumentItem.Command = ReactiveCommand.Create(() => MenuEditor.Undo());
+        SelectDocumentItem.Command = ReactiveCommand.Create(() => MenuEditor.SelectAll());
+        foreach (var item in DocumentMenu.Items.OfType<MenuItem>())
+            item.TemplateApplied += (_, _) => ConfigureBarHost();
         var applicationTheme = Application.Current!.Styles.OfType<MaterialTheme>().FirstOrDefault();
         _pageTheme = new MaterialTheme { MotionScheme = null };
         if (applicationTheme is not null)
@@ -90,6 +105,7 @@ public partial class Menus : UserControl
 
     private void CloseMenus()
     {
+        DocumentMenu.Close();
         foreach (var flyout in _flyouts) flyout.Hide();
         foreach (var context in _contextMenus) context.Close();
     }
@@ -98,6 +114,7 @@ public partial class Menus : UserControl
     {
         CloseMenus();
         _overlay = !_overlay;
+        ConfigureBarHost();
         foreach (var context in _contextMenus) ConfigureContext(context);
         foreach (var window in _edgeWindows) window.UseOverlay = _overlay;
         HostButton.Content = _overlay ? "Host: overlay" : "Host: platform";
@@ -187,6 +204,43 @@ public partial class Menus : UserControl
         };
         launcher.DetachedFromVisualTree += (_, _) => Restore();
     }
+
+    private void ConfigureBarHost()
+    {
+        foreach (var item in DocumentMenu.Items.OfType<MenuItem>())
+            if (item.GetVisualDescendants().OfType<Popup>().FirstOrDefault() is { } popup)
+                popup.ShouldUseOverlayLayer = _overlay;
+    }
+
+    private void ToggleBarColor(object? sender, RoutedEventArgs e) =>
+        MenuAssist.SetColorStyle(DocumentMenu, MenuAssist.GetColorStyle(DocumentMenu) == MenuColorStyle.Standard
+            ? MenuColorStyle.Vibrant
+            : MenuColorStyle.Standard);
+
+    private void ToggleBarDirection(object? sender, RoutedEventArgs e)
+    {
+        DocumentMenu.Close();
+        DocumentArea.FlowDirection = DocumentArea.FlowDirection == FlowDirection.LeftToRight
+            ? FlowDirection.RightToLeft
+            : FlowDirection.LeftToRight;
+    }
+
+    private void ToggleBarMotion(object? sender, RoutedEventArgs e) =>
+        MenuAssist.SetIsAnimationEnabled(DocumentMenu, !MenuAssist.GetIsAnimationEnabled(DocumentMenu));
+
+    private void ExportDocument(object? sender, RoutedEventArgs e) =>
+        DocumentStatus.Text = $"Plain text export: {MenuEditor.Text?.Length ?? 0} characters";
+
+    private void ToggleDocumentStatus(object? sender, RoutedEventArgs e) =>
+        Dispatcher.UIThread.Post(() => DocumentStatus.IsVisible = ((MenuItem)sender!).IsChecked);
+
+    private void ToggleDocumentBold(object? sender, RoutedEventArgs e) =>
+        Dispatcher.UIThread.Post(() => MenuEditor.FontWeight = ((MenuItem)sender!).IsChecked
+            ? FontWeight.Bold
+            : FontWeight.Normal);
+
+    private void AlignDocument(object? sender, RoutedEventArgs e) =>
+        MenuEditor.TextAlignment = Enum.Parse<TextAlignment>((string)((MenuItem)sender!).Tag!);
 
     private void ShowEdges(object? sender, RoutedEventArgs e)
     {

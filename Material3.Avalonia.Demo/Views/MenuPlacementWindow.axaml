@@ -7,8 +7,25 @@
         Title="Menu placement"
         Width="600"
         Height="400">
-    <Grid>
-        <Button Content="Project actions" HorizontalAlignment="Left" VerticalAlignment="Top">
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Menu x:Name="EdgeMenu" HorizontalAlignment="Right">
+            <MenuItem Header="_Placement">
+                <MenuItem Header="Open" Command="{Binding SelectCommand}" CommandParameter="Open from menu bar" />
+                <MenuItem Header="Export">
+                    <MenuItem Header="PDF" Command="{Binding SelectCommand}" CommandParameter="PDF" />
+                    <MenuItem Header="Image" Command="{Binding SelectCommand}" CommandParameter="Image" />
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Publish" IsEnabled="False" />
+            </MenuItem>
+        </Menu>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12">
+            <Button Content="Menu bar: top / bottom" Click="ToggleMenuEdge" />
+            <Button Content="Menu bar: LTR / RTL" Click="ToggleMenuDirection" />
+            <TextBox Text="Focus return target" Width="240" />
+            <TextBlock Text="{Binding Status}" />
+        </StackPanel>
+        <Button Grid.Row="1" Content="Project actions" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Button.Flyout>
                 <MenuFlyout Opening="OnMenuOpening">
                     <MenuItem Header="Open"
@@ -24,7 +41,7 @@
                 </MenuFlyout>
             </Button.Flyout>
         </Button>
-        <Button Content="Project actions" HorizontalAlignment="Right" VerticalAlignment="Top">
+        <Button Grid.Row="1" Content="Project actions" HorizontalAlignment="Right" VerticalAlignment="Top">
             <Button.Flyout>
                 <MenuFlyout Opening="OnMenuOpening">
                     <MenuItem Header="Open"
@@ -40,7 +57,7 @@
                 </MenuFlyout>
             </Button.Flyout>
         </Button>
-        <Button Content="Project actions" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+        <Button Grid.Row="1" Content="Project actions" HorizontalAlignment="Left" VerticalAlignment="Bottom">
             <Button.Flyout>
                 <MenuFlyout Opening="OnMenuOpening">
                     <MenuItem Header="Open"
@@ -56,7 +73,7 @@
                 </MenuFlyout>
             </Button.Flyout>
         </Button>
-        <Button Content="Project actions" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+        <Button Grid.Row="1" Content="Project actions" HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <Button.Flyout>
                 <MenuFlyout Opening="OnMenuOpening">
                     <MenuItem Header="Open"

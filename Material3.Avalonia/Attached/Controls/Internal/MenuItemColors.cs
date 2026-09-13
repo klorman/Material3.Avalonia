@@ -89,22 +89,23 @@ internal sealed class MenuItemColors : IDisposable
             e.Property == MenuItem.ToggleTypeProperty || e.Property == ItemsControl.ItemCountProperty ||
             e.Property == MenuItem.InputGestureProperty || e.Property == MenuAssist.SupportingTextProperty ||
             e.Property == MenuAssist.TrailingTextProperty || e.Property == MenuAssist.TrailingIconProperty ||
-            e.Property == MenuAssist.IsAnimationEnabledProperty) Update();
+            e.Property == MenuAssist.IsAnimationEnabledProperty ||
+            e.Property == MenuItem.IsSubMenuOpenProperty) Update();
     }
 
     private void Update()
     {
-        var selected = MenuItemPresentation.GetDisplayChecked(_item);
+        var selected = !_item.IsTopLevel && MenuItemPresentation.GetDisplayChecked(_item);
         var disabled = !_item.IsEffectivelyEnabled;
         var colorStyle = MenuAssist.GetColorStyle(_item);
         var prefix = "MdCompMenus" + colorStyle + "Item";
         var selection = selected ? "Selected" : "";
         var state = disabled ? "Disabled" :
-            _item.Classes.Contains("m3-menu-pressed") ? "Pressed" :
+            (_item.Classes.Contains("m3-menu-pressed") || _item.IsTopLevel && _item.IsSubMenuOpen) ? "Pressed" :
             _item.Classes.Contains("m3-menu-keyboard-focus") ? "Focus" :
             _item.Classes.Contains("m3-hovered") ? "Hover" : "";
         var textState = selected && disabled ? "" : state;
-        _background.Bind(prefix + selection + "ContainerBrush");
+        _background.Bind(_item.IsTopLevel ? null : prefix + selection + "ContainerBrush", Brushes.Transparent);
         _label.Bind(prefix + selection + textState + "LabelTextBrush");
         var detailState = disabled ? selected ? "" : "Disabled" :
             (colorStyle == MenuColorStyle.Standard) == selected ? state : "";

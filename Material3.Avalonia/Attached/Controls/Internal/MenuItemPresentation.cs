@@ -123,7 +123,20 @@ internal sealed class MenuItemPresentation
         item.PropertyChanged += OnChanged;
         item.AddHandler(InputElement.KeyDownEvent, OnKeyDown, RoutingStrategies.Bubble);
         item.AddHandler(InputElement.KeyUpEvent, OnKeyUp, RoutingStrategies.Bubble);
-        item.LostFocus += (_, _) => _spacePressed = false;
+        item.AddHandler(InputElement.GotFocusEvent, (_, e) =>
+        {
+            if (item.IsTopLevel && e.Source == item)
+            {
+                if (e.NavigationMethod is NavigationMethod.Tab or NavigationMethod.Directional)
+                    MenuPopupPresentation.SetInputMode(item, true);
+                item.Classes.Set("m3-menu-keyboard-focus", MenuPopupPresentation.IsKeyboardInput(item));
+            }
+        }, handledEventsToo: true);
+        item.LostFocus += (_, _) =>
+        {
+            _spacePressed = false;
+            if (item.IsTopLevel) item.Classes.Remove("m3-menu-keyboard-focus");
+        };
         item.AddHandler(InputElement.PointerPressedEvent, OnPressed, RoutingStrategies.Tunnel);
         item.AddHandler(InputElement.PointerReleasedEvent, OnReleased,
             RoutingStrategies.Tunnel | RoutingStrategies.Bubble);
@@ -165,6 +178,7 @@ internal sealed class MenuItemPresentation
 
     private void Configure()
     {
+        UpdateShape();
         var popup = _popup;
         if (popup is not null && _item.HasSubMenu && _submenu?.Popup != popup)
         {
@@ -190,6 +204,7 @@ internal sealed class MenuItemPresentation
     {
         if (_dispatchingKey || e.Source != _item || !_item.IsFocused || !_item.IsEffectivelyEnabled ||
             e.KeyModifiers != KeyModifiers.None) return;
+        if (_item.IsTopLevel) _item.Classes.Add("m3-menu-keyboard-focus");
         if (e.Key == Key.Space)
         {
             _spacePressed = true;
@@ -238,6 +253,7 @@ internal sealed class MenuItemPresentation
     {
         if (!OwnsPoint(e) || !_item.IsEffectivelyEnabled || !IsPrimaryPress(e)) return;
         EndPress();
+        if (_item.IsTopLevel) _item.Classes.Remove("m3-menu-keyboard-focus");
         _pressedPointer = e.Pointer;
         _pressRoot = TopLevel.GetTopLevel(_item);
         _pressRoot?.AddHandler(InputElement.PointerReleasedEvent, OnReleased,
@@ -336,14 +352,14 @@ internal sealed class MenuItemPresentation
             }
             : null, BindingPriority.Style);
         if (_state is { } state)
-            state.SetValue(Animatable.TransitionsProperty,
+            state.SetCurrentValue(Animatable.TransitionsProperty,
                 animated
                     ? new Transitions
                     {
                         new SpringDoubleTransition
                             { Property = Visual.OpacityProperty, Style = MotionStyle.Effects, Speed = MotionSpeed.Fast }
                     }
-                    : null, BindingPriority.Style);
+                    : null);
         if (!animated || reduced)
             _ripple?.CancelPress();
     }
@@ -351,6 +367,14 @@ internal sealed class MenuItemPresentation
     private void UpdateShape()
     {
         UpdateTransitions();
+        if (_item.IsTopLevel)
+        {
+            _shape?.Dispose();
+            _shape = null;
+            _shapePosition = null;
+            return;
+        }
+
         var position = GetDisplayChecked(_item) ? MenuItemPosition.Single : _item.GetValue(PositionProperty);
         if (position == MenuItemPosition.Middle) position = MenuItemPosition.Single;
         if (_shapePosition == position && _shapeChecked == GetDisplayChecked(_item)) return;

@@ -32,6 +32,9 @@
       <Compile Update="Views\TextBoxes.axaml.cs">
         <DependentUpon>TextBoxes.axaml</DependentUpon>
       </Compile>
+      <Compile Update="Views\MenuPlacementWindow.axaml.cs">
+        <DependentUpon>MenuPlacementWindow.axaml</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
