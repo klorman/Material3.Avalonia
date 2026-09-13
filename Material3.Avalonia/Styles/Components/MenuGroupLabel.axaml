@@ -1,0 +1,27 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
+                    xmlns:controls="clr-namespace:Material3.Avalonia.Controls"
+                    xmlns:assist="clr-namespace:Material3.Avalonia.Attached.Controls"
+                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers">
+    <ControlTheme x:Key="{x:Type controls:MenuGroupLabel}" TargetType="controls:MenuGroupLabel">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="IsHitTestVisible" Value="False" />
+        <Setter Property="MinHeight" Value="{markup:Token MdImplMenusGroupLabelHeight}" />
+        <Setter Property="Padding" Value="{markup:DynamicThickness MdCompMenusItemLeadingSpace MdCompMenusGroupPadding}" />
+        <Setter Property="helpers:Typography.TextStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{markup:Token MdCompMenusStandardSectionLabelTextBrush}" />
+        <Setter Property="TextBlock.FontFamily" Value="{markup:Token MdCompMenusItemSupportingTextFontFamily}" />
+        <Setter Property="TextBlock.FontSize" Value="{markup:Token MdCompMenusItemSupportingTextSize}" />
+        <Setter Property="TextBlock.FontWeight" Value="{markup:Token MdCompMenusItemSupportingTextWeight}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <TextBlock Text="{TemplateBinding Text}" Margin="{TemplateBinding Padding}"
+                           VerticalAlignment="Center" TextWrapping="Wrap" />
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^[(assist|MenuAssist.ColorStyle)=Vibrant]">
+            <Setter Property="Foreground" Value="{markup:Token MdCompMenusVibrantSectionLabelTextBrush}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

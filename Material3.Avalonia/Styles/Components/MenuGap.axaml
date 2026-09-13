@@ -1,0 +1,11 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Material3.Avalonia.Controls">
+    <ControlTheme x:Key="{x:Type controls:MenuGap}" TargetType="controls:MenuGap"
+                  BasedOn="{StaticResource MaterialMenuDivider}">
+        <Setter Property="IsHitTestVisible" Value="False" />
+        <Style Selector="^.m3-menu-gap /template/ Border#PART_Line">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

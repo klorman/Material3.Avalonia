@@ -1,0 +1,11 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
+        xmlns:menu="clr-namespace:Material3.Avalonia.Controls">
+    <Style Selector="ContextMenu > Separator:not(menu|MenuGap):not(menu|MenuGroupLabel), MenuFlyoutPresenter > Separator:not(menu|MenuGap):not(menu|MenuGroupLabel), MenuItem > Separator:not(menu|MenuGap):not(menu|MenuGroupLabel)">
+        <Setter Property="Theme" Value="{DynamicResource MaterialMenuDivider}" />
+    </Style>
+    <Style Selector="ScrollViewer.m3-menu-scroll /template/ primitives|SmoothScrollContentPresenter#PART_ContentPresenter">
+        <Setter Property="Grid.ColumnSpan" Value="2" />
+        <Setter Property="Grid.RowSpan" Value="2" />
+    </Style>
+</Styles>

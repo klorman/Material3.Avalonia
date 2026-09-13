@@ -7,5 +7,6 @@
         <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/Component/Divider.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/Component/TextField.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/Component/ToolTip.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/Component/Menus.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

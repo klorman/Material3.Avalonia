@@ -1,0 +1,43 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
+                    xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
+                    xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
+                    xmlns:assist="clr-namespace:Material3.Avalonia.Attached.Controls"
+                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers">
+    <ControlTheme x:Key="{x:Type MenuFlyoutPresenter}" TargetType="MenuFlyoutPresenter">
+        <Setter Property="internal:MenuPopupPresentation.IsEnabled" Value="True" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="helpers:Typography.TextStyle" Value="{x:Null}" />
+        <Setter Property="Background" Value="{markup:Token MdCompMenusStandardContainerBrush}" />
+        <Setter Property="CornerRadius" Value="{markup:Token MdCompMenusActiveContainerShape}" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate><primitives:MenuItemsPanel /></ItemsPanelTemplate>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <primitives:MenuSurface x:Name="PART_MenuSurface"
+                                        Padding="{markup:Token MdImplMenusShadowPadding}"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="{TemplateBinding CornerRadius}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        InnerCornerRadius="{markup:Token MdCompMenusGroupShape}"
+                                        InactiveCornerRadius="{markup:Token MdCompMenusInactiveContainerShape}"
+                                        ShadowBrush="{markup:Token MdCompMenusStandardContainerShadowBrush}"
+                                        BoxShadow="{markup:Token MdCompMenusContainerElevation}">
+                    <ScrollViewer x:Name="PART_MenuScrollViewer" Classes="m3-menu-scroll" AllowAutoHide="False"
+                                  Padding="{TemplateBinding Padding}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                                  IsScrollChainingEnabled="False" assist:ScrollViewerAssist.ScrollBarInset="0,12">
+                        <ItemsPresenter x:Name="PART_ItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}"
+                                        KeyboardNavigation.TabNavigation="Continue" Grid.IsSharedSizeScope="True" />
+                    </ScrollViewer>
+                </primitives:MenuSurface>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^[(assist|MenuAssist.ColorStyle)=Vibrant]">
+            <Setter Property="Background" Value="{markup:Token MdCompMenusVibrantContainerBrush}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

@@ -1,0 +1,176 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
+                    xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
+                    xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
+                    xmlns:assist="clr-namespace:Material3.Avalonia.Attached.Controls"
+                    xmlns:attached="clr-namespace:Material3.Avalonia.Attached"
+                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers"
+                    xmlns:converters="using:Avalonia.Controls.Converters">
+    <converters:PlatformKeyGestureConverter x:Key="MaterialMenuGestureConverter" />
+    <ControlTheme x:Key="MaterialMenuSupportingText" TargetType="ContentControl">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="IsHitTestVisible" Value="False" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <TextBlock Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}"
+                           FontFamily="{markup:Token MdCompMenusItemSupportingTextFontFamily}"
+                           FontSize="{markup:Token MdCompMenusItemSupportingTextSize}"
+                           FontWeight="{markup:Token MdCompMenusItemSupportingTextWeight}"
+                           LetterSpacing="{markup:Token MdCompMenusItemSupportingTextTracking}"
+                           LineHeight="{markup:Token MdCompMenusItemSupportingTextLineHeight}" TextWrapping="Wrap" />
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+    <ControlTheme x:Key="MaterialMenuSubmenu" TargetType="primitives:MenuSubmenuHost">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Background" Value="{markup:Token MdCompMenusStandardContainerBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <primitives:MenuSurface x:Name="PART_MenuSurface" Background="{TemplateBinding Background}" AnchorGap="{markup:Token MdImplMenusSubmenuGap}"
+                                        Padding="{markup:Token MdImplMenusShadowPadding}"
+                                             CornerRadius="{markup:Token MdCompMenusActiveContainerShape}"
+                                        InnerCornerRadius="{markup:Token MdCompMenusGroupShape}"
+                                        InactiveCornerRadius="{markup:Token MdCompMenusInactiveContainerShape}"
+                                        ShadowBrush="{markup:Token MdCompMenusStandardContainerShadowBrush}"
+                                        BoxShadow="{markup:Token MdCompMenusContainerElevation}">
+                    <ScrollViewer x:Name="PART_MenuScrollViewer" Theme="{StaticResource {x:Type ScrollViewer}}" Classes="m3-menu-scroll" AllowAutoHide="False"
+                                  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                                  IsScrollChainingEnabled="False" assist:ScrollViewerAssist.ScrollBarInset="0,12">
+                        <ContentPresenter Content="{TemplateBinding Content}" />
+                    </ScrollViewer>
+                </primitives:MenuSurface>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^[(assist|MenuAssist.ColorStyle)=Vibrant]">
+            <Setter Property="Background" Value="{markup:Token MdCompMenusVibrantContainerBrush}" />
+        </Style>
+    </ControlTheme>
+    <ControlTheme x:Key="{x:Type MenuItem}" TargetType="MenuItem">
+        <Setter Property="internal:MenuItemPresentation.LeadingGap" Value="{markup:DynamicThickness MdSysSpacing0 MdSysSpacing0 MdCompMenusItemBetweenSpace MdSysSpacing0}" />
+        <Setter Property="internal:MenuItemPresentation.TrailingGap" Value="{markup:DynamicThickness MdCompMenusItemBetweenSpace MdSysSpacing0 MdSysSpacing0 MdSysSpacing0}" />
+        <Setter Property="internal:MenuItemPresentation.LeadingIconSize" Value="{markup:Token MdCompMenusItemLeadingIconSize}" />
+        <Setter Property="internal:MenuItemPresentation.TrailingIconSize" Value="{markup:Token MdCompMenusItemTrailingIconSize}" />
+        <Setter Property="internal:MenuItemPresentation.IsEnabled" Value="True" />
+        <Setter Property="internal:HoverState.IsEnabled" Value="True" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
+        <Setter Property="helpers:Typography.TextStyle" Value="{x:Null}" />
+        <Setter Property="MinHeight" Value="{markup:DensityScalar MdCompMenusItemHeight, MostDense=Dense3}" />
+        <Setter Property="Padding" Value="{markup:DensityThickness Base={markup:DynamicThickness MdCompMenusItemLeadingSpace MdCompMenusItemTopSpace MdCompMenusItemTrailingSpace MdCompMenusItemBottomSpace}, Sides=Vertical, MostDense=Dense3}" />
+        <Setter Property="FontFamily" Value="{markup:Token MdCompMenusItemLabelTextFontFamily}" />
+        <Setter Property="FontSize" Value="{markup:Token MdCompMenusItemLabelTextSize}" />
+        <Setter Property="FontWeight" Value="{markup:Token MdCompMenusItemLabelTextWeight}" />
+        <Setter Property="LetterSpacing" Value="{markup:Token MdCompMenusItemLabelTextTracking}" />
+        <Setter Property="attached:FocusRing.Brush" Value="{markup:Token MdCompMenusItemFocusIndicatorBrush}" />
+        <Setter Property="attached:FocusRing.Thickness" Value="{markup:Token MdCompMenusItemFocusIndicatorThickness}" />
+        <Setter Property="attached:FocusRing.Offset" Value="{markup:Token MdCompMenusItemFocusIndicatorOffset}" />
+        <Setter Property="attached:FocusRing.CornerRadius" Value="{Binding $self.CornerRadius}" />
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate><primitives:MenuItemsPanel /></ItemsPanelTemplate>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel Margin="{TemplateBinding internal:MenuItemPresentation.RowSpacing}">
+                    <Grid x:Name="PART_Row" Background="Transparent" MinHeight="{TemplateBinding MinHeight}">
+                        <Border x:Name="PART_Background" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" />
+                        <Border x:Name="PART_MenuFocus" IsHitTestVisible="False"
+                                BorderBrush="{TemplateBinding attached:FocusRing.Brush}"
+                                BorderThickness="{TemplateBinding attached:FocusRing.Thickness}"
+                                CornerRadius="{TemplateBinding attached:FocusRing.EffectiveCornerRadius}"
+                                Margin="{TemplateBinding attached:FocusRing.EffectiveMargin}" ZIndex="1" />
+                        <primitives:StateLayer x:Name="PART_StateLayer" CornerRadius="{TemplateBinding CornerRadius}" />
+                        <Grid x:Name="PART_Content" Margin="{TemplateBinding Padding}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="MenuBadge" />
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="MenuTrailingText" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="MenuChevron" />
+                            </Grid.ColumnDefinitions>
+                            <Panel x:Name="PART_LeadingSlot" Grid.Column="0" Height="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}">
+                                <Panel x:Name="PART_LeadingIconHost" HorizontalAlignment="Left" Width="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}">
+                                    <primitives:IconPresenter x:Name="PART_Icon" IsHitTestVisible="False" KeyboardNavigation.TabNavigation="None"
+                                                              Value="{TemplateBinding Icon}" Size="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}"
+                                                              Width="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}" Height="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}" />
+                                </Panel>
+                                <Panel x:Name="PART_LeadingCheckHost" HorizontalAlignment="Left" Width="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}">
+                                    <PathIcon x:Name="PART_Check" FlowDirection="LeftToRight" IsHitTestVisible="False"
+                                              Width="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}" Height="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}"
+                                              Data="M0-960h0 M960 0h0 M389-267 195-460l51-52 143 143 325-324 51 51-376 375Z" />
+                                </Panel>
+                            </Panel>
+                            <StackPanel x:Name="PART_Label" Grid.Column="1" VerticalAlignment="Center">
+                                <ContentPresenter x:Name="PART_HeaderPresenter" Content="{TemplateBinding Header}"
+                                                  Foreground="{TemplateBinding Foreground}" ContentTemplate="{TemplateBinding HeaderTemplate}" RecognizesAccessKey="True"
+                                                  TextWrapping="Wrap" LineHeight="{markup:Token MdCompMenusItemLabelTextLineHeight}" />
+                                <ContentControl x:Name="PART_SupportingText" Content="{TemplateBinding assist:MenuAssist.SupportingText}"
+                                                Theme="{StaticResource MaterialMenuSupportingText}"
+                                                IsVisible="{TemplateBinding assist:MenuAssist.SupportingText, Converter={x:Static ObjectConverters.IsNotNull}}" />
+                            </StackPanel>
+                            <ContentPresenter Grid.Column="2" Content="{TemplateBinding assist:MenuAssist.Badge}" KeyboardNavigation.TabNavigation="None"
+                                              IsVisible="{TemplateBinding assist:MenuAssist.Badge, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                              IsHitTestVisible="False" VerticalAlignment="Center"
+                                              Margin="{TemplateBinding internal:MenuItemPresentation.TrailingGap}" />
+                            <TextBlock x:Name="PART_TrailingText" Grid.Column="3" VerticalAlignment="Center" TextAlignment="End"
+                                       FontFamily="{markup:Token MdCompMenusItemTrailingSupportingTextFontFamily}"
+                                       FontSize="{markup:Token MdCompMenusItemTrailingSupportingTextSize}"
+                                       FontWeight="{markup:Token MdCompMenusItemTrailingSupportingTextWeight}"
+                                       LetterSpacing="{markup:Token MdCompMenusItemTrailingSupportingTextTracking}"
+                                       LineHeight="{markup:Token MdCompMenusItemTrailingSupportingTextLineHeight}" TextWrapping="Wrap"
+                                       Margin="{TemplateBinding internal:MenuItemPresentation.TrailingGap}" />
+                            <Panel x:Name="PART_TrailingSlot" Grid.Column="4" Height="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}">
+                                <Panel x:Name="PART_TrailingIconHost" HorizontalAlignment="Left" Width="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}">
+                                    <primitives:IconPresenter x:Name="PART_TrailingIcon" IsHitTestVisible="False" KeyboardNavigation.TabNavigation="None"
+                                                              Value="{TemplateBinding assist:MenuAssist.TrailingIcon}" Size="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}"
+                                                              Width="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}" Height="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}" />
+                                </Panel>
+                                <Panel x:Name="PART_TrailingCheckHost" HorizontalAlignment="Left" Width="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}">
+                                    <PathIcon x:Name="PART_TrailingCheck" FlowDirection="LeftToRight" IsHitTestVisible="False"
+                                              Width="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}" Height="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}"
+                                              Data="M0-960h0 M960 0h0 M389-267 195-460l51-52 143 143 325-324 51 51-376 375Z" />
+                                </Panel>
+                            </Panel>
+                            <PathIcon x:Name="PART_Chevron" Grid.Column="5" IsHitTestVisible="False"
+                                      Width="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}" Height="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}"
+                                      Margin="{TemplateBinding internal:MenuItemPresentation.TrailingGap}"
+                                      Data="M0-960h0 M960 0h0 M384-288v-384l192 192-192 192Z" />
+                        </Grid>
+                        <primitives:InkRipple x:Name="PART_Ripple" CornerRadius="{TemplateBinding CornerRadius}" />
+                    </Grid>
+                    <Popup x:Name="PART_Popup" PlacementTarget="{Binding $parent[MenuItem]}" IsLightDismissEnabled="False"
+                           WindowManagerAddShadowHint="False">
+                        <primitives:MenuSubmenuHost Theme="{StaticResource MaterialMenuSubmenu}">
+                                <ItemsPresenter x:Name="PART_ItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}"
+                                                Grid.IsSharedSizeScope="True" />
+                        </primitives:MenuSubmenuHost>
+                    </Popup>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^ /template/ Border#PART_MenuFocus"><Setter Property="IsVisible" Value="False" /></Style>
+        <Style Selector="^.m3-menu-keyboard-focus /template/ Border#PART_MenuFocus">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+        <Style Selector="^ /template/ Popup#PART_Popup"><Setter Property="Placement" Value="RightEdgeAlignedTop" /></Style>
+        <Style Selector="^:empty /template/ PathIcon#PART_Chevron"><Setter Property="IsVisible" Value="False" /></Style>
+        <Style Selector="^:toggle"><Setter Property="StaysOpenOnClick" Value="True" /></Style>
+        <Style Selector="^:separator">
+            <Setter Property="MinHeight" Value="0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Template"><ControlTemplate><Separator Theme="{StaticResource MaterialMenuDivider}" /></ControlTemplate></Setter>
+        </Style>
+        <Style Selector="^ /template/ TextBlock#PART_TrailingText">
+            <Setter Property="IsVisible" Value="False" />
+            <Setter Property="Text" Value="{Binding $parent[MenuItem].InputGesture, Converter={StaticResource MaterialMenuGestureConverter}}" />
+        </Style>
+        <Style Selector="^.m3-has-trailing-text /template/ TextBlock#PART_TrailingText"><Setter Property="IsVisible" Value="True" /></Style>
+        <Style Selector="^.m3-trailing-text /template/ TextBlock#PART_TrailingText">
+            <Setter Property="Text" Value="{Binding $parent[MenuItem].(assist:MenuAssist.TrailingText)}" />
+        </Style>
+        <Style Selector="^:disabled /template/ primitives|InkRipple#PART_Ripple">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

@@ -14,38 +14,11 @@ namespace Material3.Avalonia.Attached.Controls.Internal;
 
 internal static class ToolTipPlacement
 {
-    private sealed class DirectionState
-    {
-        public PlacementMode Direction;
-    }
-
-    private static readonly ConditionalWeakTable<Popup, DirectionState> Directions = new();
-
     private static void RememberDirection(Popup popup, PlacementMode direction) =>
-        Directions.GetOrCreateValue(popup).Direction = direction;
+        PopupGeometry.RememberDirection(popup, direction);
 
-    public static PlacementMode GetRequestedDirection(Popup popup)
-    {
-        if (popup.Placement == PlacementMode.Custom && Directions.TryGetValue(popup, out var state))
-            return state.Direction;
-        return popup.Placement switch
-        {
-            PlacementMode.Top or PlacementMode.TopEdgeAlignedLeft or PlacementMode.TopEdgeAlignedRight => PlacementMode
-                .Top,
-            PlacementMode.Left or PlacementMode.LeftEdgeAlignedTop or PlacementMode.LeftEdgeAlignedBottom =>
-                PlacementMode.Left,
-            PlacementMode.Right or PlacementMode.RightEdgeAlignedTop or PlacementMode.RightEdgeAlignedBottom =>
-                PlacementMode.Right,
-            PlacementMode.AnchorAndGravity or PlacementMode.Custom => FromGravity(popup.PlacementGravity),
-            _ => PlacementMode.Bottom
-        };
-    }
-
-    private static PlacementMode FromGravity(PopupGravity gravity) =>
-        gravity.HasFlag(PopupGravity.Top) ? PlacementMode.Top :
-        gravity.HasFlag(PopupGravity.Bottom) ? PlacementMode.Bottom :
-        gravity.HasFlag(PopupGravity.Left) ? PlacementMode.Left :
-        gravity.HasFlag(PopupGravity.Right) ? PlacementMode.Right : PlacementMode.Bottom;
+    public static PlacementMode GetRequestedDirection(Popup popup) => PopupGeometry.GetRequestedDirection(popup);
+    private static PlacementMode FromGravity(PopupGravity gravity) => PopupGeometry.FromGravity(gravity);
 
     public static IMultiValueConverter PlainOffset { get; } = new PlainOffsetConverter();
 
@@ -255,21 +228,8 @@ internal static class ToolTipPlacement
     private static bool UsesOverlay(Popup popup) =>
         popup.Child?.GetVisualAncestors().Any(x => x is OverlayPopupHost) == true;
 
-    private static Rect AvailableBounds(TopLevel root, Rect anchor, bool overlay)
-    {
-        if (!overlay && root.Screens?.ScreenFromPoint(root.PointToScreen(anchor.Center)) is { } screen)
-        {
-            var origin = root.PointToScreen(anchor.TopLeft);
-            var area = screen.WorkingArea.Width > 0 && screen.WorkingArea.Height > 0
-                ? screen.WorkingArea
-                : screen.Bounds;
-            return new Rect((area.X - origin.X) / root.RenderScaling, (area.Y - origin.Y) / root.RenderScaling,
-                area.Width / root.RenderScaling, area.Height / root.RenderScaling);
-        }
-
-        var position = anchor.Position;
-        return new Rect(-position.X, -position.Y, root.ClientSize.Width, root.ClientSize.Height);
-    }
+    private static Rect AvailableBounds(TopLevel root, Rect anchor, bool overlay) =>
+        PopupGeometry.AvailableBounds(root, anchor, overlay);
 
     private sealed class PlainOffsetConverter : IMultiValueConverter
     {

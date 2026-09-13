@@ -73,4 +73,8 @@
             <Setter Property="assist:DividerAssist.Orientation" Value="Vertical" />
         </Style>
     </ControlTheme>
+    <ControlTheme x:Key="MaterialMenuDivider" TargetType="Separator" BasedOn="{StaticResource {x:Type Separator}}">
+        <Setter Property="assist:DividerAssist.Variant" Value="MiddleInset" />
+        <Setter Property="Margin" Value="{markup:DynamicThickness MdSysSpacing0 MdImplMenusDividerVerticalSpace}" />
+    </ControlTheme>
 </ResourceDictionary>

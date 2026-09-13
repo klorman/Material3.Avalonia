@@ -3,4 +3,7 @@
     <x:String x:Key="StringBadgeNewNotificationText">New notification</x:String>
     <!-- TextBox/SelectableTextBlock flyout -->
     <x:String x:Key="StringTextFlyoutCopyText">Copy</x:String>
+    <x:String x:Key="StringTextFlyoutCutText">Cut</x:String>
+    <x:String x:Key="StringTextFlyoutPasteText">Paste</x:String>
+    <x:String x:Key="StringTextFlyoutSelectAllText">Select all</x:String>
 </ResourceDictionary>

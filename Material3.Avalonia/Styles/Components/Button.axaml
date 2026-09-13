@@ -251,7 +251,7 @@
             </Style>
         </Style>
 
-        <Style Selector="^:pressed:not(:disabled)">
+        <Style Selector="^:pressed:not(:disabled), ^.m3-menu-open:not(:disabled)">
             <Style Selector="^[(controls|ButtonAssist.Size)=ExtraSmall]">
                 <Setter Property="CornerRadius" Value="{markup:Token MdSysShapeCornerSmall}" />
             </Style>
@@ -280,6 +280,10 @@
 
         <Style Selector="^.m3-hovered:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
             <Setter Property="Opacity" Value="{markup:Token MdSysStatePointerOverOpacity}" />
+        </Style>
+
+        <Style Selector="^.m3-menu-open:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="{markup:Token MdSysStatePressedOpacity}" />
         </Style>
 
         <!-- Variant -->

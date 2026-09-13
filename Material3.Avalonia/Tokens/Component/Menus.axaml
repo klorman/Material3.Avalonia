@@ -1,0 +1,184 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens">
+    <tokens:TokenAlias x:Key="MdCompMenusContainerShape" ResourceKey="MdSysShapeCornerLarge" />
+    <tokens:TokenAlias x:Key="MdCompMenusActiveContainerShape" ResourceKey="MdCompMenusContainerShape" />
+    <tokens:TokenAlias x:Key="MdCompMenusInactiveContainerShape" ResourceKey="MdSysShapeCornerSmall" />
+    <tokens:TokenAlias x:Key="MdCompMenusGroupShape" ResourceKey="MdSysShapeCornerSmall" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemShape" ResourceKey="MdSysShapeCornerExtraSmall" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemFirstChildShape" ResourceKey="MdSysShapeCornerMedium" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemLastChildShape" ResourceKey="MdSysShapeCornerMedium" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemFirstChildInnerCorner" ResourceKey="MdSysShapeCornerExtraSmall" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemLastChildInnerCorner" ResourceKey="MdSysShapeCornerExtraSmall" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemSelectedShape" ResourceKey="MdSysShapeCornerMedium" />
+    <tokens:TokenAlias x:Key="MdCompMenusContainerElevation" ResourceKey="MdSysShadowLevel2" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemFocusIndicatorBrush" ResourceKey="MdSysSecondaryBrush" />
+    <x:Double x:Key="MdCompMenusItemHeight">44</x:Double>
+    <x:Double x:Key="MdCompMenusItemLeadingIconSize">20</x:Double>
+    <x:Double x:Key="MdCompMenusItemTrailingIconSize">20</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusItemTopSpace" ResourceKey="MdSysSpacing100" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemBottomSpace" ResourceKey="MdSysSpacing100" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemLeadingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemTrailingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemBetweenSpace" ResourceKey="MdSysSpacing150" />
+    <tokens:TokenAlias x:Key="MdCompMenusGap" ResourceKey="MdSysSpacing25" />
+    <tokens:TokenAlias x:Key="MdCompMenusGroupPadding" ResourceKey="MdSysSpacing50" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemLabelTextFontFamily" ResourceKey="MdSysTypeScaleLabelLargeFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemLabelTextWeight" ResourceKey="MdSysTypeScaleLabelLargeWeight" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemLabelTextSize" ResourceKey="MdSysTypeScaleLabelLargeSize" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemLabelTextLineHeight" ResourceKey="MdSysTypeScaleLabelLargeLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemLabelTextTracking" ResourceKey="MdSysTypeScaleLabelLargeTracking" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemSupportingTextFontFamily" ResourceKey="MdSysTypeScaleBodySmallFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemSupportingTextWeight" ResourceKey="MdSysTypeScaleBodySmallWeight" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemSupportingTextSize" ResourceKey="MdSysTypeScaleBodySmallSize" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemSupportingTextLineHeight" ResourceKey="MdSysTypeScaleBodySmallLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemSupportingTextTracking" ResourceKey="MdSysTypeScaleBodySmallTracking" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemTrailingSupportingTextFontFamily" ResourceKey="MdSysTypeScaleLabelLargeFontFamily" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemTrailingSupportingTextWeight" ResourceKey="MdSysTypeScaleLabelLargeWeight" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemTrailingSupportingTextSize" ResourceKey="MdSysTypeScaleLabelLargeSize" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemTrailingSupportingTextLineHeight" ResourceKey="MdSysTypeScaleLabelLargeLineHeight" />
+    <tokens:TokenAlias x:Key="MdCompMenusItemTrailingSupportingTextTracking" ResourceKey="MdSysTypeScaleLabelLargeTracking" />
+    <Thickness x:Key="MdCompMenusItemFocusIndicatorThickness">3</Thickness>
+    <Thickness x:Key="MdCompMenusItemFocusIndicatorOffset">-3</Thickness>
+    <Thickness x:Key="MdImplMenusShadowPadding">8,8,8,10</Thickness>
+    <tokens:TokenAlias x:Key="MdImplMenusItemSpacing" ResourceKey="MdSysSpacing50" />
+    <tokens:TokenAlias x:Key="MdImplMenusItemHorizontalInset" ResourceKey="MdCompMenusGroupPadding" />
+    <tokens:TokenAlias x:Key="MdImplMenusDividerVerticalSpace" ResourceKey="MdSysSpacing50" />
+    <x:Double x:Key="MdImplMenusContentCompression">0.8</x:Double>
+    <tokens:TokenAlias x:Key="MdImplMenusContentMinimumGap" ResourceKey="MdSysSpacing50" />
+    <x:Double x:Key="MdImplMenusGroupLabelHeight">32</x:Double>
+    <x:Double x:Key="MdImplMenusSubmenuGap">0</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusStandardContainerBrush" ResourceKey="MdSysSurfaceContainerLowBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardSectionLabelTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardContainerShadowBrush" ResourceKey="MdSysShadowBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemContainerBrush" ResourceKey="MdSysSurfaceContainerLowBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemLabelTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSupportingTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemTrailingSupportingTextBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemTrailingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemActiveStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompMenusStandardItemActiveStateLayerOpacity">0.08</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemHoverStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompMenusStandardItemHoverStateLayerOpacity">0.08</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemHoverLabelTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemHoverLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemHoverTrailingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemFocusStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompMenusStandardItemFocusStateLayerOpacity">0.1</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemFocusLabelTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemFocusLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemFocusTrailingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemPressedStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompMenusStandardItemPressedStateLayerOpacity">0.1</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemPressedLabelTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemPressedLeadingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemPressedTrailingIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemDisabledLabelTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompMenusStandardItemDisabledLabelTextOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemDisabledSupportingTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompMenusStandardItemDisabledSupportingTextOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemDisabledTrailingSupportingTextBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompMenusStandardItemDisabledTrailingSupportingTextOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemDisabledLeadingIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompMenusStandardItemDisabledLeadingIconOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemDisabledTrailingIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompMenusStandardItemDisabledTrailingIconOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedContainerBrush" ResourceKey="MdSysTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedLabelTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedTrailingSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedLeadingIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedTrailingIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedHoverStateLayerBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <x:Double x:Key="MdCompMenusStandardItemSelectedHoverStateLayerOpacity">0.08</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedHoverLabelTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedHoverSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedHoverTrailingSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedHoverLeadingIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedHoverTrailingIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedFocusStateLayerBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <x:Double x:Key="MdCompMenusStandardItemSelectedFocusStateLayerOpacity">0.1</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedFocusLabelTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedFocusSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedFocusTrailingSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedFocusLeadingIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedFocusTrailingIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedPressedStateLayerBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <x:Double x:Key="MdCompMenusStandardItemSelectedPressedStateLayerOpacity">0.1</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedPressedLabelTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedPressedSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedPressedTrailingSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedPressedLeadingIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedPressedTrailingIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedDisabledLabelTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <x:Double x:Key="MdCompMenusStandardItemSelectedDisabledLabelTextOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedDisabledTrailingSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedDisabledLeadingIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <x:Double x:Key="MdCompMenusStandardItemSelectedDisabledLeadingIconOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedDisabledTrailingIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <x:Double x:Key="MdCompMenusStandardItemSelectedDisabledTrailingIconOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusStandardItemSelectedDisabledContainerBrush" ResourceKey="MdSysTertiaryContainerBrush" />
+    <x:Double x:Key="MdCompMenusStandardItemSelectedDisabledContainerOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantContainerBrush" ResourceKey="MdSysTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantSectionLabelTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemContainerBrush" ResourceKey="MdSysTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemLabelTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemTrailingSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemLeadingIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemTrailingIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemActiveStateLayerBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <x:Double x:Key="MdCompMenusVibrantItemActiveStateLayerOpacity">0.08</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemHoverStateLayerBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <x:Double x:Key="MdCompMenusVibrantItemHoverStateLayerOpacity">0.08</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemHoverLabelTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemHoverSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemHoverTrailingSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemHoverLeadingIconBrush" ResourceKey="MdSysTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemHoverTrailingIconBrush" ResourceKey="MdSysTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemFocusStateLayerBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <x:Double x:Key="MdCompMenusVibrantItemFocusStateLayerOpacity">0.1</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemFocusLabelTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemFocusSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemFocusTrailingSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemFocusLeadingIconBrush" ResourceKey="MdSysTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemFocusTrailingIconBrush" ResourceKey="MdSysTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemPressedStateLayerBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <x:Double x:Key="MdCompMenusVibrantItemPressedStateLayerOpacity">0.1</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemPressedLabelTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemPressedSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemPressedTrailingSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemPressedLeadingIconBrush" ResourceKey="MdSysTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemPressedTrailingIconBrush" ResourceKey="MdSysTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemDisabledLabelTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <x:Double x:Key="MdCompMenusVibrantItemDisabledLabelTextOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemDisabledSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <x:Double x:Key="MdCompMenusVibrantItemDisabledSupportingTextOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemDisabledTrailingSupportingTextBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <x:Double x:Key="MdCompMenusVibrantItemDisabledTrailingSupportingTextOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemDisabledLeadingIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <x:Double x:Key="MdCompMenusVibrantItemDisabledLeadingIconOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemDisabledTrailingIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <x:Double x:Key="MdCompMenusVibrantItemDisabledTrailingIconOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemSelectedContainerBrush" ResourceKey="MdSysTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemSelectedLabelTextBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemSelectedSupportingTextBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemSelectedTrailingSupportingTextBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemSelectedLeadingIconBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemSelectedTrailingIconBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemSelectedHoverStateLayerBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <x:Double x:Key="MdCompMenusVibrantItemSelectedHoverStateLayerOpacity">0.08</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemSelectedHoverLabelTextBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemSelectedFocusStateLayerBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <x:Double x:Key="MdCompMenusVibrantItemSelectedFocusStateLayerOpacity">0.1</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemSelectedFocusLabelTextBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemSelectedPressedStateLayerBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <x:Double x:Key="MdCompMenusVibrantItemSelectedPressedStateLayerOpacity">0.1</x:Double>
+    <tokens:TokenAlias x:Key="MdCompMenusVibrantItemSelectedPressedLabelTextBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <x:Double x:Key="MdCompMenusVibrantItemSelectedDisabledLabelTextOpacity">0.38</x:Double>
+    <x:Double x:Key="MdCompMenusVibrantItemSelectedDisabledSupportingTextOpacity">0.38</x:Double>
+    <x:Double x:Key="MdCompMenusVibrantItemSelectedDisabledTrailingSupportingTextOpacity">0.38</x:Double>
+    <x:Double x:Key="MdCompMenusVibrantItemSelectedDisabledLeadingIconOpacity">0.38</x:Double>
+    <x:Double x:Key="MdCompMenusVibrantItemSelectedDisabledTrailingIconOpacity">0.38</x:Double>
+</ResourceDictionary>

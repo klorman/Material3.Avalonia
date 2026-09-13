@@ -1,0 +1,76 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:Material3.Avalonia.Demo.ViewModels"
+        x:Class="Material3.Avalonia.Demo.Views.MenuPlacementWindow"
+        x:DataType="vm:MenuScenarioViewModel"
+        x:CompileBindings="True"
+        Title="Menu placement"
+        Width="600"
+        Height="400">
+    <Grid>
+        <Button Content="Project actions" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button.Flyout>
+                <MenuFlyout Opening="OnMenuOpening">
+                    <MenuItem Header="Open"
+                              Icon="{StaticResource MenuSymbol_folder_open}"
+                              Command="{Binding SelectCommand}"
+                              CommandParameter="Open" />
+                    <MenuItem Header="Export">
+                        <MenuItem Header="PDF" Command="{Binding SelectCommand}" CommandParameter="PDF" />
+                        <MenuItem Header="Image" Command="{Binding SelectCommand}" CommandParameter="Image" />
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Rename" Command="{Binding SelectCommand}" CommandParameter="Rename" />
+                </MenuFlyout>
+            </Button.Flyout>
+        </Button>
+        <Button Content="Project actions" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Button.Flyout>
+                <MenuFlyout Opening="OnMenuOpening">
+                    <MenuItem Header="Open"
+                              Icon="{StaticResource MenuSymbol_folder_open}"
+                              Command="{Binding SelectCommand}"
+                              CommandParameter="Open" />
+                    <MenuItem Header="Export">
+                        <MenuItem Header="PDF" Command="{Binding SelectCommand}" CommandParameter="PDF" />
+                        <MenuItem Header="Image" Command="{Binding SelectCommand}" CommandParameter="Image" />
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Rename" Command="{Binding SelectCommand}" CommandParameter="Rename" />
+                </MenuFlyout>
+            </Button.Flyout>
+        </Button>
+        <Button Content="Project actions" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Button.Flyout>
+                <MenuFlyout Opening="OnMenuOpening">
+                    <MenuItem Header="Open"
+                              Icon="{StaticResource MenuSymbol_folder_open}"
+                              Command="{Binding SelectCommand}"
+                              CommandParameter="Open" />
+                    <MenuItem Header="Export">
+                        <MenuItem Header="PDF" Command="{Binding SelectCommand}" CommandParameter="PDF" />
+                        <MenuItem Header="Image" Command="{Binding SelectCommand}" CommandParameter="Image" />
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Rename" Command="{Binding SelectCommand}" CommandParameter="Rename" />
+                </MenuFlyout>
+            </Button.Flyout>
+        </Button>
+        <Button Content="Project actions" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button.Flyout>
+                <MenuFlyout Opening="OnMenuOpening">
+                    <MenuItem Header="Open"
+                              Icon="{StaticResource MenuSymbol_folder_open}"
+                              Command="{Binding SelectCommand}"
+                              CommandParameter="Open" />
+                    <MenuItem Header="Export">
+                        <MenuItem Header="PDF" Command="{Binding SelectCommand}" CommandParameter="PDF" />
+                        <MenuItem Header="Image" Command="{Binding SelectCommand}" CommandParameter="Image" />
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Rename" Command="{Binding SelectCommand}" CommandParameter="Rename" />
+                </MenuFlyout>
+            </Button.Flyout>
+        </Button>
+    </Grid>
+</Window>

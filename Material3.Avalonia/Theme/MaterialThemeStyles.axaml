@@ -3,4 +3,5 @@
         <StyleInclude Source="avares://Material3.Avalonia/Styles/FocusRing.axaml" />
         <StyleInclude Source="avares://Material3.Avalonia/Styles/Typography.axaml" />
         <StyleInclude Source="avares://Material3.Avalonia/Styles/ToolTipBehavior.axaml" />
+        <StyleInclude Source="avares://Material3.Avalonia/Styles/MenuBehavior.axaml" />
 </Styles>

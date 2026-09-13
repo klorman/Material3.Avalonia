@@ -1,0 +1,855 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
+             xmlns:controls="clr-namespace:Material3.Avalonia.Controls;assembly=Material3.Avalonia"
+             xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
+             xmlns:assist="clr-namespace:Material3.Avalonia.Attached.Controls;assembly=Material3.Avalonia"
+             xmlns:attached="clr-namespace:Material3.Avalonia.Attached;assembly=Material3.Avalonia"
+             xmlns:vm="clr-namespace:Material3.Avalonia.Demo.ViewModels"
+             x:DataType="vm:MenusViewModel"
+             x:CompileBindings="True"
+             x:Class="Material3.Avalonia.Demo.Views.Menus"
+             Background="{markup:Token MdSysSurfaceBrush}"
+             Foreground="{markup:Token MdSysOnSurfaceBrush}">
+    <UserControl.DataContext>
+        <vm:MenusViewModel />
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ControlTheme x:Key="MenuDemoBadge"
+                          TargetType="controls:Badge"
+                          BasedOn="{StaticResource {x:Type controls:Badge}}">
+                <Setter Property="Background" Value="{markup:Token MdSysOnSurfaceVariantBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdSysSurfaceContainerLowBrush}" />
+            </ControlTheme>
+
+            <ControlTheme x:Key="MenuDemoVibrantBadge"
+                          TargetType="controls:Badge"
+                          BasedOn="{StaticResource MenuDemoBadge}">
+                <Setter Property="Background" Value="{markup:Token MdSysOnTertiaryContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdSysTertiaryContainerBrush}" />
+            </ControlTheme>
+
+            <ControlTheme x:Key="MenuDemoPresenter"
+                          TargetType="MenuFlyoutPresenter"
+                          BasedOn="{StaticResource {x:Type MenuFlyoutPresenter}}">
+                <Setter Property="MaxWidth" Value="360" />
+            </ControlTheme>
+
+            <ControlTheme x:Key="MenuArchivePresenter"
+                          TargetType="MenuFlyoutPresenter"
+                          BasedOn="{StaticResource MenuDemoPresenter}">
+                <Setter Property="MaxHeight" Value="300" />
+            </ControlTheme>
+
+            <ControlTheme x:DataType="vm:MenuScenarioViewModel"
+                          x:Key="MenuHistoryPresenter"
+                          TargetType="MenuFlyoutPresenter"
+                          BasedOn="{StaticResource MenuDemoPresenter}">
+                <Setter Property="MaxHeight" Value="{Binding HistoryMaxHeight}" />
+            </ControlTheme>
+
+            <ControlTheme x:Key="MenuTouchItem" TargetType="MenuItem" BasedOn="{StaticResource {x:Type MenuItem}}">
+                <Setter Property="MinHeight" Value="48" />
+                <Setter Property="attached:DensityAssist.Density" Value="Default" />
+            </ControlTheme>
+            <DataTemplate x:Key="ProjectMenuItem" x:DataType="vm:MenuProjectViewModel">
+                <MenuItem Header="{Binding Title}"
+                          Icon="{StaticResource MenuSymbol_folder_open}"
+                          Command="{Binding OpenCommand}"
+                          CommandParameter="{Binding Title}" />
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <UserControl.Styles>
+        <Style Selector="Border.menu-card">
+            <Setter Property="Background" Value="{markup:Token MdSysSurfaceContainerLowBrush}" />
+            <Setter Property="CornerRadius" Value="{markup:Token MdSysShapeCornerLarge}" />
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdSysSpacing200}" />
+            <Setter Property="Width" Value="360" />
+            <Setter Property="MinHeight" Value="210" />
+            <Setter Property="Margin" Value="0,0,16,16" />
+        </Style>
+        <Style Selector="TextBlock.menu-title">
+            <Setter Property="helpers:Typography.TextStyle" Value="TitleMedium" />
+        </Style>
+        <Style Selector="TextBlock.menu-caption">
+            <Setter Property="helpers:Typography.TextStyle" Value="BodySmall" />
+            <Setter Property="Foreground" Value="{markup:Token MdSysOnSurfaceVariantBrush}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+    </UserControl.Styles>
+
+    <StackPanel Spacing="{markup:Token MdSysSpacing200}" MaxWidth="1200">
+        <TextBlock Text="Menus" helpers:Typography.TextStyle="HeadlineMedium" />
+        <TextBlock Text="Everyday actions, organized around the task at hand." />
+        <WrapPanel>
+            <Button x:Name="HostButton"
+                    Content="Host: platform"
+                    assist:ButtonAssist.Variant="Outlined"
+                    Margin="0,0,8,0"
+                    Click="ToggleHost" />
+            <Button Content="Light / dark"
+                    assist:ButtonAssist.Variant="Outlined"
+                    Margin="0,0,8,0"
+                    Click="ToggleTheme" />
+        </WrapPanel>
+        <TextBlock x:Name="HostStatus"
+                   Classes="menu-caption"
+                   Text="Choose a scenario. Use arrow keys to navigate and Escape to return." />
+        <WrapPanel x:Name="Scenarios" TextElement.Foreground="{markup:Token MdSysOnSurfaceBrush}">
+            <WrapPanel.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceInclude Source="avares://Material3.Avalonia/Tokens/System/Color.axaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </WrapPanel.Resources>
+
+            <Border Classes="menu-card" DataContext="{Binding File}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Project document" />
+                    <TextBlock Classes="menu-caption"
+                               Text="A contextual menu belongs to the selected file. Right-click the document, or use the menu key." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button Content="Project brief.pdf">
+                        <Button.ContextMenu>
+                            <ContextMenu Opening="OnContextOpening" AttachedToLogicalTree="OnContextAttached">
+                                <MenuItem Header="Open"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Open"
+                                          InputGesture="Ctrl+O" />
+                                <MenuItem Header="Rename"
+                                          Icon="{StaticResource MenuSymbol_drive_file_rename_outline}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Rename"
+                                          InputGesture="F2" />
+                                <MenuItem Header="Make a copy"
+                                          Icon="{StaticResource MenuSymbol_content_copy}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Make a copy" />
+                                <Separator />
+                                <MenuItem Header="Move to trash"
+                                          Icon="{StaticResource MenuSymbol_delete}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Move to trash" />
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Export}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Export report" />
+                    <TextBlock Classes="menu-caption" Text="Choose a format, then a destination in the nested menu." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button Content="Export" HorizontalAlignment="Left">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <MenuItem Header="PDF document">
+                                    <MenuItem Header="Save to Downloads"
+                                              Command="{Binding SelectCommand}"
+                                              CommandParameter="Save to Downloads" />
+                                    <MenuItem Header="Send to">
+                                        <MenuItem Header="Design team"
+                                                  Icon="{StaticResource MenuSymbol_mail}"
+                                                  Command="{Binding SelectCommand}"
+                                                  CommandParameter="Design team" />
+                                        <MenuItem Header="Print room"
+                                                  Icon="{StaticResource MenuSymbol_print}"
+                                                  Command="{Binding SelectCommand}"
+                                                  CommandParameter="Print room" />
+                                    </MenuItem>
+                                </MenuItem>
+                                <MenuItem Header="Image" Icon="{StaticResource MenuSymbol_file_download}">
+                                    <MenuItem Header="PNG image"
+                                              Command="{Binding SelectCommand}"
+                                              CommandParameter="PNG image" />
+                                    <MenuItem Header="JPEG image"
+                                              Command="{Binding SelectCommand}"
+                                              CommandParameter="JPEG image" />
+                                </MenuItem>
+                                <Separator />
+                                <MenuItem Header="Print report"
+                                          Icon="{StaticResource MenuSymbol_print}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Print report" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Sort}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Sort documents" />
+                    <TextBlock Classes="menu-caption"
+                               Text="Radio selection applies one ordering and closes the menu." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button Content="Sort by" HorizontalAlignment="Left">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <MenuItem Header="Name"
+                                          ToggleType="Radio"
+                                          GroupName="MenuDemoSort"
+                                          IsChecked="true"
+                                          Click="OnSelectionChanged" />
+                                <MenuItem Header="Last modified"
+                                          ToggleType="Radio"
+                                          GroupName="MenuDemoSort"
+                                          IsChecked="false"
+                                          Click="OnSelectionChanged" />
+                                <MenuItem Header="File size"
+                                          ToggleType="Radio"
+                                          GroupName="MenuDemoSort"
+                                          IsChecked="false"
+                                          Click="OnSelectionChanged" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Editor}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Editor view" />
+                    <TextBlock Classes="menu-caption" Text="Keep the menu open while choosing which aids to display." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button Content="View options" HorizontalAlignment="Left">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <MenuItem Header="Show grid"
+                                          ToggleType="CheckBox"
+                                          IsChecked="true"
+                                          Click="OnSelectionChanged" />
+                                <MenuItem Header="Show guides"
+                                          ToggleType="CheckBox"
+                                          IsChecked="true"
+                                          Click="OnSelectionChanged" />
+                                <MenuItem Header="Show rulers"
+                                          ToggleType="CheckBox"
+                                          IsChecked="false"
+                                          Click="OnSelectionChanged" />
+                                <Separator />
+                                <MenuItem Header="Presentation mode"
+                                          ToggleType="CheckBox"
+                                          IsChecked="false"
+                                          Click="OnSelectionChanged"
+                                          StaysOpenOnClick="False" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Availability}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Document availability" />
+                    <TextBlock Classes="menu-caption"
+                               Text="Selected actions replace their leading icon with a checkmark." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button Content="Availability" HorizontalAlignment="Left">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <MenuItem Header="Keep available offline"
+                                          Icon="{StaticResource MenuSymbol_file_download}"
+                                          ToggleType="CheckBox"
+                                          IsChecked="true"
+                                          Click="OnSelectionChanged" />
+                                <MenuItem Header="Pin to workspace"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          ToggleType="CheckBox"
+                                          IsChecked="false"
+                                          Click="OnSelectionChanged" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Destinations}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Export destinations" />
+                    <TextBlock Classes="menu-caption"
+                               Text="Keep the destination icons while showing selection on the trailing side." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button Content="Destinations" HorizontalAlignment="Left">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}"
+                                        assist:MenuAssist.CheckmarkPlacement="Trailing">
+                                <MenuItem Header="Save to folder"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          ToggleType="CheckBox"
+                                          IsChecked="true"
+                                          Click="OnSelectionChanged" />
+                                <MenuItem Header="Download a copy"
+                                          Icon="{StaticResource MenuSymbol_file_download}"
+                                          ToggleType="CheckBox"
+                                          IsChecked="false"
+                                          Click="OnSelectionChanged" />
+                                <MenuItem Header="Print a copy"
+                                          Icon="{StaticResource MenuSymbol_print}"
+                                          ToggleType="CheckBox"
+                                          IsChecked="false"
+                                          Click="OnSelectionChanged" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Calendars}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Calendar layers" />
+                    <TextBlock Classes="menu-caption"
+                               Text="Selection uses color and shape without an additional checkmark." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button Content="Visible calendars" HorizontalAlignment="Left">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}"
+                                        assist:MenuAssist.CheckmarkPlacement="None">
+                                <MenuItem Header="Personal"
+                                          ToggleType="CheckBox"
+                                          IsChecked="true"
+                                          Click="OnSelectionChanged" />
+                                <MenuItem Header="Work"
+                                          ToggleType="CheckBox"
+                                          IsChecked="false"
+                                          Click="OnSelectionChanged" />
+                                <MenuItem Header="Holidays"
+                                          ToggleType="CheckBox"
+                                          IsChecked="true"
+                                          Click="OnSelectionChanged" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Mail}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Mail folders" />
+                    <TextBlock Classes="menu-caption"
+                               Text="Quiet counters show unread messages without implying an error." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button Content="Open folder" HorizontalAlignment="Left">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <MenuItem Header="Inbox"
+                                          Icon="{StaticResource MenuSymbol_mail}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Inbox">
+                                    <assist:MenuAssist.Badge>
+                                        <controls:Badge Content="12" Theme="{StaticResource MenuDemoBadge}" />
+                                    </assist:MenuAssist.Badge>
+                                </MenuItem>
+                                <MenuItem Header="Team updates"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Team updates">
+                                    <assist:MenuAssist.Badge>
+                                        <controls:Badge Content="3" Theme="{StaticResource MenuDemoBadge}" />
+                                    </assist:MenuAssist.Badge>
+                                </MenuItem>
+                                <Separator />
+                                <MenuItem Header="Flagged messages"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Flagged messages">
+                                    <assist:MenuAssist.Badge>
+                                        <controls:Badge Content="2" Background="DarkGoldenrod" Foreground="White" />
+                                    </assist:MenuAssist.Badge>
+                                </MenuItem>
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Priority}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Priority inbox" />
+                    <TextBlock Classes="menu-caption" Text="A vibrant menu draws attention to priority mail." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button Content="Open folder" HorizontalAlignment="Left">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}"
+                                        assist:MenuAssist.ColorStyle="Vibrant">
+                                <MenuItem Header="Inbox"
+                                          Icon="{StaticResource MenuSymbol_mail}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Inbox">
+                                    <assist:MenuAssist.Badge>
+                                        <controls:Badge Content="12" Theme="{StaticResource MenuDemoVibrantBadge}" />
+                                    </assist:MenuAssist.Badge>
+                                </MenuItem>
+                                <MenuItem Header="Team updates"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Team updates">
+                                    <assist:MenuAssist.Badge>
+                                        <controls:Badge Content="3" Theme="{StaticResource MenuDemoVibrantBadge}" />
+                                    </assist:MenuAssist.Badge>
+                                </MenuItem>
+                                <controls:MenuGap />
+                                <MenuItem Header="Flagged messages"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Flagged messages">
+                                    <assist:MenuAssist.Badge>
+                                        <controls:Badge Content="2" Background="DarkGoldenrod" Foreground="White" />
+                                    </assist:MenuAssist.Badge>
+                                </MenuItem>
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Devices}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Present on a device" />
+                    <TextBlock Classes="menu-caption"
+                               Text="Supporting text explains the destination; trailing text shows its availability." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button Content="Presentation destinations" HorizontalAlignment="Left">
+                        <Button.ContextFlyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <MenuItem Header="Studio display"
+                                          Icon="{StaticResource MenuSymbol_computer}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Studio display"
+                                          assist:MenuAssist.SupportingText="Meeting room · 4K display"
+                                          assist:MenuAssist.TrailingText="Ready" />
+                                <MenuItem Header="This computer"
+                                          Icon="{StaticResource MenuSymbol_computer}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="This computer"
+                                          assist:MenuAssist.SupportingText="Built-in display" />
+                                <MenuItem Header="Conference room"
+                                          Icon="{StaticResource MenuSymbol_computer}"
+                                          Command="{Binding UnavailableCommand}"
+                                          assist:MenuAssist.SupportingText="Reconnect the display to continue"
+                                          assist:MenuAssist.TrailingText="Offline" />
+                            </MenuFlyout>
+                        </Button.ContextFlyout>
+                    </Button>
+                    <Button Content="Present" HorizontalAlignment="Left">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <MenuItem Header="This computer"
+                                          Icon="{StaticResource MenuSymbol_computer}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="This computer" />
+                                <MenuItem Header="Studio display"
+                                          Icon="{StaticResource MenuSymbol_computer}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Studio display" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Workspace}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Workspace" />
+                    <TextBlock Classes="menu-caption"
+                               Text="Related actions share a surface. Recent items can change while this menu is open." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button x:Name="WorkspaceButton" Content="Workspace" HorizontalAlignment="Left">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <controls:MenuGroupLabel Text="Projects" />
+                                <MenuItem Header="Open project"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Open project" />
+                                <Separator />
+                                <MenuItem Header="New project"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="New project" />
+                                <controls:MenuGap />
+                                <controls:MenuGroupLabel Text="Recent" />
+                                <MenuItem Header="Design review"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Design review"
+                                          x:Name="RecentProject">
+                                    <MenuItem.HeaderTemplate>
+                                        <DataTemplate x:DataType="x:String">
+                                            <TextBlock Text="{Binding}" FontStyle="Italic" />
+                                        </DataTemplate>
+                                    </MenuItem.HeaderTemplate>
+                                </MenuItem>
+                                <controls:MenuGap x:Name="WorkspaceSettingsGap" />
+                                <controls:MenuGroupLabel Text="Workspace settings" />
+                                <MenuItem Header="Preferences"
+                                          Icon="{StaticResource MenuSymbol_tune}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Preferences" />
+                                <MenuItem Header="Add recent project"
+                                          Click="AddRecentProject"
+                                          StaysOpenOnClick="True" />
+                                <MenuItem Header="Hide / show recent project"
+                                          Click="ToggleRecentProject"
+                                          StaysOpenOnClick="True" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Text}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Edit text" />
+                    <TextBlock Classes="menu-caption"
+                               Text="Native editing commands follow selection, read-only and password rules." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <TextBox Text="Select words in this project title" PlaceholderText="Project title" />
+                    <TextBox Text="Read-only reference" IsReadOnly="True" />
+                    <TextBox Text="Private value" PasswordChar="●" />
+                    <SelectableTextBlock Text="Selectable project description" TextWrapping="Wrap" />
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Archive}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Recent projects" />
+                    <TextBlock Classes="menu-caption"
+                               Text="Scroll through the archive. Group gaps become dividers when space is limited." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button x:Name="ArchiveButton" Content="Browse projects" HorizontalAlignment="Left">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuArchivePresenter}">
+                                <controls:MenuGroupLabel Text="Pinned" />
+                                <MenuItem Header="Brand refresh"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Brand refresh" />
+                                <MenuItem Header="Website launch"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Website launch" />
+                                <controls:MenuGap />
+                                <controls:MenuGroupLabel Text="Archive" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                    <Button Content="Adaptive history" HorizontalAlignment="Left" x:Name="HistoryButton">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuHistoryPresenter}">
+                                <MenuItem Header="Today" Command="{Binding SelectCommand}" CommandParameter="Today" />
+                                <controls:MenuGap />
+                                <MenuItem Header="Yesterday"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Yesterday" />
+                                <controls:MenuGap />
+                                <MenuItem Header="Last week"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Last week" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                    <Button Content="Limit / restore height" Click="ToggleHistoryHeight" />
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Density}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Workspace density" />
+                    <TextBlock Classes="menu-caption"
+                               Text="The same actions at each density. Text size remains unchanged." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button Content="Default" HorizontalAlignment="Left" attached:DensityAssist.Density="Default">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <MenuItem Header="Open"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Open" />
+                                <MenuItem Header="Workspace preferences"
+                                          Icon="{StaticResource MenuSymbol_tune}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Workspace preferences"
+                                          assist:MenuAssist.SupportingText="Manage the layout and editing preferences for this workspace" />
+                                <MenuItem Header="Duplicate"
+                                          Icon="{StaticResource MenuSymbol_content_copy}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Duplicate" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                    <Button Content="Dense1" HorizontalAlignment="Left" attached:DensityAssist.Density="Dense1">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <MenuItem Header="Open"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Open" />
+                                <MenuItem Header="Workspace preferences"
+                                          Icon="{StaticResource MenuSymbol_tune}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Workspace preferences"
+                                          assist:MenuAssist.SupportingText="Manage the layout and editing preferences for this workspace" />
+                                <MenuItem Header="Duplicate"
+                                          Icon="{StaticResource MenuSymbol_content_copy}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Duplicate" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                    <Button Content="Dense2" HorizontalAlignment="Left" attached:DensityAssist.Density="Dense2">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <MenuItem Header="Open"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Open" />
+                                <MenuItem Header="Workspace preferences"
+                                          Icon="{StaticResource MenuSymbol_tune}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Workspace preferences"
+                                          assist:MenuAssist.SupportingText="Manage the layout and editing preferences for this workspace" />
+                                <MenuItem Header="Duplicate"
+                                          Icon="{StaticResource MenuSymbol_content_copy}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Duplicate" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                    <Button Content="Dense3" HorizontalAlignment="Left" attached:DensityAssist.Density="Dense3">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <MenuItem Header="Open"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Open" />
+                                <MenuItem Header="Workspace preferences"
+                                          Icon="{StaticResource MenuSymbol_tune}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Workspace preferences"
+                                          assist:MenuAssist.SupportingText="Manage the layout and editing preferences for this workspace" />
+                                <MenuItem Header="Duplicate"
+                                          Icon="{StaticResource MenuSymbol_content_copy}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Duplicate" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Touch}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Touch targets" />
+                    <TextBlock Classes="menu-caption" Text="Explicit 48 DIP targets for a touch-oriented layout." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button Content="Folder actions" HorizontalAlignment="Left">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}"
+                                        ItemContainerTheme="{StaticResource MenuTouchItem}">
+                                <MenuItem Header="Open folder"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Open folder" />
+                                <MenuItem Header="Rename folder"
+                                          Icon="{StaticResource MenuSymbol_drive_file_rename_outline}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Rename folder" />
+                                <MenuItem Header="Move to trash"
+                                          Icon="{StaticResource MenuSymbol_delete}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Move to trash" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Motion}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Motion comparison" />
+                    <TextBlock Classes="menu-caption"
+                               Text="Reduced motion keeps a short fade; No animation shows the menu immediately. The launcher has its own feedback." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button Content="Standard" HorizontalAlignment="Left" x:Name="StandardMotionButton">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <MenuItem Header="Show grid"
+                                          ToggleType="CheckBox"
+                                          IsChecked="false"
+                                          Click="OnSelectionChanged" />
+                                <MenuItem Header="Show guides"
+                                          ToggleType="CheckBox"
+                                          IsChecked="true"
+                                          Click="OnSelectionChanged" />
+                                <Separator />
+                                <MenuItem Header="Open project"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Open project" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                    <Button Content="Expressive" HorizontalAlignment="Left" x:Name="ExpressiveMotionButton">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <MenuItem Header="Show grid"
+                                          ToggleType="CheckBox"
+                                          IsChecked="false"
+                                          Click="OnSelectionChanged" />
+                                <MenuItem Header="Show guides"
+                                          ToggleType="CheckBox"
+                                          IsChecked="true"
+                                          Click="OnSelectionChanged" />
+                                <Separator />
+                                <MenuItem Header="Open project"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Open project" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                    <Button Content="Reduced motion" HorizontalAlignment="Left" x:Name="ReducedMotionButton">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <MenuItem Header="Show grid"
+                                          ToggleType="CheckBox"
+                                          IsChecked="false"
+                                          Click="OnSelectionChanged" />
+                                <MenuItem Header="Show guides"
+                                          ToggleType="CheckBox"
+                                          IsChecked="true"
+                                          Click="OnSelectionChanged" />
+                                <Separator />
+                                <MenuItem Header="Open project"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Open project" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                    <Button Content="No animation" HorizontalAlignment="Left" x:Name="NoMotionButton">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}"
+                                        assist:MenuAssist.IsAnimationEnabled="False">
+                                <MenuItem Header="Show grid"
+                                          ToggleType="CheckBox"
+                                          IsChecked="false"
+                                          Click="OnSelectionChanged" />
+                                <MenuItem Header="Show guides"
+                                          ToggleType="CheckBox"
+                                          IsChecked="true"
+                                          Click="OnSelectionChanged" />
+                                <Separator />
+                                <MenuItem Header="Open project"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Open project" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Placement}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Placement and RTL" />
+                    <TextBlock Classes="menu-caption"
+                               Text="Menus remain anchored when space is tight or reading direction changes." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button Content="Right-to-left menu" HorizontalAlignment="Left" FlowDirection="RightToLeft">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <MenuItem Header="Open"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Open" />
+                                <MenuItem Header="Export">
+                                    <MenuItem Header="PDF" Command="{Binding SelectCommand}" CommandParameter="PDF" />
+                                    <MenuItem Header="Image"
+                                              Command="{Binding SelectCommand}"
+                                              CommandParameter="Image" />
+                                </MenuItem>
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                    <Button Content="Open edge examples" Click="ShowEdges" />
+                </StackPanel>
+            </Border>
+
+            <Border Classes="menu-card" DataContext="{Binding Tokens}" x:DataType="vm:MenuScenarioViewModel">
+                <StackPanel Spacing="{markup:Token MdSysSpacing150}">
+                    <TextBlock Classes="menu-title" Text="Local theme" />
+                    <TextBlock Classes="menu-caption"
+                               Text="A local token override affects only this menu and updates while it is open." />
+                    <TextBlock Classes="menu-caption" Text="{Binding Status}" />
+                    <Button x:Name="TokenButton" Content="Project theme" HorizontalAlignment="Left">
+                        <Button.Flyout>
+                            <MenuFlyout Opening="OnMenuOpening"
+                                        Opened="OnMenuOpened"
+                                        FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
+                                <MenuItem Header="Open project"
+                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Open project" />
+                                <MenuItem Header="Rename"
+                                          Icon="{StaticResource MenuSymbol_drive_file_rename_outline}"
+                                          Command="{Binding SelectCommand}"
+                                          CommandParameter="Rename" />
+                                <MenuItem Header="Change accent" StaysOpenOnClick="True" Click="RemapTokens" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </WrapPanel>
+    </StackPanel>
+</UserControl>

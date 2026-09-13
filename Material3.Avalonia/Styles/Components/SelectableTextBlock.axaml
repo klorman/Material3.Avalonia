@@ -1,13 +1,15 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:tooltipInternal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
+                    xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:markup="clr-namespace:Material3.Avalonia.Markup">
     <MenuFlyout x:Key="SelectableTextBlockContextFlyout"
                 Placement="Bottom">
         <MenuItem Header="{DynamicResource StringTextFlyoutCopyText}"
                   Command="{Binding $parent[SelectableTextBlock].Copy}"
-                  IsEnabled="{Binding $parent[SelectableTextBlock].CanCopy}"
-                  InputGesture="{x:Static TextBox.CopyGesture}" />
+                  IsEnabled="{Binding $parent[SelectableTextBlock].CanCopy}">
+            <controls:MenuAssist.TrailingIcon><PathIcon Width="20" Height="20" Data="{DynamicResource MaterialTextCopyIcon}" /></controls:MenuAssist.TrailingIcon>
+        </MenuItem>
     </MenuFlyout>
 
     <ControlTheme x:Key="{x:Type SelectableTextBlock}"

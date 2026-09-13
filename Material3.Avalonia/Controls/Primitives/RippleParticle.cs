@@ -1,49 +1,47 @@
 using Avalonia;
-using Avalonia.Animation;
-using Avalonia.Animation.Easings;
 
 namespace Material3.Avalonia.Controls.Primitives;
 
-internal sealed class RippleParticle : Animatable
+internal sealed class RippleParticle(RippleVisual.Start start, TimeSpan started)
 {
-    public static readonly StyledProperty<double> RadiusProperty =
-        AvaloniaProperty.Register<RippleParticle, double>(nameof(Radius));
+    internal long Id => start.Id;
+    internal Point Center => start.Center;
 
-    public static readonly StyledProperty<double> OpacityProperty =
-        AvaloniaProperty.Register<RippleParticle, double>(nameof(Opacity));
+    internal Rect Bounds => new(start.Center.X - start.Radius, start.Center.Y - start.Radius, 2 * start.Radius,
+        2 * start.Radius);
 
-    public double Radius
+    private TimeSpan? _released;
+    private TimeSpan _fadeDuration;
+    private double _releaseOpacity;
+
+    internal void Release(TimeSpan now, TimeSpan duration)
     {
-        get => GetValue(RadiusProperty);
-        set => SetValue(RadiusProperty, value);
+        if (_released is not null) return;
+        var earliest = started + start.FadeInDuration;
+        _released = duration > TimeSpan.Zero && now < earliest ? earliest : now;
+        _releaseOpacity = start.Opacity * Fraction(_released.Value - started, start.FadeInDuration);
+        _fadeDuration = duration;
     }
 
-    public double Opacity
+    internal bool IsFinished(TimeSpan now) => _released is { } released && now - released >= _fadeDuration;
+
+    internal bool IsAnimating(TimeSpan now) => !IsFinished(now) &&
+                                               (_released is not null || now - started < start.GrowDuration ||
+                                                now - started < start.FadeInDuration);
+
+    internal (double Radius, double Opacity) GetValues(TimeSpan now)
     {
-        get => GetValue(OpacityProperty);
-        set => SetValue(OpacityProperty, value);
+        var progress = Fraction(now - started, start.GrowDuration);
+        var index = progress * (start.Easing.Length - 1);
+        var lower = (int)index;
+        var upper = Math.Min(lower + 1, start.Easing.Length - 1);
+        var growth = start.Easing[lower] + (start.Easing[upper] - start.Easing[lower]) * (index - lower);
+        var opacity = _released is { } released && now >= released
+            ? _releaseOpacity * (1 - Fraction(now - released, _fadeDuration))
+            : start.Opacity * Fraction(now - started, start.FadeInDuration);
+        return (Math.Max(0, start.Radius * growth), Math.Clamp(opacity, 0, 1));
     }
 
-    public Point Center { get; init; }
-    public double MaxRadius { get; init; }
-
-    private readonly DoubleTransition _radiusTransition = new() { Property = RadiusProperty };
-    private readonly DoubleTransition _opacityTransition = new() { Property = OpacityProperty };
-
-    public RippleParticle()
-    {
-        Transitions = new Transitions { _radiusTransition, _opacityTransition };
-    }
-
-    public void ConfigureGrow(TimeSpan growDuration, TimeSpan fadeInDuration, Easing? growEasing)
-    {
-        _radiusTransition.Duration = growDuration;
-        _radiusTransition.Easing = growEasing ?? new CubicEaseOut();
-        _opacityTransition.Duration = fadeInDuration;
-    }
-
-    public void ConfigureFadeOut(TimeSpan fadeOutDuration)
-    {
-        _opacityTransition.Duration = fadeOutDuration;
-    }
+    private static double Fraction(TimeSpan elapsed, TimeSpan duration) =>
+        duration <= TimeSpan.Zero ? 1 : Math.Clamp(elapsed.TotalSeconds / duration.TotalSeconds, 0, 1);
 }

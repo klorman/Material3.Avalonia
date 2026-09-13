@@ -107,24 +107,7 @@ internal sealed class ToolTipReveal : Decorator
     {
         if (target is null)
             return;
-        // Wayland 12 exposes neither global window coordinates nor the compositor's final popup position.
-        if (TopLevel.GetTopLevel(this) is PopupRoot native && native.TryGetPlatformHandle() is null)
-        {
-            _direction = ToolTipPlacement.GetRequestedDirection(popup);
-            UpdateClip();
-            InvalidateVisual();
-            return;
-        }
-
-        var origin = this.PointToScreen(default);
-        var anchor = target.PointToScreen(default);
-        var scaling = TopLevel.GetTopLevel(target)?.RenderScaling ?? 1;
-        var relative = new Rect((origin.X - anchor.X) / scaling, (origin.Y - anchor.Y) / scaling,
-            Bounds.Width, Bounds.Height);
-        _direction = relative.Top >= target.Bounds.Height ? PlacementMode.Bottom :
-            relative.Bottom <= 0 ? PlacementMode.Top :
-            relative.Left >= target.Bounds.Width ? PlacementMode.Right :
-            relative.Right <= 0 ? PlacementMode.Left : PlacementMode.Bottom;
+        _direction = PopupGeometry.Resolve(this, new Rect(Bounds.Size), target, popup);
         UpdateClip();
         InvalidateVisual();
     }

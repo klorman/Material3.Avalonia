@@ -28,6 +28,8 @@
 
             <views:TextBoxes HorizontalAlignment="Center" IsVisible="True" />
 
+            <views:Menus HorizontalAlignment="Stretch" />
+
             <views:ToolTips HorizontalAlignment="Center" />
 
             <views:ScrollViewers HorizontalAlignment="Center" IsVisible="True" />

@@ -154,7 +154,12 @@ internal sealed class ToolTipPresentation : IDisposable
     }
 
     private void OnOpened(object? sender, EventArgs e) => ShowSurface();
-    private void OnClosed(object? sender, EventArgs e) => SetIsPresented(_control, false);
+
+    private void OnClosed(object? sender, EventArgs e)
+    {
+        SetIsPresented(_control, false);
+        if (_popup is not null) PopupGeometry.Forget(_popup);
+    }
 
     private void ShowSurface()
     {
