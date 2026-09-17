@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Material3EnableSymbolBuild>false</Material3EnableSymbolBuild>
+        <IsPackable>true</IsPackable>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+        <PackageId>Material3.Avalonia.Fonts.Roboto</PackageId>
+        <Authors>klorman</Authors>
+        <Description>Optional Roboto font provider for Material3.Avalonia applications</Description>
+        <PackageTags>avalonia;material;fonts;roboto</PackageTags>
+        <PackageLicenseFile>LICENSE-OFL-1.1.txt</PackageLicenseFile>
+        <PackageReadmeFile></PackageReadmeFile>
+        <RepositoryUrl>https://github.com/klorman/Material3.Avalonia</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageProjectUrl>https://github.com/klorman/Material3.Avalonia</PackageProjectUrl>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="12.1.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="../LICENSE" />
+        <None Remove="../README.md" />
+        <None Remove="../THIRD-PARTY-NOTICES.txt" />
+        <None Remove="../third_party/**/*.txt" />
+        <AvaloniaResource Include="../third_party/google/roboto/fonts/*.ttf"
+                          Link="Assets/%(Filename)%(Extension)" />
+        <None Include="../third_party/google/roboto/LICENSE-OFL-1.1.txt"
+              Link="LICENSE-OFL-1.1.txt" Pack="true" PackagePath="" Visible="false" />
+        <None Include="../third_party/google/roboto/NOTICE.txt"
+              Link="NOTICE.txt" Pack="true" PackagePath="" Visible="false" />
+        <None Include="../third_party/google/roboto/upstream.json"
+              Link="upstream.json" Pack="true" PackagePath="" Visible="false" />
+    </ItemGroup>
+</Project>

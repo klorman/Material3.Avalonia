@@ -1,0 +1,22 @@
+{
+  "source": "https://github.com/googlefonts/roboto-classic",
+  "fontVersion": "3.009",
+  "sha256": {
+    "Roboto-Black.ttf": "59cc48c96047bb30b250bb287f06906e468e49f92832bd473447d13a602aee61",
+    "Roboto-BlackItalic.ttf": "54ec9e403016d8add6f84377952fbbde854ab102b9c2656b8ccc9eef9eee84a3",
+    "Roboto-Bold.ttf": "27467020febce4c0ac8482ea8e8d6f32bf8c5721fb9c301344d0e3f4d93a0119",
+    "Roboto-BoldItalic.ttf": "8234add45022e40d0ad293c8a2854a8f387e53db5c433698fe6d89c8d1b5362e",
+    "Roboto-ExtraBold.ttf": "f00b24deffcf55e888f9a9428313a761acc2c4d65df47d80a097a85e7a82ed9c",
+    "Roboto-ExtraBoldItalic.ttf": "4845408266b07efd4345888c1dba3306b2963db25ca5c8d1edc9e70a63b2ec99",
+    "Roboto-ExtraLight.ttf": "a2d88c093fcfab7dcc906a665e5bcb4c3b13858632fa3fd2c4380dfcf9aff3db",
+    "Roboto-ExtraLightItalic.ttf": "231a6f292ed37c341720923422d72bd566c1b1517e9885c78ea665ff6bba944c",
+    "Roboto-Italic.ttf": "5a2f18bddbe3ac07f14d38817d1fd22df4e8e3b74f661f7ae7b29cc8140092bc",
+    "Roboto-Light.ttf": "4b2e824beab63c438c2849bd6e1d4f6708cba5a5c5f3dbe8d5af7e9682ed9373",
+    "Roboto-LightItalic.ttf": "92ee7da87e6b5f389549914e0eb2cce4ec8f5c090947743957764436043d77d9",
+    "Roboto-Medium.ttf": "616eee3f9b60ec0196e09700ebca48a375da3323c4d5872e2b982170969ac90e",
+    "Roboto-MediumItalic.ttf": "db79d54441d407613d583145f0637a5e614fc92d75fa26bda23a4fbf2fd596c8",
+    "Roboto-Regular.ttf": "dbd285b518e398832f6f4a736109c355ce25a49546bfce41bab256c9ef7e56eb",
+    "Roboto-Thin.ttf": "0655f84356b7168bb342cf5aadc560524daf8e26091159faf92daeb33fc1bb0d",
+    "Roboto-ThinItalic.ttf": "400458c3b9558c9e8453d2728d3f684c053ca9773fba25ea15e3d889290b491c"
+  }
+}

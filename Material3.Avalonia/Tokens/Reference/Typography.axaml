@@ -1,10 +1,10 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <FontFamily x:Key="MdRefTypefaceBrand">avares://Material3.Avalonia/Assets/Fonts/Roboto#Roboto</FontFamily>
-    <FontFamily x:Key="MdRefTypefacePlain">avares://Material3.Avalonia/Assets/Fonts/Roboto#Roboto</FontFamily>
+    <FontFamily x:Key="MdRefTypefaceBrand">$Default</FontFamily>
+    <FontFamily x:Key="MdRefTypefacePlain">$Default</FontFamily>
     
-    <FontFamily x:Key="MdRefTypefaceEmphasizedBrand">avares://Material3.Avalonia/Assets/Fonts/Roboto#Roboto</FontFamily>
-    <FontFamily x:Key="MdRefTypefaceEmphasizedPlain">avares://Material3.Avalonia/Assets/Fonts/Roboto#Roboto</FontFamily>
+    <FontFamily x:Key="MdRefTypefaceEmphasizedBrand">$Default</FontFamily>
+    <FontFamily x:Key="MdRefTypefaceEmphasizedPlain">$Default</FontFamily>
 
     
     <FontWeight x:Key="MdRefTypefaceWeightRegular">Normal</FontWeight>

@@ -10,6 +10,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Material3.Avalonia.Demo\Material3.Avalonia.Demo.csproj" />
+      <ProjectReference Include="..\Material3.Avalonia.Fonts.Roboto\Material3.Avalonia.Fonts.Roboto.csproj" />
     </ItemGroup>
 
     <ItemGroup>

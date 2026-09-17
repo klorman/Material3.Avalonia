@@ -1,0 +1,6 @@
+Roboto
+Copyright 2011 The Roboto Project Authors
+Source: https://github.com/googlefonts/roboto-classic
+Font version: 3.009
+Licensed under the SIL Open Font License, Version 1.1.
+The font files are redistributed without modification.

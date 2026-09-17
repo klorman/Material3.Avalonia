@@ -1,4 +1,5 @@
 ﻿using Avalonia;
+using Material3.Avalonia.Fonts.Roboto;
 using ReactiveUI.Avalonia;
 
 namespace Material3.Avalonia.Demo.Desktop;
@@ -16,6 +17,7 @@ internal static class Program
     public static AppBuilder BuildAvaloniaApp()
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
+            .WithRobotoFont()
             .UseWaylandWithFallback()
             .LogToTrace()
             .UseReactiveUI(_ => { });
