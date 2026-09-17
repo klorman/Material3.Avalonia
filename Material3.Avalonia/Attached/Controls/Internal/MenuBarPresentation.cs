@@ -40,6 +40,10 @@ internal sealed class MenuBarPresentation
             if (_lastPointerPosition != position) MenuPopupPresentation.SetInputMode(menu, false);
             _lastPointerPosition = position;
         }, RoutingStrategies.Tunnel, true);
+        menu.AddHandler(InputElement.PointerWheelChangedEvent, (_, e) =>
+        {
+            if (menu.IsOpen) e.Handled = true;
+        }, RoutingStrategies.Bubble);
         menu.Opened += (_, _) => _generation++;
         menu.Closed += OnClosed;
         menu.DetachedFromVisualTree += (_, _) =>

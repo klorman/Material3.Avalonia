@@ -46,9 +46,8 @@
                                 CornerRadius="{TemplateBinding attached:FocusRing.EffectiveCornerRadius}"
                                 Margin="{TemplateBinding attached:FocusRing.EffectiveMargin}" />
                     </Grid>
-                    <!-- Native Menu dismissal preserves the popup exit animation. -->
                     <Popup x:Name="PART_Popup" PlacementTarget="{Binding $parent[MenuItem]}"
-                           IsLightDismissEnabled="False" WindowManagerAddShadowHint="False"
+                           IsLightDismissEnabled="True" OverlayDismissEventPassThrough="True" WindowManagerAddShadowHint="False"
                            OverlayInputPassThroughElement="{Binding $parent[Menu]}"
                            MinWidth="{Binding $parent[MenuItem].Bounds.Width}">
                         <primitives:MenuSubmenuHost Classes="m3-menu-bar-popup" Theme="{StaticResource MaterialMenuSubmenu}">

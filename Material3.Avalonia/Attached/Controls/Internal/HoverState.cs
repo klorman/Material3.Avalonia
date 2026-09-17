@@ -2,6 +2,7 @@ using System.Runtime.CompilerServices;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
+using Avalonia.Threading;
 using Avalonia.VisualTree;
 
 namespace Material3.Avalonia.Attached.Controls.Internal;
@@ -16,6 +17,7 @@ internal sealed class HoverState
     private bool _inside;
     private bool _touch;
     private bool _retained;
+    private bool _exitUpdatePending;
 
     static HoverState()
     {
@@ -56,7 +58,19 @@ internal sealed class HoverState
             ? root.InputHitTest(e.GetPosition(root)) as Visual
             : null;
         _inside = hit == _control || hit?.GetVisualAncestors().Contains(_control) == true;
-        Update();
+        if (!_touch && e.RoutedEvent == InputElement.PointerExitedEvent)
+        {
+            // Browser wheel and pointermove use different devices, producing an exit/enter pair
+            // at the same position. Commit a real exit after the current input event completes.
+            if (_exitUpdatePending) return;
+            _exitUpdatePending = true;
+            Dispatcher.UIThread.Post(() =>
+            {
+                _exitUpdatePending = false;
+                Update();
+            }, DispatcherPriority.Input);
+        }
+        else Update();
     }
 
     private void OnPropertyChanged(object? sender, AvaloniaPropertyChangedEventArgs e)

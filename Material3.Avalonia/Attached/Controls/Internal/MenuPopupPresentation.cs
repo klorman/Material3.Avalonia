@@ -114,6 +114,7 @@ internal sealed class MenuPopupPresentation : IDisposable
     private bool _keyboardNavigation;
     private Point? _lastPointerPosition;
     private MenuPopupPresentation[]? _exitMembers;
+    private readonly bool _popupClosingSubscribed;
 
     private sealed record PointerAnchor(PixelPoint Position);
 
@@ -124,6 +125,8 @@ internal sealed class MenuPopupPresentation : IDisposable
         _closeRoot = closeRoot;
         popup.Opened += OnOpened;
         popup.Closed += OnClosed;
+        if (owner is MenuItem { IsTopLevel: true })
+            _popupClosingSubscribed = AvaloniaPopupClosingCompat.TrySubscribe(popup, OnPopupClosing);
         owner.PropertyChanged += OnOwnerChanged;
         owner.AddHandler(InputElement.GotFocusEvent, OnFocus, handledEventsToo: true);
         owner.AddHandler(InputElement.LostFocusEvent, OnLostFocus, handledEventsToo: true);
@@ -221,6 +224,15 @@ internal sealed class MenuPopupPresentation : IDisposable
         foreach (var item in _surface?.ItemsPanel?.Children.OfType<MenuItem>() ??
                              Popup.Child?.GetVisualDescendants().OfType<MenuItem>() ?? [])
             MenuItemPresentation.SynchronizeSelection(item);
+    }
+
+    private void OnPopupClosing(object? sender, CancelEventArgs e)
+    {
+        if (_disposed || _closing && _finished || _owner is not MenuItem { IsTopLevel: true } header || e.Cancel ||
+            !MenuAssist.GetIsAnimationEnabled(header) || MotionSettings.ReduceMotion) return;
+        // Light-dismiss owns input blocking; Menu owns closing the branch and its exit animation.
+        e.Cancel = true;
+        if (!_closing) header.FindLogicalAncestorOfType<Menu>()?.Close();
     }
 
     internal void OnClosing(object? sender, CancelEventArgs e)
@@ -602,6 +614,7 @@ internal sealed class MenuPopupPresentation : IDisposable
         _resourcesChanged = null;
         Popup.Opened -= OnOpened;
         Popup.Closed -= OnClosed;
+        if (_popupClosingSubscribed) AvaloniaPopupClosingCompat.TryUnsubscribe(Popup, OnPopupClosing);
         _owner.PropertyChanged -= OnOwnerChanged;
         _owner.RemoveHandler(InputElement.GotFocusEvent, OnFocus);
         _owner.RemoveHandler(InputElement.LostFocusEvent, OnLostFocus);

@@ -43,7 +43,10 @@ public sealed class SmoothScrollContentPresenter : ScrollContentPresenter
         }
 
         if (Extent.Height <= Viewport.Height && Extent.Width <= Viewport.Width)
+        {
+            e.Handled = !IsScrollChainingEnabled;
             return;
+        }
 
         var delta = NormalizeWheelDelta(e.Delta, e.KeyModifiers);
         var baseOffset = _isAnimating ? _targetOffset : Offset;

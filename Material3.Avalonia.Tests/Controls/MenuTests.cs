@@ -166,6 +166,90 @@ public sealed class MenuTests : IDisposable
         editor.IsFocused.Should().BeTrue();
     }
 
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void MenuBar_ShouldBlockBackgroundScrollingUntilClosed(bool overlay)
+    {
+        MotionSettings.ReduceMotion = true;
+        var first = new MenuItem { Header = "File" };
+        for (var i = 0; i < 40; i++) first.Items.Add(new MenuItem { Header = $"Command {i}" });
+        var bar = new Menu { Items = { first } };
+        MenuAssist.SetIsAnimationEnabled(bar, false);
+        var scroll = new ScrollViewer
+        {
+            Content = new StackPanel { Children = { bar, new Border { Height = 1500, Background = Brushes.White } } }
+        };
+        var window = Window(scroll);
+        var popup = first.GetVisualDescendants().OfType<Popup>().Single();
+        popup.ShouldUseOverlayLayer = overlay;
+        first.Focus(NavigationMethod.Directional);
+        window.KeyPress(Key.Down, RawInputModifiers.None, PhysicalKey.ArrowDown, null);
+        Layout();
+        first.IsSubMenuOpen.Should().BeTrue();
+        window.MouseWheel(new Point(550, 400), new Vector(0, -3));
+        Layout();
+        scroll.Offset.Y.Should().Be(0);
+        first.IsSubMenuOpen.Should().BeTrue();
+
+        var inner = popup.Child!.GetVisualDescendants().OfType<ScrollViewer>().First();
+        var root = TopLevel.GetTopLevel(inner)!;
+        var point = inner.TranslatePoint(new Point(40, 60), root)!.Value;
+        // Headless geometry cannot hit-test MenuSurface's clip; route the inner wheel to its presenter.
+        inner.GetVisualDescendants().OfType<ScrollContentPresenter>().First().RaiseEvent(
+            new PointerWheelEventArgs(inner,
+                new Pointer(1, PointerType.Mouse, true), root, point, 0,
+                new PointerPointProperties(), KeyModifiers.None, new Vector(0, -3)));
+        Layout();
+        inner.Offset.Y.Should().BeGreaterThan(0);
+        scroll.Offset.Y.Should().Be(0);
+
+        bar.Close();
+        Layout();
+        window.MouseWheel(new Point(550, 400), new Vector(0, -3));
+        Layout();
+        scroll.Offset.Y.Should().BeGreaterThan(0);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void MenuBar_ShouldConsumeWheelOverHeadersAndNonScrollingSubmenus(bool overlay)
+    {
+        MotionSettings.ReduceMotion = false;
+        var nested = new MenuItem { Header = "Export", Items = { new MenuItem { Header = "Text" } } };
+        var header = new MenuItem { Header = "File", Items = { nested } };
+        var bar = new Menu { Items = { header } };
+        MenuAssist.SetIsAnimationEnabled(bar, false);
+        var scroll = new ScrollViewer
+        {
+            Content = new StackPanel { Children = { bar, new Border { Height = 1500, Background = Brushes.White } } }
+        };
+        var window = Window(scroll);
+        var popup = header.GetVisualDescendants().OfType<Popup>().Single();
+        popup.ShouldUseOverlayLayer = overlay;
+        header.Focus(NavigationMethod.Directional);
+        window.KeyPress(Key.Down, RawInputModifiers.None, PhysicalKey.ArrowDown, null);
+        Layout();
+        window.MouseWheel(header.TranslatePoint(new Point(15, 15), window)!.Value, new Vector(0, -3));
+        Pump(100);
+        scroll.Offset.Y.Should().Be(0, "the open menu bar must stop wheel events before the page");
+        nested.IsSubMenuOpen = true;
+        Layout();
+        foreach (var host in new[] { popup, nested.GetVisualDescendants().OfType<Popup>().Single() })
+        {
+            var presenter = host.Child!.GetVisualDescendants().OfType<ScrollContentPresenter>().First();
+            var root = TopLevel.GetTopLevel(presenter)!;
+            var wheel = new PointerWheelEventArgs(presenter, new Pointer(1, PointerType.Mouse, true), root,
+                presenter.TranslatePoint(new Point(20, 20), root)!.Value, 0, new PointerPointProperties(),
+                KeyModifiers.None, new Vector(0, -3));
+            presenter.RaiseEvent(wheel);
+            wheel.Handled.Should().BeTrue("non-scrolling menu surfaces must not chain wheel events");
+        }
+
+        scroll.Offset.Y.Should().Be(0);
+    }
+
     [Fact]
     public void MenuBar_CloseShouldNotOverrideCommandFocusOrScrollTheEditor()
     {
