@@ -1,0 +1,17 @@
+{
+  "revision": "40a7a292a79d9394157e1ea24f83d52d5e17c556",
+  "fontToolsVersion": "4.64.0",
+  "styles": [
+    "Outlined",
+    "Rounded",
+    "Sharp"
+  ],
+  "sha256": {
+    "Sharp.codepoints": "c18564f64d7d92dd3a6895a2c59ea69adfb56d6f553bcbbc88811c328159d715",
+    "Sharp.ttf": "53f7747272a09f35171452c5cab6f147f32a7e6df30d684b2a5010ad8810eb7c",
+    "Rounded.codepoints": "c18564f64d7d92dd3a6895a2c59ea69adfb56d6f553bcbbc88811c328159d715",
+    "Rounded.ttf": "f1472f172c0fc4a922be22972e4752ccc54fe795ed82564ab6f6b097782f2dbc",
+    "Outlined.codepoints": "c18564f64d7d92dd3a6895a2c59ea69adfb56d6f553bcbbc88811c328159d715",
+    "Outlined.ttf": "bf4c94b08c06c6b17e9d1a2d54a68c3f2c3435454761d487768df137a81f851d"
+  }
+}

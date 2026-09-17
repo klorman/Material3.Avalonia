@@ -12,6 +12,8 @@
     <ItemGroup>
         <PackageReference Include="Avalonia.Headless" Version="12.1.2" />
         <PackageReference Include="FluentAssertions" Version="8.6.0" />
+        <PackageReference Include="Microsoft.Build.Framework" Version="17.8.43" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.8.43" PrivateAssets="all" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0"/>
         <PackageReference Include="xunit" Version="2.4.2"/>
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
@@ -26,6 +28,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Material3.Avalonia\Material3.Avalonia.csproj" />
+      <ProjectReference Include="..\Material3.Avalonia.Build.Tasks\Material3.Avalonia.Build.Tasks.csproj" />
+      <ProjectReference Include="..\Material3.Avalonia.Fonts.Roboto\Material3.Avalonia.Fonts.Roboto.csproj" />
     </ItemGroup>
 
     <ItemGroup>

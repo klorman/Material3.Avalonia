@@ -1,0 +1,7 @@
+Material Symbols by Google
+Source: https://github.com/google/material-design-icons
+Revision: 40a7a292a79d9394157e1ea24f83d52d5e17c556
+Licensed under the Apache License, Version 2.0.
+The catalog and generated API are derived with fontTools.
+Applications receive subsets produced with HarfBuzz; variable axes are preserved.
+Full font files are redistributed as build inputs without modification.

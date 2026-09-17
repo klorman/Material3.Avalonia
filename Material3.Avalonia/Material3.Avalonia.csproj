@@ -1,10 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <IsPackable>true</IsPackable>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -15,25 +16,76 @@
         <Authors>klorman</Authors>
         <Description>A modern Material Design 3 theme library for Avalonia applications</Description>
         <PackageTags>avalonia;material;ui;ux;xaml;theme</PackageTags>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <RepositoryUrl>https://github.com/klorman/Material3.Avalonia</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageProjectUrl>https://github.com/klorman/Material3.Avalonia</PackageProjectUrl>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EnablePackageValidation>true</EnablePackageValidation>
     </PropertyGroup>
 
     <ItemGroup>
+        <ProjectReference Include="../Material3.Avalonia.Build.Tasks/Material3.Avalonia.Build.Tasks.csproj"
+                          ReferenceOutputAssembly="false" PrivateAssets="all" />
+        <PackageReference Include="Svg.Controls.Avalonia" Version="12.0.0.17" />
         <PackageReference Include="Avalonia" Version="12.1.2" />
+        <PackageReference Include="Avalonia.HarfBuzz" Version="12.1.2" />
         <PackageReference Include="Bdziam.DynamicColor" Version="0.0.11"/>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.400" PrivateAssets="All" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <AvaloniaResource Include="Assets\Fonts\**\*.ttf"/>
     </ItemGroup>
 
     <ItemGroup>
         <AdditionalFiles Include="Tokens\Component\Button.axaml"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <None Remove="../third_party/google/roboto/LICENSE-OFL-1.1.txt" />
+        <None Remove="../third_party/google/roboto/NOTICE.txt" />
+        <None Include="buildTransitive/Material3.Avalonia.targets"
+              Pack="true" PackagePath="buildTransitive/" Visible="false" />
+        <None Include="tools/SymbolManifest.targets"
+              Pack="true" PackagePath="tools/" Visible="false" />
+        <None Include="../third_party/google/material-symbols/catalog.tsv"
+              Pack="true" PackagePath="tools/" Visible="false" />
+        <None Include="../third_party/google/material-symbols/fonts/*.ttf"
+              Pack="true" PackagePath="tools/fonts/" Visible="false" />
+        <None Include="../third_party/google/material-symbols/upstream.json"
+              Pack="true" PackagePath="third_party/google/material-symbols/" Visible="false" />
+        <None Include="../Material3.Avalonia.Build.Tasks/bin/$(Configuration)/net8.0/Material3.Avalonia.Build.Tasks.dll"
+              Pack="true" PackagePath="tools/net8.0/" Visible="false" />
+        <None Include="../Material3.Avalonia.Build.Tasks/bin/$(Configuration)/net8.0/runtimes/**/*"
+              Pack="true" PackagePath="tools/net8.0/%(RecursiveDir)%(Filename)%(Extension)" Visible="false" />
+        <None Include="../Material3.Avalonia.Build.Tasks/bin/$(Configuration)/net472/Material3.Avalonia.Build.Tasks.dll"
+              Pack="true" PackagePath="tools/net472/x64/" Visible="false" />
+        <None Include="../Material3.Avalonia.Build.Tasks/bin/$(Configuration)/net472/x64/libHarfBuzzSharp.dll"
+              Pack="true" PackagePath="tools/net472/x64/" Visible="false" />
+        <None Include="../Material3.Avalonia.Build.Tasks/bin/$(Configuration)/net472/Material3.Avalonia.Build.Tasks.dll"
+              Pack="true" PackagePath="tools/net472/x86/" Visible="false" />
+        <None Include="../Material3.Avalonia.Build.Tasks/bin/$(Configuration)/net472/x86/libHarfBuzzSharp.dll"
+              Pack="true" PackagePath="tools/net472/x86/" Visible="false" />
+        <None Include="../Material3.Avalonia.Build.Tasks/bin/$(Configuration)/net472/Material3.Avalonia.Build.Tasks.dll"
+              Pack="true" PackagePath="tools/net472/arm64/" Visible="false" />
+        <None Include="../Material3.Avalonia.Build.Tasks/bin/$(Configuration)/net472/arm64/libHarfBuzzSharp.dll"
+              Pack="true" PackagePath="tools/net472/arm64/" Visible="false" />
+    </ItemGroup>
+
     <PropertyGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">
         <IsAotCompatible>true</IsAotCompatible>
         <IsTrimmable>true</IsTrimmable>
     </PropertyGroup>
+
+    <Target Name="Material3EnsurePackagedFullFrameworkSymbolBuildTasks"
+            BeforeTargets="_GetPackageFiles"
+            Condition="'$(DesignTimeBuild)' != 'true' and '$(Material3SymbolBuildFromSource)' == 'true' and '$(IsPackable)' == 'true' and '$(IsInnerBuild)' != 'true' and !Exists('../Material3.Avalonia.Build.Tasks/bin/$(Configuration)/net472/Material3.Avalonia.Build.Tasks.dll')">
+        <MSBuild Projects="$(Material3SymbolBuildTasksProject)"
+                 Targets="Restore"
+                 Properties="Configuration=$(Configuration);TargetFramework=net472"
+                 RemoveProperties="TargetFrameworks" />
+        <MSBuild Projects="$(Material3SymbolBuildTasksProject)"
+                 Targets="Build"
+                 Properties="Configuration=$(Configuration);TargetFramework=net472;TargetFrameworkRootPath=$(NuGetPackageRoot)microsoft.netframework.referenceassemblies.net472/1.0.3/build/"
+                 RemoveProperties="TargetFrameworks" />
+    </Target>
 
 </Project>

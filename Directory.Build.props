@@ -10,12 +10,12 @@
     </PropertyGroup>
 
     <ItemGroup Condition="'$(IsPackable)'=='true'">
-        <None Include="$(MSBuildThisFileDirectory)LICENSE" Pack="true" PackagePath=""/>
-        <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath=""/>
+        <None Include="$(MSBuildThisFileDirectory)LICENSE" Pack="true" PackagePath="" Visible="false"/>
+        <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="" Visible="false"/>
         <None Include="$(MSBuildThisFileDirectory)THIRD-PARTY-NOTICES.txt"
-              Pack="true" PackagePath=""
+              Pack="true" PackagePath="" Visible="false"
               Condition="Exists('$(MSBuildThisFileDirectory)THIRD-PARTY-NOTICES.txt')"/>
         <None Include="$(MSBuildThisFileDirectory)third_party\**\*.txt"
-              Pack="true" PackagePath="third_party\"/>
+              Pack="true" PackagePath="third_party\" Visible="false"/>
     </ItemGroup>
 </Project>

@@ -1,8 +1,8 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Material3.Avalonia.Attached.Controls;
 using Material3.Avalonia.Demo.ViewModels;
+using Material3.Avalonia.Symbols;
 
 namespace Material3.Avalonia.Demo.Views;
 
@@ -19,10 +19,7 @@ public partial class TextBoxes : UserControl
         PasswordField.RevealPassword = !PasswordField.RevealPassword;
 
         if (sender is Button button)
-        {
-            var iconKey = PasswordField.RevealPassword ? "VisibilityOffIcon" : "VisibilityIcon";
-            if (Application.Current?.Resources.TryGetResource(iconKey, null, out var icon) == true)
-                ButtonAssist.SetIcon(button, icon);
-        }
+            ButtonAssist.SetIcon(button,
+                PasswordField.RevealPassword ? MaterialSymbol.VisibilityOff : MaterialSymbol.Visibility);
     }
 }

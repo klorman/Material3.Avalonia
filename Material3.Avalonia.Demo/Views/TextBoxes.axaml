@@ -7,6 +7,7 @@
              xmlns:density="clr-namespace:Material3.Avalonia.Density;assembly=Material3.Avalonia"
              xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
              xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
+             xmlns:symbols="clr-namespace:Material3.Avalonia.Symbols;assembly=Material3.Avalonia"
              xmlns:viewModels="clr-namespace:Material3.Avalonia.Demo.ViewModels"
              mc:Ignorable="d"
              d:DesignWidth="800"
@@ -141,12 +142,12 @@
                     <StackPanel Grid.Column="0" Spacing="{DynamicResource MdSysSpacing200}">
                         <TextBox Classes="filled"
                                  controls:TextFieldAssist.Label="Edited by"
-                                 controls:TextFieldAssist.LeadingIcon="{StaticResource PencilIcon}"
+                                 controls:TextFieldAssist.LeadingIcon="{symbols:Symbol Edit}"
                                  controls:TextFieldAssist.SupportingText="Material icon color follows text field state tokens" />
 
                         <TextBox Classes="filled"
                                  controls:TextFieldAssist.Label="Search"
-                                 controls:TextFieldAssist.LeadingIcon="{StaticResource SearchIcon}"
+                                 controls:TextFieldAssist.LeadingIcon="{symbols:Symbol Search}"
                                  PlaceholderText="Find components" />
 
                         <TextBox Classes="filled"
@@ -172,8 +173,8 @@
 
                 <TextBox Classes="outlined"
                          controls:TextFieldAssist.Label="All decoration slots"
-                         controls:TextFieldAssist.LeadingIcon="{StaticResource SearchIcon}"
-                         controls:TextFieldAssist.TrailingIcon="{StaticResource PencilIcon}"
+                         controls:TextFieldAssist.LeadingIcon="{symbols:Symbol Search}"
+                         controls:TextFieldAssist.TrailingIcon="{symbols:Symbol Edit}"
                          controls:TextFieldAssist.PrefixText="@"
                          controls:TextFieldAssist.SuffixText=".dev"
                          controls:TextFieldAssist.SupportingText="Exercises Material icons together with native inner content and affixes"
@@ -211,7 +212,7 @@
                                  controls:TextFieldAssist.SupportingText="Choose a unique username"
                                  controls:TextFieldAssist.IsError="True"
                                  controls:TextFieldAssist.ErrorText="Username is already taken"
-                                 controls:TextFieldAssist.TrailingIcon="{StaticResource ErrorIcon}"
+                                 controls:TextFieldAssist.TrailingIcon="{symbols:Symbol Error}"
                                  Text="material3" />
 
                         <TextBox Classes="filled"
@@ -266,7 +267,7 @@
                                  PasswordChar="●"
                                  Text="correct horse battery staple">
                             <TextBox.InnerRightContent>
-                                <Button controls:ButtonAssist.Icon="{StaticResource VisibilityIcon}"
+                                <Button controls:ButtonAssist.Icon="{symbols:Symbol Visibility}"
                                         Classes="text xs"
                                         attached:DensityAssist.Density="{x:Static density:MaterialDensity.Default}"
                                         Width="44"

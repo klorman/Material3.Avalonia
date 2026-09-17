@@ -7,3 +7,21 @@ This product includes material from:
    License: Apache License, Version 2.0
    Files: Ported shape data (normalized vertices/rounding) used to reproduce MD3 shapes
    Source: https://developer.android.com/jetpack/compose
+
+2) Material Symbols
+   Copyright Google LLC
+   License: Apache License, Version 2.0
+   Files: Outlined, Rounded and Sharp variable fonts and generated icon names/codepoints
+   Source: https://github.com/google/material-design-icons
+   Revision: 40a7a292a79d9394157e1ea24f83d52d5e17c556
+   Modifications: Applications receive build-time subsets produced with HarfBuzz; all variable axes are preserved.
+   Full fonts are redistributed as build inputs without modification.
+   License and provenance: third_party/google/material-symbols/
+
+3) HarfBuzzSharp native assets
+   Copyright Microsoft Corporation and contributors
+   License: MIT; bundled components retain their respective licenses
+   Files: Native HarfBuzz libraries used by the symbol subsetting build task
+   Source: https://github.com/mono/SkiaSharp
+   Version: 8.3.1.3
+   License and notices are included in the NuGet under third_party/harfbuzzsharp/.

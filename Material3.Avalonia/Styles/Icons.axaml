@@ -1,0 +1,10 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens">
+    <tokens:TokenAlias x:Key="MaterialTextCutIcon" ResourceKey="MdIconContentCut" />
+    <tokens:TokenAlias x:Key="MaterialTextCopyIcon" ResourceKey="MdIconContentCopy" />
+    <tokens:TokenAlias x:Key="MaterialTextPasteIcon" ResourceKey="MdIconContentPaste" />
+    <tokens:TokenAlias x:Key="MaterialTextSelectAllIcon" ResourceKey="MdIconSelectAll" />
+    <tokens:TokenAlias x:Key="MdImplMenuCheckIcon" ResourceKey="MdIconCheck" />
+    <tokens:TokenAlias x:Key="MdImplMenuChevronIcon" ResourceKey="MdIconArrowRight" />
+</ResourceDictionary>

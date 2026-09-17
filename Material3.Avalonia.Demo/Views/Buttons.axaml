@@ -7,6 +7,7 @@
              xmlns:density="clr-namespace:Material3.Avalonia.Density;assembly=Material3.Avalonia"
              xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
              xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
+             xmlns:symbols="clr-namespace:Material3.Avalonia.Symbols;assembly=Material3.Avalonia"
              xmlns:viewModels="clr-namespace:Material3.Avalonia.Demo.ViewModels"
              mc:Ignorable="d"
              d:DesignWidth="800"
@@ -88,15 +89,20 @@
                 <StackPanel Spacing="{DynamicResource MdSysSpacing200}"
                              Orientation="Horizontal">
                     <Button Content="Extra small"
-                            Classes="tonal xs" />
+                            Classes="tonal xs"
+                            controls:ButtonAssist.Icon="{DynamicResource MdIconMail}" />
                     <Button Content="Small"
-                            Classes="tonal sm" />
+                            Classes="tonal sm"
+                            controls:ButtonAssist.Icon="{DynamicResource MdIconMail}" />
                     <Button Content="Medium"
-                            Classes="tonal md" />
+                            Classes="tonal md"
+                            controls:ButtonAssist.Icon="{DynamicResource MdIconMail}" />
                     <Button Content="Large"
-                            Classes="tonal lg" />
+                            Classes="tonal lg"
+                            controls:ButtonAssist.Icon="{DynamicResource MdIconMail}" />
                     <Button Content="Extra large"
-                            Classes="tonal xl" />
+                            Classes="tonal xl"
+                            controls:ButtonAssist.Icon="{DynamicResource MdIconMail}" />
                 </StackPanel>
             </StackPanel>
         </Border>
@@ -187,19 +193,19 @@
                                     Orientation="Horizontal">
                             <Button Content="Elevated"
                                     Classes="elevated md"
-                                    controls:ButtonAssist.Icon="{StaticResource PencilIcon}" />
+                                    controls:ButtonAssist.Icon="{symbols:Symbol Edit}" />
                             <Button Content="Filled"
                                     Classes="filled md"
-                                    controls:ButtonAssist.Icon="{StaticResource PencilIcon}" />
+                                    controls:ButtonAssist.Icon="{symbols:Symbol Edit}" />
                             <Button Content="Tonal"
                                     Classes="tonal md"
-                                    controls:ButtonAssist.Icon="{StaticResource PencilIcon}" />
+                                    controls:ButtonAssist.Icon="{symbols:Symbol Edit}" />
                             <Button Content="Outlined"
                                     Classes="outlined md"
-                                    controls:ButtonAssist.Icon="{StaticResource PencilIcon}" />
+                                    controls:ButtonAssist.Icon="{symbols:Symbol Edit}" />
                             <Button Content="Text"
                                     Classes="text md"
-                                    controls:ButtonAssist.Icon="{StaticResource PencilIcon}" />
+                                    controls:ButtonAssist.Icon="{symbols:Symbol Edit}" />
                         </StackPanel>
                     </StackPanel>
 

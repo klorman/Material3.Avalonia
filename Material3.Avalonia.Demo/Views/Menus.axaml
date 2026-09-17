@@ -5,6 +5,7 @@
              xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
              xmlns:assist="clr-namespace:Material3.Avalonia.Attached.Controls;assembly=Material3.Avalonia"
              xmlns:attached="clr-namespace:Material3.Avalonia.Attached;assembly=Material3.Avalonia"
+             xmlns:symbols="clr-namespace:Material3.Avalonia.Symbols;assembly=Material3.Avalonia"
              xmlns:vm="clr-namespace:Material3.Avalonia.Demo.ViewModels"
              x:DataType="vm:MenusViewModel"
              x:CompileBindings="True"
@@ -56,7 +57,7 @@
             </ControlTheme>
             <DataTemplate x:Key="ProjectMenuItem" x:DataType="vm:MenuProjectViewModel">
                 <MenuItem Header="{Binding Title}"
-                          Icon="{StaticResource MenuSymbol_folder_open}"
+                          Icon="{symbols:Symbol FolderOpen}"
                           Command="{Binding OpenCommand}"
                           CommandParameter="{Binding Title}" />
             </DataTemplate>
@@ -123,7 +124,7 @@
                                 <MenuItem x:Name="NewDocumentItem" Header="_New document" InputGesture="Ctrl+N" HotKey="Ctrl+N" />
                                 <MenuItem x:Name="SaveDocumentItem" Header="_Save" InputGesture="Ctrl+Shift+S" HotKey="Ctrl+Shift+S" />
                                 <Separator />
-                                <MenuItem Header="Export" Icon="{StaticResource MenuSymbol_file_download}">
+                                <MenuItem Header="Export" Icon="{symbols:Symbol FileDownload}">
                                     <MenuItem Header="Plain text" Click="ExportDocument" />
                                     <MenuItem Header="PDF" IsEnabled="False" />
                                 </MenuItem>
@@ -170,22 +171,22 @@
                         <Button.ContextMenu>
                             <ContextMenu Opening="OnContextOpening" AttachedToLogicalTree="OnContextAttached">
                                 <MenuItem Header="Open"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Open"
                                           InputGesture="Ctrl+O" />
                                 <MenuItem Header="Rename"
-                                          Icon="{StaticResource MenuSymbol_drive_file_rename_outline}"
+                                          Icon="{symbols:Symbol DriveFileRenameOutline}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Rename"
                                           InputGesture="F2" />
                                 <MenuItem Header="Make a copy"
-                                          Icon="{StaticResource MenuSymbol_content_copy}"
+                                          Icon="{symbols:Symbol ContentCopy}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Make a copy" />
                                 <Separator />
                                 <MenuItem Header="Move to trash"
-                                          Icon="{StaticResource MenuSymbol_delete}"
+                                          Icon="{symbols:Symbol Delete}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Move to trash" />
                             </ContextMenu>
@@ -210,16 +211,16 @@
                                               CommandParameter="Save to Downloads" />
                                     <MenuItem Header="Send to">
                                         <MenuItem Header="Design team"
-                                                  Icon="{StaticResource MenuSymbol_mail}"
+                                                  Icon="{symbols:Symbol Mail}"
                                                   Command="{Binding SelectCommand}"
                                                   CommandParameter="Design team" />
                                         <MenuItem Header="Print room"
-                                                  Icon="{StaticResource MenuSymbol_print}"
+                                                  Icon="{symbols:Symbol Print}"
                                                   Command="{Binding SelectCommand}"
                                                   CommandParameter="Print room" />
                                     </MenuItem>
                                 </MenuItem>
-                                <MenuItem Header="Image" Icon="{StaticResource MenuSymbol_file_download}">
+                                <MenuItem Header="Image" Icon="{symbols:Symbol FileDownload}">
                                     <MenuItem Header="PNG image"
                                               Command="{Binding SelectCommand}"
                                               CommandParameter="PNG image" />
@@ -229,7 +230,7 @@
                                 </MenuItem>
                                 <Separator />
                                 <MenuItem Header="Print report"
-                                          Icon="{StaticResource MenuSymbol_print}"
+                                          Icon="{symbols:Symbol Print}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Print report" />
                             </MenuFlyout>
@@ -316,12 +317,12 @@
                                         Opened="OnMenuOpened"
                                         FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
                                 <MenuItem Header="Keep available offline"
-                                          Icon="{StaticResource MenuSymbol_file_download}"
+                                          Icon="{symbols:Symbol FileDownload}"
                                           ToggleType="CheckBox"
                                           IsChecked="true"
                                           Click="OnSelectionChanged" />
                                 <MenuItem Header="Pin to workspace"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           ToggleType="CheckBox"
                                           IsChecked="false"
                                           Click="OnSelectionChanged" />
@@ -344,17 +345,17 @@
                                         FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}"
                                         assist:MenuAssist.CheckmarkPlacement="Trailing">
                                 <MenuItem Header="Save to folder"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           ToggleType="CheckBox"
                                           IsChecked="true"
                                           Click="OnSelectionChanged" />
                                 <MenuItem Header="Download a copy"
-                                          Icon="{StaticResource MenuSymbol_file_download}"
+                                          Icon="{symbols:Symbol FileDownload}"
                                           ToggleType="CheckBox"
                                           IsChecked="false"
                                           Click="OnSelectionChanged" />
                                 <MenuItem Header="Print a copy"
-                                          Icon="{StaticResource MenuSymbol_print}"
+                                          Icon="{symbols:Symbol Print}"
                                           ToggleType="CheckBox"
                                           IsChecked="false"
                                           Click="OnSelectionChanged" />
@@ -406,7 +407,7 @@
                                         Opened="OnMenuOpened"
                                         FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
                                 <MenuItem Header="Inbox"
-                                          Icon="{StaticResource MenuSymbol_mail}"
+                                          Icon="{symbols:Symbol Mail}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Inbox">
                                     <assist:MenuAssist.Badge>
@@ -414,7 +415,7 @@
                                     </assist:MenuAssist.Badge>
                                 </MenuItem>
                                 <MenuItem Header="Team updates"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Team updates">
                                     <assist:MenuAssist.Badge>
@@ -447,7 +448,7 @@
                                         FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}"
                                         assist:MenuAssist.ColorStyle="Vibrant">
                                 <MenuItem Header="Inbox"
-                                          Icon="{StaticResource MenuSymbol_mail}"
+                                          Icon="{symbols:Symbol Mail}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Inbox">
                                     <assist:MenuAssist.Badge>
@@ -455,7 +456,7 @@
                                     </assist:MenuAssist.Badge>
                                 </MenuItem>
                                 <MenuItem Header="Team updates"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Team updates">
                                     <assist:MenuAssist.Badge>
@@ -488,18 +489,18 @@
                                         Opened="OnMenuOpened"
                                         FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
                                 <MenuItem Header="Studio display"
-                                          Icon="{StaticResource MenuSymbol_computer}"
+                                          Icon="{symbols:Symbol Computer}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Studio display"
                                           assist:MenuAssist.SupportingText="Meeting room · 4K display"
                                           assist:MenuAssist.TrailingText="Ready" />
                                 <MenuItem Header="This computer"
-                                          Icon="{StaticResource MenuSymbol_computer}"
+                                          Icon="{symbols:Symbol Computer}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="This computer"
                                           assist:MenuAssist.SupportingText="Built-in display" />
                                 <MenuItem Header="Conference room"
-                                          Icon="{StaticResource MenuSymbol_computer}"
+                                          Icon="{symbols:Symbol Computer}"
                                           Command="{Binding UnavailableCommand}"
                                           assist:MenuAssist.SupportingText="Reconnect the display to continue"
                                           assist:MenuAssist.TrailingText="Offline" />
@@ -512,11 +513,11 @@
                                         Opened="OnMenuOpened"
                                         FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
                                 <MenuItem Header="This computer"
-                                          Icon="{StaticResource MenuSymbol_computer}"
+                                          Icon="{symbols:Symbol Computer}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="This computer" />
                                 <MenuItem Header="Studio display"
-                                          Icon="{StaticResource MenuSymbol_computer}"
+                                          Icon="{symbols:Symbol Computer}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Studio display" />
                             </MenuFlyout>
@@ -538,7 +539,7 @@
                                         FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
                                 <controls:MenuGroupLabel Text="Projects" />
                                 <MenuItem Header="Open project"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Open project" />
                                 <Separator />
@@ -548,7 +549,7 @@
                                 <controls:MenuGap />
                                 <controls:MenuGroupLabel Text="Recent" />
                                 <MenuItem Header="Design review"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Design review"
                                           x:Name="RecentProject">
@@ -561,7 +562,7 @@
                                 <controls:MenuGap x:Name="WorkspaceSettingsGap" />
                                 <controls:MenuGroupLabel Text="Workspace settings" />
                                 <MenuItem Header="Preferences"
-                                          Icon="{StaticResource MenuSymbol_tune}"
+                                          Icon="{symbols:Symbol Tune}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Preferences" />
                                 <MenuItem Header="Add recent project"
@@ -645,16 +646,16 @@
                                         Opened="OnMenuOpened"
                                         FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
                                 <MenuItem Header="Open"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Open" />
                                 <MenuItem Header="Workspace preferences"
-                                          Icon="{StaticResource MenuSymbol_tune}"
+                                          Icon="{symbols:Symbol Tune}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Workspace preferences"
                                           assist:MenuAssist.SupportingText="Manage the layout and editing preferences for this workspace" />
                                 <MenuItem Header="Duplicate"
-                                          Icon="{StaticResource MenuSymbol_content_copy}"
+                                          Icon="{symbols:Symbol ContentCopy}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Duplicate" />
                             </MenuFlyout>
@@ -666,16 +667,16 @@
                                         Opened="OnMenuOpened"
                                         FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
                                 <MenuItem Header="Open"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Open" />
                                 <MenuItem Header="Workspace preferences"
-                                          Icon="{StaticResource MenuSymbol_tune}"
+                                          Icon="{symbols:Symbol Tune}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Workspace preferences"
                                           assist:MenuAssist.SupportingText="Manage the layout and editing preferences for this workspace" />
                                 <MenuItem Header="Duplicate"
-                                          Icon="{StaticResource MenuSymbol_content_copy}"
+                                          Icon="{symbols:Symbol ContentCopy}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Duplicate" />
                             </MenuFlyout>
@@ -687,16 +688,16 @@
                                         Opened="OnMenuOpened"
                                         FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
                                 <MenuItem Header="Open"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Open" />
                                 <MenuItem Header="Workspace preferences"
-                                          Icon="{StaticResource MenuSymbol_tune}"
+                                          Icon="{symbols:Symbol Tune}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Workspace preferences"
                                           assist:MenuAssist.SupportingText="Manage the layout and editing preferences for this workspace" />
                                 <MenuItem Header="Duplicate"
-                                          Icon="{StaticResource MenuSymbol_content_copy}"
+                                          Icon="{symbols:Symbol ContentCopy}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Duplicate" />
                             </MenuFlyout>
@@ -708,16 +709,16 @@
                                         Opened="OnMenuOpened"
                                         FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
                                 <MenuItem Header="Open"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Open" />
                                 <MenuItem Header="Workspace preferences"
-                                          Icon="{StaticResource MenuSymbol_tune}"
+                                          Icon="{symbols:Symbol Tune}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Workspace preferences"
                                           assist:MenuAssist.SupportingText="Manage the layout and editing preferences for this workspace" />
                                 <MenuItem Header="Duplicate"
-                                          Icon="{StaticResource MenuSymbol_content_copy}"
+                                          Icon="{symbols:Symbol ContentCopy}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Duplicate" />
                             </MenuFlyout>
@@ -738,15 +739,15 @@
                                         FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}"
                                         ItemContainerTheme="{StaticResource MenuTouchItem}">
                                 <MenuItem Header="Open folder"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Open folder" />
                                 <MenuItem Header="Rename folder"
-                                          Icon="{StaticResource MenuSymbol_drive_file_rename_outline}"
+                                          Icon="{symbols:Symbol DriveFileRenameOutline}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Rename folder" />
                                 <MenuItem Header="Move to trash"
-                                          Icon="{StaticResource MenuSymbol_delete}"
+                                          Icon="{symbols:Symbol Delete}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Move to trash" />
                             </MenuFlyout>
@@ -776,7 +777,7 @@
                                           Click="OnSelectionChanged" />
                                 <Separator />
                                 <MenuItem Header="Open project"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Open project" />
                             </MenuFlyout>
@@ -797,7 +798,7 @@
                                           Click="OnSelectionChanged" />
                                 <Separator />
                                 <MenuItem Header="Open project"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Open project" />
                             </MenuFlyout>
@@ -818,7 +819,7 @@
                                           Click="OnSelectionChanged" />
                                 <Separator />
                                 <MenuItem Header="Open project"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Open project" />
                             </MenuFlyout>
@@ -840,7 +841,7 @@
                                           Click="OnSelectionChanged" />
                                 <Separator />
                                 <MenuItem Header="Open project"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Open project" />
                             </MenuFlyout>
@@ -861,7 +862,7 @@
                                         Opened="OnMenuOpened"
                                         FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
                                 <MenuItem Header="Open"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Open" />
                                 <MenuItem Header="Export">
@@ -889,11 +890,11 @@
                                         Opened="OnMenuOpened"
                                         FlyoutPresenterTheme="{StaticResource MenuDemoPresenter}">
                                 <MenuItem Header="Open project"
-                                          Icon="{StaticResource MenuSymbol_folder_open}"
+                                          Icon="{symbols:Symbol FolderOpen}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Open project" />
                                 <MenuItem Header="Rename"
-                                          Icon="{StaticResource MenuSymbol_drive_file_rename_outline}"
+                                          Icon="{symbols:Symbol DriveFileRenameOutline}"
                                           Command="{Binding SelectCommand}"
                                           CommandParameter="Rename" />
                                 <MenuItem Header="Change accent" StaysOpenOnClick="True" Click="RemapTokens" />

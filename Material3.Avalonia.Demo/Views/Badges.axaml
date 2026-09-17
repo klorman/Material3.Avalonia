@@ -6,6 +6,7 @@
              xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
              xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens;assembly=Material3.Avalonia"
              xmlns:theme="clr-namespace:Material3.Avalonia.Theme;assembly=Material3.Avalonia"
+             xmlns:symbols="clr-namespace:Material3.Avalonia.Symbols;assembly=Material3.Avalonia"
              xmlns:vm="clr-namespace:Material3.Avalonia.Demo.ViewModels"
              x:Class="Material3.Avalonia.Demo.Views.Badges"
              x:DataType="vm:BadgesViewModel"
@@ -13,9 +14,6 @@
     <UserControl.DataContext>
         <vm:BadgesViewModel />
     </UserControl.DataContext>
-    <UserControl.Resources>
-        <StreamGeometry x:Key="BadgeMailIcon">M4,4H20A2,2 0 0 1 22,6V18A2,2 0 0 1 20,20H4A2,2 0 0 1 2,18V6A2,2 0 0 1 4,4Z M4,8V18H20V8L12,13Z M4,6L12,11L20,6Z</StreamGeometry>
-    </UserControl.Resources>
     <StackPanel Spacing="{markup:Token MdSysSpacing200}">
         <TextBlock Text="Badges" helpers:Typography.TextStyle="HeadlineSmall" />
         <TextBlock Text="Notification dots, counts and short labels. A badge adds information to an action; it is not a separate action."
@@ -65,18 +63,14 @@
                                                 ShowZero="{Binding ShowZero}" IsActive="{Binding IsBadgeVisible}"
                                                 AutomationProperties.AccessibilityView="Raw" />
                             </controls:Badged.Badge>
-                            <primitives:IconPresenter Size="20" Width="24" Height="24"
-                                                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                                      Value="{StaticResource BadgeMailIcon}" />
+                            <primitives:IconPresenter Value="{symbols:Symbol Mail}" />
                         </controls:Badged>
                     </Button>
                     <TextBlock Text="Click the icon or its badge, or use Tab and Space. Opening the inbox clears the count."
                                MaxWidth="400" VerticalAlignment="Center" TextWrapping="Wrap" />
                 </WrapPanel>
                 <Grid ColumnDefinitions="Auto,Auto,Auto,*" ColumnSpacing="{markup:Token MdSysSpacing150}">
-                    <primitives:IconPresenter Size="20" Width="24" Height="24"
-                                              HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                              Value="{StaticResource BadgeMailIcon}" />
+                    <primitives:IconPresenter Value="{symbols:Symbol Mail}" />
                     <TextBlock Grid.Column="1" Text="Inbox" VerticalAlignment="Center" />
                     <controls:Badge Grid.Column="2" Count="{Binding UnreadCount}" ShowZero="{Binding ShowZero}"
                                     IsActive="{Binding IsBadgeVisible}" />

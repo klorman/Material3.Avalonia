@@ -1,0 +1,87 @@
+<Project>
+    <PropertyGroup>
+        <Material3SymbolFullFrameworkArchitecture Condition="'$(Material3SymbolFullFrameworkArchitecture)' == '' and '$(MSBuildArchitecture)' == 'x86'">x86</Material3SymbolFullFrameworkArchitecture>
+        <Material3SymbolFullFrameworkArchitecture Condition="'$(Material3SymbolFullFrameworkArchitecture)' == '' and '$(MSBuildArchitecture)' == 'arm64'">arm64</Material3SymbolFullFrameworkArchitecture>
+        <Material3SymbolFullFrameworkArchitecture Condition="'$(Material3SymbolFullFrameworkArchitecture)' == ''">x64</Material3SymbolFullFrameworkArchitecture>
+        <Material3SymbolBuildTaskAssembly Condition="'$(Material3SymbolBuildTaskAssembly)' == '' and '$(MSBuildRuntimeType)' == 'Full'">$(MSBuildThisFileDirectory)..\tools\net472\$(Material3SymbolFullFrameworkArchitecture)\Material3.Avalonia.Build.Tasks.dll</Material3SymbolBuildTaskAssembly>
+        <Material3SymbolBuildTaskAssembly Condition="'$(Material3SymbolBuildTaskAssembly)' == ''">$(MSBuildThisFileDirectory)..\tools\net8.0\Material3.Avalonia.Build.Tasks.dll</Material3SymbolBuildTaskAssembly>
+        <Material3SymbolCatalogFile Condition="'$(Material3SymbolCatalogFile)' == ''">$(MSBuildThisFileDirectory)..\tools\catalog.tsv</Material3SymbolCatalogFile>
+        <Material3SymbolSourceFontDirectory Condition="'$(Material3SymbolSourceFontDirectory)' == ''">$(MSBuildThisFileDirectory)..\tools\fonts</Material3SymbolSourceFontDirectory>
+        <Material3SymbolManifestTargetsTemplate Condition="'$(Material3SymbolManifestTargetsTemplate)' == ''">$(MSBuildThisFileDirectory)..\tools\SymbolManifest.targets</Material3SymbolManifestTargetsTemplate>
+        <Material3SymbolIntermediateDirectory>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)/$(IntermediateOutputPath)material-symbols'))</Material3SymbolIntermediateDirectory>
+        <Material3SymbolManifestFileName Condition="'$(Material3SymbolManifestFileName)' == '' and '$(IsPackable)' == 'true' and '$(PackageId)' != ''">$(PackageId).$(TargetFramework).symbols.manifest</Material3SymbolManifestFileName>
+        <Material3SymbolManifestFileName Condition="'$(Material3SymbolManifestFileName)' == ''">requests.manifest</Material3SymbolManifestFileName>
+        <Material3GenerateSymbolManifestTargets Condition="'$(Material3GenerateSymbolManifestTargets)' == ''">true</Material3GenerateSymbolManifestTargets>
+        <Material3SymbolBuildInParallel Condition="'$(Material3SymbolBuildInParallel)' == ''">false</Material3SymbolBuildInParallel>
+        <Material3SymbolTargetsPackTargetFramework Condition="'$(TargetFrameworks)' != ''">$([System.String]::Copy('$(TargetFrameworks)').Split(';').GetValue(0))</Material3SymbolTargetsPackTargetFramework>
+        <TargetsForTfmSpecificContentInPackage Condition="'$(IsPackable)' == 'true'">$(TargetsForTfmSpecificContentInPackage);Material3PackSymbolManifest</TargetsForTfmSpecificContentInPackage>
+        <PrepareResourceNamesDependsOn Condition="('$(OutputType)' != 'Library' or '$(IsTestProject)' == 'true') and '$(DesignTimeBuild)' != 'true'">Material3GenerateSymbolFonts;$(PrepareResourceNamesDependsOn)</PrepareResourceNamesDependsOn>
+    </PropertyGroup>
+
+    <UsingTask TaskName="Material3.Avalonia.Build.Tasks.CollectMaterialSymbols"
+               AssemblyFile="$(Material3SymbolBuildTaskAssembly)" />
+    <UsingTask TaskName="Material3.Avalonia.Build.Tasks.GenerateMaterialSymbolFonts"
+               AssemblyFile="$(Material3SymbolBuildTaskAssembly)" />
+
+    <ItemGroup>
+        <Material3SymbolManifest Include="$(MSBuildThisFileDirectory)*.symbols.manifest" />
+    </ItemGroup>
+
+    <Target Name="Material3EnsureSymbolBuildTasks"
+            Condition="'$(DesignTimeBuild)' != 'true' and '$(Material3SymbolBuildFromSource)' == 'true' and '$(Material3SymbolBuildTasksProject)' != '' and !Exists('$(Material3SymbolBuildTaskAssembly)')">
+        <MSBuild Projects="$(Material3SymbolBuildTasksProject)"
+                 Targets="Build"
+                 Properties="Configuration=$(Configuration);TargetFramework=$(Material3SymbolBuildTasksTargetFramework);BuildInParallel=$(Material3SymbolBuildInParallel)"
+                 RemoveProperties="TargetFrameworks" />
+    </Target>
+
+    <Target Name="Material3CollectSymbolManifest"
+            DependsOnTargets="Material3EnsureSymbolBuildTasks;ResolveProjectReferences"
+            Condition="'$(DesignTimeBuild)' != 'true' and '$(TargetFramework)' != ''"
+            Returns="@(_Material3SymbolManifest)">
+        <MSBuild Projects="@(_MSBuildProjectReferenceExistent)"
+                 Targets="Material3CollectSymbolManifest"
+                 BuildInParallel="$(Material3SymbolBuildInParallel)"
+                 Properties="%(_MSBuildProjectReferenceExistent.SetConfiguration); %(_MSBuildProjectReferenceExistent.SetPlatform); %(_MSBuildProjectReferenceExistent.SetTargetFramework);Material3SymbolBuildInParallel=$(Material3SymbolBuildInParallel)"
+                 RemoveProperties="%(_MSBuildProjectReferenceExistent.GlobalPropertiesToRemove)$(_GlobalPropertiesToRemoveFromProjectReferences)"
+                 SkipNonexistentTargets="true"
+                 Condition="'@(_MSBuildProjectReferenceExistent)' != ''">
+            <Output TaskParameter="TargetOutputs" ItemName="_Material3ReferencedSymbolManifest" />
+        </MSBuild>
+        <CollectMaterialSymbols XamlFiles="@(AvaloniaXaml)"
+                                ReferencedManifests="@(Material3SymbolManifest);@(_Material3ReferencedSymbolManifest)"
+                                CatalogFile="$(Material3SymbolCatalogFile)"
+                                OutputManifest="$(Material3SymbolIntermediateDirectory)/$(Material3SymbolManifestFileName)">
+            <Output TaskParameter="Manifest" ItemName="_Material3SymbolManifest" />
+        </CollectMaterialSymbols>
+    </Target>
+
+    <Target Name="Material3GenerateSymbolFonts"
+            DependsOnTargets="Material3CollectSymbolManifest"
+            Condition="'$(DesignTimeBuild)' != 'true' and ('$(OutputType)' != 'Library' or '$(IsTestProject)' == 'true')">
+        <GenerateMaterialSymbolFonts Manifests="@(_Material3SymbolManifest)"
+                                     CatalogFile="$(Material3SymbolCatalogFile)"
+                                     SourceFontDirectory="$(Material3SymbolSourceFontDirectory)"
+                                     OutputDirectory="$(Material3SymbolIntermediateDirectory)/fonts">
+            <Output TaskParameter="GeneratedFonts" ItemName="EmbeddedResource" />
+        </GenerateMaterialSymbolFonts>
+    </Target>
+
+    <Target Name="Material3PackSymbolManifest"
+            DependsOnTargets="Material3CollectSymbolManifest"
+            Condition="'$(DesignTimeBuild)' != 'true' and '$(IsPackable)' == 'true' and '$(TargetFramework)' != ''">
+        <ItemGroup>
+            <_Material3ExistingManifestTargets Include="@(None)"
+                                               Condition="'$(PackageId)' != 'Material3.Avalonia' and '$(Material3GenerateSymbolManifestTargets)' == 'true' and '%(None.Pack)' == 'true' and '%(None.Filename)%(None.Extension)' == '$(PackageId).targets' and $([System.String]::Copy('%(None.PackagePath)').StartsWith('buildTransitive'))" />
+            <_Material3ExistingManifestTargets Include="@(Content)"
+                                               Condition="'$(PackageId)' != 'Material3.Avalonia' and '$(Material3GenerateSymbolManifestTargets)' == 'true' and '%(Content.Pack)' == 'true' and '%(Content.Filename)%(Content.Extension)' == '$(PackageId).targets' and $([System.String]::Copy('%(Content.PackagePath)').StartsWith('buildTransitive'))" />
+            <TfmSpecificPackageFile Include="@(_Material3SymbolManifest)"
+                                    PackagePath="buildTransitive/%(Filename)%(Extension)" />
+            <TfmSpecificPackageFile Include="$(Material3SymbolManifestTargetsTemplate)"
+                                    PackagePath="buildTransitive/$(PackageId).targets"
+                                    Condition="'$(PackageId)' != 'Material3.Avalonia' and '$(Material3GenerateSymbolManifestTargets)' == 'true' and ('$(TargetFrameworks)' == '' or '$(TargetFramework)' == '$(Material3SymbolTargetsPackTargetFramework)')" />
+        </ItemGroup>
+        <Error Condition="'@(_Material3ExistingManifestTargets)' != ''"
+               Text="Material3.Avalonia cannot generate buildTransitive/$(PackageId).targets because this package already contains that file. Set Material3GenerateSymbolManifestTargets=false and add &lt;Material3SymbolManifest Include=&quot;%24(MSBuildThisFileDirectory)*.symbols.manifest&quot; /&gt; to the existing target." />
+    </Target>
+</Project>

@@ -1,0 +1,10 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:symbols="clr-namespace:Material3.Avalonia.Symbols">
+    <symbols:MaterialSymbolResource x:Key="MdIconArrowRight" Symbol="ArrowRight" />
+    <symbols:MaterialSymbolResource x:Key="MdIconCheck" Symbol="Check" />
+    <symbols:MaterialSymbolResource x:Key="MdIconContentCopy" Symbol="ContentCopy" />
+    <symbols:MaterialSymbolResource x:Key="MdIconContentCut" Symbol="ContentCut" />
+    <symbols:MaterialSymbolResource x:Key="MdIconContentPaste" Symbol="ContentPaste" />
+    <symbols:MaterialSymbolResource x:Key="MdIconSelectAll" Symbol="SelectAll" />
+</ResourceDictionary>

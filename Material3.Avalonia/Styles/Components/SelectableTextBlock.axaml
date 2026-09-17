@@ -7,9 +7,7 @@
                 Placement="Bottom">
         <MenuItem Header="{DynamicResource StringTextFlyoutCopyText}"
                   Command="{Binding $parent[SelectableTextBlock].Copy}"
-                  IsEnabled="{Binding $parent[SelectableTextBlock].CanCopy}">
-            <controls:MenuAssist.TrailingIcon><PathIcon Width="20" Height="20" Data="{DynamicResource MaterialTextCopyIcon}" /></controls:MenuAssist.TrailingIcon>
-        </MenuItem>
+                  IsEnabled="{Binding $parent[SelectableTextBlock].CanCopy}" controls:MenuAssist.TrailingIcon="{markup:Token MaterialTextCopyIcon}" />
     </MenuFlyout>
 
     <ControlTheme x:Key="{x:Type SelectableTextBlock}"

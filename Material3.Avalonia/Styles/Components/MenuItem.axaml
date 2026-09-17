@@ -98,13 +98,12 @@
                             <Panel x:Name="PART_LeadingSlot" Grid.Column="0" Height="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}">
                                 <Panel x:Name="PART_LeadingIconHost" HorizontalAlignment="Left" Width="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}">
                                     <primitives:IconPresenter x:Name="PART_Icon" IsHitTestVisible="False" KeyboardNavigation.TabNavigation="None"
-                                                              Value="{TemplateBinding Icon}" Size="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}"
-                                                              Width="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}" Height="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}" />
+                                                              Value="{TemplateBinding Icon}" Size="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}" />
                                 </Panel>
                                 <Panel x:Name="PART_LeadingCheckHost" HorizontalAlignment="Left" Width="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}">
-                                    <PathIcon x:Name="PART_Check" FlowDirection="LeftToRight" IsHitTestVisible="False"
-                                              Width="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}" Height="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}"
-                                              Data="M0-960h0 M960 0h0 M389-267 195-460l51-52 143 143 325-324 51 51-376 375Z" />
+                                    <primitives:IconPresenter x:Name="PART_Check" FlowDirection="LeftToRight" IsHitTestVisible="False"
+                                                              Size="{TemplateBinding internal:MenuItemPresentation.LeadingIconSize}"
+                                                              Value="{markup:Token MdImplMenuCheckIcon}" />
                                 </Panel>
                             </Panel>
                             <StackPanel x:Name="PART_Label" Grid.Column="1" VerticalAlignment="Center">
@@ -129,19 +128,18 @@
                             <Panel x:Name="PART_TrailingSlot" Grid.Column="4" Height="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}">
                                 <Panel x:Name="PART_TrailingIconHost" HorizontalAlignment="Left" Width="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}">
                                     <primitives:IconPresenter x:Name="PART_TrailingIcon" IsHitTestVisible="False" KeyboardNavigation.TabNavigation="None"
-                                                              Value="{TemplateBinding assist:MenuAssist.TrailingIcon}" Size="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}"
-                                                              Width="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}" Height="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}" />
+                                                              Value="{TemplateBinding assist:MenuAssist.TrailingIcon}" Size="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}" />
                                 </Panel>
                                 <Panel x:Name="PART_TrailingCheckHost" HorizontalAlignment="Left" Width="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}">
-                                    <PathIcon x:Name="PART_TrailingCheck" FlowDirection="LeftToRight" IsHitTestVisible="False"
-                                              Width="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}" Height="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}"
-                                              Data="M0-960h0 M960 0h0 M389-267 195-460l51-52 143 143 325-324 51 51-376 375Z" />
+                                    <primitives:IconPresenter x:Name="PART_TrailingCheck" FlowDirection="LeftToRight" IsHitTestVisible="False"
+                                                              Size="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}"
+                                                              Value="{markup:Token MdImplMenuCheckIcon}" />
                                 </Panel>
                             </Panel>
-                            <PathIcon x:Name="PART_Chevron" Grid.Column="5" IsHitTestVisible="False"
-                                      Width="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}" Height="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}"
-                                      Margin="{TemplateBinding internal:MenuItemPresentation.TrailingGap}"
-                                      Data="M0-960h0 M960 0h0 M384-288v-384l192 192-192 192Z" />
+                            <primitives:IconPresenter x:Name="PART_Chevron" Grid.Column="5" IsHitTestVisible="False"
+                                                      Size="{TemplateBinding internal:MenuItemPresentation.TrailingIconSize}"
+                                                      Margin="{TemplateBinding internal:MenuItemPresentation.TrailingGap}"
+                                                      Value="{markup:Token MdImplMenuChevronIcon}" />
                         </Grid>
                         <primitives:InkRipple x:Name="PART_Ripple" CornerRadius="{TemplateBinding CornerRadius}" />
                     </Grid>
@@ -160,7 +158,7 @@
             <Setter Property="IsVisible" Value="True" />
         </Style>
         <Style Selector="^ /template/ Popup#PART_Popup"><Setter Property="Placement" Value="RightEdgeAlignedTop" /></Style>
-        <Style Selector="^:empty /template/ PathIcon#PART_Chevron"><Setter Property="IsVisible" Value="False" /></Style>
+        <Style Selector="^:empty /template/ primitives|IconPresenter#PART_Chevron"><Setter Property="IsVisible" Value="False" /></Style>
         <Style Selector="^:toggle"><Setter Property="StaysOpenOnClick" Value="True" /></Style>
         <Style Selector="^:separator">
             <Setter Property="MinHeight" Value="0" />

@@ -1,18 +1,18 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:theme="clr-namespace:Material3.Avalonia.Theme;assembly=Material3.Avalonia"
+             xmlns:symbols="clr-namespace:Material3.Avalonia.Symbols;assembly=Material3.Avalonia"
              x:Class="Material3.Avalonia.Demo.App">
-    <Application.Styles>
-        <StyleInclude Source="avares://Material3.Avalonia/Theme/MaterialThemeStyles.axaml" />
-        <theme:MaterialTheme Mode="Light" Variant="TonalSpot" SourceColor="#6750A4" Contrast="Standard" MotionScheme="Expressive" />
-    </Application.Styles>
-    
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="avares://Material3.Avalonia/Theme/MaterialThemeResources.axaml" />
-                <MergeResourceInclude Source="avares://Material3.Avalonia.Demo/Assets/Icons.axaml" />
-            </ResourceDictionary.MergedDictionaries>
+            <symbols:MaterialSymbolResource x:Key="MdIconMail" Symbol="Mail" />
+            <symbols:MaterialSymbolsInclude
+                x:Key="DynamicSymbols"
+                Symbols="VisibilityOff" />
         </ResourceDictionary>
     </Application.Resources>
+    <Application.Styles>
+        <theme:MaterialTheme Mode="Light" Variant="TonalSpot" SourceColor="#6750A4" Contrast="Standard" MotionScheme="Expressive"
+                            SymbolStyle="Rounded" />
+    </Application.Styles>
 </Application>

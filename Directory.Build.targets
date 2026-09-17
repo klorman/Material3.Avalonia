@@ -1,0 +1,15 @@
+<Project>
+    <PropertyGroup Condition="'$(Material3EnableSymbolBuild)' != 'false' and '$(MSBuildProjectName)' != 'Material3.Avalonia.Build.Tasks'">
+        <Material3SymbolBuildTaskAssembly Condition="'$(MSBuildRuntimeType)' == 'Full'">$(MSBuildThisFileDirectory)Material3.Avalonia.Build.Tasks/bin/$(Configuration)/net472/Material3.Avalonia.Build.Tasks.dll</Material3SymbolBuildTaskAssembly>
+        <Material3SymbolBuildTaskAssembly Condition="'$(MSBuildRuntimeType)' != 'Full'">$(MSBuildThisFileDirectory)Material3.Avalonia.Build.Tasks/bin/$(Configuration)/net8.0/Material3.Avalonia.Build.Tasks.dll</Material3SymbolBuildTaskAssembly>
+        <Material3SymbolBuildTasksProject>$(MSBuildThisFileDirectory)Material3.Avalonia.Build.Tasks/Material3.Avalonia.Build.Tasks.csproj</Material3SymbolBuildTasksProject>
+        <Material3SymbolBuildTasksTargetFramework Condition="'$(MSBuildRuntimeType)' == 'Full'">net472</Material3SymbolBuildTasksTargetFramework>
+        <Material3SymbolBuildTasksTargetFramework Condition="'$(MSBuildRuntimeType)' != 'Full'">net8.0</Material3SymbolBuildTasksTargetFramework>
+        <Material3SymbolBuildFromSource>true</Material3SymbolBuildFromSource>
+        <Material3SymbolCatalogFile>$(MSBuildThisFileDirectory)third_party/google/material-symbols/catalog.tsv</Material3SymbolCatalogFile>
+        <Material3SymbolSourceFontDirectory>$(MSBuildThisFileDirectory)third_party/google/material-symbols/fonts</Material3SymbolSourceFontDirectory>
+    </PropertyGroup>
+    <Import Project="$(MSBuildThisFileDirectory)Material3.Avalonia/buildTransitive/Material3.Avalonia.targets"
+            Condition="'$(Material3EnableSymbolBuild)' != 'false' and '$(MSBuildProjectName)' != 'Material3.Avalonia.Build.Tasks'" />
+
+</Project>

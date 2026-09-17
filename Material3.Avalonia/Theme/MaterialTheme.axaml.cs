@@ -8,6 +8,7 @@ using Bdziam.UI.Theming.MaterialColors.ColorSpace;
 using Bdziam.UI.Theming.MaterialColors.DynamicColor;
 using Bdziam.UI.Theming.MaterialColors.Scheme;
 using Material3.Avalonia.Motion;
+using Material3.Avalonia.Symbols;
 using Material3.Avalonia.Tokens.System;
 
 namespace Material3.Avalonia.Theme;
@@ -32,6 +33,29 @@ public class MaterialTheme : Styles
     public static readonly StyledProperty<MotionSchemeKind?> MotionSchemeProperty =
         AvaloniaProperty.Register<MaterialTheme, MotionSchemeKind?>(nameof(MotionScheme),
             MaterialThemeOptions.Defaults.MotionScheme);
+
+    /// <summary>Identifies the SymbolStyle property.</summary>
+    public static readonly StyledProperty<SymbolStyle> SymbolStyleProperty =
+        AvaloniaProperty.Register<MaterialTheme, SymbolStyle>(nameof(SymbolStyle), SymbolStyle.Outlined);
+
+    /// <summary>Identifies the SymbolWeight property.</summary>
+    public static readonly StyledProperty<double> SymbolWeightProperty =
+        AvaloniaProperty.Register<MaterialTheme, double>(nameof(SymbolWeight), 400,
+            validate: value => double.IsFinite(value) && value is >= 100 and <= 700);
+
+    /// <summary>Identifies the SymbolGrade property.</summary>
+    public static readonly StyledProperty<double> SymbolGradeProperty =
+        AvaloniaProperty.Register<MaterialTheme, double>(nameof(SymbolGrade), 0,
+            validate: value => double.IsFinite(value) && value is >= -50 and <= 200);
+
+    /// <summary>Identifies the SymbolIsFilled property.</summary>
+    public static readonly StyledProperty<bool> SymbolIsFilledProperty =
+        AvaloniaProperty.Register<MaterialTheme, bool>(nameof(SymbolIsFilled), false);
+
+    /// <summary>Identifies the SymbolOpticalSize property.</summary>
+    public static readonly StyledProperty<double?> SymbolOpticalSizeProperty =
+        AvaloniaProperty.Register<MaterialTheme, double?>(nameof(SymbolOpticalSize), null,
+            validate: value => value is null || double.IsFinite(value.Value) && value is >= 20 and <= 48);
 
     public Color SourceColor
     {
@@ -61,6 +85,41 @@ public class MaterialTheme : Styles
     {
         get => GetValue(MotionSchemeProperty);
         set => SetValue(MotionSchemeProperty, value);
+    }
+
+    /// <summary>The default Material Symbols design family.</summary>
+    public SymbolStyle SymbolStyle
+    {
+        get => GetValue(SymbolStyleProperty);
+        set => SetValue(SymbolStyleProperty, value);
+    }
+
+    /// <summary>The default Material Symbols weight from 100 to 700.</summary>
+    public double SymbolWeight
+    {
+        get => GetValue(SymbolWeightProperty);
+        set => SetValue(SymbolWeightProperty, value);
+    }
+
+    /// <summary>The default Material Symbols grade from -50 to 200.</summary>
+    public double SymbolGrade
+    {
+        get => GetValue(SymbolGradeProperty);
+        set => SetValue(SymbolGradeProperty, value);
+    }
+
+    /// <summary>Whether Material Symbols are filled by default.</summary>
+    public bool SymbolIsFilled
+    {
+        get => GetValue(SymbolIsFilledProperty);
+        set => SetValue(SymbolIsFilledProperty, value);
+    }
+
+    /// <summary>The default Material Symbols optical size, or null to follow each icon size.</summary>
+    public double? SymbolOpticalSize
+    {
+        get => GetValue(SymbolOpticalSizeProperty);
+        set => SetValue(SymbolOpticalSizeProperty, value);
     }
 
     public MaterialThemeOptions Options
@@ -131,6 +190,11 @@ public class MaterialTheme : Styles
         resources.Add(new KeyValuePair<object, object?>("Material.ContrastLevel", Options.Contrast.Level));
         resources.Add(new KeyValuePair<object, object?>("Material.SourceColor", Options.SourceColor));
         resources.Add(new KeyValuePair<object, object?>("Material.SchemeVariant", Options.Variant));
+        resources.Add(new KeyValuePair<object, object?>("Material.SymbolStyle", SymbolStyle));
+        resources.Add(new KeyValuePair<object, object?>("Material.SymbolWeight", SymbolWeight));
+        resources.Add(new KeyValuePair<object, object?>("Material.SymbolGrade", SymbolGrade));
+        resources.Add(new KeyValuePair<object, object?>("Material.SymbolIsFilled", SymbolIsFilled));
+        resources.Add(new KeyValuePair<object, object?>("Material.SymbolOpticalSize", SymbolOpticalSize));
 
         SetResourceItems(Resources, resources);
     }
@@ -209,7 +273,12 @@ public class MaterialTheme : Styles
         if (change.Property == SourceColorProperty
             || change.Property == VariantProperty
             || change.Property == ModeProperty
-            || change.Property == ContrastProperty)
+            || change.Property == ContrastProperty
+            || change.Property == SymbolStyleProperty
+            || change.Property == SymbolWeightProperty
+            || change.Property == SymbolGradeProperty
+            || change.Property == SymbolIsFilledProperty
+            || change.Property == SymbolOpticalSizeProperty)
             Rebuild();
 
         if (change.Property == MotionSchemeProperty && change.NewValue != change.OldValue) ApplyMotionSettings();

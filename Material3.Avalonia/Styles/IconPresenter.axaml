@@ -1,0 +1,11 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives">
+
+    <Style Selector="primitives|IconPresenter">
+        <Setter Property="SymbolStyle" Value="{DynamicResource Material.SymbolStyle}" />
+        <Setter Property="Weight" Value="{DynamicResource Material.SymbolWeight}" />
+        <Setter Property="Grade" Value="{DynamicResource Material.SymbolGrade}" />
+        <Setter Property="IsFilled" Value="{DynamicResource Material.SymbolIsFilled}" />
+        <Setter Property="OpticalSize" Value="{DynamicResource Material.SymbolOpticalSize}" />
+    </Style>
+</Styles>

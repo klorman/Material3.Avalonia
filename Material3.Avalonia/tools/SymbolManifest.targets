@@ -1,0 +1,5 @@
+<Project>
+    <ItemGroup>
+        <Material3SymbolManifest Include="$(MSBuildThisFileDirectory)*.symbols.manifest" />
+    </ItemGroup>
+</Project>

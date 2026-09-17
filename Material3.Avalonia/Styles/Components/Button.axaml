@@ -89,8 +89,7 @@
             <Setter Property="FontSize" Value="{markup:Token MdCompButtonXsLabelTextSize}" />
             <Setter Property="LetterSpacing" Value="{markup:Token MdCompButtonXsLabelTextTracking}" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
-                <Setter Property="Height" Value="{markup:Token MdCompButtonXsIconSize}" />
-                <Setter Property="Width" Value="{markup:Token MdCompButtonXsIconSize}" />
+                <Setter Property="Size" Value="{markup:Token MdCompButtonXsIconSize}" />
             </Style>
             <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonXsLeadingSpace MdCompButtonXsVerticalSpace MdCompButtonXsTrailingSpace MdCompButtonXsVerticalSpace}" />
             <Style Selector="^ /template/ StackPanel#PART_Content">
@@ -110,8 +109,7 @@
             <Setter Property="FontSize" Value="{markup:Token MdCompButtonSmLabelTextSize}" />
             <Setter Property="LetterSpacing" Value="{markup:Token MdCompButtonSmLabelTextTracking}" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
-                <Setter Property="Height" Value="{markup:Token MdCompButtonSmIconSize}" />
-                <Setter Property="Width" Value="{markup:Token MdCompButtonSmIconSize}" />
+                <Setter Property="Size" Value="{markup:Token MdCompButtonSmIconSize}" />
             </Style>
             <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonSmLeadingSpace MdCompButtonSmVerticalSpace MdCompButtonSmTrailingSpace MdCompButtonSmVerticalSpace}" />
             <Style Selector="^ /template/ StackPanel#PART_Content">
@@ -131,8 +129,7 @@
             <Setter Property="FontSize" Value="{markup:Token MdCompButtonMdLabelTextSize}" />
             <Setter Property="LetterSpacing" Value="{markup:Token MdCompButtonMdLabelTextTracking}" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
-                <Setter Property="Height" Value="{markup:Token MdCompButtonMdIconSize}" />
-                <Setter Property="Width" Value="{markup:Token MdCompButtonMdIconSize}" />
+                <Setter Property="Size" Value="{markup:Token MdCompButtonMdIconSize}" />
             </Style>
             <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonMdLeadingSpace MdCompButtonMdVerticalSpace MdCompButtonMdTrailingSpace MdCompButtonMdVerticalSpace}" />
             <Style Selector="^ /template/ StackPanel#PART_Content">
@@ -152,8 +149,7 @@
             <Setter Property="FontSize" Value="{markup:Token MdCompButtonLgLabelTextSize}" />
             <Setter Property="LetterSpacing" Value="{markup:Token MdCompButtonLgLabelTextTracking}" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
-                <Setter Property="Height" Value="{markup:Token MdCompButtonLgIconSize}" />
-                <Setter Property="Width" Value="{markup:Token MdCompButtonLgIconSize}" />
+                <Setter Property="Size" Value="{markup:Token MdCompButtonLgIconSize}" />
             </Style>
             <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonLgLeadingSpace MdCompButtonLgVerticalSpace MdCompButtonLgTrailingSpace MdCompButtonLgVerticalSpace}" />
             <Style Selector="^ /template/ StackPanel#PART_Content">
@@ -173,8 +169,7 @@
             <Setter Property="FontSize" Value="{markup:Token MdCompButtonXlLabelTextSize}" />
             <Setter Property="LetterSpacing" Value="{markup:Token MdCompButtonXlLabelTextTracking}" />
             <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
-                <Setter Property="Height" Value="{markup:Token MdCompButtonXlIconSize}" />
-                <Setter Property="Width" Value="{markup:Token MdCompButtonXlIconSize}" />
+                <Setter Property="Size" Value="{markup:Token MdCompButtonXlIconSize}" />
             </Style>
             <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonXlLeadingSpace MdCompButtonXlVerticalSpace MdCompButtonXlTrailingSpace MdCompButtonXlVerticalSpace}" />
             <Style Selector="^ /template/ StackPanel#PART_Content">
