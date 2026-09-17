@@ -16,6 +16,8 @@ public partial class ToolTips : UserControl
     public ToolTips()
     {
         InitializeComponent();
+        AttachedToVisualTree += (_, _) =>
+            CheckScreenEdgesButton.IsVisible = TopLevel.GetTopLevel(this) is Window;
         foreach (var control in this.GetLogicalDescendants().OfType<Control>())
             ConfigureHost(control);
     }
@@ -79,6 +81,9 @@ public partial class ToolTips : UserControl
 
     private void ShowEdgeWindow(object? sender, RoutedEventArgs e)
     {
+        if (TopLevel.GetTopLevel(this) is not Window owner)
+            return;
+
         var grid = new Grid();
         foreach (var (horizontal, vertical) in new[]
                  {
@@ -109,6 +114,6 @@ public partial class ToolTips : UserControl
             foreach (var anchor in grid.Children)
                 _anchors.Remove(anchor);
         };
-        window.Show((Window)TopLevel.GetTopLevel(this)!);
+        window.Show(owner);
     }
 }

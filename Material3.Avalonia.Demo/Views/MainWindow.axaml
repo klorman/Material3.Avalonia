@@ -1,49 +1,9 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:Material3.Avalonia.Demo.Views"
-        xmlns:controls="clr-namespace:Material3.Avalonia.Controls;assembly=Material3.Avalonia"
-        xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
-        xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
-        xmlns:controls1="clr-namespace:Material3.Avalonia.Attached.Controls;assembly=Material3.Avalonia"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Material3.Avalonia.Demo.Views.MainWindow"
         Background="{DynamicResource MdSysBackgroundBrush}"
         Title="MainWindow"
         CornerRadius="18">
-
-    <ScrollViewer VerticalScrollBarVisibility="Visible"
-                  controls1:ScrollViewerAssist.ScrollBarInset="0 18">
-        <StackPanel Orientation="Vertical"
-                    Margin="{markup:DynamicThickness MdSysSpacing200}"
-                    Spacing="{DynamicResource MdSysSpacing200}">
-            <views:TonalPalettes IsVisible="False" />
-
-            <views:SchemeColors HorizontalAlignment="Center" IsVisible="False" />
-
-            <views:Buttons HorizontalAlignment="Center" IsVisible="True" />
-
-            <views:Badges HorizontalAlignment="Stretch" />
-
-            <views:TextBoxes HorizontalAlignment="Center" IsVisible="True" />
-
-            <views:Menus HorizontalAlignment="Stretch" />
-
-            <views:ToolTips HorizontalAlignment="Center" />
-
-            <views:ScrollViewers HorizontalAlignment="Center" IsVisible="True" />
-
-            <Border IsVisible="False" BorderBrush="Black" BorderThickness="1" Padding="4" Margin="100" Width="{Binding $self.Bounds.Height}" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <controls:MaterialShape Kind="Arch" Width="400" Height="400"
-                                          Fill="{StaticResource MdSysOnSurfaceBrush}" />
-            </Border>
-
-            <views:Shapes HorizontalAlignment="Center" IsVisible="True" />
-
-            <views:Cards HorizontalAlignment="Center" IsVisible="True" />
-
-            <views:Dividers HorizontalAlignment="Stretch" />
-        </StackPanel>
-    </ScrollViewer>
+    <views:MainView />
 </Window>

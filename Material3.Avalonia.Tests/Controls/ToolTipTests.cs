@@ -670,18 +670,18 @@ public sealed class ToolTipTests : IDisposable
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void RichPlacement_ShouldPreferBottomEnd_AndStayInsideOverlay(bool rtl)
+    public void RichPlacement_ShouldPreferBottomEnd_WhenItFits(bool rtl)
     {
         var flyout = new Flyout { Content = "Explanation" };
         FlyoutAssist.SetVariant(flyout, FlyoutVariant.RichToolTip);
         flyout.Opening += (_, _) => flyout.Popup.ShouldUseOverlayLayer = true;
         var anchor = new Button
         {
-            Content = "Anchor", Flyout = flyout,
+            Content = "Anchor", Flyout = flyout, Width = 120, Height = 48,
             FlowDirection = rtl ? FlowDirection.RightToLeft : FlowDirection.LeftToRight
         };
-        var window = Show(anchor);
-        anchor.Margin = new Thickness(220, 100, 0, 0);
+        var window = Show(anchor, 900, 400);
+        anchor.Margin = new Thickness(390, 100, 0, 0);
         Pump();
         Hover(window, anchor);
         var presenter = (Control)flyout.Popup.Child!;
@@ -693,6 +693,36 @@ public sealed class ToolTipTests : IDisposable
             surfaceBounds.Right.Should().BeApproximately(anchor.Bounds.Left, 1);
         else
             position.X.Should().BeApproximately(anchor.Bounds.Right, 1);
+        new Rect(window.ClientSize)
+            .Contains(new Rect(presenter.TranslatePoint(default, window)!.Value, presenter.Bounds.Size))
+            .Should().BeTrue();
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void RichPlacement_ShouldFallbackToOppositeSide_WhenPreferredEndDoesNotFit(bool rtl)
+    {
+        var flyout = new Flyout { Content = "Explanation" };
+        FlyoutAssist.SetVariant(flyout, FlyoutVariant.RichToolTip);
+        flyout.Opening += (_, _) => flyout.Popup.ShouldUseOverlayLayer = true;
+        var anchor = new Button
+        {
+            Content = "Anchor", Flyout = flyout, Width = 120, Height = 48,
+            FlowDirection = rtl ? FlowDirection.RightToLeft : FlowDirection.LeftToRight
+        };
+        var window = Show(anchor, 600, 400);
+        anchor.Margin = new Thickness(rtl ? 30 : 450, 100, 0, 0);
+        Pump();
+        Hover(window, anchor);
+        var presenter = (Control)flyout.Popup.Child!;
+        var surface = presenter.GetVisualDescendants().OfType<Decorator>().Single(x => x.Name == "PART_Surface");
+        var surfaceBounds = new Rect(surface.Bounds.Size).TransformToAABB(surface.TransformToVisual(window)!.Value);
+        surfaceBounds.Position.Y.Should().BeApproximately(anchor.Bounds.Bottom + 8, 1);
+        if (rtl)
+            surfaceBounds.Left.Should().BeApproximately(anchor.Bounds.Right, 1);
+        else
+            surfaceBounds.Right.Should().BeApproximately(anchor.Bounds.Left, 1);
         new Rect(window.ClientSize)
             .Contains(new Rect(presenter.TranslatePoint(default, window)!.Value, presenter.Bounds.Size))
             .Should().BeTrue();
@@ -1045,13 +1075,13 @@ public sealed class ToolTipTests : IDisposable
         ScrollViewerAssist.GetScrollBarInset(bar).Should().Be(new Thickness(3));
     }
 
-    private Window Show(Control anchor)
+    private Window Show(Control anchor, double width = 500, double height = 300)
     {
         anchor.Margin = new Thickness(100, 100, 0, 0);
         anchor.HorizontalAlignment = HorizontalAlignment.Left;
         anchor.VerticalAlignment = VerticalAlignment.Top;
         ToolTip.SetShowDelay(anchor, 0);
-        var window = new Window { Width = 500, Height = 300, Content = new Grid { Children = { anchor } } };
+        var window = new Window { Width = width, Height = height, Content = new Grid { Children = { anchor } } };
         window.Styles.Add((Styles)AvaloniaXamlLoader.Load(
             new Uri("avares://Material3.Avalonia/Theme/MaterialThemeStyles.axaml")));
         _windows.Add(window);

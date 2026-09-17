@@ -136,6 +136,6 @@
         </Button>
         <TextBox Text="Touch selection and the native context menu take priority over tooltips."
                  ToolTip.Tip="Select and edit text normally." />
-        <Button Content="Check screen edges" Click="ShowEdgeWindow" />
+        <Button x:Name="CheckScreenEdgesButton" Content="Check screen edges" Click="ShowEdgeWindow" />
     </StackPanel>
 </UserControl>
