@@ -1,12 +1,10 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
+                      xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
                       xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls"
                       xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
                       xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
                       xmlns:transitions="clr-namespace:Material3.Avalonia.Motion.Transitions">
-
-    <converters:FullCornerRadiusConverter x:Key="ScrollBarFullCornerRadiusConverter" />
 
     <!-- M3 has no ScrollBar tokens; keep a 12dp interactive area around the visual thumb. -->
     <x:Double x:Key="MdImplScrollBarThickness">12</x:Double>
@@ -57,7 +55,7 @@
                             Width="{StaticResource MdImplScrollBarThumbCollapsedThickness}"
                             HorizontalAlignment="Center"
                             Background="{TemplateBinding Background}"
-                            CornerRadius="{Binding $self.Bounds, Converter={StaticResource ScrollBarFullCornerRadiusConverter}}">
+                            CornerRadius="{markup:DynamicCornerRadius MdSysShapeCornerFull}">
                         <Border.Transitions>
                             <Transitions>
                                 <transitions:SpringDoubleTransition Property="Width"
@@ -116,7 +114,7 @@
                             Height="{StaticResource MdImplScrollBarThumbCollapsedThickness}"
                             VerticalAlignment="Center"
                             Background="{TemplateBinding Background}"
-                            CornerRadius="{Binding $self.Bounds, Converter={StaticResource ScrollBarFullCornerRadiusConverter}}">
+                            CornerRadius="{markup:DynamicCornerRadius MdSysShapeCornerFull}">
                         <Border.Transitions>
                             <Transitions>
                                 <transitions:SpringDoubleTransition Property="Height"

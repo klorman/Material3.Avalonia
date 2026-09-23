@@ -3,7 +3,6 @@ using Avalonia.Interactivity;
 using Avalonia.Media;
 using Material3.Avalonia.Controls;
 using Material3.Avalonia.Demo.ViewModels;
-using Material3.Avalonia.Tokens;
 
 namespace Material3.Avalonia.Demo.Views;
 
@@ -49,8 +48,6 @@ public partial class Badges : UserControl
     private void RemapTokens(object? sender, RoutedEventArgs e)
     {
         _alternateTokens = !_alternateTokens;
-        TokenScope.Resources["MdCompBadgeLargeShape"] = new TokenAlias(
-            _alternateTokens ? "MdSysShapeCornerExtraSmall" : "MdSysShapeCornerFull");
         TokenScope.Resources["MdCompBadgeLargeSize"] = _alternateTokens ? 24d : 16d;
     }
 }

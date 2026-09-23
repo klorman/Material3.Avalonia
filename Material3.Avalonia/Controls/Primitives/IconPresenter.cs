@@ -230,10 +230,17 @@ public class IconPresenter : Control
     {
         if (Equals(_displayedValue, Value) && !_animating) return;
         if (IconChangeAnimation == IconChangeAnimation.Scale && !MotionSettings.ReduceMotion &&
-            _displayedValue is not null && TopLevel.GetTopLevel(this) is not null)
+            TopLevel.GetTopLevel(this) is not null)
         {
-            if (!_animating || !_shrinking)
+            if (_displayedValue is not null && (!_animating || !_shrinking))
                 BeginPhase(true);
+            else if (_displayedValue is null && Value is not null)
+            {
+                LoadSource();
+                _scale = 0;
+                UpdateChildScale();
+                BeginPhase(false);
+            }
         }
         else FinishChange();
     }
@@ -285,7 +292,12 @@ public class IconPresenter : Control
         {
             _scale = 0;
             LoadSource();
-            BeginPhase(false);
+            if (Value is null)
+            {
+                _animating = false;
+                _elapsed.Stop();
+            }
+            else BeginPhase(false);
         }
         else if (!_shrinking && time >= duration)
         {

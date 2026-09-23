@@ -1,0 +1,589 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
+                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
+                    xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
+                    xmlns:transitions="clr-namespace:Material3.Avalonia.Motion.Transitions"
+                    xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls"
+                    xmlns:attached="clr-namespace:Material3.Avalonia.Attached">
+
+    <ControlTheme x:Key="{x:Type ToggleButton}" TargetType="ToggleButton" BasedOn="{StaticResource MaterialButtonFamily}">
+        <Style Selector="^[(controls|ButtonAssist.Variant)=Elevated]">
+            <Setter Property="Background" Value="{markup:Token MdCompButtonElevatedContainerToggleUnselectedBrush}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedLabelToggleUnselectedBrush}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedIconToggleUnselectedBrush}" />
+                <Setter Property="IsFilled" Value="False" />
+            </Style>
+            <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                <Setter Property="Brush" Value="{markup:Token MdCompButtonElevatedToggleUnselectedPressedStateLayerBrush}" />
+            </Style>
+            <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                <Setter Property="Brush" Value="{markup:Token MdCompButtonElevatedToggleUnselectedPressedStateLayerBrush}" />
+                <Setter Property="BaseOpacity" Value="{markup:Token MdCompButtonElevatedToggleUnselectedPressedStateLayerOpacity}" />
+            </Style>
+            <Style Selector="^ /template/ Border#PART_Outline">
+                <Setter Property="BoxShadow" Value="{markup:Token MdCompButtonElevatedContainerElevation}" />
+            </Style>
+            <Style Selector="^:checked">
+                <Setter Property="Background" Value="{markup:Token MdCompButtonElevatedContainerToggleSelectedBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedLabelToggleSelectedBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedIconToggleSelectedBrush}" />
+                    <Setter Property="IsFilled" Value="True" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonElevatedToggleSelectedPressedStateLayerBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonElevatedToggleSelectedPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompButtonElevatedToggleSelectedPressedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked):focus-visible:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedToggleUnselectedFocusedLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedToggleUnselectedFocusedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonElevatedToggleUnselectedFocusedStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonElevatedToggleUnselectedFocusedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked).m3-hovered:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedToggleUnselectedHoveredLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedToggleUnselectedHoveredIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonElevatedToggleUnselectedHoveredStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonElevatedToggleUnselectedHoveredStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked):pressed:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedToggleUnselectedPressedLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedToggleUnselectedPressedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonElevatedToggleUnselectedPressedStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonElevatedToggleUnselectedPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonElevatedToggleUnselectedPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompButtonElevatedToggleUnselectedPressedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked:focus-visible:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedToggleSelectedFocusedLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedToggleSelectedFocusedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonElevatedToggleSelectedFocusedStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonElevatedToggleSelectedFocusedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked.m3-hovered:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedToggleSelectedHoveredLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedToggleSelectedHoveredIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonElevatedToggleSelectedHoveredStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonElevatedToggleSelectedHoveredStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked:pressed:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedToggleSelectedPressedLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonElevatedToggleSelectedPressedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonElevatedToggleSelectedPressedStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonElevatedToggleSelectedPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonElevatedToggleSelectedPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompButtonElevatedToggleSelectedPressedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:disabled">
+                <Setter Property="Background" Value="{markup:Token MdCompButtonDisabledContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonDisabledLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonDisabledIconBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledIconOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Outline">
+                    <Setter Property="BoxShadow" Value="{markup:Token MdCompButtonElevatedDisabledContainerElevation}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Background">
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledContainerOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledLabelOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Opacity" Value="0" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{x:Null}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[(controls|ButtonAssist.Variant)=Filled]">
+            <Setter Property="Background" Value="{markup:Token MdCompButtonFilledContainerToggleUnselectedBrush}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledLabelToggleUnselectedBrush}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledIconToggleUnselectedBrush}" />
+                <Setter Property="IsFilled" Value="False" />
+            </Style>
+            <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                <Setter Property="Brush" Value="{markup:Token MdCompButtonFilledToggleUnselectedPressedStateLayerBrush}" />
+            </Style>
+            <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                <Setter Property="Brush" Value="{markup:Token MdCompButtonFilledToggleUnselectedPressedStateLayerBrush}" />
+                <Setter Property="BaseOpacity" Value="{markup:Token MdCompButtonFilledToggleUnselectedPressedStateLayerOpacity}" />
+            </Style>
+            <Style Selector="^ /template/ Border#PART_Outline">
+                <Setter Property="BoxShadow" Value="{markup:Token MdCompButtonFilledContainerElevation}" />
+            </Style>
+            <Style Selector="^:checked">
+                <Setter Property="Background" Value="{markup:Token MdCompButtonFilledContainerToggleSelectedBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledLabelToggleSelectedBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledIconToggleSelectedBrush}" />
+                    <Setter Property="IsFilled" Value="True" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonFilledToggleSelectedPressedStateLayerBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonFilledToggleSelectedPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompButtonFilledToggleSelectedPressedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked):focus-visible:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledToggleUnselectedFocusedLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledToggleUnselectedFocusedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonFilledToggleUnselectedFocusedStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonFilledToggleUnselectedFocusedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked).m3-hovered:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledToggleUnselectedHoveredLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledToggleUnselectedHoveredIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonFilledToggleUnselectedHoveredStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonFilledToggleUnselectedHoveredStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked):pressed:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledToggleUnselectedPressedLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledToggleUnselectedPressedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonFilledToggleUnselectedPressedStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonFilledToggleUnselectedPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonFilledToggleUnselectedPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompButtonFilledToggleUnselectedPressedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked:focus-visible:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledToggleSelectedFocusedLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledToggleSelectedFocusedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonFilledToggleSelectedFocusedStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonFilledToggleSelectedFocusedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked.m3-hovered:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledToggleSelectedHoveredLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledToggleSelectedHoveredIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonFilledToggleSelectedHoveredStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonFilledToggleSelectedHoveredStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked:pressed:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledToggleSelectedPressedLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonFilledToggleSelectedPressedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonFilledToggleSelectedPressedStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonFilledToggleSelectedPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonFilledToggleSelectedPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompButtonFilledToggleSelectedPressedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:disabled">
+                <Setter Property="Background" Value="{markup:Token MdCompButtonDisabledContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonDisabledLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonDisabledIconBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledIconOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Outline">
+                    <Setter Property="BoxShadow" Value="{markup:Token MdCompButtonFilledDisabledContainerElevation}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Background">
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledContainerOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledLabelOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Opacity" Value="0" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{x:Null}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[(controls|ButtonAssist.Variant)=Tonal]">
+            <Setter Property="Background" Value="{markup:Token MdCompButtonTonalContainerToggleUnselectedBrush}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalLabelToggleUnselectedBrush}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalIconToggleUnselectedBrush}" />
+                <Setter Property="IsFilled" Value="False" />
+            </Style>
+            <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                <Setter Property="Brush" Value="{markup:Token MdCompButtonTonalToggleUnselectedPressedStateLayerBrush}" />
+            </Style>
+            <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                <Setter Property="Brush" Value="{markup:Token MdCompButtonTonalToggleUnselectedPressedStateLayerBrush}" />
+                <Setter Property="BaseOpacity" Value="{markup:Token MdCompButtonTonalToggleUnselectedPressedStateLayerOpacity}" />
+            </Style>
+            <Style Selector="^ /template/ Border#PART_Outline">
+                <Setter Property="BoxShadow" Value="{markup:Token MdCompButtonTonalContainerElevation}" />
+            </Style>
+            <Style Selector="^:checked">
+                <Setter Property="Background" Value="{markup:Token MdCompButtonTonalContainerToggleSelectedBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalLabelToggleSelectedBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalIconToggleSelectedBrush}" />
+                    <Setter Property="IsFilled" Value="True" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonTonalToggleSelectedPressedStateLayerBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonTonalToggleSelectedPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompButtonTonalToggleSelectedPressedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked):focus-visible:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalToggleUnselectedFocusedLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalToggleUnselectedFocusedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonTonalToggleUnselectedFocusedStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonTonalToggleUnselectedFocusedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked).m3-hovered:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalToggleUnselectedHoveredLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalToggleUnselectedHoveredIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonTonalToggleUnselectedHoveredStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonTonalToggleUnselectedHoveredStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked):pressed:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalToggleUnselectedPressedLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalToggleUnselectedPressedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonTonalToggleUnselectedPressedStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonTonalToggleUnselectedPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonTonalToggleUnselectedPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompButtonTonalToggleUnselectedPressedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked:focus-visible:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalToggleSelectedFocusedLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalToggleSelectedFocusedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonTonalToggleSelectedFocusedStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonTonalToggleSelectedFocusedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked.m3-hovered:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalToggleSelectedHoveredLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalToggleSelectedHoveredIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonTonalToggleSelectedHoveredStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonTonalToggleSelectedHoveredStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked:pressed:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalToggleSelectedPressedLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonTonalToggleSelectedPressedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonTonalToggleSelectedPressedStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonTonalToggleSelectedPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonTonalToggleSelectedPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompButtonTonalToggleSelectedPressedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:disabled">
+                <Setter Property="Background" Value="{markup:Token MdCompButtonDisabledContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonDisabledLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonDisabledIconBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledIconOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Outline">
+                    <Setter Property="BoxShadow" Value="{markup:Token MdCompButtonTonalDisabledContainerElevation}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Background">
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledContainerOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledLabelOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Opacity" Value="0" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{x:Null}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[(controls|ButtonAssist.Variant)=Outlined]">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedOutlineBrush}" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedLabelToggleUnselectedBrush}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedIconToggleUnselectedBrush}" />
+                <Setter Property="IsFilled" Value="False" />
+            </Style>
+            <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                <Setter Property="Brush" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedPressedStateLayerBrush}" />
+            </Style>
+            <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                <Setter Property="Brush" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedPressedStateLayerBrush}" />
+                <Setter Property="BaseOpacity" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedPressedStateLayerOpacity}" />
+            </Style>
+            <Style Selector="^:checked">
+                <Setter Property="Background" Value="{markup:Token MdCompButtonOutlinedContainerToggleSelectedBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedLabelToggleSelectedBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedIconToggleSelectedBrush}" />
+                    <Setter Property="IsFilled" Value="True" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonOutlinedToggleSelectedPressedStateLayerBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonOutlinedToggleSelectedPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompButtonOutlinedToggleSelectedPressedStateLayerOpacity}" />
+                </Style>
+                <Setter Property="BorderThickness" Value="0" />
+            </Style>
+            <Style Selector="^:not(:checked):focus-visible:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedFocusedLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedFocusedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedFocusedStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedFocusedStateLayerOpacity}" />
+                </Style>
+                <Setter Property="BorderBrush" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedFocusedOutlineBrush}" />
+            </Style>
+            <Style Selector="^:not(:checked).m3-hovered:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedHoveredLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedHoveredIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedHoveredStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedHoveredStateLayerOpacity}" />
+                </Style>
+                <Setter Property="BorderBrush" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedHoveredOutlineBrush}" />
+            </Style>
+            <Style Selector="^:not(:checked):pressed:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedPressedLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedPressedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedPressedStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedPressedStateLayerOpacity}" />
+                </Style>
+                <Setter Property="BorderBrush" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedPressedOutlineBrush}" />
+            </Style>
+            <Style Selector="^:checked:focus-visible:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedToggleSelectedFocusedLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedToggleSelectedFocusedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonOutlinedToggleSelectedFocusedStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonOutlinedToggleSelectedFocusedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked.m3-hovered:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedToggleSelectedHoveredLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedToggleSelectedHoveredIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonOutlinedToggleSelectedHoveredStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonOutlinedToggleSelectedHoveredStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked:pressed:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedToggleSelectedPressedLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonOutlinedToggleSelectedPressedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonOutlinedToggleSelectedPressedStateLayerBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonOutlinedToggleSelectedPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompButtonOutlinedToggleSelectedPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompButtonOutlinedToggleSelectedPressedStateLayerOpacity}" />
+                </Style>
+            </Style>
+            <Style Selector="^:disabled">
+                <Setter Property="Background" Value="{markup:Token MdCompButtonDisabledContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompButtonDisabledLabelBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompButtonDisabledIconBrush}" />
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledIconOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Outline">
+                    <Setter Property="BoxShadow" Value="{markup:Token MdSysShadowLevel0}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Background">
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledContainerOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="Opacity" Value="{markup:Token MdCompButtonDisabledLabelOpacity}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Opacity" Value="0" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{x:Null}" />
+                </Style>
+                <Setter Property="BorderBrush" Value="{markup:Token MdCompButtonOutlinedToggleUnselectedDisabledOutlineBrush}" />
+                <Style Selector="^:checked">
+                    <Setter Property="Background" Value="{markup:Token MdCompButtonOutlinedToggleSelectedDisabledContainerBrush}" />
+                    <Setter Property="BorderThickness" Value="0" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^:checked:not(:pressed)">
+            <Style Selector="^[(controls|ButtonAssist.Shape)=Round]">
+                <Style Selector="^[(controls|ButtonAssist.Size)=ExtraSmall]">
+                    <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonXsSelectedRoundContainerShape}" />
+                </Style>
+                <Style Selector="^[(controls|ButtonAssist.Size)=Small]">
+                    <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonSmSelectedRoundContainerShape}" />
+                </Style>
+                <Style Selector="^[(controls|ButtonAssist.Size)=Medium]">
+                    <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonMdSelectedRoundContainerShape}" />
+                </Style>
+                <Style Selector="^[(controls|ButtonAssist.Size)=Large]">
+                    <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonLgSelectedRoundContainerShape}" />
+                </Style>
+                <Style Selector="^[(controls|ButtonAssist.Size)=ExtraLarge]">
+                    <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonXlSelectedRoundContainerShape}" />
+                </Style>
+            </Style>
+            <Style Selector="^[(controls|ButtonAssist.Shape)=Square]">
+                <Style Selector="^[(controls|ButtonAssist.Size)=ExtraSmall]">
+                    <Setter Property="CornerRadius" Value="{markup:DynamicCornerRadius MdCompButtonXsSelectedSquareContainerShape}" />
+                </Style>
+                <Style Selector="^[(controls|ButtonAssist.Size)=Small]">
+                    <Setter Property="CornerRadius" Value="{markup:DynamicCornerRadius MdCompButtonSmSelectedSquareContainerShape}" />
+                </Style>
+                <Style Selector="^[(controls|ButtonAssist.Size)=Medium]">
+                    <Setter Property="CornerRadius" Value="{markup:DynamicCornerRadius MdCompButtonMdSelectedSquareContainerShape}" />
+                </Style>
+                <Style Selector="^[(controls|ButtonAssist.Size)=Large]">
+                    <Setter Property="CornerRadius" Value="{markup:DynamicCornerRadius MdCompButtonLgSelectedSquareContainerShape}" />
+                </Style>
+                <Style Selector="^[(controls|ButtonAssist.Size)=ExtraLarge]">
+                    <Setter Property="CornerRadius" Value="{markup:DynamicCornerRadius MdCompButtonXlSelectedSquareContainerShape}" />
+                </Style>
+            </Style>
+        </Style>
+        <Style Selector="^:pressed:not(:disabled)">
+            <Style Selector="^[(controls|ButtonAssist.Size)=ExtraSmall]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonXsPressedContainerShape}" />
+            </Style>
+            <Style Selector="^[(controls|ButtonAssist.Size)=Small]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonSmPressedContainerShape}" />
+            </Style>
+            <Style Selector="^[(controls|ButtonAssist.Size)=Medium]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonMdPressedContainerShape}" />
+            </Style>
+            <Style Selector="^[(controls|ButtonAssist.Size)=Large]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonLgPressedContainerShape}" />
+            </Style>
+            <Style Selector="^[(controls|ButtonAssist.Size)=ExtraLarge]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonXlPressedContainerShape}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^.elevated">
+            <Setter Property="controls:ButtonAssist.Variant" Value="Elevated" />
+        </Style>
+        <Style Selector="^.filled">
+            <Setter Property="controls:ButtonAssist.Variant" Value="Filled" />
+        </Style>
+        <Style Selector="^.tonal">
+            <Setter Property="controls:ButtonAssist.Variant" Value="Tonal" />
+        </Style>
+        <Style Selector="^.outlined">
+            <Setter Property="controls:ButtonAssist.Variant" Value="Outlined" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

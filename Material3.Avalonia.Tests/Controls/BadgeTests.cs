@@ -268,6 +268,7 @@ public sealed class BadgeTests : IDisposable
         scene.Layout();
         badge.Background.Should().BeSameAs(Brushes.Blue);
         badge.Bounds.Height.Should().Be(20);
+        badge.CornerRadius.Should().Be(new CornerRadius(10));
         var text = badge.Presenter!.Child.Should().BeOfType<TextBlock>().Subject;
         text.FontSize.Should().Be(11);
         text.LineHeight.Should().Be(16);
@@ -280,6 +281,13 @@ public sealed class BadgeTests : IDisposable
         scene.Layout();
         badge.Background.Should().BeSameAs(Brushes.Green);
         text.FontSize.Should().Be(13);
+        scene.Badged.Resources["MdCompBadgeLargeShape"] = new CornerRadius(3);
+        scene.Layout();
+        badge.CornerRadius.Should().Be(new CornerRadius(3));
+        scene.Badged.Resources["CustomBadgeShape"] = new CornerRadius(4);
+        scene.Badged.Resources["MdCompBadgeLargeShape"] = new TokenAlias("CustomBadgeShape");
+        scene.Layout();
+        badge.CornerRadius.Should().Be(new CornerRadius(4));
         badge.Background = Brushes.Red;
         scene.Badged.Resources["CustomBadgeBrush"] = Brushes.Yellow;
         scene.Layout();
@@ -348,6 +356,33 @@ public sealed class BadgeTests : IDisposable
         scene.Window.MouseDown(point, MouseButton.Left);
         scene.Window.MouseUp(point, MouseButton.Left);
         clicks.Should().Be(2);
+    }
+
+    [Theory]
+    [InlineData(FlowDirection.LeftToRight)]
+    [InlineData(FlowDirection.RightToLeft)]
+    public void Button_ShouldNotClipBadgedOverflow(FlowDirection direction)
+    {
+        using var scene = new BadgeScene();
+        scene.Host.Children.Clear();
+        scene.Badge.Count = 1200;
+        var button = new Button
+        {
+            Content = scene.Badged,
+            FlowDirection = direction,
+            Padding = new Thickness(0),
+            HorizontalAlignment = HorizontalAlignment.Center,
+            VerticalAlignment = VerticalAlignment.Center
+        };
+        scene.Host.Children.Add(button);
+
+        scene.Layout();
+
+        var buttonBounds = scene.BoundsInWindow(button);
+        var badgeBounds = scene.BoundsInWindow(scene.Badge);
+        buttonBounds.Contains(badgeBounds).Should().BeFalse();
+        scene.Badge.GetVisualAncestors().TakeWhile(x => x != button)
+            .Should().OnlyContain(x => !x.ClipToBounds);
     }
 
     [Fact]

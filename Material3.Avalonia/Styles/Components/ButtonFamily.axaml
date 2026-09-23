@@ -1,0 +1,325 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
+                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
+                    xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
+                    xmlns:transitions="clr-namespace:Material3.Avalonia.Motion.Transitions"
+                    xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls"
+                    xmlns:attached="clr-namespace:Material3.Avalonia.Attached">
+
+    <ControlTheme x:Key="MaterialButtonFamily" TargetType="Button">
+        <Setter Property="internal:HoverState.IsEnabled" Value="True" />
+        <Setter Property="internal:KeyboardActivationGuard.IsEnabled" Value="True" />
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="helpers:Typography.TextStyle" Value="{x:Null}" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <transitions:SpringDoubleTransition Property="Height" Style="Spatial" Speed="Fast" />
+                <transitions:SpringBrushTransition Property="Background" Style="Effects" Speed="Fast" />
+                <transitions:SpringBrushTransition Property="Foreground" Style="Effects" Speed="Fast" />
+                <transitions:SpringBrushTransition Property="BorderBrush" Style="Effects" Speed="Fast" />
+                <transitions:SpringThicknessTransition Property="BorderThickness" Style="Spatial" Speed="Fast" />
+                <transitions:SpringCornerRadiusTransition Property="CornerRadius"
+                                                          Style="Spatial"
+                                                          Speed="Fast" />
+            </Transitions>
+        </Setter>
+        <Setter Property="attached:FocusRing.Thickness" Value="{markup:Token MdCompButtonFocusRingThickness}" />
+        <Setter Property="attached:FocusRing.Offset" Value="{markup:Token MdCompButtonFocusRingOffset}" />
+        <Setter Property="attached:FocusRing.CornerRadius" Value="{Binding $self.CornerRadius}" />
+        <Setter Property="attached:FocusRing.Brush" Value="{markup:Token MdCompButtonFocusRingBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid x:Name="PART_Container"
+                      ClipToBounds="{TemplateBinding ClipToBounds}"
+                      helpers:Typography.TextStyle="{x:Null}">
+                    <Border x:Name="PART_Outline"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <Border x:Name="PART_Background"
+                                Background="{TemplateBinding Background}"
+                                Opacity="1"
+                                CornerRadius="{TemplateBinding CornerRadius}" />
+                    </Border>
+
+                    <primitives:StateLayer x:Name="PART_StateLayer"
+                                           CornerRadius="{TemplateBinding CornerRadius}"
+                                           Opacity="0" />
+
+                    <primitives:ButtonContentMotion x:Name="PART_Content"
+                                                    Margin="{TemplateBinding Padding}"
+                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                    IsIconPresented="{TemplateBinding controls:ButtonAssist.Icon, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                                    Opacity="1">
+                        <Border x:Name="PART_IconSlot" ClipToBounds="True">
+                            <primitives:IconPresenter x:Name="PART_Icon"
+                                                      IsHitTestVisible="False"
+                                                      IconChangeAnimation="Scale"
+                                                      Value="{TemplateBinding controls:ButtonAssist.Icon}">
+                                <primitives:IconPresenter.Transitions>
+                                    <Transitions>
+                                        <transitions:SpringBrushTransition Property="Foreground" Style="Effects" Speed="Fast" />
+                                    </Transitions>
+                                </primitives:IconPresenter.Transitions>
+                            </primitives:IconPresenter>
+                        </Border>
+
+                        <ContentPresenter x:Name="PART_ContentPresenter"
+                                          IsHitTestVisible="False"
+                                          Content="{TemplateBinding Content}" />
+                    </primitives:ButtonContentMotion>
+
+                    <primitives:InkRipple x:Name="PART_Ripple"
+                                          CornerRadius="{TemplateBinding CornerRadius}" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+            <Setter Property="HorizontalAlignment" Value="{TemplateBinding HorizontalContentAlignment}" />
+        </Style>
+
+        <!-- Attached Properties -->
+
+        <!-- Size -->
+        <Style Selector="^[(controls|ButtonAssist.Size)=ExtraSmall]">
+            <Setter Property="Height"
+                    Value="{markup:DensityScalar MdCompButtonXsContainerHeight, MostDense=Dense2}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompButtonXsOutlineWidth}" />
+            <Setter Property="FontFamily" Value="{markup:Token MdCompButtonXsLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{markup:Token MdCompButtonXsLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{markup:Token MdCompButtonXsLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdCompButtonXsLabelTextTracking}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Size" Value="{markup:Token MdCompButtonXsIconSize}" />
+            </Style>
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonXsLeadingSpace MdCompButtonXsVerticalSpace MdCompButtonXsTrailingSpace MdCompButtonXsVerticalSpace}" />
+            <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                <Setter Property="Gap" Value="{markup:Token MdCompButtonXsBetweenIconLabelSpace}" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="LineHeight" Value="{markup:Token MdCompButtonXsLabelTextLineHeight}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[(controls|ButtonAssist.Size)=Small]">
+            <Setter Property="Height"
+                    Value="{markup:DensityScalar MdCompButtonSmContainerHeight, MostDense=Dense3}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompButtonSmOutlineWidth}" />
+            <Setter Property="FontFamily" Value="{markup:Token MdCompButtonSmLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{markup:Token MdCompButtonSmLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{markup:Token MdCompButtonSmLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdCompButtonSmLabelTextTracking}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Size" Value="{markup:Token MdCompButtonSmIconSize}" />
+            </Style>
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonSmLeadingSpace MdCompButtonSmVerticalSpace MdCompButtonSmTrailingSpace MdCompButtonSmVerticalSpace}" />
+            <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                <Setter Property="Gap" Value="{markup:Token MdCompButtonSmBetweenIconLabelSpace}" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="LineHeight" Value="{markup:Token MdCompButtonSmLabelTextLineHeight}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[(controls|ButtonAssist.Size)=Medium]">
+            <Setter Property="Height"
+                    Value="{markup:DensityScalar MdCompButtonMdContainerHeight, MostDense=Dense3}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompButtonMdOutlineWidth}" />
+            <Setter Property="FontFamily" Value="{markup:Token MdCompButtonMdLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{markup:Token MdCompButtonMdLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{markup:Token MdCompButtonMdLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdCompButtonMdLabelTextTracking}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Size" Value="{markup:Token MdCompButtonMdIconSize}" />
+            </Style>
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonMdLeadingSpace MdCompButtonMdVerticalSpace MdCompButtonMdTrailingSpace MdCompButtonMdVerticalSpace}" />
+            <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                <Setter Property="Gap" Value="{markup:Token MdCompButtonMdBetweenIconLabelSpace}" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="LineHeight" Value="{markup:Token MdCompButtonMdLabelTextLineHeight}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[(controls|ButtonAssist.Size)=Large]">
+            <Setter Property="Height"
+                    Value="{markup:DensityScalar MdCompButtonLgContainerHeight, MostDense=Dense3}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompButtonLgOutlineWidth}" />
+            <Setter Property="FontFamily" Value="{markup:Token MdCompButtonLgLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{markup:Token MdCompButtonLgLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{markup:Token MdCompButtonLgLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdCompButtonLgLabelTextTracking}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Size" Value="{markup:Token MdCompButtonLgIconSize}" />
+            </Style>
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonLgLeadingSpace MdCompButtonLgVerticalSpace MdCompButtonLgTrailingSpace MdCompButtonLgVerticalSpace}" />
+            <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                <Setter Property="Gap" Value="{markup:Token MdCompButtonLgBetweenIconLabelSpace}" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="LineHeight" Value="{markup:Token MdCompButtonLgLabelTextLineHeight}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[(controls|ButtonAssist.Size)=ExtraLarge]">
+            <Setter Property="Height"
+                    Value="{markup:DensityScalar MdCompButtonXlContainerHeight, MostDense=Dense3}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompButtonXlOutlineWidth}" />
+            <Setter Property="FontFamily" Value="{markup:Token MdCompButtonXlLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{markup:Token MdCompButtonXlLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{markup:Token MdCompButtonXlLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdCompButtonXlLabelTextTracking}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Size" Value="{markup:Token MdCompButtonXlIconSize}" />
+            </Style>
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdCompButtonXlLeadingSpace MdCompButtonXlVerticalSpace MdCompButtonXlTrailingSpace MdCompButtonXlVerticalSpace}" />
+            <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                <Setter Property="Gap" Value="{markup:Token MdCompButtonXlBetweenIconLabelSpace}" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="LineHeight" Value="{markup:Token MdCompButtonXlLabelTextLineHeight}" />
+            </Style>
+        </Style>
+
+        <!-- Shape -->
+        <Style Selector="^[(controls|ButtonAssist.Shape)=Round]">
+            <Style Selector="^[(controls|ButtonAssist.Size)=ExtraSmall]">
+                <Setter Property="CornerRadius"
+                        Value="{markup:DynamicCornerRadius MdCompButtonXsRoundContainerShape}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[(controls|ButtonAssist.Shape)=Round]">
+            <Style Selector="^[(controls|ButtonAssist.Size)=Small]">
+                <Setter Property="CornerRadius"
+                        Value="{markup:DynamicCornerRadius MdCompButtonSmRoundContainerShape}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[(controls|ButtonAssist.Shape)=Round]">
+            <Style Selector="^[(controls|ButtonAssist.Size)=Medium]">
+                <Setter Property="CornerRadius"
+                        Value="{markup:DynamicCornerRadius MdCompButtonMdRoundContainerShape}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[(controls|ButtonAssist.Shape)=Round]">
+            <Style Selector="^[(controls|ButtonAssist.Size)=Large]">
+                <Setter Property="CornerRadius"
+                        Value="{markup:DynamicCornerRadius MdCompButtonLgRoundContainerShape}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[(controls|ButtonAssist.Shape)=Round]">
+            <Style Selector="^[(controls|ButtonAssist.Size)=ExtraLarge]">
+                <Setter Property="CornerRadius"
+                        Value="{markup:DynamicCornerRadius MdCompButtonXlRoundContainerShape}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[(controls|ButtonAssist.Shape)=Square]">
+            <Style Selector="^[(controls|ButtonAssist.Size)=ExtraSmall]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonXsSquareContainerShape}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[(controls|ButtonAssist.Shape)=Square]">
+            <Style Selector="^[(controls|ButtonAssist.Size)=Small]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonSmSquareContainerShape}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[(controls|ButtonAssist.Shape)=Square]">
+            <Style Selector="^[(controls|ButtonAssist.Size)=Medium]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonMdSquareContainerShape}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[(controls|ButtonAssist.Shape)=Square]">
+            <Style Selector="^[(controls|ButtonAssist.Size)=Large]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonLgSquareContainerShape}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[(controls|ButtonAssist.Shape)=Square]">
+            <Style Selector="^[(controls|ButtonAssist.Size)=ExtraLarge]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonXlSquareContainerShape}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:pressed:not(:disabled), ^.m3-menu-open:not(:disabled)">
+            <Style Selector="^[(controls|ButtonAssist.Size)=ExtraSmall]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonXsPressedContainerShape}" />
+            </Style>
+
+            <Style Selector="^[(controls|ButtonAssist.Size)=Small]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonSmPressedContainerShape}" />
+            </Style>
+
+            <Style Selector="^[(controls|ButtonAssist.Size)=Medium]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonMdPressedContainerShape}" />
+            </Style>
+
+            <Style Selector="^[(controls|ButtonAssist.Size)=Large]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonLgPressedContainerShape}" />
+            </Style>
+
+            <Style Selector="^[(controls|ButtonAssist.Size)=ExtraLarge]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompButtonXlPressedContainerShape}" />
+            </Style>
+        </Style>
+
+        <!-- State -->
+        <Style Selector="^:focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="{markup:Token MdSysStateFocusOpacity}" />
+        </Style>
+
+        <Style Selector="^.m3-hovered:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="{markup:Token MdSysStatePointerOverOpacity}" />
+        </Style>
+
+        <Style Selector="^.m3-menu-open:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="{markup:Token MdSysStatePressedOpacity}" />
+        </Style>
+
+        <!-- Size -->
+        <Style Selector="^.xs">
+            <Setter Property="controls:ButtonAssist.Size" Value="ExtraSmall" />
+        </Style>
+
+        <Style Selector="^.sm">
+            <Setter Property="controls:ButtonAssist.Size" Value="Small" />
+        </Style>
+
+        <Style Selector="^.md">
+            <Setter Property="controls:ButtonAssist.Size" Value="Medium" />
+        </Style>
+
+        <Style Selector="^.lg">
+            <Setter Property="controls:ButtonAssist.Size" Value="Large" />
+        </Style>
+
+        <Style Selector="^.xl">
+            <Setter Property="controls:ButtonAssist.Size" Value="ExtraLarge" />
+        </Style>
+
+        <!-- Shape -->
+        <Style Selector="^.round">
+            <Setter Property="controls:ButtonAssist.Shape" Value="Round" />
+        </Style>
+
+        <Style Selector="^.square">
+            <Setter Property="controls:ButtonAssist.Shape" Value="Square" />
+        </Style>
+
+    </ControlTheme>
+</ResourceDictionary>

@@ -85,10 +85,9 @@
         <TextBlock Text="Local tokens and typography" helpers:Typography.TextStyle="TitleMedium" />
         <StackPanel x:Name="TokenScope" Spacing="{markup:Token MdSysSpacing200}">
             <StackPanel.Resources>
-                <tokens:TokenAlias x:Key="MdCompBadgeLargeShape" ResourceKey="MdSysShapeCornerFull" />
                 <x:Double x:Key="MdCompBadgeLargeSize">16</x:Double>
             </StackPanel.Resources>
-            <Button Content="Remap local size and shape" Click="RemapTokens" HorizontalAlignment="Left" />
+            <Button Content="Remap local size" Click="RemapTokens" HorizontalAlignment="Left" />
             <StackPanel Orientation="Horizontal" Spacing="{markup:Token MdSysSpacing300}"
                         helpers:Typography.TextStyle="HeadlineSmall">
                 <TextBlock Text="Inbox" />

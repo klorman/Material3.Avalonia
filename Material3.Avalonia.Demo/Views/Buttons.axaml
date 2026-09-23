@@ -265,5 +265,41 @@
                 </StackPanel>
             </StackPanel>
         </Border>
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing200}">
+                <TextBlock Text="Resize motion" helpers:Typography.TextStyle="TitleLarge" />
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="{DynamicResource MdSysSpacing200}">
+                    <StackPanel Grid.Column="0" Spacing="{DynamicResource MdSysSpacing100}">
+                        <TextBlock Text="Leading edge" helpers:Typography.TextStyle="LabelMedium" />
+                        <Button x:Name="ResizeSample"
+                                MinWidth="160"
+                                Content="Save"
+                                Classes="filled sm" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Spacing="{DynamicResource MdSysSpacing100}">
+                        <TextBlock Text="Centered" TextAlignment="Center" helpers:Typography.TextStyle="LabelMedium" />
+                        <Button x:Name="ResizeSampleCentered"
+                                Content="Save"
+                                Classes="filled sm"
+                                MinWidth="160"
+                                HorizontalAlignment="Center" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Spacing="{DynamicResource MdSysSpacing100}">
+                        <TextBlock Text="RTL" TextAlignment="Right" helpers:Typography.TextStyle="LabelMedium" />
+                        <Button x:Name="ResizeSampleRtl"
+                                Content="Save"
+                                Classes="filled sm"
+                                MinWidth="160"
+                                FlowDirection="RightToLeft"
+                                HorizontalAlignment="Right" />
+                    </StackPanel>
+                </Grid>
+                <StackPanel Orientation="Horizontal" Spacing="{DynamicResource MdSysSpacing100}">
+                    <Button Content="Change label" Classes="outlined xs" Click="OnResizeLabelClick" />
+                    <Button Content="Toggle icon" Classes="outlined xs" Click="OnResizeIconClick" />
+                    <Button Content="Change size" Classes="outlined xs" Click="OnResizeSizeClick" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
     </StackPanel>
 </UserControl>

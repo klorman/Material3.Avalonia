@@ -51,5 +51,6 @@ internal enum TokenValueKind
 {
     TargetType,
     Numeric,
-    Thickness
+    Thickness,
+    Raw
 }

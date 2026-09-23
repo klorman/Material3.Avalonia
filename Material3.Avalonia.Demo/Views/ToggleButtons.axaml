@@ -1,0 +1,89 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:attached="clr-namespace:Material3.Avalonia.Attached;assembly=Material3.Avalonia"
+             xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls;assembly=Material3.Avalonia"
+             xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
+             xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
+             xmlns:symbols="clr-namespace:Material3.Avalonia.Symbols;assembly=Material3.Avalonia"
+             x:Class="Material3.Avalonia.Demo.Views.ToggleButtons">
+    <UserControl.Styles>
+        <Style Selector="Border.toggle-section">
+            <Setter Property="Background" Value="{DynamicResource MdSysSurfaceContainerLowBrush}" />
+            <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerLarge}" />
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdSysSpacing300}" />
+        </Style>
+    </UserControl.Styles>
+
+    <StackPanel Margin="{markup:DynamicThickness MdSysSpacing300}"
+                Spacing="{DynamicResource MdSysSpacing300}">
+        <TextBlock Text="Toggle buttons"
+                   Foreground="{DynamicResource MdSysOnBackgroundBrush}"
+                   helpers:Typography.TextStyle="HeadlineMedium" />
+        <TextBlock Text="Select, focus and press these buttons to check their color, shape and outline transitions."
+                   TextWrapping="Wrap"
+                   helpers:Typography.TextStyle="BodyMedium" />
+
+        <StackPanel Orientation="Horizontal" Spacing="{DynamicResource MdSysSpacing100}">
+            <TextBlock Text="Density" VerticalAlignment="Center" helpers:Typography.TextStyle="LabelLarge" />
+            <Button Content="Default" Classes="outlined xs" Click="OnDefaultDensityClick" />
+            <Button Content="Dense" Classes="outlined xs" Click="OnDenseDensityClick" />
+        </StackPanel>
+
+        <StackPanel x:Name="ExamplesPanel" Spacing="{DynamicResource MdSysSpacing300}">
+            <Border Classes="toggle-section">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing150}">
+                    <TextBlock Text="Variants: unchecked / checked" helpers:Typography.TextStyle="TitleLarge" />
+                    <WrapPanel Orientation="Horizontal" ItemWidth="180" ItemHeight="56">
+                        <ToggleButton Content="Filled" Classes="filled sm" />
+                        <ToggleButton Content="Filled" Classes="filled sm" IsChecked="True" />
+                        <ToggleButton Content="Elevated" Classes="elevated sm" />
+                        <ToggleButton Content="Elevated" Classes="elevated sm" IsChecked="True" />
+                        <ToggleButton Content="Tonal" Classes="tonal sm" />
+                        <ToggleButton Content="Tonal" Classes="tonal sm" IsChecked="True" />
+                        <ToggleButton Content="Outlined" Classes="outlined sm" />
+                        <ToggleButton Content="Outlined" Classes="outlined sm" IsChecked="True" />
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="toggle-section">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing150}">
+                    <TextBlock Text="Sizes" helpers:Typography.TextStyle="TitleLarge" />
+                    <WrapPanel Orientation="Horizontal">
+                        <ToggleButton Content="XS" Classes="tonal xs" Margin="0 0 12 12" />
+                        <ToggleButton Content="Small" Classes="tonal sm" Margin="0 0 12 12" />
+                        <ToggleButton Content="Medium" Classes="tonal md" Margin="0 0 12 12" />
+                        <ToggleButton Content="Large" Classes="tonal lg" Margin="0 0 12 12" />
+                        <ToggleButton Content="Extra large" Classes="tonal xl" Margin="0 0 12 12" />
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="toggle-section">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing150}">
+                    <TextBlock Text="Round / square" helpers:Typography.TextStyle="TitleLarge" />
+                    <WrapPanel Orientation="Horizontal">
+                        <ToggleButton Content="Round" Classes="filled md round" Margin="0 0 12 12" />
+                        <ToggleButton Content="Round" Classes="filled md round" IsChecked="True" Margin="0 0 12 12" />
+                        <ToggleButton Content="Square" Classes="filled md square" Margin="0 0 12 12" />
+                        <ToggleButton Content="Square" Classes="filled md square" IsChecked="True" Margin="0 0 12 12" />
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="toggle-section">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing150}">
+                    <TextBlock Text="Icons and disabled states" helpers:Typography.TextStyle="TitleLarge" />
+                    <WrapPanel Orientation="Horizontal">
+                        <ToggleButton Content="Filter" Classes="tonal sm" controls:ButtonAssist.Icon="{symbols:Symbol FilterAlt}" Margin="0 0 12 12" />
+                        <ToggleButton Content="Filter" Classes="tonal sm" controls:ButtonAssist.Icon="{symbols:Symbol FilterAlt}" IsChecked="True" Margin="0 0 12 12" />
+                        <ToggleButton Content="Disabled" Classes="filled sm" IsEnabled="False" Margin="0 0 12 12" />
+                        <ToggleButton Content="Disabled" Classes="filled sm" IsChecked="True" IsEnabled="False" Margin="0 0 12 12" />
+                        <ToggleButton Content="Outlined" Classes="outlined sm" IsEnabled="False" Margin="0 0 12 12" />
+                        <ToggleButton Content="Outlined" Classes="outlined sm" IsChecked="True" IsEnabled="False" Margin="0 0 12 12" />
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

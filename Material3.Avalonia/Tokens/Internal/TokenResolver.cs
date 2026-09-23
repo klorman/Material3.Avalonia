@@ -158,6 +158,7 @@ internal static class TokenResolver
     {
         return valueKind switch
         {
+            TokenValueKind.Raw => value,
             TokenValueKind.Numeric => ValidateNumeric(value, rootKey, path),
             TokenValueKind.Thickness => ValidateAssignable(value, rootKey, path, typeof(Thickness), false),
             _ => ValidateAssignable(value, rootKey, path, targetType, true)
@@ -172,6 +173,7 @@ internal static class TokenResolver
     {
         return valueKind switch
         {
+            TokenValueKind.Raw => value,
             TokenValueKind.Numeric => ValidateNumeric(value, path),
             TokenValueKind.Thickness => ValidateAssignable(value, path, typeof(Thickness), false),
             _ => ValidateAssignable(value, path, targetType, true)

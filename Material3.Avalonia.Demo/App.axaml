@@ -8,7 +8,7 @@
             <symbols:MaterialSymbolResource x:Key="MdIconMail" Symbol="Mail" />
             <symbols:MaterialSymbolsInclude
                 x:Key="DynamicSymbols"
-                Symbols="VisibilityOff" />
+                Symbols="VisibilityOff, Check" />
         </ResourceDictionary>
     </Application.Resources>
     <Application.Styles>

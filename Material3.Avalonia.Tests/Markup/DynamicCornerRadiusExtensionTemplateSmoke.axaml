@@ -1,0 +1,23 @@
+<Button xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:markup="using:Material3.Avalonia.Markup"
+        Theme="{StaticResource DynamicCornerRadiusTheme}">
+    <Button.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://Material3.Avalonia/Theme/MaterialThemeResources.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <ControlTheme x:Key="DynamicCornerRadiusTheme" TargetType="Button">
+                <Setter Property="Template">
+                    <ControlTemplate>
+                        <Border x:Name="PART_DynamicCornerRadius"
+                                Width="80"
+                                Height="40"
+                                CornerRadius="{markup:DynamicCornerRadius MdSysShapeCornerFull}" />
+                    </ControlTemplate>
+                </Setter>
+            </ControlTheme>
+        </ResourceDictionary>
+    </Button.Resources>
+</Button>
