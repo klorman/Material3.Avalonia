@@ -7,9 +7,6 @@ internal sealed class RippleParticle(RippleVisual.Start start, TimeSpan started)
     internal long Id => start.Id;
     internal Point Center => start.Center;
 
-    internal Rect Bounds => new(start.Center.X - start.Radius, start.Center.Y - start.Radius, 2 * start.Radius,
-        2 * start.Radius);
-
     private TimeSpan? _released;
     private TimeSpan _fadeDuration;
     private double _releaseOpacity;
@@ -29,7 +26,13 @@ internal sealed class RippleParticle(RippleVisual.Start start, TimeSpan started)
                                                (_released is not null || now - started < start.GrowDuration ||
                                                 now - started < start.FadeInDuration);
 
-    internal (double Radius, double Opacity) GetValues(TimeSpan now)
+    internal Rect GetBounds(TimeSpan now, Size size)
+    {
+        var radius = GetValues(now, size).Radius;
+        return new Rect(start.Center.X - radius, start.Center.Y - radius, 2 * radius, 2 * radius);
+    }
+
+    internal (double Radius, double Opacity) GetValues(TimeSpan now, Size size)
     {
         var progress = Fraction(now - started, start.GrowDuration);
         var index = progress * (start.Easing.Length - 1);
@@ -39,7 +42,9 @@ internal sealed class RippleParticle(RippleVisual.Start start, TimeSpan started)
         var opacity = _released is { } released && now >= released
             ? _releaseOpacity * (1 - Fraction(now - released, _fadeDuration))
             : start.Opacity * Fraction(now - started, start.FadeInDuration);
-        return (Math.Max(0, start.Radius * growth), Math.Clamp(opacity, 0, 1));
+        var x = Math.Max(Math.Abs(start.Center.X), Math.Abs(size.Width - start.Center.X));
+        var y = Math.Max(Math.Abs(start.Center.Y), Math.Abs(size.Height - start.Center.Y));
+        return (Math.Max(0, Math.Sqrt(x * x + y * y) * growth), Math.Clamp(opacity, 0, 1));
     }
 
     private static double Fraction(TimeSpan elapsed, TimeSpan duration) =>

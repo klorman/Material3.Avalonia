@@ -449,9 +449,12 @@ internal sealed class MenuPopupPresentation : IDisposable
         {
             var position = e.GetPosition(Popup.Child);
             if (_lastPointerPosition != position || e.RoutedEvent == InputElement.PointerPressedEvent)
-                SetKeyboardNavigation(false);
-            _lastPointerPosition = position;
-            Activate();
+            {
+                if (e.RoutedEvent == InputElement.PointerPressedEvent)
+                    SetKeyboardNavigation(false);
+                _lastPointerPosition = position;
+                Activate();
+            }
         }
     }
 

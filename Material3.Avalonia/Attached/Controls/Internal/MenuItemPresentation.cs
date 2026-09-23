@@ -118,6 +118,7 @@ internal sealed class MenuItemPresentation
     private MenuItemPresentation(MenuItem item)
     {
         _item = item;
+        KeyboardActivationGuard.SetIsEnabled(item, true);
         item.SetValue(DisplayCheckedProperty, item.IsChecked);
         item.TemplateApplied += OnTemplate;
         item.PropertyChanged += OnChanged;
@@ -189,8 +190,9 @@ internal sealed class MenuItemPresentation
 
         if (_ripple is { } ripple)
         {
+            ripple.AcceptKeyActivation = () => !_dispatchingKey;
             ripple.AcceptActivation = () =>
-                !_dispatchingKey && MenuAssist.GetIsAnimationEnabled(_item) && !MotionSettings.ReduceMotion;
+                MenuAssist.GetIsAnimationEnabled(_item) && !MotionSettings.ReduceMotion;
             ripple.AcceptPress = e =>
                 OwnsPoint(e) && IsPrimaryPress(e) && _item.IsEffectivelyEnabled &&
                 MenuAssist.GetIsAnimationEnabled(_item) &&
@@ -224,7 +226,21 @@ internal sealed class MenuItemPresentation
         _spacePressed = false;
         e.Handled = true;
         if (!_item.IsFocused || !_item.IsEffectivelyEnabled || e.KeyModifiers != KeyModifiers.None) return;
-        DispatchNativeKey(Key.Enter);
+        DispatchNativeActivation();
+    }
+
+    private void DispatchNativeActivation()
+    {
+        _dispatchingKey = true;
+        try
+        {
+            _item.RaiseEvent(new KeyEventArgs { RoutedEvent = InputElement.KeyDownEvent, Key = Key.Enter });
+            _item.RaiseEvent(new KeyEventArgs { RoutedEvent = InputElement.KeyUpEvent, Key = Key.Enter });
+        }
+        finally
+        {
+            _dispatchingKey = false;
+        }
     }
 
     private void DispatchNativeKey(Key key)

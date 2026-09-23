@@ -93,7 +93,7 @@ public sealed class MenuTests : IDisposable
 
         var point = second.TranslatePoint(new Point(second.Bounds.Width / 2, second.Bounds.Height / 2), window)!.Value;
         window.MouseMove(point);
-        Part(second, "PART_MenuFocus").IsVisible.Should().BeFalse();
+        Part(second, "PART_MenuFocus").IsVisible.Should().BeTrue();
         window.KeyPress(Key.Left, RawInputModifiers.None, PhysicalKey.ArrowLeft, null);
         Part(first, "PART_MenuFocus").IsVisible.Should().BeTrue();
         window.KeyPress(Key.Escape, RawInputModifiers.None, PhysicalKey.Escape, null);
@@ -410,6 +410,39 @@ public sealed class MenuTests : IDisposable
         root.KeyPress(Key.Up, RawInputModifiers.None, PhysicalKey.ArrowUp, null);
         Held(second).Should().BeNull();
         root.KeyRelease(Key.Space, RawInputModifiers.None, PhysicalKey.Space, null);
+        flyout.Hide();
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void PointerMoveKeepsKeyboardFocusUntilPointerPress(bool overlay)
+    {
+        var item = new MenuItem
+        {
+            Header = "Check", ToggleType = MenuItemToggleType.CheckBox, StaysOpenOnClick = true
+        };
+        var flyout = new MenuFlyout { Items = { item } };
+        flyout.Popup.ShouldUseOverlayLayer = overlay;
+        var button = new Button { Flyout = flyout };
+        Window(button);
+        flyout.ShowAt(button);
+        Layout();
+        var root = TopLevel.GetTopLevel(item)!;
+        root.KeyPress(Key.Down, RawInputModifiers.None, PhysicalKey.ArrowDown, null);
+        Layout();
+        var focus = Part(item, "PART_MenuFocus");
+        focus.IsVisible.Should().BeTrue();
+        var point = item.TranslatePoint(new Point(item.Bounds.Width / 2, item.Bounds.Height / 2), root)!.Value;
+
+        root.MouseMove(point);
+        Layout();
+        focus.IsVisible.Should().BeTrue();
+
+        root.MouseDown(point, MouseButton.Left);
+        Layout();
+        focus.IsVisible.Should().BeFalse();
+        root.MouseUp(point, MouseButton.Left);
         flyout.Hide();
     }
 
@@ -1349,11 +1382,94 @@ public sealed class MenuTests : IDisposable
         Layout();
         clicks.Should().Be(1);
         window.KeyPress(Key.Enter, RawInputModifiers.None, PhysicalKey.Enter, null);
+        window.KeyPress(Key.Enter, RawInputModifiers.None, PhysicalKey.Enter, null);
+        window.KeyPress(Key.Enter, RawInputModifiers.None, PhysicalKey.Enter, null);
         Layout();
         clicks.Should().Be(2);
         window.KeyRelease(Key.Enter, RawInputModifiers.None, PhysicalKey.Enter, null);
         Layout();
         clicks.Should().Be(2);
+    }
+
+    [Fact]
+    public void HeldEnter_ShouldActivateMultiSelectItemOncePerKeyCycle()
+    {
+        var item = new MenuItem
+        {
+            Header = "Check", ToggleType = MenuItemToggleType.CheckBox, StaysOpenOnClick = true
+        };
+        var clicks = 0;
+        item.Click += (_, _) => clicks++;
+        Open(item);
+        item.Focus();
+        var root = TopLevel.GetTopLevel(item)!;
+
+        root.KeyPress(Key.Enter, RawInputModifiers.None, PhysicalKey.Enter, null);
+        root.KeyPress(Key.Enter, RawInputModifiers.None, PhysicalKey.Enter, null);
+        root.KeyPress(Key.Enter, RawInputModifiers.None, PhysicalKey.Enter, null);
+        Layout();
+        clicks.Should().Be(1);
+        item.IsChecked.Should().BeTrue();
+
+        root.KeyRelease(Key.Enter, RawInputModifiers.None, PhysicalKey.Enter, null);
+        root.KeyPress(Key.Enter, RawInputModifiers.None, PhysicalKey.Enter, null);
+        Layout();
+        clicks.Should().Be(2);
+        item.IsChecked.Should().BeFalse();
+    }
+
+    [Fact]
+    public void RepeatedSpaceCyclesActivateTheSameMultiSelectItem()
+    {
+        var item = new MenuItem
+        {
+            Header = "Check", ToggleType = MenuItemToggleType.CheckBox, StaysOpenOnClick = true
+        };
+        var clicks = 0;
+        item.Click += (_, _) => clicks++;
+        Open(item);
+        item.Focus();
+        var root = TopLevel.GetTopLevel(item)!;
+
+        for (var cycle = 1; cycle <= 3; cycle++)
+        {
+            root.KeyPress(Key.Space, RawInputModifiers.None, PhysicalKey.Space, null);
+            root.KeyPress(Key.Space, RawInputModifiers.None, PhysicalKey.Space, null);
+            clicks.Should().Be(cycle - 1);
+            root.KeyRelease(Key.Space, RawInputModifiers.None, PhysicalKey.Space, null);
+            Layout();
+            clicks.Should().Be(cycle);
+            item.IsChecked.Should().Be(cycle % 2 == 1);
+        }
+
+        root.KeyPress(Key.Enter, RawInputModifiers.None, PhysicalKey.Enter, null);
+        root.KeyPress(Key.Enter, RawInputModifiers.None, PhysicalKey.Enter, null);
+        Layout();
+        clicks.Should().Be(4);
+        item.IsChecked.Should().BeFalse();
+        root.KeyRelease(Key.Enter, RawInputModifiers.None, PhysicalKey.Enter, null);
+    }
+
+    [Fact]
+    public void EnterRipple_ShouldReleaseBeforePhysicalKeyUp()
+    {
+        var item = new MenuItem
+        {
+            Header = "Check", ToggleType = MenuItemToggleType.CheckBox, StaysOpenOnClick = true
+        };
+        Open(item);
+        item.Focus();
+        var root = TopLevel.GetTopLevel(item)!;
+        var ripple = Part(item, "PART_Ripple");
+        var keyboardPress = ripple.GetType().GetField("_keyboardPress",
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!;
+
+        root.KeyPress(Key.Enter, RawInputModifiers.None, PhysicalKey.Enter, null);
+        Dispatcher.UIThread.RunJobs();
+
+        keyboardPress.GetValue(ripple).Should().BeNull();
+        item.IsChecked.Should().BeTrue();
+        root.KeyRelease(Key.Enter, RawInputModifiers.None, PhysicalKey.Enter, null);
     }
 
     [Fact]

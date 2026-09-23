@@ -7,6 +7,8 @@ using Avalonia.Media;
 using Avalonia.Rendering.Composition;
 using Avalonia.Threading;
 using Material3.Avalonia.Attached.Controls.Internal;
+using Material3.Avalonia.Motion;
+using Material3.Avalonia.Motion.Transitions;
 
 namespace Material3.Avalonia.Controls.Primitives;
 
@@ -108,6 +110,15 @@ public class InkRipple : Control
     public InkRipple()
     {
         IsHitTestVisible = false;
+        Transitions =
+        [
+            new SpringBrushTransition
+            {
+                Property = BrushProperty,
+                Style = MotionStyle.Effects,
+                Speed = MotionSpeed.Fast
+            }
+        ];
     }
 
     private readonly Dictionary<IPointer, Interaction> _presses = new();
@@ -121,6 +132,7 @@ public class InkRipple : Control
 
     private sealed record Interaction(long Id, Point Center);
 
+    internal Func<bool>? AcceptKeyActivation { get; set; }
     internal Func<bool>? AcceptActivation { get; set; }
     internal event Action? PressEnded;
     internal Func<PointerPressedEventArgs, bool>? AcceptPress { get; set; }
@@ -204,21 +216,39 @@ public class InkRipple : Control
     private void OnHostChanged(object? sender, AvaloniaPropertyChangedEventArgs e)
     {
         if (e.Property == IsEffectivelyEnabledProperty && _host?.IsEffectivelyEnabled == false) CancelPress();
-        if (e.Property == IsFocusedProperty && _host?.IsFocused == false) EndKeyboard();
+        if (e.Property == IsFocusedProperty && _host?.IsFocused == false) EndKeyboardRipple();
     }
 
     private void OnKeyDown(object? sender, KeyEventArgs e)
     {
-        if (e.Source != _host || _keyboardPress is not null || _host?.IsEffectivelyEnabled != true ||
-            Brush is null || AcceptActivation?.Invoke() == false) return;
+        if (e.Source != _host || _host?.IsEffectivelyEnabled != true) return;
         var activates = _host is Button or global::Material3.Avalonia.Controls.Card { IsInteractive: true }
             ? e.Key is Key.Enter or Key.Space
             : _host is MenuItem item && (e.Key == Key.Enter ||
                                          e.Key == Key.Space && MenuItemPresentation.GetIsEnabled(item) &&
                                          e.KeyModifiers == KeyModifiers.None);
-        if (!activates) return;
+        if (!activates || AcceptKeyActivation?.Invoke() == false) return;
+
+        if (_keyboardKey == e.Key)
+        {
+            if (e.Key == Key.Enter) e.Handled = true;
+            return;
+        }
+
+        if (_keyboardKey is not null) return;
         _keyboardKey = e.Key;
-        _keyboardPress = CreateRipple(new Rect(Bounds.Size).Center);
+        if (Brush is not null && AcceptActivation?.Invoke() != false)
+        {
+            _keyboardPress = CreateRipple(new Rect(Bounds.Size).Center);
+            if (e.Key == Key.Enter)
+            {
+                var press = _keyboardPress;
+                Dispatcher.UIThread.Post(() =>
+                {
+                    if (_keyboardPress == press) EndKeyboardRipple();
+                });
+            }
+        }
     }
 
     private void OnKeyUp(object? sender, KeyEventArgs e)
@@ -228,9 +258,14 @@ public class InkRipple : Control
 
     private void EndKeyboard()
     {
+        EndKeyboardRipple();
+        _keyboardKey = null;
+    }
+
+    private void EndKeyboardRipple()
+    {
         if (_keyboardPress is not { } press) return;
         _keyboardPress = null;
-        _keyboardKey = null;
         EndInteraction(press);
     }
 
@@ -282,10 +317,8 @@ public class InkRipple : Control
         var easing = new double[1025];
         var grow = GrowEasing ?? new CubicEaseOut();
         for (var i = 0; i < easing.Length; i++) easing[i] = grow.Ease((double)i / (easing.Length - 1));
-        var x = Math.Max(Math.Abs(position.X), Math.Abs(Bounds.Width - position.X));
-        var y = Math.Max(Math.Abs(position.Y), Math.Abs(Bounds.Height - position.Y));
-        SendInteraction(new RippleVisual.Start(interaction.Id, position, Math.Sqrt(x * x + y * y),
-            BaseOpacity, global::Material3.Avalonia.Motion.MotionSettings.ReduceMotion ? TimeSpan.Zero : GrowDuration,
+        SendInteraction(new RippleVisual.Start(interaction.Id, position, BaseOpacity,
+            global::Material3.Avalonia.Motion.MotionSettings.ReduceMotion ? TimeSpan.Zero : GrowDuration,
             FadeInDuration, easing, StackingMode == RippleStackingMode.LatestOnly));
         return interaction;
     }

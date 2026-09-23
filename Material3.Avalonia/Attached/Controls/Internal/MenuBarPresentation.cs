@@ -18,7 +18,6 @@ internal sealed class MenuBarPresentation
     private readonly Menu _menu;
     private Control? _returnFocus;
     private int _generation;
-    private Point? _lastPointerPosition;
 
     public static bool GetIsEnabled(Menu menu) => menu.GetValue(IsEnabledProperty);
     public static void SetIsEnabled(Menu menu, bool value) => menu.SetValue(IsEnabledProperty, value);
@@ -34,12 +33,6 @@ internal sealed class MenuBarPresentation
         menu.AddHandler(InputElement.GotFocusEvent, OnFocus, RoutingStrategies.Bubble, true);
         menu.AddHandler(InputElement.PointerPressedEvent, (_, _) => RememberFocus(
             TopLevel.GetTopLevel(menu)?.FocusManager?.GetFocusedElement()), RoutingStrategies.Tunnel, true);
-        menu.AddHandler(InputElement.PointerMovedEvent, (_, e) =>
-        {
-            var position = e.GetPosition(menu);
-            if (_lastPointerPosition != position) MenuPopupPresentation.SetInputMode(menu, false);
-            _lastPointerPosition = position;
-        }, RoutingStrategies.Tunnel, true);
         menu.AddHandler(InputElement.PointerWheelChangedEvent, (_, e) =>
         {
             if (menu.IsOpen) e.Handled = true;

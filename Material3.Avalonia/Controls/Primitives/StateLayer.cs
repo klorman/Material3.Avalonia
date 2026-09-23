@@ -54,6 +54,12 @@ public class StateLayer : Control
         IsHitTestVisible = false;
         Transitions =
         [
+            new SpringBrushTransition
+            {
+                Property = BrushProperty,
+                Style = MotionStyle.Effects,
+                Speed = MotionSpeed.Fast
+            },
             new SpringDoubleTransition
             {
                 Property = OpacityProperty,

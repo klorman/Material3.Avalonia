@@ -11,7 +11,6 @@ internal sealed class RippleVisual : CompositionCustomVisualHandler
     internal sealed record Start(
         long Id,
         Point Center,
-        double Radius,
         double Opacity,
         TimeSpan GrowDuration,
         TimeSpan FadeInDuration,
@@ -70,29 +69,30 @@ internal sealed class RippleVisual : CompositionCustomVisualHandler
 
     public override Rect GetRenderBounds()
     {
-        var bounds = new Rect(new Size(EffectiveSize.X, EffectiveSize.Y));
+        var size = new Size(EffectiveSize.X, EffectiveSize.Y);
+        var bounds = new Rect(size);
         if (!_appearance.Bounded)
             foreach (var particle in _particles)
-                bounds = bounds.Union(particle.Bounds);
+                bounds = bounds.Union(particle.GetBounds(CompositionNow, size));
         return bounds;
     }
 
     public override void OnRender(ImmediateDrawingContext context)
     {
         if (_appearance.Brush is null) return;
+        var size = new Size(EffectiveSize.X, EffectiveSize.Y);
         var bounds = GetRenderBounds();
         if (_appearance.Bounded)
-        {
-            using (context.PushClip(new RoundedRect(bounds, _appearance.Corners))) Draw(context, bounds);
-        }
-        else Draw(context, bounds);
+            using (context.PushClip(new RoundedRect(bounds, _appearance.Corners)))
+                Draw(context, bounds, size);
+        else Draw(context, bounds, size);
     }
 
-    private void Draw(ImmediateDrawingContext context, Rect bounds)
+    private void Draw(ImmediateDrawingContext context, Rect bounds, Size size)
     {
         foreach (var particle in _particles)
         {
-            var (radius, opacity) = particle.GetValues(CompositionNow);
+            var (radius, opacity) = particle.GetValues(CompositionNow, size);
             if (radius <= 0 || opacity <= 0) continue;
             using (context.PushOpacity(opacity, bounds))
                 context.DrawEllipse(_appearance.Brush, null, particle.Center, radius, radius);
