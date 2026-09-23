@@ -26,7 +26,11 @@ public sealed class SpringDirectionalDoubleTransition : InterpolatingTransitionB
     public MotionStyle IncreaseStyle
     {
         get => _increaseStyle;
-        set { _increaseStyle = value; MarkDurationDirty(); }
+        set
+        {
+            _increaseStyle = value;
+            MarkDurationDirty();
+        }
     }
 
     /// <summary>
@@ -35,7 +39,11 @@ public sealed class SpringDirectionalDoubleTransition : InterpolatingTransitionB
     public MotionSpeed IncreaseSpeed
     {
         get => _increaseSpeed;
-        set { _increaseSpeed = value; MarkDurationDirty(); }
+        set
+        {
+            _increaseSpeed = value;
+            MarkDurationDirty();
+        }
     }
 
     /// <summary>
@@ -44,7 +52,11 @@ public sealed class SpringDirectionalDoubleTransition : InterpolatingTransitionB
     public MotionStyle DecreaseStyle
     {
         get => _decreaseStyle;
-        set { _decreaseStyle = value; MarkDurationDirty(); }
+        set
+        {
+            _decreaseStyle = value;
+            MarkDurationDirty();
+        }
     }
 
     /// <summary>
@@ -53,7 +65,11 @@ public sealed class SpringDirectionalDoubleTransition : InterpolatingTransitionB
     public MotionSpeed DecreaseSpeed
     {
         get => _decreaseSpeed;
-        set { _decreaseSpeed = value; MarkDurationDirty(); }
+        set
+        {
+            _decreaseSpeed = value;
+            MarkDurationDirty();
+        }
     }
 
     /// <summary>
@@ -88,10 +104,10 @@ public sealed class SpringDirectionalDoubleTransition : InterpolatingTransitionB
         if (_durationDirty)
             RecomputeAutoDuration();
 
-        if (RespectReduceMotion && MotionSettings.ReduceMotion)
-            return from + (to - from) * progress;
-
         var spring = to >= from ? _increase : _decrease;
+        if (RespectReduceMotion && MotionSettings.ReduceMotion)
+            return spring.Style == MotionStyle.Spatial ? to : from + (to - from) * progress;
+
         var elapsed = progress * _timelineSeconds;
 
         if (elapsed >= spring.DurationSeconds)

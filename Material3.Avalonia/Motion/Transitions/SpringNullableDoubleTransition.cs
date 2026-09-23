@@ -5,7 +5,7 @@ public sealed class SpringNullableDoubleTransition : SpringTransitionBase<double
 {
     /// <inheritdoc />
     protected override double? Interpolate(double progress, double? from, double? to) =>
-        from is null || to is null || RespectReduceMotion && MotionSettings.ReduceMotion
+        from is null || to is null
             ? to
             : base.Interpolate(progress, from, to);
 }
