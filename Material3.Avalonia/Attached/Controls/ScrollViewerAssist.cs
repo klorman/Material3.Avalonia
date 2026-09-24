@@ -19,6 +19,17 @@ public static class ScrollViewerAssist
             inherits: true);
 
     /// <summary>
+    /// Defines the pixel distance scrolled by one normalized mouse wheel step.
+    /// </summary>
+    public static readonly AttachedProperty<double> WheelScrollDistanceProperty =
+        AvaloniaProperty.RegisterAttached<Control, double>(
+            "WheelScrollDistance",
+            typeof(ScrollViewerAssist),
+            defaultValue: 120d,
+            inherits: true,
+            validate: value => double.IsFinite(value) && value > 0d);
+
+    /// <summary>
     /// Defines the scrollbar inset inside rounded containers.
     /// </summary>
     public static readonly AttachedProperty<Thickness> ScrollBarInsetProperty =
@@ -39,6 +50,18 @@ public static class ScrollViewerAssist
     /// </summary>
     public static bool GetIsSmoothWheelScrollingEnabled(Control control) =>
         control.GetValue(IsSmoothWheelScrollingEnabledProperty);
+
+    /// <summary>
+    /// Sets the pixel distance scrolled by one normalized mouse wheel step.
+    /// </summary>
+    public static void SetWheelScrollDistance(Control control, double value) =>
+        control.SetValue(WheelScrollDistanceProperty, value);
+
+    /// <summary>
+    /// Gets the pixel distance scrolled by one normalized mouse wheel step.
+    /// </summary>
+    public static double GetWheelScrollDistance(Control control) =>
+        control.GetValue(WheelScrollDistanceProperty);
 
     /// <summary>
     /// Sets the scrollbar inset inside rounded containers.
