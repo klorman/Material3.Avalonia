@@ -108,6 +108,7 @@ internal sealed class MenuPopupPresentation : IDisposable
     private Action? _afterExit;
     private Window? _window;
     private Control? _chain;
+    private IDisposable? _menuOpenState;
     private EventHandler<ResourcesChangedEventArgs>? _resourcesChanged;
     private Control? _returnFocus;
     private PixelPoint? _pointerAnchor;
@@ -237,6 +238,7 @@ internal sealed class MenuPopupPresentation : IDisposable
 
     internal void OnClosing(object? sender, CancelEventArgs e)
     {
+        RestoreCancelledContextPopup();
         if (!e.Cancel && (_permitClose || !MenuAssist.GetIsAnimationEnabled(_owner)) &&
             Popup.Placement == PlacementMode.Pointer && _returnFocus is { } previous)
             MenuFocusRestore.SuppressAutomaticScroll(previous);
@@ -269,6 +271,16 @@ internal sealed class MenuPopupPresentation : IDisposable
                     RestoreExitBranch();
                 }
             });
+        });
+    }
+
+    private void RestoreCancelledContextPopup()
+    {
+        if (_owner is not ContextMenu context || Popup.IsOpen || !context.IsOpen) return;
+        Dispatcher.UIThread.Post(() =>
+        {
+            if (!_disposed && context.IsOpen && !Popup.IsOpen && Popup.Child?.IsAttachedToVisualTree() == true)
+                Popup.SetCurrentValue(Popup.IsOpenProperty, true);
         });
     }
 
@@ -344,6 +356,9 @@ internal sealed class MenuPopupPresentation : IDisposable
             _window = _target.FindLogicalAncestorOfType<Window>() ?? TopLevel.GetTopLevel(_target) as Window;
             if (_window is not null) _window.Closed += OnWindowClosed;
         }
+
+        if (_owner is ContextMenu && _menuOpenState is null)
+            _menuOpenState = MenuOpenState.Acquire(Popup.GetLogicalParent() as Control);
 
         OpenMenus.RemoveAll(w => !w.TryGetTarget(out var value) || value == this);
         _keyboardNavigation = OpenMenus.Any(w => w.TryGetTarget(out var menu) &&
@@ -577,6 +592,7 @@ internal sealed class MenuPopupPresentation : IDisposable
     private void OnClosed(object? sender, EventArgs e)
     {
         var completedExit = _closing ? _afterExit : null;
+        ReleaseMenuOpenState();
         SynchronizeSelection();
         PopupGeometry.Forget(Popup);
         _generation++;
@@ -605,6 +621,14 @@ internal sealed class MenuPopupPresentation : IDisposable
             }
 
         completedExit?.Invoke();
+    }
+
+    internal void OnContextClosed(object? sender, EventArgs e) => ReleaseMenuOpenState();
+
+    private void ReleaseMenuOpenState()
+    {
+        _menuOpenState?.Dispose();
+        _menuOpenState = null;
     }
 
     public void Dispose()
@@ -652,13 +676,22 @@ internal sealed class MenuPopupPresentation : IDisposable
             if (popup is null || Presentation?.Popup == popup) return;
             Disconnect();
             Presentation = new MenuPopupPresentation(_control, popup, () => ((MenuBase)_control).Close());
-            if (_control is ContextMenu context) context.Closing += Presentation.OnClosing;
+            if (_control is ContextMenu context)
+            {
+                context.Closing += Presentation.OnClosing;
+                context.Closed += Presentation.OnContextClosed;
+            }
         }
 
         private void Disconnect()
         {
             if (Presentation is null) return;
-            if (_control is ContextMenu context) context.Closing -= Presentation.OnClosing;
+            if (_control is ContextMenu context)
+            {
+                context.Closing -= Presentation.OnClosing;
+                context.Closed -= Presentation.OnContextClosed;
+            }
+
             Presentation.Dispose();
             Presentation = null;
         }

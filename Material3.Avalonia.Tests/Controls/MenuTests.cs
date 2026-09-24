@@ -17,6 +17,7 @@ using FluentAssertions;
 using Material3.Avalonia.Attached;
 using Material3.Avalonia.Attached.Controls;
 using Material3.Avalonia.Controls;
+using Material3.Avalonia.Controls.Primitives;
 using Material3.Avalonia.Density;
 using Material3.Avalonia.Motion;
 using Material3.Avalonia.Theme;
@@ -1059,6 +1060,204 @@ public sealed class MenuTests : IDisposable
         first.ContextFlyout = custom;
         Layout();
         first.ContextFlyout.Should().BeSameAs(custom);
+    }
+
+    [Theory]
+    [InlineData(false, false)]
+    [InlineData(false, true)]
+    [InlineData(true, false)]
+    public void MenuOwner_ShouldBeMarkedWhileMenuIsOpen(bool useContextMenu, bool useContextFlyout)
+    {
+        var owner = new Button { Content = "Menu" };
+        var window = Window(owner);
+        if (useContextMenu)
+        {
+            var menu = new ContextMenu { Items = { new MenuItem { Header = "Action" } } };
+            MenuAssist.SetIsAnimationEnabled(menu, false);
+            owner.ContextMenu = menu;
+            menu.Open(owner);
+            Layout();
+            owner.Classes.Should().Contain("m3-menu-open");
+            Part(owner, "PART_StateLayer").Opacity.Should().BeGreaterThan(0);
+            menu.Close();
+        }
+        else
+        {
+            var flyout = new MenuFlyout { Items = { new MenuItem { Header = "Action" } } };
+            MenuAssist.SetIsAnimationEnabled(flyout, false);
+            if (useContextFlyout)
+                owner.ContextFlyout = flyout;
+            else
+                owner.Flyout = flyout;
+            flyout.ShowAt(owner);
+            Layout();
+            owner.Classes.Should().Contain("m3-menu-open");
+            Part(owner, "PART_StateLayer").Opacity.Should().BeGreaterThan(0);
+            flyout.Hide();
+        }
+
+        Layout();
+        owner.Classes.Should().NotContain("m3-menu-open");
+        window.Close();
+    }
+
+    [Theory]
+    [InlineData(TextFieldVariant.Filled, false)]
+    [InlineData(TextFieldVariant.Filled, true)]
+    [InlineData(TextFieldVariant.Outlined, false)]
+    [InlineData(TextFieldVariant.Outlined, true)]
+    public void TextBoxMenu_ShouldKeepActivePresentation(TextFieldVariant variant, bool useContextMenu)
+    {
+        var textBox = new TextBox { Width = 300 };
+        TextFieldAssist.SetVariant(textBox, variant);
+        TextFieldAssist.SetLabel(textBox, "Label");
+        var window = Window(textBox);
+        var labelMotion = (TextFieldLabelMotion)Part(textBox, "PART_LabelMotion");
+        labelMotion.Transitions = null;
+        var activePart = variant == TextFieldVariant.Filled
+            ? Part(textBox, "PART_FilledIndicator")
+            : Part(textBox, "PART_OutlinedOutline");
+        activePart.Transitions = null;
+        textBox.Focus();
+        Layout();
+        var focusedProgress = labelMotion.Progress;
+        var focusedThickness = variant == TextFieldVariant.Filled
+            ? ((TextFieldIndicatorLine)activePart).Thickness
+            : ((NotchedOutline)activePart).StrokeThickness;
+
+        if (useContextMenu)
+        {
+            var menu = new ContextMenu { Items = { new MenuItem { Header = "Action" } } };
+            MenuAssist.SetIsAnimationEnabled(menu, false);
+            textBox.ContextMenu = menu;
+            menu.Open(textBox);
+        }
+        else
+        {
+            var flyout = (MenuFlyout)textBox.ContextFlyout!;
+            MenuAssist.SetIsAnimationEnabled(flyout, false);
+            flyout.ShowAt(textBox);
+        }
+
+        Layout();
+        textBox.IsFocused.Should().BeFalse();
+        labelMotion.Progress.Should().Be(focusedProgress);
+        var openThickness = variant == TextFieldVariant.Filled
+            ? ((TextFieldIndicatorLine)activePart).Thickness
+            : ((NotchedOutline)activePart).StrokeThickness;
+        openThickness.Should().Be(focusedThickness);
+
+        if (useContextMenu)
+            textBox.ContextMenu!.Close();
+        else
+            textBox.ContextFlyout!.Hide();
+        Layout();
+        textBox.IsFocused.Should().BeTrue();
+        window.Close();
+    }
+
+    [Theory]
+    [InlineData(TextFieldVariant.Filled)]
+    [InlineData(TextFieldVariant.Outlined)]
+    public void TextBoxMenu_ShouldUseActivePresentationWhenInitiallyUnfocused(TextFieldVariant variant)
+    {
+        var textBox = new TextBox { Width = 300 };
+        TextFieldAssist.SetVariant(textBox, variant);
+        TextFieldAssist.SetLabel(textBox, "Label");
+        var window = Window(textBox);
+        var labelMotion = (TextFieldLabelMotion)Part(textBox, "PART_LabelMotion");
+        labelMotion.Transitions = null;
+        textBox.IsFocused.Should().BeFalse();
+        labelMotion.Progress.Should().Be(0);
+
+        var flyout = (MenuFlyout)textBox.ContextFlyout!;
+        MenuAssist.SetIsAnimationEnabled(flyout, false);
+        flyout.ShowAt(textBox);
+        Layout();
+
+        textBox.IsFocused.Should().BeFalse();
+        labelMotion.Progress.Should().Be(1);
+        flyout.Hide();
+        Layout();
+        textBox.IsFocused.Should().BeFalse();
+        labelMotion.Progress.Should().Be(0);
+        window.Close();
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void TextBoxContextMenu_ShouldFocusOwnerBeforeOpening(bool useContextMenu)
+    {
+        var previous = new TextBox { Text = "Previous" };
+        var target = new TextBox { Text = "Target" };
+        var window = Window(new StackPanel { Children = { previous, target } });
+        MenuFlyout? flyout = null;
+        ContextMenu? contextMenu = null;
+        if (useContextMenu)
+        {
+            contextMenu = new ContextMenu { Items = { new MenuItem { Header = "Action" } } };
+            MenuAssist.SetIsAnimationEnabled(contextMenu, false);
+            target.ContextMenu = contextMenu;
+        }
+        else
+        {
+            flyout = (MenuFlyout)target.ContextFlyout!;
+            MenuAssist.SetIsAnimationEnabled(flyout, false);
+        }
+
+        var targetGotFocus = false;
+        target.GotFocus += (_, _) => targetGotFocus = true;
+        previous.Focus();
+        Layout();
+
+        var point = target.TranslatePoint(new Point(10, 10), window)!.Value;
+        window.MouseMove(point);
+        window.MouseDown(point, MouseButton.Right);
+        window.MouseUp(point, MouseButton.Right);
+        Layout();
+
+        (useContextMenu ? contextMenu!.IsOpen : flyout!.IsOpen).Should().BeTrue();
+        targetGotFocus.Should().BeTrue();
+        target.IsFocused.Should().BeFalse();
+        if (useContextMenu)
+            contextMenu!.Close();
+        else
+            flyout!.Hide();
+
+        Layout();
+        target.IsFocused.Should().BeTrue();
+        window.Close();
+    }
+
+    [Fact]
+    public void MenuOwner_ShouldKeepStateWhenClosingIsCancelled()
+    {
+        var owner = new Button { Content = "Menu" };
+        Window(owner);
+
+        var context = new ContextMenu { Items = { new MenuItem { Header = "Action" } } };
+        MenuAssist.SetIsAnimationEnabled(context, false);
+        owner.ContextMenu = context;
+        context.Open(owner);
+        Layout();
+        var popup = context.FindLogicalAncestorOfType<Popup>();
+        popup.Should().NotBeNull();
+        owner.Classes.Should().Contain("m3-menu-open");
+
+        CancelEventHandler cancelClosing = (_, e) => e.Cancel = true;
+        context.Closing += cancelClosing;
+        context.Close();
+        Layout();
+        context.IsOpen.Should().BeTrue();
+        popup!.IsOpen.Should().BeTrue();
+        owner.Classes.Should().Contain("m3-menu-open");
+        context.Closing -= cancelClosing;
+
+        context.Close();
+        Layout();
+        context.IsOpen.Should().BeFalse();
+        owner.Classes.Should().NotContain("m3-menu-open");
     }
 
     [Theory]

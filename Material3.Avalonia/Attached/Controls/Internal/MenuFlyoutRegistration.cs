@@ -13,11 +13,11 @@ internal sealed class MenuFlyoutRegistration
     private readonly MenuFlyout _flyout;
     private readonly List<IDisposable> _bindings = [];
     private Control? _presenter;
-    private Button? _button;
     private AvaloniaObject? _colorsSource;
     private AvaloniaObject? _animationSource;
     private AvaloniaObject? _checkmarkSource;
     private Control? _target;
+    private IDisposable? _menuOpenState;
 
     internal static MenuFlyoutRegistration Get(MenuFlyout flyout) =>
         Registrations.GetValue(flyout, f => new MenuFlyoutRegistration(f));
@@ -26,21 +26,32 @@ internal sealed class MenuFlyoutRegistration
     {
         _flyout = flyout;
         flyout.Opening += (_, _) => Connect();
-        flyout.Opened += (_, _) => Connect();
+        flyout.Opened += OnOpened;
         flyout.Closing += OnClosing;
-        flyout.Closed += (_, _) => Disconnect();
+        flyout.Closed += OnClosed;
         flyout.PropertyChanged += (_, e) =>
         {
             if (e.Property == MenuAssist.CheckmarkPlacementProperty || e.Property == MenuAssist.ColorStyleProperty ||
-                e.Property == MenuAssist.IsAnimationEnabledProperty) Connect();
+                e.Property == MenuAssist.IsAnimationEnabledProperty || _flyout.Target != _target)
+                Connect();
         };
-        if (flyout.IsOpen) Connect();
+        if (flyout.IsOpen)
+        {
+            Connect();
+            UpdateMenuOpenState();
+        }
     }
 
     internal void Connect()
     {
         if (_flyout.Popup.Child is not Control presenter) return;
         var target = _flyout.Target;
+        if (_menuOpenState is not null && _target != target)
+        {
+            _menuOpenState.Dispose();
+            _menuOpenState = null;
+        }
+
         AvaloniaObject colors = _flyout.IsSet(MenuAssist.ColorStyleProperty) || target is null ? _flyout : target;
         AvaloniaObject animation =
             _flyout.IsSet(MenuAssist.IsAnimationEnabledProperty) || target is null ? _flyout : target;
@@ -66,11 +77,18 @@ internal sealed class MenuFlyoutRegistration
             _bindings.Add(presenter.Bind(DensityAssist.DensityProperty,
                 target.GetObservable(DensityAssist.DensityProperty), BindingPriority.Style));
         MenuPopupPresentation.Ensure(presenter);
-        if (target is Button button && button.Flyout == _flyout)
-        {
-            _button = button;
-            button.Classes.Add("m3-menu-open");
-        }
+    }
+
+    private void OnOpened(object? sender, EventArgs e)
+    {
+        Connect();
+        UpdateMenuOpenState();
+    }
+
+    private void UpdateMenuOpenState()
+    {
+        if (!_flyout.IsOpen || _menuOpenState is not null) return;
+        _menuOpenState = MenuOpenState.Acquire(_flyout.Target);
     }
 
     private void OnClosing(object? sender, CancelEventArgs e)
@@ -78,10 +96,12 @@ internal sealed class MenuFlyoutRegistration
         if (_presenter is not null) MenuPopupPresentation.Find(_presenter)?.OnClosing(sender, e);
     }
 
+    private void OnClosed(object? sender, EventArgs e) => Disconnect();
+
     private void Disconnect()
     {
-        _button?.Classes.Remove("m3-menu-open");
-        _button = null;
+        _menuOpenState?.Dispose();
+        _menuOpenState = null;
         foreach (var binding in _bindings) binding.Dispose();
         _bindings.Clear();
         _presenter = null;
