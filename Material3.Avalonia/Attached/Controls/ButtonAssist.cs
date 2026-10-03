@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Material3.Avalonia.Controls;
 
 namespace Material3.Avalonia.Attached.Controls;
 
@@ -19,7 +20,7 @@ public enum ButtonVariant
     /// <summary>Outlined container.</summary>
     Outlined,
 
-    /// <summary>Text button; unavailable for ToggleButton.</summary>
+    /// <summary>Text button.</summary>
     Text
 }
 
@@ -52,19 +53,15 @@ public enum ButtonShape
     Square
 }
 
-/// <summary>Applies Material button options to native Button and ToggleButton controls.</summary>
+/// <summary>Applies Material button options to native Button controls.</summary>
 public static class ButtonAssist
 {
     static ButtonAssist()
     {
-        VariantProperty.Changed.AddClassHandler<ToggleButton>((button, args) =>
-        {
-            if (args.NewValue is ButtonVariant.Text)
-            {
-                throw new ArgumentOutOfRangeException(nameof(VariantProperty),
-                    "The Text variant is not supported by Material ToggleButton.");
-            }
-        });
+        VariantProperty.Changed.AddClassHandler<Button>((button, _) => ValidateTarget(button));
+        SizeProperty.Changed.AddClassHandler<Button>((button, _) => ValidateTarget(button));
+        ShapeProperty.Changed.AddClassHandler<Button>((button, _) => ValidateTarget(button));
+        IconProperty.Changed.AddClassHandler<Button>((button, _) => ValidateTarget(button));
     }
 
     /// <summary>Identifies the Material button icon property.</summary>
@@ -73,7 +70,11 @@ public static class ButtonAssist
             "Icon", typeof(ButtonAssist));
 
     /// <summary>Sets the Material button icon.</summary>
-    public static void SetIcon(Button b, object? value) => b.SetValue(IconProperty, value);
+    public static void SetIcon(Button b, object? value)
+    {
+        ValidateTarget(b);
+        b.SetValue(IconProperty, value);
+    }
 
     /// <summary>Gets the Material button icon.</summary>
     public static object? GetIcon(Button b) => b.GetValue(IconProperty);
@@ -84,7 +85,11 @@ public static class ButtonAssist
             "Variant", typeof(ButtonAssist), defaultValue: ButtonVariant.Filled);
 
     /// <summary>Sets the Material button variant.</summary>
-    public static void SetVariant(Button b, ButtonVariant value) => b.SetValue(VariantProperty, value);
+    public static void SetVariant(Button b, ButtonVariant value)
+    {
+        ValidateTarget(b);
+        b.SetValue(VariantProperty, value);
+    }
 
     /// <summary>Gets the Material button variant.</summary>
     public static ButtonVariant GetVariant(Button b) => b.GetValue(VariantProperty);
@@ -95,7 +100,11 @@ public static class ButtonAssist
             "Size", typeof(ButtonAssist), defaultValue: ButtonSize.Small);
 
     /// <summary>Sets the Material button size.</summary>
-    public static void SetSize(Button b, ButtonSize value) => b.SetValue(SizeProperty, value);
+    public static void SetSize(Button b, ButtonSize value)
+    {
+        ValidateTarget(b);
+        b.SetValue(SizeProperty, value);
+    }
 
     /// <summary>Gets the Material button size.</summary>
     public static ButtonSize GetSize(Button b) => b.GetValue(SizeProperty);
@@ -106,8 +115,36 @@ public static class ButtonAssist
             "Shape", typeof(ButtonAssist), defaultValue: ButtonShape.Round);
 
     /// <summary>Sets the Material button shape.</summary>
-    public static void SetShape(Button b, ButtonShape value) => b.SetValue(ShapeProperty, value);
+    public static void SetShape(Button b, ButtonShape value)
+    {
+        ValidateTarget(b);
+        b.SetValue(ShapeProperty, value);
+    }
 
     /// <summary>Gets the Material button shape.</summary>
     public static ButtonShape GetShape(Button b) => b.GetValue(ShapeProperty);
+
+    private static void ValidateTarget(Button button)
+    {
+        if (button is IconToggleButton)
+        {
+            throw new ArgumentException(
+                "ButtonAssist cannot be used with IconToggleButton.",
+                nameof(button));
+        }
+
+        if (button is ToggleButton)
+        {
+            throw new ArgumentException(
+                "ButtonAssist can only be used with Button and its ordinary descendants.",
+                nameof(button));
+        }
+
+        if (button is IconButton)
+        {
+            throw new ArgumentException(
+                "ButtonAssist cannot be used with IconButton.",
+                nameof(button));
+        }
+    }
 }

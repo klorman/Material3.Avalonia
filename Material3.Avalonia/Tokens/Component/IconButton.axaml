@@ -1,0 +1,185 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens">
+    <!-- Common state tokens -->
+    <tokens:TokenAlias x:Key="MdCompIconButtonDisabledIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompIconButtonDisabledIconOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompIconButtonDisabledContainerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompIconButtonDisabledContainerOpacity">0.1</x:Double>
+    <tokens:TokenAlias x:Key="MdCompIconButtonDisabledOutlineBrush" ResourceKey="MdSysOutlineVariantBrush" />
+    <Thickness x:Key="MdCompIconButtonFocusRingThickness">3</Thickness>
+    <Thickness x:Key="MdCompIconButtonFocusRingOffset">2</Thickness>
+    <tokens:TokenAlias x:Key="MdCompIconButtonFocusRingBrush" ResourceKey="MdSysSecondaryBrush" />
+
+    <!-- Standard -->
+    <SolidColorBrush x:Key="MdCompIconButtonStandardContainerBrush" Color="Transparent" />
+    <SolidColorBrush x:Key="MdCompIconButtonStandardSelectedContainerBrush" Color="Transparent" />
+    <SolidColorBrush x:Key="MdCompIconButtonStandardUnselectedContainerBrush" Color="Transparent" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonStandardIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonStandardSelectedIconBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonStandardUnselectedIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonStandardFocusedIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonStandardHoveredIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonStandardPressedIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonStandardSelectedFocusedIconBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonStandardSelectedHoveredIconBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonStandardSelectedPressedIconBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonStandardFocusedStateLayerBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonStandardHoveredStateLayerBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonStandardPressedStateLayerBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonStandardSelectedFocusedStateLayerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonStandardSelectedHoveredStateLayerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonStandardSelectedPressedStateLayerBrush" ResourceKey="MdSysPrimaryBrush" />
+
+    <!-- Filled -->
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledContainerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledSelectedContainerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledUnselectedContainerBrush" ResourceKey="MdSysSurfaceContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledIconBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledSelectedIconBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledUnselectedIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledFocusedIconBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledHoveredIconBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledPressedIconBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledUnselectedFocusedIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledUnselectedHoveredIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledUnselectedPressedIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledSelectedFocusedIconBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledSelectedHoveredIconBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledSelectedPressedIconBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledFocusedStateLayerBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledHoveredStateLayerBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledPressedStateLayerBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledUnselectedFocusedStateLayerBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledUnselectedHoveredStateLayerBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledUnselectedPressedStateLayerBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledSelectedFocusedStateLayerBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledSelectedHoveredStateLayerBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFilledSelectedPressedStateLayerBrush" ResourceKey="MdSysOnPrimaryBrush" />
+
+    <!-- Tonal -->
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalContainerBrush" ResourceKey="MdSysSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalSelectedContainerBrush" ResourceKey="MdSysSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalUnselectedContainerBrush" ResourceKey="MdSysSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalIconBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalSelectedIconBrush" ResourceKey="MdSysOnSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalUnselectedIconBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalFocusedIconBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalHoveredIconBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalPressedIconBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalSelectedFocusedIconBrush" ResourceKey="MdSysOnSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalSelectedHoveredIconBrush" ResourceKey="MdSysOnSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalSelectedPressedIconBrush" ResourceKey="MdSysOnSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalFocusedStateLayerBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalHoveredStateLayerBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalPressedStateLayerBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalSelectedFocusedStateLayerBrush" ResourceKey="MdSysOnSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalSelectedHoveredStateLayerBrush" ResourceKey="MdSysOnSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonTonalSelectedPressedStateLayerBrush" ResourceKey="MdSysOnSecondaryBrush" />
+
+    <!-- Outlined -->
+    <SolidColorBrush x:Key="MdCompIconButtonOutlinedContainerBrush" Color="Transparent" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedSelectedContainerBrush" ResourceKey="MdSysInverseSurfaceBrush" />
+    <SolidColorBrush x:Key="MdCompIconButtonOutlinedUnselectedContainerBrush" Color="Transparent" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedSelectedIconBrush" ResourceKey="MdSysInverseOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedUnselectedIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedFocusedIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedHoveredIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedPressedIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedSelectedFocusedIconBrush" ResourceKey="MdSysInverseOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedSelectedHoveredIconBrush" ResourceKey="MdSysInverseOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedSelectedPressedIconBrush" ResourceKey="MdSysInverseOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedFocusedStateLayerBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedHoveredStateLayerBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedPressedStateLayerBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedSelectedFocusedStateLayerBrush" ResourceKey="MdSysInverseOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedSelectedHoveredStateLayerBrush" ResourceKey="MdSysInverseOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedSelectedPressedStateLayerBrush" ResourceKey="MdSysInverseOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedOutlineBrush" ResourceKey="MdSysOutlineVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonOutlinedSelectedOutlineBrush" ResourceKey="MdSysOutlineVariantBrush" />
+
+    <!-- Sizes -->
+    <x:Double x:Key="MdCompIconButtonXsContainerHeight">32</x:Double>
+    <x:Double x:Key="MdCompIconButtonXsIconSize">20</x:Double>
+    <Thickness x:Key="MdCompIconButtonXsOutlineWidth">1</Thickness>
+    <tokens:TokenAlias x:Key="MdCompIconButtonXsNarrowLeadingSpace" ResourceKey="MdSysSpacing50" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXsNarrowTrailingSpace" ResourceKey="MdSysSpacing50" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXsDefaultLeadingSpace" ResourceKey="MdSysSpacing75" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXsDefaultTrailingSpace" ResourceKey="MdSysSpacing75" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXsWideLeadingSpace" ResourceKey="MdSysSpacing125" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXsWideTrailingSpace" ResourceKey="MdSysSpacing125" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXsRoundContainerShape" ResourceKey="MdSysShapeCornerFull" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXsSquareContainerShape" ResourceKey="MdSysShapeCornerMedium" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXsSelectedRoundContainerShape" ResourceKey="MdSysShapeCornerMedium" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXsSelectedSquareContainerShape" ResourceKey="MdSysShapeCornerFull" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXsPressedContainerShape" ResourceKey="MdSysShapeCornerSmall" />
+
+    <x:Double x:Key="MdCompIconButtonSmContainerHeight">40</x:Double>
+    <x:Double x:Key="MdCompIconButtonSmIconSize">24</x:Double>
+    <Thickness x:Key="MdCompIconButtonSmOutlineWidth">1</Thickness>
+    <tokens:TokenAlias x:Key="MdCompIconButtonSmNarrowLeadingSpace" ResourceKey="MdSysSpacing50" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonSmNarrowTrailingSpace" ResourceKey="MdSysSpacing50" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonSmDefaultLeadingSpace" ResourceKey="MdSysSpacing100" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonSmDefaultTrailingSpace" ResourceKey="MdSysSpacing100" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonSmWideLeadingSpace" ResourceKey="MdSysSpacing175" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonSmWideTrailingSpace" ResourceKey="MdSysSpacing175" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonSmRoundContainerShape" ResourceKey="MdSysShapeCornerFull" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonSmSquareContainerShape" ResourceKey="MdSysShapeCornerMedium" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonSmSelectedRoundContainerShape" ResourceKey="MdSysShapeCornerMedium" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonSmSelectedSquareContainerShape" ResourceKey="MdSysShapeCornerFull" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonSmPressedContainerShape" ResourceKey="MdSysShapeCornerSmall" />
+
+    <x:Double x:Key="MdCompIconButtonMdContainerHeight">56</x:Double>
+    <x:Double x:Key="MdCompIconButtonMdIconSize">24</x:Double>
+    <Thickness x:Key="MdCompIconButtonMdOutlineWidth">1</Thickness>
+    <tokens:TokenAlias x:Key="MdCompIconButtonMdNarrowLeadingSpace" ResourceKey="MdSysSpacing150" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonMdNarrowTrailingSpace" ResourceKey="MdSysSpacing150" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonMdDefaultLeadingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonMdDefaultTrailingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonMdWideLeadingSpace" ResourceKey="MdSysSpacing300" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonMdWideTrailingSpace" ResourceKey="MdSysSpacing300" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonMdRoundContainerShape" ResourceKey="MdSysShapeCornerFull" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonMdSquareContainerShape" ResourceKey="MdSysShapeCornerLarge" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonMdSelectedRoundContainerShape" ResourceKey="MdSysShapeCornerLarge" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonMdSelectedSquareContainerShape" ResourceKey="MdSysShapeCornerFull" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonMdPressedContainerShape" ResourceKey="MdSysShapeCornerMedium" />
+
+    <x:Double x:Key="MdCompIconButtonLgContainerHeight">96</x:Double>
+    <x:Double x:Key="MdCompIconButtonLgIconSize">32</x:Double>
+    <Thickness x:Key="MdCompIconButtonLgOutlineWidth">2</Thickness>
+    <tokens:TokenAlias x:Key="MdCompIconButtonLgNarrowLeadingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonLgNarrowTrailingSpace" ResourceKey="MdSysSpacing200" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonLgDefaultLeadingSpace" ResourceKey="MdSysSpacing400" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonLgDefaultTrailingSpace" ResourceKey="MdSysSpacing400" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonLgWideLeadingSpace" ResourceKey="MdSysSpacing600" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonLgWideTrailingSpace" ResourceKey="MdSysSpacing600" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonLgRoundContainerShape" ResourceKey="MdSysShapeCornerFull" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonLgSquareContainerShape" ResourceKey="MdSysShapeCornerExtraLarge" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonLgSelectedRoundContainerShape" ResourceKey="MdSysShapeCornerExtraLarge" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonLgSelectedSquareContainerShape" ResourceKey="MdSysShapeCornerFull" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonLgPressedContainerShape" ResourceKey="MdSysShapeCornerLarge" />
+
+    <x:Double x:Key="MdCompIconButtonXlContainerHeight">136</x:Double>
+    <x:Double x:Key="MdCompIconButtonXlIconSize">40</x:Double>
+    <Thickness x:Key="MdCompIconButtonXlOutlineWidth">3</Thickness>
+    <tokens:TokenAlias x:Key="MdCompIconButtonXlNarrowLeadingSpace" ResourceKey="MdSysSpacing400" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXlNarrowTrailingSpace" ResourceKey="MdSysSpacing400" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXlDefaultLeadingSpace" ResourceKey="MdSysSpacing600" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXlDefaultTrailingSpace" ResourceKey="MdSysSpacing600" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXlWideLeadingSpace" ResourceKey="MdSysSpacing900" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXlWideTrailingSpace" ResourceKey="MdSysSpacing900" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXlRoundContainerShape" ResourceKey="MdSysShapeCornerFull" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXlSquareContainerShape" ResourceKey="MdSysShapeCornerExtraLarge" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXlSelectedRoundContainerShape" ResourceKey="MdSysShapeCornerExtraLarge" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXlSelectedSquareContainerShape" ResourceKey="MdSysShapeCornerFull" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonXlPressedContainerShape" ResourceKey="MdSysShapeCornerLarge" />
+
+    <!-- State layer opacities -->
+    <tokens:TokenAlias x:Key="MdCompIconButtonFocusedStateLayerOpacity" ResourceKey="MdSysStateFocusOpacity" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonHoveredStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonPressedStateLayerOpacity" ResourceKey="MdSysStatePressedOpacity" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonSelectedFocusedStateLayerOpacity" ResourceKey="MdSysStateFocusOpacity" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonSelectedHoveredStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonSelectedPressedStateLayerOpacity" ResourceKey="MdSysStatePressedOpacity" />
+</ResourceDictionary>

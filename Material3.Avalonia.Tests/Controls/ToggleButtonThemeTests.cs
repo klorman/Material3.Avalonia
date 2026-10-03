@@ -121,7 +121,7 @@ public sealed class ToggleButtonThemeTests
     }
 
     [Fact]
-    public void TextVariantIsRejectedOnlyForToggleButton()
+    public void ButtonAssistIsRejectedForToggleButton()
     {
         var toggle = CreateToggle(ButtonVariant.Filled);
         var button = new Button();
@@ -129,8 +129,34 @@ public sealed class ToggleButtonThemeTests
         ButtonAssist.SetVariant(button, ButtonVariant.Text);
         var setText = () => ButtonAssist.SetVariant(toggle, ButtonVariant.Text);
 
-        setText.Should().Throw<ArgumentOutOfRangeException>()
-            .WithMessage("*Text variant is not supported*");
+        setText.Should().Throw<ArgumentException>()
+            .WithMessage("*ButtonAssist*ordinary descendants*");
+    }
+
+    [Theory]
+    [InlineData("xs", ButtonSize.ExtraSmall, 32)]
+    [InlineData("sm", ButtonSize.Small, 40)]
+    [InlineData("md", ButtonSize.Medium, 56)]
+    [InlineData("lg", ButtonSize.Large, 96)]
+    [InlineData("xl", ButtonSize.ExtraLarge, 136)]
+    public void ToggleButtonSizeClassUsesToggleButtonAssist(string sizeClass, ButtonSize expectedSize,
+        double expectedHeight)
+    {
+        var toggle = CreateToggle(ButtonVariant.Filled);
+        toggle.Classes.Add(sizeClass);
+        var window = new Window { Width = 400, Height = 120, Content = toggle };
+        try
+        {
+            window.Show();
+            window.UpdateLayout();
+
+            toggle.Bounds.Height.Should().BeApproximately(expectedHeight, 1);
+            ToggleButtonAssist.GetSize(toggle).Should().Be(expectedSize);
+        }
+        finally
+        {
+            window.Close();
+        }
     }
 
     [Fact]
@@ -243,8 +269,8 @@ public sealed class ToggleButtonThemeTests
     public void CheckedShapeSwapsRoundAndSquareCorners()
     {
         var toggle = CreateToggle(ButtonVariant.Filled);
-        ButtonAssist.SetSize(toggle, ButtonSize.Small);
-        ButtonAssist.SetShape(toggle, ButtonShape.Round);
+        ToggleButtonAssist.SetSize(toggle, ButtonSize.Small);
+        ToggleButtonAssist.SetShape(toggle, ButtonShape.Round);
         toggle.IsChecked = true;
         var window = new Window { Width = 400, Height = 120, Content = toggle };
         try
@@ -253,7 +279,7 @@ public sealed class ToggleButtonThemeTests
             window.UpdateLayout();
             toggle.CornerRadius.TopLeft.Should().Be(12);
 
-            ButtonAssist.SetShape(toggle, ButtonShape.Square);
+            ToggleButtonAssist.SetShape(toggle, ButtonShape.Square);
             PumpUntil(() => Math.Abs(toggle.CornerRadius.TopLeft - 20) < 1);
         }
         finally
@@ -266,8 +292,8 @@ public sealed class ToggleButtonThemeTests
     public void PressedShapeOverridesSelectedShape()
     {
         var toggle = CreateToggle(ButtonVariant.Filled);
-        ButtonAssist.SetSize(toggle, ButtonSize.Small);
-        ButtonAssist.SetShape(toggle, ButtonShape.Square);
+        ToggleButtonAssist.SetSize(toggle, ButtonSize.Small);
+        ToggleButtonAssist.SetShape(toggle, ButtonShape.Square);
         toggle.IsChecked = true;
         var window = new Window { Width = 400, Height = 120, Content = toggle };
         try
@@ -293,7 +319,7 @@ public sealed class ToggleButtonThemeTests
     {
         var oldScheme = MotionSettings.GlobalScheme;
         var toggle = CreateToggle(ButtonVariant.Filled);
-        ButtonAssist.SetSize(toggle, ButtonSize.Small);
+        ToggleButtonAssist.SetSize(toggle, ButtonSize.Small);
         toggle.IsChecked = true;
         var window = new Window { Width = 400, Height = 120, Content = toggle };
         try
@@ -326,7 +352,7 @@ public sealed class ToggleButtonThemeTests
     public void FullCornerComponentTokenCanBeOverriddenAndRemapped()
     {
         var toggle = CreateToggle(ButtonVariant.Filled);
-        ButtonAssist.SetSize(toggle, ButtonSize.Small);
+        ToggleButtonAssist.SetSize(toggle, ButtonSize.Small);
         toggle.Resources["MdCompButtonSmRoundContainerShape"] = new CornerRadius(7);
         var window = new Window { Width = 400, Height = 120, Content = toggle };
         try
@@ -783,7 +809,7 @@ public sealed class ToggleButtonThemeTests
     public void ToggleIconFillFollowsCheckedState()
     {
         var toggle = CreateToggle(ButtonVariant.Filled);
-        ButtonAssist.SetIcon(toggle, Material3.Avalonia.Symbols.MaterialSymbol.Check);
+        ToggleButtonAssist.SetIcon(toggle, Material3.Avalonia.Symbols.MaterialSymbol.Check);
         toggle.ApplyStyling();
         toggle.ApplyTemplate();
         var icon = GetIcon(toggle);
@@ -835,7 +861,7 @@ public sealed class ToggleButtonThemeTests
         var resources = LoadResources();
         var toggle = new ToggleButton { Theme = GetTheme(resources, typeof(ToggleButton)), Content = "Size" };
         toggle.Resources.MergedDictionaries.Add(resources);
-        ButtonAssist.SetSize(toggle, ButtonSize.Small);
+        ToggleButtonAssist.SetSize(toggle, ButtonSize.Small);
         var window = new Window { Width = 800, Height = 200, Content = toggle };
         try
         {
@@ -845,7 +871,7 @@ public sealed class ToggleButtonThemeTests
             toggle.Bounds.Height.Should().BeApproximately(40, 1);
             PumpUntil(() => Math.Abs(toggle.CornerRadius.TopLeft - 20) < 1);
 
-            ButtonAssist.SetSize(toggle, ButtonSize.Medium);
+            ToggleButtonAssist.SetSize(toggle, ButtonSize.Medium);
             window.UpdateLayout();
             toggle.Bounds.Height.Should().BeLessThan(56);
             PumpUntil(() => toggle.Bounds.Height > 42);
@@ -859,7 +885,7 @@ public sealed class ToggleButtonThemeTests
             PumpUntil(() => Math.Abs(toggle.CornerRadius.TopLeft - 36) < 1);
 
             MotionSettings.ReduceMotion = true;
-            ButtonAssist.SetSize(toggle, ButtonSize.Small);
+            ToggleButtonAssist.SetSize(toggle, ButtonSize.Small);
             window.UpdateLayout();
             PumpUntil(() => Math.Abs(toggle.Bounds.Height - 40) < 1);
         }
@@ -902,7 +928,14 @@ public sealed class ToggleButtonThemeTests
             Content = "Label"
         };
         toggle.Resources.MergedDictionaries.Add(resources);
-        ButtonAssist.SetVariant(toggle, variant);
+        ToggleButtonAssist.SetVariant(toggle, variant switch
+        {
+            ButtonVariant.Elevated => ToggleButtonVariant.Elevated,
+            ButtonVariant.Filled => ToggleButtonVariant.Filled,
+            ButtonVariant.Tonal => ToggleButtonVariant.Tonal,
+            ButtonVariant.Outlined => ToggleButtonVariant.Outlined,
+            _ => throw new ArgumentOutOfRangeException(nameof(variant), variant, null)
+        });
         return toggle;
     }
 

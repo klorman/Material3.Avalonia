@@ -1,0 +1,105 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
+                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
+                    xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
+                    xmlns:attached="clr-namespace:Material3.Avalonia.Attached"
+                    xmlns:transitions="clr-namespace:Material3.Avalonia.Motion.Transitions">
+
+    <ControlTheme x:Key="MaterialIconButtonFamily" TargetType="Button">
+        <Setter Property="internal:HoverState.IsEnabled" Value="True" />
+        <Setter Property="internal:KeyboardActivationGuard.IsEnabled" Value="True" />
+        <Setter Property="attached:DensityAssist.Density" Value="Default" />
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="helpers:Typography.TextStyle" Value="{x:Null}" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <transitions:SpringDoubleTransition Property="Height" Style="Spatial" Speed="Fast" />
+                <transitions:SpringBrushTransition Property="Background" Style="Effects" Speed="Fast" />
+                <transitions:SpringBrushTransition Property="Foreground" Style="Effects" Speed="Fast" />
+                <transitions:SpringBrushTransition Property="BorderBrush" Style="Effects" Speed="Fast" />
+                <transitions:SpringThicknessTransition Property="BorderThickness" Style="Spatial" Speed="Fast" />
+                <transitions:SpringCornerRadiusTransition Property="CornerRadius" Style="Spatial" Speed="Fast" />
+            </Transitions>
+        </Setter>
+        <Setter Property="attached:FocusRing.Thickness" Value="{markup:Token MdCompIconButtonFocusRingThickness}" />
+        <Setter Property="attached:FocusRing.Offset" Value="{markup:Token MdCompIconButtonFocusRingOffset}" />
+        <Setter Property="attached:FocusRing.CornerRadius" Value="{Binding $self.CornerRadius}" />
+        <Setter Property="attached:FocusRing.Brush" Value="{markup:Token MdCompIconButtonFocusRingBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid x:Name="PART_Container"
+                      ClipToBounds="{TemplateBinding ClipToBounds}"
+                      helpers:Typography.TextStyle="{x:Null}">
+                    <Border x:Name="PART_Outline"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <Border x:Name="PART_Background"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{TemplateBinding CornerRadius}" />
+                    </Border>
+
+                    <primitives:StateLayer x:Name="PART_StateLayer"
+                                           CornerRadius="{TemplateBinding CornerRadius}" />
+
+                    <primitives:ButtonContentMotion x:Name="PART_Content"
+                                                    HorizontalAlignment="Stretch"
+                                                    IconOnlyHorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                        <Border x:Name="PART_IconSlot" ClipToBounds="True">
+                            <primitives:IconPresenter x:Name="PART_Icon"
+                                                      HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"
+                                                      IsHitTestVisible="False"
+                                                      IconChangeAnimation="Scale"
+                                                      Value="{TemplateBinding Content}">
+                                <primitives:IconPresenter.Transitions>
+                                    <Transitions>
+                                        <transitions:SpringBrushTransition Property="Foreground" Style="Effects" Speed="Fast" />
+                                    </Transitions>
+                                </primitives:IconPresenter.Transitions>
+                            </primitives:IconPresenter>
+                        </Border>
+                    </primitives:ButtonContentMotion>
+
+                    <primitives:InkRipple x:Name="PART_Ripple"
+                                          CornerRadius="{TemplateBinding CornerRadius}" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ Border#PART_Background">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+
+        <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+
+        <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+            <Setter Property="BaseOpacity" Value="{markup:Token MdCompIconButtonPressedStateLayerOpacity}" />
+        </Style>
+
+        <!-- State -->
+        <Style Selector="^:focus-visible:not(:disabled):not(:pressed) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="{markup:Token MdCompIconButtonFocusedStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^.m3-hovered:not(:disabled):not(:focus-visible):not(:pressed) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="{markup:Token MdCompIconButtonHoveredStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:pressed:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="{markup:Token MdCompIconButtonPressedStateLayerOpacity}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

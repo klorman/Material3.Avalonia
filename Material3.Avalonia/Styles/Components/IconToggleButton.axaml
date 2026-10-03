@@ -1,0 +1,678 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
+                    xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
+                    xmlns:controls="clr-namespace:Material3.Avalonia.Controls">
+
+    <ControlTheme x:Key="{x:Type controls:IconToggleButton}" TargetType="controls:IconToggleButton" BasedOn="{StaticResource MaterialIconButtonFamily}">
+        <Style Selector="^:checked /template/ primitives|InkRipple#PART_Ripple">
+            <Setter Property="BaseOpacity" Value="{markup:Token MdCompIconButtonSelectedPressedStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked:focus-visible:not(:disabled):not(:pressed) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="{markup:Token MdCompIconButtonSelectedFocusedStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked.m3-hovered:not(:disabled):not(:focus-visible):not(:pressed) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="{markup:Token MdCompIconButtonSelectedHoveredStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked:pressed:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="{markup:Token MdCompIconButtonSelectedPressedStateLayerOpacity}" />
+        </Style>
+
+        <!-- Size -->
+        <Style Selector="^[Size=ExtraSmall]">
+            <Setter Property="Height" Value="{markup:DensityScalar MdCompIconButtonXsContainerHeight, MostDense=Dense2}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompIconButtonXsOutlineWidth}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Size" Value="{markup:Token MdCompIconButtonXsIconSize}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[Size=Small]">
+            <Setter Property="Height" Value="{markup:DensityScalar MdCompIconButtonSmContainerHeight, MostDense=Dense3}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompIconButtonSmOutlineWidth}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Size" Value="{markup:Token MdCompIconButtonSmIconSize}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[Size=Medium]">
+            <Setter Property="Height" Value="{markup:DensityScalar MdCompIconButtonMdContainerHeight, MostDense=Dense3}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompIconButtonMdOutlineWidth}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Size" Value="{markup:Token MdCompIconButtonMdIconSize}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[Size=Large]">
+            <Setter Property="Height" Value="{markup:DensityScalar MdCompIconButtonLgContainerHeight, MostDense=Dense3}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompIconButtonLgOutlineWidth}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Size" Value="{markup:Token MdCompIconButtonLgIconSize}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[Size=ExtraLarge]">
+            <Setter Property="Height" Value="{markup:DensityScalar MdCompIconButtonXlContainerHeight, MostDense=Dense3}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompIconButtonXlOutlineWidth}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Size" Value="{markup:Token MdCompIconButtonXlIconSize}" />
+            </Style>
+        </Style>
+
+        <!-- Width -->
+        <Style Selector="^[WidthMode=Narrow]">
+            <Style Selector="^[Size=ExtraSmall]">
+                <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                    <Setter Property="LeadingSpace" Value="{markup:Token MdCompIconButtonXsNarrowLeadingSpace}" />
+                    <Setter Property="TrailingSpace" Value="{markup:Token MdCompIconButtonXsNarrowTrailingSpace}" />
+                </Style>
+            </Style>
+            <Style Selector="^[Size=Small]">
+                <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                    <Setter Property="LeadingSpace" Value="{markup:Token MdCompIconButtonSmNarrowLeadingSpace}" />
+                    <Setter Property="TrailingSpace" Value="{markup:Token MdCompIconButtonSmNarrowTrailingSpace}" />
+                </Style>
+            </Style>
+            <Style Selector="^[Size=Medium]">
+                <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                    <Setter Property="LeadingSpace" Value="{markup:Token MdCompIconButtonMdNarrowLeadingSpace}" />
+                    <Setter Property="TrailingSpace" Value="{markup:Token MdCompIconButtonMdNarrowTrailingSpace}" />
+                </Style>
+            </Style>
+            <Style Selector="^[Size=Large]">
+                <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                    <Setter Property="LeadingSpace" Value="{markup:Token MdCompIconButtonLgNarrowLeadingSpace}" />
+                    <Setter Property="TrailingSpace" Value="{markup:Token MdCompIconButtonLgNarrowTrailingSpace}" />
+                </Style>
+            </Style>
+            <Style Selector="^[Size=ExtraLarge]">
+                <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                    <Setter Property="LeadingSpace" Value="{markup:Token MdCompIconButtonXlNarrowLeadingSpace}" />
+                    <Setter Property="TrailingSpace" Value="{markup:Token MdCompIconButtonXlNarrowTrailingSpace}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[WidthMode=Default]">
+            <Style Selector="^[Size=ExtraSmall]">
+                <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                    <Setter Property="LeadingSpace" Value="{markup:Token MdCompIconButtonXsDefaultLeadingSpace}" />
+                    <Setter Property="TrailingSpace" Value="{markup:Token MdCompIconButtonXsDefaultTrailingSpace}" />
+                </Style>
+            </Style>
+            <Style Selector="^[Size=Small]">
+                <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                    <Setter Property="LeadingSpace" Value="{markup:Token MdCompIconButtonSmDefaultLeadingSpace}" />
+                    <Setter Property="TrailingSpace" Value="{markup:Token MdCompIconButtonSmDefaultTrailingSpace}" />
+                </Style>
+            </Style>
+            <Style Selector="^[Size=Medium]">
+                <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                    <Setter Property="LeadingSpace" Value="{markup:Token MdCompIconButtonMdDefaultLeadingSpace}" />
+                    <Setter Property="TrailingSpace" Value="{markup:Token MdCompIconButtonMdDefaultTrailingSpace}" />
+                </Style>
+            </Style>
+            <Style Selector="^[Size=Large]">
+                <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                    <Setter Property="LeadingSpace" Value="{markup:Token MdCompIconButtonLgDefaultLeadingSpace}" />
+                    <Setter Property="TrailingSpace" Value="{markup:Token MdCompIconButtonLgDefaultTrailingSpace}" />
+                </Style>
+            </Style>
+            <Style Selector="^[Size=ExtraLarge]">
+                <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                    <Setter Property="LeadingSpace" Value="{markup:Token MdCompIconButtonXlDefaultLeadingSpace}" />
+                    <Setter Property="TrailingSpace" Value="{markup:Token MdCompIconButtonXlDefaultTrailingSpace}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[WidthMode=Wide]">
+            <Style Selector="^[Size=ExtraSmall]">
+                <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                    <Setter Property="LeadingSpace" Value="{markup:Token MdCompIconButtonXsWideLeadingSpace}" />
+                    <Setter Property="TrailingSpace" Value="{markup:Token MdCompIconButtonXsWideTrailingSpace}" />
+                </Style>
+            </Style>
+            <Style Selector="^[Size=Small]">
+                <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                    <Setter Property="LeadingSpace" Value="{markup:Token MdCompIconButtonSmWideLeadingSpace}" />
+                    <Setter Property="TrailingSpace" Value="{markup:Token MdCompIconButtonSmWideTrailingSpace}" />
+                </Style>
+            </Style>
+            <Style Selector="^[Size=Medium]">
+                <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                    <Setter Property="LeadingSpace" Value="{markup:Token MdCompIconButtonMdWideLeadingSpace}" />
+                    <Setter Property="TrailingSpace" Value="{markup:Token MdCompIconButtonMdWideTrailingSpace}" />
+                </Style>
+            </Style>
+            <Style Selector="^[Size=Large]">
+                <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                    <Setter Property="LeadingSpace" Value="{markup:Token MdCompIconButtonLgWideLeadingSpace}" />
+                    <Setter Property="TrailingSpace" Value="{markup:Token MdCompIconButtonLgWideTrailingSpace}" />
+                </Style>
+            </Style>
+            <Style Selector="^[Size=ExtraLarge]">
+                <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
+                    <Setter Property="LeadingSpace" Value="{markup:Token MdCompIconButtonXlWideLeadingSpace}" />
+                    <Setter Property="TrailingSpace" Value="{markup:Token MdCompIconButtonXlWideTrailingSpace}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <!-- Shape -->
+        <Style Selector="^">
+            <Style Selector="^[Size=ExtraSmall]">
+                <Setter Property="CornerRadius" Value="{markup:DynamicCornerRadius MdCompIconButtonXsRoundContainerShape}" />
+            </Style>
+            <Style Selector="^[Size=Small]">
+                <Setter Property="CornerRadius" Value="{markup:DynamicCornerRadius MdCompIconButtonSmRoundContainerShape}" />
+            </Style>
+            <Style Selector="^[Size=Medium]">
+                <Setter Property="CornerRadius" Value="{markup:DynamicCornerRadius MdCompIconButtonMdRoundContainerShape}" />
+            </Style>
+            <Style Selector="^[Size=Large]">
+                <Setter Property="CornerRadius" Value="{markup:DynamicCornerRadius MdCompIconButtonLgRoundContainerShape}" />
+            </Style>
+            <Style Selector="^[Size=ExtraLarge]">
+                <Setter Property="CornerRadius" Value="{markup:DynamicCornerRadius MdCompIconButtonXlRoundContainerShape}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[Shape=Square]">
+            <Style Selector="^[Size=ExtraSmall]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompIconButtonXsSquareContainerShape}" />
+            </Style>
+            <Style Selector="^[Size=Small]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompIconButtonSmSquareContainerShape}" />
+            </Style>
+            <Style Selector="^[Size=Medium]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompIconButtonMdSquareContainerShape}" />
+            </Style>
+            <Style Selector="^[Size=Large]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompIconButtonLgSquareContainerShape}" />
+            </Style>
+            <Style Selector="^[Size=ExtraLarge]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompIconButtonXlSquareContainerShape}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:pressed:not(:disabled)">
+            <Style Selector="^[Size=ExtraSmall]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompIconButtonXsPressedContainerShape}" />
+            </Style>
+            <Style Selector="^[Size=Small]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompIconButtonSmPressedContainerShape}" />
+            </Style>
+            <Style Selector="^[Size=Medium]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompIconButtonMdPressedContainerShape}" />
+            </Style>
+            <Style Selector="^[Size=Large]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompIconButtonLgPressedContainerShape}" />
+            </Style>
+            <Style Selector="^[Size=ExtraLarge]">
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompIconButtonXlPressedContainerShape}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[Variant=Standard]">
+            <Setter Property="Background" Value="{markup:Token MdCompIconButtonStandardUnselectedContainerBrush}" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonStandardUnselectedIconBrush}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonStandardUnselectedIconBrush}" />
+            </Style>
+            <Setter Property="BorderThickness" Value="0" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="IsFilled" Value="False" />
+            </Style>
+            <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                <Setter Property="Brush" Value="{markup:Token MdCompIconButtonStandardPressedStateLayerBrush}" />
+            </Style>
+            <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                <Setter Property="Brush" Value="{markup:Token MdCompIconButtonStandardPressedStateLayerBrush}" />
+            </Style>
+            <Style Selector="^:not(:checked):focus-visible:not(:disabled):not(:pressed)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonStandardFocusedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonStandardFocusedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonStandardFocusedStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked).m3-hovered:not(:disabled):not(:focus-visible):not(:pressed)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonStandardHoveredIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonStandardHoveredIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonStandardHoveredStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked):pressed:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonStandardPressedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonStandardPressedIconBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked">
+                <Setter Property="Background" Value="{markup:Token MdCompIconButtonStandardSelectedContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonStandardSelectedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonStandardSelectedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="IsFilled" Value="True" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonStandardSelectedPressedStateLayerBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonStandardSelectedPressedStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked:focus-visible:not(:disabled):not(:pressed)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonStandardSelectedFocusedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonStandardSelectedFocusedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonStandardSelectedFocusedStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked.m3-hovered:not(:disabled):not(:focus-visible):not(:pressed)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonStandardSelectedHoveredIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonStandardSelectedHoveredIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonStandardSelectedHoveredStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked:pressed:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonStandardSelectedPressedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonStandardSelectedPressedIconBrush}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[Variant=Filled]">
+            <Setter Property="Background" Value="{markup:Token MdCompIconButtonFilledUnselectedContainerBrush}" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonFilledUnselectedIconBrush}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonFilledUnselectedIconBrush}" />
+            </Style>
+            <Setter Property="BorderThickness" Value="0" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="IsFilled" Value="False" />
+            </Style>
+            <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                <Setter Property="Brush" Value="{markup:Token MdCompIconButtonFilledUnselectedPressedStateLayerBrush}" />
+            </Style>
+            <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                <Setter Property="Brush" Value="{markup:Token MdCompIconButtonFilledUnselectedPressedStateLayerBrush}" />
+            </Style>
+            <Style Selector="^:not(:checked):focus-visible:not(:disabled):not(:pressed)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonFilledUnselectedFocusedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonFilledUnselectedFocusedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonFilledUnselectedFocusedStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked).m3-hovered:not(:disabled):not(:focus-visible):not(:pressed)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonFilledUnselectedHoveredIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonFilledUnselectedHoveredIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonFilledUnselectedHoveredStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked):pressed:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonFilledUnselectedPressedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonFilledUnselectedPressedIconBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked">
+                <Setter Property="Background" Value="{markup:Token MdCompIconButtonFilledSelectedContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonFilledSelectedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonFilledSelectedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="IsFilled" Value="True" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonFilledSelectedPressedStateLayerBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonFilledSelectedPressedStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked:focus-visible:not(:disabled):not(:pressed)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonFilledSelectedFocusedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonFilledSelectedFocusedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonFilledSelectedFocusedStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked.m3-hovered:not(:disabled):not(:focus-visible):not(:pressed)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonFilledSelectedHoveredIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonFilledSelectedHoveredIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonFilledSelectedHoveredStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked:pressed:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonFilledSelectedPressedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonFilledSelectedPressedIconBrush}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[Variant=Tonal]">
+            <Setter Property="Background" Value="{markup:Token MdCompIconButtonTonalUnselectedContainerBrush}" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonTonalUnselectedIconBrush}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonTonalUnselectedIconBrush}" />
+            </Style>
+            <Setter Property="BorderThickness" Value="0" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="IsFilled" Value="False" />
+            </Style>
+            <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                <Setter Property="Brush" Value="{markup:Token MdCompIconButtonTonalPressedStateLayerBrush}" />
+            </Style>
+            <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                <Setter Property="Brush" Value="{markup:Token MdCompIconButtonTonalPressedStateLayerBrush}" />
+            </Style>
+            <Style Selector="^:not(:checked):focus-visible:not(:disabled):not(:pressed)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonTonalFocusedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonTonalFocusedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonTonalFocusedStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked).m3-hovered:not(:disabled):not(:focus-visible):not(:pressed)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonTonalHoveredIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonTonalHoveredIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonTonalHoveredStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked):pressed:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonTonalPressedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonTonalPressedIconBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked">
+                <Setter Property="Background" Value="{markup:Token MdCompIconButtonTonalSelectedContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonTonalSelectedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonTonalSelectedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="IsFilled" Value="True" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonTonalSelectedPressedStateLayerBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonTonalSelectedPressedStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked:focus-visible:not(:disabled):not(:pressed)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonTonalSelectedFocusedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonTonalSelectedFocusedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonTonalSelectedFocusedStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked.m3-hovered:not(:disabled):not(:focus-visible):not(:pressed)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonTonalSelectedHoveredIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonTonalSelectedHoveredIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonTonalSelectedHoveredStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked:pressed:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonTonalSelectedPressedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonTonalSelectedPressedIconBrush}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[Variant=Outlined]">
+            <Setter Property="Background" Value="{markup:Token MdCompIconButtonOutlinedUnselectedContainerBrush}" />
+            <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonOutlinedUnselectedIconBrush}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonOutlinedUnselectedIconBrush}" />
+            </Style>
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompIconButtonOutlinedOutlineBrush}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="IsFilled" Value="False" />
+            </Style>
+            <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                <Setter Property="Brush" Value="{markup:Token MdCompIconButtonOutlinedPressedStateLayerBrush}" />
+            </Style>
+            <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                <Setter Property="Brush" Value="{markup:Token MdCompIconButtonOutlinedPressedStateLayerBrush}" />
+            </Style>
+            <Style Selector="^:not(:checked):focus-visible:not(:disabled):not(:pressed)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonOutlinedFocusedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonOutlinedFocusedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonOutlinedFocusedStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked).m3-hovered:not(:disabled):not(:focus-visible):not(:pressed)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonOutlinedHoveredIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonOutlinedHoveredIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonOutlinedHoveredStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:not(:checked):pressed:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonOutlinedPressedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonOutlinedPressedIconBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked">
+                <Setter Property="Background" Value="{markup:Token MdCompIconButtonOutlinedSelectedContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonOutlinedSelectedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonOutlinedSelectedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="IsFilled" Value="True" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonOutlinedSelectedPressedStateLayerBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonOutlinedSelectedPressedStateLayerBrush}" />
+                </Style>
+                <Setter Property="BorderBrush" Value="{markup:Token MdCompIconButtonOutlinedSelectedOutlineBrush}" />
+                <Setter Property="BorderThickness" Value="0" />
+            </Style>
+            <Style Selector="^:checked:focus-visible:not(:disabled):not(:pressed)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonOutlinedSelectedFocusedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonOutlinedSelectedFocusedIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonOutlinedSelectedFocusedStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked.m3-hovered:not(:disabled):not(:focus-visible):not(:pressed)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonOutlinedSelectedHoveredIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonOutlinedSelectedHoveredIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                    <Setter Property="Brush" Value="{markup:Token MdCompIconButtonOutlinedSelectedHoveredStateLayerBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:checked:pressed:not(:disabled)">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonOutlinedSelectedPressedIconBrush}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonOutlinedSelectedPressedIconBrush}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^:checked:not(:pressed)">
+            <Style Selector="^">
+                <Style Selector="^[Size=ExtraSmall]">
+                    <Setter Property="CornerRadius" Value="{markup:DynamicCornerRadius MdCompIconButtonXsSelectedRoundContainerShape}" />
+                </Style>
+                <Style Selector="^[Size=Small]">
+                    <Setter Property="CornerRadius" Value="{markup:DynamicCornerRadius MdCompIconButtonSmSelectedRoundContainerShape}" />
+                </Style>
+                <Style Selector="^[Size=Medium]">
+                    <Setter Property="CornerRadius" Value="{markup:DynamicCornerRadius MdCompIconButtonMdSelectedRoundContainerShape}" />
+                </Style>
+                <Style Selector="^[Size=Large]">
+                    <Setter Property="CornerRadius" Value="{markup:DynamicCornerRadius MdCompIconButtonLgSelectedRoundContainerShape}" />
+                </Style>
+                <Style Selector="^[Size=ExtraLarge]">
+                    <Setter Property="CornerRadius" Value="{markup:DynamicCornerRadius MdCompIconButtonXlSelectedRoundContainerShape}" />
+                </Style>
+            </Style>
+            <Style Selector="^[Shape=Square]">
+                <Style Selector="^[Size=ExtraSmall]">
+                    <Setter Property="CornerRadius" Value="{markup:Token MdCompIconButtonXsSelectedSquareContainerShape}" />
+                </Style>
+                <Style Selector="^[Size=Small]">
+                    <Setter Property="CornerRadius" Value="{markup:Token MdCompIconButtonSmSelectedSquareContainerShape}" />
+                </Style>
+                <Style Selector="^[Size=Medium]">
+                    <Setter Property="CornerRadius" Value="{markup:Token MdCompIconButtonMdSelectedSquareContainerShape}" />
+                </Style>
+                <Style Selector="^[Size=Large]">
+                    <Setter Property="CornerRadius" Value="{markup:Token MdCompIconButtonLgSelectedSquareContainerShape}" />
+                </Style>
+                <Style Selector="^[Size=ExtraLarge]">
+                    <Setter Property="CornerRadius" Value="{markup:Token MdCompIconButtonXlSelectedSquareContainerShape}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <!-- Classes -->
+        <Style Selector="^.xs">
+            <Setter Property="Size" Value="ExtraSmall" />
+        </Style>
+
+        <Style Selector="^.sm">
+            <Setter Property="Size" Value="Small" />
+        </Style>
+
+        <Style Selector="^.md">
+            <Setter Property="Size" Value="Medium" />
+        </Style>
+
+        <Style Selector="^.lg">
+            <Setter Property="Size" Value="Large" />
+        </Style>
+
+        <Style Selector="^.xl">
+            <Setter Property="Size" Value="ExtraLarge" />
+        </Style>
+
+        <Style Selector="^.round">
+            <Setter Property="Shape" Value="Round" />
+        </Style>
+
+        <Style Selector="^.square">
+            <Setter Property="Shape" Value="Square" />
+        </Style>
+
+        <Style Selector="^.narrow">
+            <Setter Property="WidthMode" Value="Narrow" />
+        </Style>
+
+        <Style Selector="^.default">
+            <Setter Property="WidthMode" Value="Default" />
+        </Style>
+
+        <Style Selector="^.wide">
+            <Setter Property="WidthMode" Value="Wide" />
+        </Style>
+
+        <Style Selector="^.standard">
+            <Setter Property="Variant" Value="Standard" />
+        </Style>
+
+        <Style Selector="^.filled">
+            <Setter Property="Variant" Value="Filled" />
+        </Style>
+
+        <Style Selector="^.tonal">
+            <Setter Property="Variant" Value="Tonal" />
+        </Style>
+
+        <Style Selector="^.outlined">
+            <Setter Property="Variant" Value="Outlined" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonDisabledIconBrush}" />
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Foreground" Value="{markup:Token MdCompIconButtonDisabledIconBrush}" />
+            </Style>
+            <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                <Setter Property="Opacity" Value="{markup:Token MdCompIconButtonDisabledIconOpacity}" />
+            </Style>
+            <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                <Setter Property="Opacity" Value="0" />
+            </Style>
+            <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                <Setter Property="Brush" Value="{x:Null}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[Variant=Filled]:disabled, ^[Variant=Tonal]:disabled">
+            <Setter Property="Background" Value="{markup:Token MdCompIconButtonDisabledContainerBrush}" />
+            <Style Selector="^ /template/ Border#PART_Background">
+                <Setter Property="Opacity" Value="{markup:Token MdCompIconButtonDisabledContainerOpacity}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[Variant=Outlined]:disabled:not(:checked)">
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompIconButtonDisabledOutlineBrush}" />
+        </Style>
+
+        <Style Selector="^[Variant=Outlined]:checked:disabled">
+            <Setter Property="Background" Value="{markup:Token MdCompIconButtonDisabledContainerBrush}" />
+            <Style Selector="^ /template/ Border#PART_Background">
+                <Setter Property="Opacity" Value="{markup:Token MdCompIconButtonDisabledContainerOpacity}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

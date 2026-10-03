@@ -1,0 +1,491 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:Material3.Avalonia.Controls;assembly=Material3.Avalonia"
+             xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
+             xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
+             xmlns:symbols="clr-namespace:Material3.Avalonia.Symbols;assembly=Material3.Avalonia"
+             x:Class="Material3.Avalonia.Demo.Views.IconButtons">
+    <UserControl.Styles>
+        <Style Selector="Border.demo-section">
+            <Setter Property="Background" Value="{DynamicResource MdSysSurfaceContainerLowBrush}" />
+            <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerLarge}" />
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdSysSpacing300}" />
+        </Style>
+    </UserControl.Styles>
+
+    <StackPanel Margin="{markup:DynamicThickness MdSysSpacing300}"
+                Spacing="{DynamicResource MdSysSpacing300}">
+        <!-- Header -->
+        <StackPanel Spacing="{DynamicResource MdSysSpacing100}">
+            <TextBlock Text="Icon buttons"
+                       Foreground="{DynamicResource MdSysOnBackgroundBrush}"
+                       helpers:Typography.TextStyle="HeadlineMedium" />
+            <TextBlock Text="Icon buttons keep native Avalonia input behavior while exposing Material 3 variants, sizes, width modes, shapes and density."
+                       MaxWidth="696"
+                       TextWrapping="Wrap"
+                       Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                       helpers:Typography.TextStyle="BodyMedium" />
+        </StackPanel>
+
+        <!-- Variants -->
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
+                    <TextBlock Text="Variants"
+                               Foreground="{DynamicResource MdSysOnSurfaceBrush}"
+                               helpers:Typography.TextStyle="TitleLarge" />
+                    <TextBlock Text="Standard, filled, tonal and outlined icon buttons use the same icon-only interaction model."
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                               helpers:Typography.TextStyle="BodySmall" />
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Center"
+                            Orientation="Horizontal"
+                            Spacing="{DynamicResource MdSysSpacing150}">
+                    <controls:IconButton Content="{symbols:Symbol Search}"
+                                          Variant="Standard"
+                                          ToolTip.Tip="Search"
+                                          AutomationProperties.Name="Search" />
+                    <controls:IconButton Content="{symbols:Symbol Add}"
+                                          Variant="Filled"
+                                          ToolTip.Tip="Add"
+                                          AutomationProperties.Name="Add" />
+                    <controls:IconButton Content="{symbols:Symbol Settings}"
+                                          Variant="Tonal"
+                                          ToolTip.Tip="Settings"
+                                          AutomationProperties.Name="Settings" />
+                    <controls:IconButton Content="{symbols:Symbol Bookmark}"
+                                          Variant="Outlined"
+                                          ToolTip.Tip="Bookmark"
+                                          AutomationProperties.Name="Bookmark" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Toggle buttons -->
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
+                    <TextBlock Text="Toggle buttons"
+                               Foreground="{DynamicResource MdSysOnSurfaceBrush}"
+                               helpers:Typography.TextStyle="TitleLarge" />
+                    <TextBlock Text="Compare unselected and selected icons, including the filled star hover state."
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                               helpers:Typography.TextStyle="BodySmall" />
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Center"
+                            Orientation="Horizontal"
+                            Spacing="{DynamicResource MdSysSpacing150}">
+                    <controls:IconToggleButton Content="{symbols:Symbol Favorite}"
+                                               Variant="Standard"
+                                               ToolTip.Tip="Favorite"
+                                               AutomationProperties.Name="Favorite" />
+                    <controls:IconToggleButton Content="{symbols:Symbol Star}"
+                                               Variant="Filled"
+                                               IsChecked="False"
+                                               ToolTip.Tip="Star"
+                                               AutomationProperties.Name="Star" />
+                    <controls:IconToggleButton Content="{symbols:Symbol Notifications}"
+                                               Variant="Tonal"
+                                               ToolTip.Tip="Notifications"
+                                               AutomationProperties.Name="Notifications" />
+                    <controls:IconToggleButton Content="{symbols:Symbol Home}"
+                                               Variant="Outlined"
+                                               IsChecked="True"
+                                               ToolTip.Tip="Home"
+                                               AutomationProperties.Name="Home" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Sizes -->
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
+                    <TextBlock Text="Sizes"
+                               Foreground="{DynamicResource MdSysOnSurfaceBrush}"
+                               helpers:Typography.TextStyle="TitleLarge" />
+                    <TextBlock Text="Filled icon buttons show the supported size scale without changing the shape."
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                               helpers:Typography.TextStyle="BodySmall" />
+                </StackPanel>
+
+                <StackPanel Spacing="{DynamicResource MdSysSpacing200}"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Extra small"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconButton Content="{symbols:Symbol Search}"
+                                              Size="ExtraSmall"
+                                              Shape="Round"
+                                              Variant="Filled"
+                                              HorizontalAlignment="Center"
+                                              AutomationProperties.Name="Extra small round" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Small"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconButton Content="{symbols:Symbol Search}"
+                                              Size="Small"
+                                              Variant="Filled"
+                                              HorizontalAlignment="Center"
+                                              AutomationProperties.Name="Small round" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Medium"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconButton Content="{symbols:Symbol Search}"
+                                              Size="Medium"
+                                              Shape="Round"
+                                              Variant="Filled"
+                                              HorizontalAlignment="Center"
+                                              AutomationProperties.Name="Medium round" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Large"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconButton Content="{symbols:Symbol Search}"
+                                              Size="Large"
+                                              Variant="Filled"
+                                              HorizontalAlignment="Center"
+                                              AutomationProperties.Name="Large round" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Extra large"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconButton Content="{symbols:Symbol Search}"
+                                              Size="ExtraLarge"
+                                              Shape="Round"
+                                              Variant="Filled"
+                                              HorizontalAlignment="Center"
+                                              AutomationProperties.Name="Extra large round" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Shape -->
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
+                    <TextBlock Text="Shapes"
+                               Foreground="{DynamicResource MdSysOnSurfaceBrush}"
+                               helpers:Typography.TextStyle="TitleLarge" />
+                    <TextBlock Text="Round and square shapes use the same medium filled icon button so only the container shape changes."
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                               helpers:Typography.TextStyle="BodySmall" />
+                </StackPanel>
+
+                <StackPanel Spacing="{DynamicResource MdSysSpacing200}"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Round"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconButton Content="{symbols:Symbol Search}"
+                                              Size="Medium"
+                                              Shape="Round"
+                                              Variant="Filled"
+                                              HorizontalAlignment="Center"
+                                              AutomationProperties.Name="Round shape" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Square"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconButton Content="{symbols:Symbol Search}"
+                                              Size="Medium"
+                                              Shape="Square"
+                                              Variant="Filled"
+                                              HorizontalAlignment="Center"
+                                              AutomationProperties.Name="Square shape" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Width modes -->
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
+                    <TextBlock Text="Width modes"
+                               Foreground="{DynamicResource MdSysOnSurfaceBrush}"
+                               helpers:Typography.TextStyle="TitleLarge" />
+                    <TextBlock Text="Narrow, default and wide spacing can be changed at runtime without replacing the control."
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                               helpers:Typography.TextStyle="BodySmall" />
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Center"
+                            Spacing="{DynamicResource MdSysSpacing100}">
+                    <controls:IconButton x:Name="WidthModeSample"
+                                          Content="{symbols:Symbol MoreVert}"
+                                          Size="Large"
+                                          Variant="Filled"
+                                          ToolTip.Tip="Width mode sample"
+                                          HorizontalAlignment="Center"
+                                          AutomationProperties.Name="Width mode sample" />
+                    <TextBlock x:Name="WidthModeValue"
+                               Text="Current: Default"
+                               HorizontalAlignment="Center"
+                               helpers:Typography.TextStyle="LabelMedium" />
+                    <Button x:Name="WidthModeButton"
+                            Content="Cycle width mode"
+                            Classes="outlined sm"
+                            Click="OnWidthModeClick" />
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Center"
+                            Orientation="Horizontal"
+                            Spacing="{DynamicResource MdSysSpacing200}">
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Narrow"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconButton Content="{symbols:Symbol MoreHoriz}"
+                                              Size="Medium"
+                                              Variant="Filled"
+                                              WidthMode="Narrow"
+                                              AutomationProperties.Name="Narrow width" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Default"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconButton Content="{symbols:Symbol MoreHoriz}"
+                                              Size="Medium"
+                                              Variant="Filled"
+                                              WidthMode="Default"
+                                              AutomationProperties.Name="Default width" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Wide"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconButton Content="{symbols:Symbol MoreHoriz}"
+                                              Size="Medium"
+                                              Variant="Filled"
+                                              WidthMode="Wide"
+                                              AutomationProperties.Name="Wide width" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Density -->
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
+                    <TextBlock Text="Density"
+                               Foreground="{DynamicResource MdSysOnSurfaceBrush}"
+                               helpers:Typography.TextStyle="TitleLarge" />
+                    <TextBlock Text="Icon buttons opt into density explicitly. Switch the samples below to compare the resulting container heights."
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                               helpers:Typography.TextStyle="BodySmall" />
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Center"
+                            Orientation="Horizontal"
+                            Spacing="{DynamicResource MdSysSpacing100}">
+                    <TextBlock Text="Density:"
+                               VerticalAlignment="Center"
+                               helpers:Typography.TextStyle="LabelLarge" />
+                    <Button Content="Default"
+                            Classes="outlined xs"
+                            Click="OnDefaultDensityClick" />
+                    <Button Content="Dense 2"
+                            Classes="outlined xs"
+                            Click="OnDense2Click" />
+                    <Button Content="Dense 3"
+                            Classes="outlined xs"
+                            Click="OnDense3Click" />
+                </StackPanel>
+
+                <StackPanel x:Name="DensitySamples"
+                            HorizontalAlignment="Center"
+                            Orientation="Horizontal"
+                            Spacing="{DynamicResource MdSysSpacing200}">
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Small"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconButton x:Name="DenseSmallSample"
+                                              Content="{symbols:Symbol Menu}"
+                                              Size="Small"
+                                              Variant="Tonal"
+                                              AutomationProperties.Name="Density small" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Medium"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconButton x:Name="DenseMediumSample"
+                                              Content="{symbols:Symbol Menu}"
+                                              Size="Medium"
+                                              Variant="Tonal"
+                                              AutomationProperties.Name="Density medium" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Toggle"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconToggleButton x:Name="DenseToggleSample"
+                                                   Content="{symbols:Symbol Favorite}"
+                                                   Variant="Filled"
+                                                   AutomationProperties.Name="Density toggle" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- States -->
+        <Border Classes="demo-section">
+            <StackPanel Spacing="{DynamicResource MdSysSpacing250}">
+                <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
+                    <TextBlock Text="States and accessibility"
+                               Foreground="{DynamicResource MdSysOnSurfaceBrush}"
+                               helpers:Typography.TextStyle="TitleLarge" />
+                    <TextBlock Text="Hover, focus, keyboard activation, tooltips and automation names are available on every interactive sample."
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
+                               helpers:Typography.TextStyle="BodySmall" />
+                </StackPanel>
+
+                <WrapPanel HorizontalAlignment="Center"
+                           Orientation="Horizontal"
+                           ItemWidth="150">
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Enabled"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconButton Content="{symbols:Symbol Add}"
+                                              Size="Medium"
+                                              Variant="Filled"
+                                              ToolTip.Tip="Enabled add action"
+                                              AutomationProperties.Name="Enabled add action" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Disabled"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconButton Content="{symbols:Symbol Close}"
+                                              Size="Medium"
+                                              Variant="Filled"
+                                              IsEnabled="False"
+                                              ToolTip.Tip="Disabled close action"
+                                              AutomationProperties.Name="Disabled close action" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Unselected"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconToggleButton Content="{symbols:Symbol Star}"
+                                                   Size="Medium"
+                                                   Variant="Filled"
+                                                   IsChecked="False"
+                                                   ToolTip.Tip="Unselected star"
+                                                   AutomationProperties.Name="Unselected star" />
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center"
+                                Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Selected"
+                                   HorizontalAlignment="Center"
+                                   helpers:Typography.TextStyle="LabelMedium" />
+                        <controls:IconToggleButton Content="{symbols:Symbol Star}"
+                                                   Size="Medium"
+                                                   Variant="Filled"
+                                                   IsChecked="True"
+                                                   ToolTip.Tip="Selected star"
+                                                   AutomationProperties.Name="Selected star" />
+                    </StackPanel>
+                </WrapPanel>
+                <TextBlock Text="Disabled variants: action / unselected / selected"
+                           helpers:Typography.TextStyle="LabelLarge" />
+                <WrapPanel Orientation="Horizontal" ItemWidth="180">
+                    <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Standard" helpers:Typography.TextStyle="LabelMedium" />
+                        <StackPanel Orientation="Horizontal" Spacing="{DynamicResource MdSysSpacing50}">
+                            <controls:IconButton Content="{symbols:Symbol Star}" Variant="Standard"
+                                                 IsEnabled="False" AutomationProperties.Name="Disabled Standard action" />
+                            <controls:IconToggleButton Content="{symbols:Symbol Star}" Variant="Standard"
+                                                       IsEnabled="False" IsChecked="False"
+                                                       AutomationProperties.Name="Disabled Standard unselected" />
+                            <controls:IconToggleButton Content="{symbols:Symbol Star}" Variant="Standard"
+                                                       IsEnabled="False" IsChecked="True"
+                                                       AutomationProperties.Name="Disabled Standard selected" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Filled" helpers:Typography.TextStyle="LabelMedium" />
+                        <StackPanel Orientation="Horizontal" Spacing="{DynamicResource MdSysSpacing50}">
+                            <controls:IconButton Content="{symbols:Symbol Star}" Variant="Filled"
+                                                 IsEnabled="False" AutomationProperties.Name="Disabled Filled action" />
+                            <controls:IconToggleButton Content="{symbols:Symbol Star}" Variant="Filled"
+                                                       IsEnabled="False" IsChecked="False"
+                                                       AutomationProperties.Name="Disabled Filled unselected" />
+                            <controls:IconToggleButton Content="{symbols:Symbol Star}" Variant="Filled"
+                                                       IsEnabled="False" IsChecked="True"
+                                                       AutomationProperties.Name="Disabled Filled selected" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Tonal" helpers:Typography.TextStyle="LabelMedium" />
+                        <StackPanel Orientation="Horizontal" Spacing="{DynamicResource MdSysSpacing50}">
+                            <controls:IconButton Content="{symbols:Symbol Star}" Variant="Tonal"
+                                                 IsEnabled="False" AutomationProperties.Name="Disabled Tonal action" />
+                            <controls:IconToggleButton Content="{symbols:Symbol Star}" Variant="Tonal"
+                                                       IsEnabled="False" IsChecked="False"
+                                                       AutomationProperties.Name="Disabled Tonal unselected" />
+                            <controls:IconToggleButton Content="{symbols:Symbol Star}" Variant="Tonal"
+                                                       IsEnabled="False" IsChecked="True"
+                                                       AutomationProperties.Name="Disabled Tonal selected" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
+                        <TextBlock Text="Outlined" helpers:Typography.TextStyle="LabelMedium" />
+                        <StackPanel Orientation="Horizontal" Spacing="{DynamicResource MdSysSpacing50}">
+                            <controls:IconButton Content="{symbols:Symbol Star}" Variant="Outlined"
+                                                 IsEnabled="False" AutomationProperties.Name="Disabled Outlined action" />
+                            <controls:IconToggleButton Content="{symbols:Symbol Star}" Variant="Outlined"
+                                                       IsEnabled="False" IsChecked="False"
+                                                       AutomationProperties.Name="Disabled Outlined unselected" />
+                            <controls:IconToggleButton Content="{symbols:Symbol Star}" Variant="Outlined"
+                                                       IsEnabled="False" IsChecked="True"
+                                                       AutomationProperties.Name="Disabled Outlined selected" />
+                        </StackPanel>
+                    </StackPanel>
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

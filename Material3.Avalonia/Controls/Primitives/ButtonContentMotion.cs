@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Animation;
 using Avalonia.Controls;
+using Avalonia.Layout;
 using Avalonia.VisualTree;
 using Material3.Avalonia.Motion;
 using Material3.Avalonia.Motion.Transitions;
@@ -16,6 +17,16 @@ internal sealed class ButtonContentMotion : Panel
 
     public static readonly StyledProperty<double> GapProperty =
         AvaloniaProperty.Register<ButtonContentMotion, double>(nameof(Gap));
+
+    public static readonly StyledProperty<double> LeadingSpaceProperty =
+        AvaloniaProperty.Register<ButtonContentMotion, double>(nameof(LeadingSpace));
+
+    public static readonly StyledProperty<double> TrailingSpaceProperty =
+        AvaloniaProperty.Register<ButtonContentMotion, double>(nameof(TrailingSpace));
+
+    public static readonly StyledProperty<HorizontalAlignment> IconOnlyHorizontalAlignmentProperty =
+        AvaloniaProperty.Register<ButtonContentMotion, HorizontalAlignment>(nameof(IconOnlyHorizontalAlignment),
+            HorizontalAlignment.Center);
 
     private static readonly StyledProperty<double> AnimatedWidthProperty =
         AvaloniaProperty.Register<ButtonContentMotion, double>(nameof(AnimatedWidth));
@@ -34,8 +45,17 @@ internal sealed class ButtonContentMotion : Panel
 
     static ButtonContentMotion()
     {
-        AffectsMeasure<ButtonContentMotion>(AnimatedWidthProperty, IsIconPresentedProperty, GapProperty);
-        AffectsArrange<ButtonContentMotion>(IconProgressProperty, IconOpacityProperty, GapProperty);
+        AffectsMeasure<ButtonContentMotion>(
+            AnimatedWidthProperty,
+            IsIconPresentedProperty,
+            GapProperty,
+            LeadingSpaceProperty,
+            TrailingSpaceProperty);
+        AffectsArrange<ButtonContentMotion>(
+            IconProgressProperty,
+            IconOpacityProperty,
+            GapProperty,
+            IconOnlyHorizontalAlignmentProperty);
     }
 
     public ButtonContentMotion()
@@ -74,6 +94,24 @@ internal sealed class ButtonContentMotion : Panel
     {
         get => GetValue(GapProperty);
         set => SetValue(GapProperty, value);
+    }
+
+    public double LeadingSpace
+    {
+        get => GetValue(LeadingSpaceProperty);
+        set => SetValue(LeadingSpaceProperty, value);
+    }
+
+    public double TrailingSpace
+    {
+        get => GetValue(TrailingSpaceProperty);
+        set => SetValue(TrailingSpaceProperty, value);
+    }
+
+    public HorizontalAlignment IconOnlyHorizontalAlignment
+    {
+        get => GetValue(IconOnlyHorizontalAlignmentProperty);
+        set => SetValue(IconOnlyHorizontalAlignmentProperty, value);
     }
 
     private double AnimatedWidth
@@ -123,6 +161,17 @@ internal sealed class ButtonContentMotion : Panel
 
     protected override Size MeasureOverride(Size availableSize)
     {
+        if (Children.Count == 1)
+        {
+            var iconOnlyContent = Children[0];
+            iconOnlyContent.Measure(availableSize.WithWidth(double.PositiveInfinity));
+
+            var iconOnlyTarget = LeadingSpace + iconOnlyContent.DesiredSize.Width + TrailingSpace;
+            UpdateWidth(iconOnlyTarget, availableSize);
+
+            return new Size(Math.Max(0, AnimatedWidth), iconOnlyContent.DesiredSize.Height);
+        }
+
         if (Children.Count < 2)
             return default;
 
@@ -133,22 +182,7 @@ internal sealed class ButtonContentMotion : Panel
 
         var iconExtent = IsIconPresented ? iconSlot.DesiredSize.Width + Gap : 0;
         var target = iconExtent + content.DesiredSize.Width;
-        _isWidthConstrained = double.IsFinite(availableSize.Width) && target > availableSize.Width + Epsilon;
-        if (!_hasArranged || MotionSettings.ReduceMotion || TopLevel.GetTopLevel(this) is null)
-        {
-            SetWidthImmediately(target);
-            _clipUntilTarget = false;
-        }
-        else if (Math.Abs(target - _targetWidth) > Epsilon)
-        {
-            _clipUntilTarget = target > AnimatedWidth + Epsilon;
-            _targetWidth = target;
-            AnimatedWidth = target;
-        }
-
-        if (_clipUntilTarget && AnimatedWidth >= _targetWidth - Epsilon)
-            _clipUntilTarget = false;
-        ClipToBounds = _isWidthConstrained || _clipUntilTarget;
+        UpdateWidth(target, availableSize);
 
         var height = Math.Max(iconSlot.DesiredSize.Height, content.DesiredSize.Height);
         return new Size(Math.Max(0, AnimatedWidth), height);
@@ -156,6 +190,25 @@ internal sealed class ButtonContentMotion : Panel
 
     protected override Size ArrangeOverride(Size finalSize)
     {
+        if (Children.Count == 1)
+        {
+            var iconOnlyContent = Children[0];
+            var iconOnlyX = IconOnlyHorizontalAlignment switch
+            {
+                HorizontalAlignment.Left => (AnimatedWidth - iconOnlyContent.DesiredSize.Width) / 2,
+                HorizontalAlignment.Right => finalSize.Width -
+                                             (AnimatedWidth + iconOnlyContent.DesiredSize.Width) / 2,
+                _ => (finalSize.Width - iconOnlyContent.DesiredSize.Width) / 2
+            };
+            iconOnlyContent.Arrange(new Rect(
+                iconOnlyX,
+                (finalSize.Height - iconOnlyContent.DesiredSize.Height) / 2,
+                iconOnlyContent.DesiredSize.Width,
+                iconOnlyContent.DesiredSize.Height));
+            _hasArranged = true;
+            return finalSize;
+        }
+
         if (Children.Count < 2)
             return finalSize;
 
@@ -180,6 +233,26 @@ internal sealed class ButtonContentMotion : Panel
     {
         _targetWidth = width;
         SetImmediately(AnimatedWidthProperty, width);
+    }
+
+    private void UpdateWidth(double target, Size availableSize)
+    {
+        _isWidthConstrained = double.IsFinite(availableSize.Width) && target > availableSize.Width + Epsilon;
+        if (!_hasArranged || MotionSettings.ReduceMotion || TopLevel.GetTopLevel(this) is null)
+        {
+            SetWidthImmediately(target);
+            _clipUntilTarget = false;
+        }
+        else if (Math.Abs(target - _targetWidth) > Epsilon)
+        {
+            _clipUntilTarget = target > AnimatedWidth + Epsilon;
+            _targetWidth = target;
+            AnimatedWidth = target;
+        }
+
+        if (_clipUntilTarget && AnimatedWidth >= _targetWidth - Epsilon)
+            _clipUntilTarget = false;
+        ClipToBounds = _isWidthConstrained || _clipUntilTarget;
     }
 
     private void SetIconImmediately(double value)

@@ -75,8 +75,8 @@
                 <StackPanel Spacing="{DynamicResource MdSysSpacing150}">
                     <TextBlock Text="Icons and disabled states" helpers:Typography.TextStyle="TitleLarge" />
                     <WrapPanel Orientation="Horizontal">
-                        <ToggleButton Content="Filter" Classes="tonal sm" controls:ButtonAssist.Icon="{symbols:Symbol FilterAlt}" Margin="0 0 12 12" />
-                        <ToggleButton Content="Filter" Classes="tonal sm" controls:ButtonAssist.Icon="{symbols:Symbol FilterAlt}" IsChecked="True" Margin="0 0 12 12" />
+                        <ToggleButton Content="Filter" Classes="tonal sm" controls:ToggleButtonAssist.Icon="{symbols:Symbol FilterAlt}" Margin="0 0 12 12" />
+                        <ToggleButton Content="Filter" Classes="tonal sm" controls:ToggleButtonAssist.Icon="{symbols:Symbol FilterAlt}" IsChecked="True" Margin="0 0 12 12" />
                         <ToggleButton Content="Disabled" Classes="filled sm" IsEnabled="False" Margin="0 0 12 12" />
                         <ToggleButton Content="Disabled" Classes="filled sm" IsChecked="True" IsEnabled="False" Margin="0 0 12 12" />
                         <ToggleButton Content="Outlined" Classes="outlined sm" IsEnabled="False" Margin="0 0 12 12" />
