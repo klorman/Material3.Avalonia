@@ -1,0 +1,110 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:m3="https://github.com/klorman/Material3.Avalonia"
+             xmlns:vm="clr-namespace:Material3.Avalonia.Demo.ViewModels"
+             x:Class="Material3.Avalonia.Demo.Views.Switches"
+             x:DataType="vm:SwitchesViewModel">
+    <UserControl.Styles>
+        <Style Selector="Border.switch-section">
+            <Setter Property="Background" Value="{m3:Token MdSysSurfaceContainerLowBrush}" />
+            <Setter Property="CornerRadius" Value="{m3:Token MdSysShapeCornerLarge}" />
+            <Setter Property="Padding" Value="{m3:DynamicThickness MdSysSpacing300}" />
+        </Style>
+    </UserControl.Styles>
+    <StackPanel MaxWidth="720" Margin="{m3:DynamicThickness MdSysSpacing300}" Spacing="{m3:Token MdSysSpacing300}">
+        <TextBlock Text="Switches" m3:Typography.TextStyle="HeadlineMedium" />
+        <TextBlock Text="Turn independent settings on or off. Changes take effect immediately; click the label, surrounding space or switch, or drag the handle."
+                   TextWrapping="Wrap" m3:Typography.TextStyle="BodyMedium" />
+        <Border Classes="switch-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}">
+                <TextBlock Text="Immediate settings" m3:Typography.TextStyle="TitleMedium" />
+                <ToggleSwitch Content="_Notifications" OnContent="Updates appear in the preview below." OffContent="Updates are paused."
+                              HorizontalAlignment="Stretch" IsChecked="{Binding NotificationsEnabled, Mode=TwoWay}"
+                              Command="{Binding CountActivationCommand}" m3:SwitchAssist.IconConfiguration="Selected" />
+                <Border IsVisible="{Binding NotificationsEnabled}" Background="{m3:Token MdSysSecondaryContainerBrush}"
+                        CornerRadius="{m3:Token MdSysShapeCornerMedium}" Padding="{m3:DynamicThickness MdSysSpacing200}">
+                    <StackPanel Orientation="Horizontal" Spacing="{m3:Token MdSysSpacing100}">
+                        <m3:IconPresenter Value="{m3:Symbol Notifications}" Foreground="{m3:Token MdSysOnSecondaryContainerBrush}" />
+                        <TextBlock Text="You're up to date" Foreground="{m3:Token MdSysOnSecondaryContainerBrush}" />
+                    </StackPanel>
+                </Border>
+                <TextBlock Text="{Binding Status}" TextWrapping="Wrap" m3:Typography.TextStyle="BodySmall" />
+                <Button Content="Change from view model" Click="OnSettingClick" />
+            </StackPanel>
+        </Border>
+        <Border Classes="switch-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}">
+                <TextBlock Text="Icon configurations" m3:Typography.TextStyle="TitleMedium" />
+                <ToggleSwitch Content="No icons" Classes="no-icons" HorizontalAlignment="Stretch" />
+                <ToggleSwitch Content="Selected icon" Classes="selected-icon" IsChecked="True" HorizontalAlignment="Stretch" />
+                <ToggleSwitch Content="Selected and unselected icons" Classes="both-icons" HorizontalAlignment="Stretch" />
+                <ToggleSwitch Content="Custom symbols" IsChecked="True" HorizontalAlignment="Stretch" m3:SwitchAssist.IconConfiguration="SelectedAndUnselected"
+                              m3:SwitchAssist.SelectedIcon="{m3:Symbol DoneAll}" m3:SwitchAssist.UnselectedIcon="{m3:Symbol Block}" />
+                <ToggleSwitch Content="Disabled, off" IsEnabled="False" HorizontalAlignment="Stretch" m3:SwitchAssist.IconConfiguration="SelectedAndUnselected" />
+                <ToggleSwitch Content="Disabled, on" IsChecked="True" IsEnabled="False" HorizontalAlignment="Stretch" m3:SwitchAssist.IconConfiguration="SelectedAndUnselected" />
+            </StackPanel>
+        </Border>
+        <Border Classes="switch-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}">
+                <TextBlock Text="Content and layout" m3:Typography.TextStyle="TitleMedium" />
+                <ToggleSwitch Content="Leading label" Classes="label-leading" HorizontalAlignment="Stretch" IsChecked="True" />
+                <ToggleSwitch Content="Trailing label" Classes="label-trailing" HorizontalAlignment="Stretch" />
+                <ToggleSwitch Content="Right-to-left layout" FlowDirection="RightToLeft" HorizontalAlignment="Stretch" IsChecked="True" m3:SwitchAssist.IconConfiguration="Selected" />
+                <ToggleSwitch Content="A longer setting label wraps when the available width is limited, while the handle stays centered and the entire row remains clickable."
+                              MaxWidth="320" HorizontalAlignment="Stretch" />
+                <ToggleSwitch Content="Content template" HorizontalAlignment="Stretch">
+                    <ToggleSwitch.ContentTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <StackPanel>
+                                <TextBlock Text="{Binding}" />
+                                <TextBlock Text="Supporting text supplied by the application" m3:Typography.TextStyle="BodyMedium"
+                                           Foreground="{m3:Token MdSysOnSurfaceVariantBrush}" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ToggleSwitch.ContentTemplate>
+                </ToggleSwitch>
+                <ToggleSwitch AutomationProperties.Name="External label example" ToolTip.Tip="A switch with an external accessible label" />
+            </StackPanel>
+        </Border>
+        <Border Classes="switch-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}" m3:DensityAssist.Density="Dense5">
+                <TextBlock Text="Explicit density" m3:Typography.TextStyle="TitleMedium" />
+                <TextBlock Text="The target shrinks first, then the state layer. Track and handle sizes stay unchanged through Dense4; Dense5 scales the complete switch proportionally."
+                           TextWrapping="Wrap" m3:Typography.TextStyle="BodySmall" />
+                <ToggleSwitch Content="Default — 48; parent density is not inherited" HorizontalAlignment="Stretch" IsChecked="True" />
+                <ToggleSwitch Content="Dense1 — 44" HorizontalAlignment="Stretch" m3:DensityAssist.Density="Dense1" m3:SwitchAssist.IconConfiguration="Selected" />
+                <ToggleSwitch Content="Dense2 — 40" HorizontalAlignment="Stretch" m3:DensityAssist.Density="Dense2" m3:SwitchAssist.IconConfiguration="SelectedAndUnselected" />
+                <ToggleSwitch Content="Dense3 — 36" HorizontalAlignment="Stretch" IsChecked="True" m3:DensityAssist.Density="Dense3" />
+                <ToggleSwitch Content="Dense4 — 32" HorizontalAlignment="Stretch" IsChecked="True" m3:DensityAssist.Density="Dense4" m3:SwitchAssist.IconConfiguration="Selected" />
+                <ToggleSwitch Content="Dense5 — 28" HorizontalAlignment="Stretch" m3:DensityAssist.Density="Dense5" m3:SwitchAssist.IconConfiguration="SelectedAndUnselected" />
+            </StackPanel>
+        </Border>
+        <Border Classes="switch-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}">
+                <TextBlock Text="Motion and interaction" m3:Typography.TextStyle="TitleMedium" />
+                <TextBlock Text="Hold the handle to see it grow; drag to either side. Toggle rapidly to reverse motion, or change the content and density with keyboard focus visible."
+                           TextWrapping="Wrap" m3:Typography.TextStyle="BodySmall" />
+                <WrapPanel ItemSpacing="{m3:Token MdSysSpacing100}">
+                    <Button Content="Toggle" Click="OnToggleClick" />
+                    <Button Content="Change text" Click="OnTextClick" />
+                    <Button Content="Change template" Click="OnTemplateClick" />
+                    <Button Content="Change width" Click="OnWidthClick" />
+                    <Button Content="Cycle density" Click="OnDensityClick" />
+                    <Button Content="Cycle icons" Click="OnIconsClick" />
+                </WrapPanel>
+                <ToggleSwitch x:Name="MotionSwitch" Content="Short label" MaxWidth="480" m3:SwitchAssist.IconConfiguration="Selected" />
+                <ToggleSwitch x:Name="RtlMotionSwitch" Content="Short label" MaxWidth="480" FlowDirection="RightToLeft" m3:SwitchAssist.IconConfiguration="Selected" />
+                <ToggleSwitch x:Name="ReduceMotionSwitch" Content="Reduce motion" HorizontalAlignment="Stretch" Click="OnReduceMotionClick" />
+            </StackPanel>
+        </Border>
+        <Border Classes="switch-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}">
+                <TextBlock Text="Validation and local tokens" m3:Typography.TextStyle="TitleMedium" />
+                <ToggleSwitch x:Name="ValidatedSwitch" Content="Allow notifications" HorizontalAlignment="Stretch" />
+                <Button Content="Toggle validation message" Click="OnValidationClick" />
+                <ToggleSwitch x:Name="RemappedSwitch" Content="Local token aliases" HorizontalAlignment="Stretch" IsChecked="True" m3:SwitchAssist.IconConfiguration="Selected" />
+                <Button Content="Remap selected colors" Click="OnRemapClick" />
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

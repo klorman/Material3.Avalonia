@@ -1,0 +1,385 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:attached="clr-namespace:Material3.Avalonia.Attached"
+                    xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls"
+                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers"
+                    xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
+                    xmlns:motion="clr-namespace:Material3.Avalonia.Motion.Transitions"
+                    xmlns:symbols="clr-namespace:Material3.Avalonia.Symbols"
+                    xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives">
+
+    <ControlTheme x:Key="{x:Type ToggleSwitch}" TargetType="ToggleSwitch">
+        <Setter Property="internal:HoverState.IsEnabled" Value="True" />
+        <Setter Property="internal:KeyboardActivationGuard.IsEnabled" Value="True" />
+        <Setter Property="attached:DensityAssist.Density" Value="Default" />
+        <Setter Property="helpers:Typography.TextStyle" Value="BodyLarge" />
+        <Setter Property="Foreground" Value="{markup:Token MdSysOnSurfaceBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="CornerRadius" Value="{markup:DynamicCornerRadius MdCompSwitchTrackShape}" />
+        <Setter Property="OnContent" Value="{x:Null}" />
+        <Setter Property="OffContent" Value="{x:Null}" />
+        <Setter Property="controls:SwitchAssist.SelectedIcon" Value="{symbols:Symbol Check}" />
+        <Setter Property="controls:SwitchAssist.UnselectedIcon" Value="{symbols:Symbol Close}" />
+        <Setter Property="attached:FocusRing.Brush" Value="{markup:Token MdCompSwitchFocusIndicatorBrush}" />
+        <Setter Property="attached:FocusRing.Thickness" Value="{markup:Token MdCompSwitchFocusIndicatorThickness}" />
+        <Setter Property="attached:FocusRing.Offset" Value="{markup:Token MdCompSwitchFocusIndicatorOffset}" />
+        <Setter Property="attached:FocusRing.CornerRadius" Value="{Binding $self.CornerRadius}" />
+        <Setter Property="KnobTransitions">
+            <Transitions>
+                <motion:SpringDoubleTransition Property="Canvas.Left" Style="Spatial" Speed="Fast" />
+            </Transitions>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DataValidationErrors helpers:Typography.TextStyle="{x:Null}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Padding="{TemplateBinding Padding}">
+                        <primitives:SwitchContentMotion x:Name="PART_InteractionArea"
+                                                        Background="Transparent"
+                                                        UseLayoutRounding="False"
+                                                        TargetSize="{markup:DensityScalar MdImplSwitchTargetSize, MostDense=Dense5}"
+                                                        TrackWidth="{markup:Token MdCompSwitchTrackWidth}"
+                                                        TrackHeight="{markup:Token MdCompSwitchTrackHeight}"
+                                                        Gap="{markup:Token MdSysSpacing200}"
+                                                        LabelPlacement="{TemplateBinding controls:SwitchAssist.LabelPlacement}">
+                            <Viewbox Stretch="Uniform" UseLayoutRounding="False" ClipToBounds="False">
+                                <Grid Width="{markup:Token MdCompSwitchTrackWidth}"
+                                      Height="{markup:Token MdCompSwitchTrackHeight}"
+                                      UseLayoutRounding="False">
+                                    <Border x:Name="PART_Track"
+                                            BorderThickness="{markup:DynamicThickness MdCompSwitchTrackOutlineWidth}"
+                                            CornerRadius="{TemplateBinding CornerRadius}"
+                                            TemplatedControl.IsTemplateFocusTarget="True"
+                                            attached:FocusRing.Brush="{TemplateBinding attached:FocusRing.Brush}"
+                                            attached:FocusRing.Thickness="{TemplateBinding attached:FocusRing.Thickness}"
+                                            attached:FocusRing.Offset="{TemplateBinding attached:FocusRing.Offset}"
+                                            attached:FocusRing.CornerRadius="{TemplateBinding attached:FocusRing.CornerRadius}">
+                                        <Border.Transitions>
+                                            <Transitions>
+                                                <motion:SpringBrushTransition Property="Background" Speed="Fast" />
+                                                <motion:SpringBrushTransition Property="BorderBrush" Speed="Fast" />
+                                                <motion:SpringDoubleTransition Property="Opacity" Style="Effects" Speed="Fast" />
+                                            </Transitions>
+                                        </Border.Transitions>
+                                    </Border>
+                                    <primitives:SwitchKnobHost x:Name="PART_SwitchKnob"
+                                                               HorizontalAlignment="Left"
+                                                               VerticalAlignment="Center"
+                                                               UseLayoutRounding="False"
+                                                               TrackWidth="{markup:Token MdCompSwitchTrackWidth}"
+                                                               TrackHeight="{markup:Token MdCompSwitchTrackHeight}"
+                                                               TargetSize="{Binding #PART_InteractionArea.CurrentTargetSize}"
+                                                               StateLayerSize="{markup:Token MdCompSwitchStateLayerSize}">
+                                        <Grid x:Name="PART_MovingKnobs"
+                                              Background="Transparent"
+                                              UseLayoutRounding="False">
+                                            <primitives:StateLayer x:Name="PART_StateLayer"
+                                                                   CornerRadius="{markup:DynamicCornerRadius MdCompSwitchStateLayerShape}" />
+                                            <primitives:InkRipple x:Name="PART_Ripple"
+                                                                  CornerRadius="{markup:DynamicCornerRadius MdCompSwitchStateLayerShape}"
+                                                                  CenterOutsideShape="True"
+                                                                  InteractionTarget="{Binding #PART_InteractionArea}" />
+                                            <primitives:SwitchHandle x:Name="PART_Handle"
+                                                                     IconConfiguration="{TemplateBinding controls:SwitchAssist.IconConfiguration}"
+                                                                     UnselectedWidth="{markup:Token MdCompSwitchUnselectedHandleWidth}"
+                                                                     UnselectedHeight="{markup:Token MdCompSwitchUnselectedHandleHeight}"
+                                                                     SelectedWidth="{markup:Token MdCompSwitchSelectedHandleWidth}"
+                                                                     SelectedHeight="{markup:Token MdCompSwitchSelectedHandleHeight}"
+                                                                     WithIconWidth="{markup:Token MdCompSwitchWithIconHandleWidth}"
+                                                                     WithIconHeight="{markup:Token MdCompSwitchWithIconHandleHeight}"
+                                                                     PressedWidth="{markup:Token MdCompSwitchPressedHandleWidth}"
+                                                                     PressedHeight="{markup:Token MdCompSwitchPressedHandleHeight}"
+                                                                     HandleShape="{markup:DynamicCornerRadius MdCompSwitchHandleShape}">
+                                                <Panel>
+                                                    <primitives:IconPresenter x:Name="PART_SelectedIcon"
+                                                                              HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                              Value="{TemplateBinding controls:SwitchAssist.SelectedIcon}"
+                                                                              Size="{markup:Token MdCompSwitchSelectedIconSize}">
+                                                        <primitives:IconPresenter.Transitions>
+                                                            <Transitions>
+                                                                <motion:SpringBrushTransition Property="Foreground" Speed="Fast" />
+                                                            </Transitions>
+                                                        </primitives:IconPresenter.Transitions>
+                                                    </primitives:IconPresenter>
+                                                    <primitives:IconPresenter x:Name="PART_UnselectedIcon"
+                                                                              HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                              Value="{TemplateBinding controls:SwitchAssist.UnselectedIcon}"
+                                                                              Size="{markup:Token MdCompSwitchUnselectedIconSize}">
+                                                        <primitives:IconPresenter.Transitions>
+                                                            <Transitions>
+                                                                <motion:SpringBrushTransition Property="Foreground" Speed="Fast" />
+                                                            </Transitions>
+                                                        </primitives:IconPresenter.Transitions>
+                                                    </primitives:IconPresenter>
+                                                </Panel>
+                                            </primitives:SwitchHandle>
+                                        </Grid>
+                                    </primitives:SwitchKnobHost>
+                                </Grid>
+                            </Viewbox>
+                            <Grid x:Name="PART_Label" RowDefinitions="Auto,Auto" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <ContentPresenter x:Name="PART_ContentPresenter"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  helpers:Typography.TextStyle="{TemplateBinding helpers:Typography.TextStyle}"
+                                                  RecognizesAccessKey="True" TextWrapping="Wrap" />
+                                <Panel Grid.Row="1" helpers:Typography.TextStyle="BodyMedium" TextElement.Foreground="{markup:Token MdSysOnSurfaceVariantBrush}">
+                                    <ContentPresenter x:Name="PART_OnContentPresenter"
+                                                      Content="{TemplateBinding OnContent}" ContentTemplate="{TemplateBinding OnContentTemplate}"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" TextWrapping="Wrap" />
+                                    <ContentPresenter x:Name="PART_OffContentPresenter"
+                                                      Content="{TemplateBinding OffContent}" ContentTemplate="{TemplateBinding OffContentTemplate}"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" TextWrapping="Wrap" />
+                                </Panel>
+                            </Grid>
+                        </primitives:SwitchContentMotion>
+                    </Border>
+                </DataValidationErrors>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- State -->
+
+        <Style Selector="^ /template/ primitives|SwitchHandle#PART_Handle">
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchUnselectedHandleBrush}" />
+        </Style>
+
+        <Style Selector="^ /template/ Border#PART_Track">
+            <Setter Property="Background" Value="{markup:Token MdCompSwitchUnselectedTrackBrush}" />
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompSwitchUnselectedTrackOutlineBrush}" />
+        </Style>
+
+        <Style Selector="^ /template/ primitives|IconPresenter#PART_SelectedIcon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompSwitchSelectedIconBrush}" />
+        </Style>
+
+        <Style Selector="^ /template/ primitives|IconPresenter#PART_UnselectedIcon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompSwitchUnselectedIconBrush}" />
+        </Style>
+
+        <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="0" />
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchUnselectedHoverStateLayerBrush}" />
+        </Style>
+
+        <Style Selector="^:checked /template/ primitives|SwitchHandle#PART_Handle">
+            <Setter Property="IsSelected" Value="True" />
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchSelectedHandleBrush}" />
+        </Style>
+
+        <Style Selector="^:checked /template/ Border#PART_Track">
+            <Setter Property="Background" Value="{markup:Token MdCompSwitchSelectedTrackBrush}" />
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompSwitchSelectedTrackBrush}" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ primitives|SwitchHandle#PART_Handle, ^:dragging /template/ primitives|SwitchHandle#PART_Handle">
+            <Setter Property="IsPressed" Value="True" />
+        </Style>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_OnContentPresenter">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+
+        <Style Selector="^:checked /template/ ContentPresenter#PART_OnContentPresenter">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+
+        <Style Selector="^:checked /template/ ContentPresenter#PART_OffContentPresenter">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+
+        <Style Selector="^:not(:checked) /template/ primitives|InkRipple#PART_Ripple">
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchUnselectedPressedStateLayerBrush}" />
+            <Setter Property="BaseOpacity" Value="{markup:Token MdCompSwitchUnselectedPressedStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:not(:checked).m3-hovered:not(:focus-visible):not(:pressed):not(:dragging):not(:disabled) /template/ primitives|SwitchHandle#PART_Handle">
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchUnselectedHoverHandleBrush}" />
+        </Style>
+
+        <Style Selector="^:not(:checked).m3-hovered:not(:focus-visible):not(:pressed):not(:dragging):not(:disabled) /template/ Border#PART_Track">
+            <Setter Property="Background" Value="{markup:Token MdCompSwitchUnselectedHoverTrackBrush}" />
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompSwitchUnselectedHoverTrackOutlineBrush}" />
+        </Style>
+
+        <Style Selector="^:not(:checked).m3-hovered:not(:focus-visible):not(:pressed):not(:dragging):not(:disabled) /template/ primitives|IconPresenter#PART_UnselectedIcon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompSwitchUnselectedHoverIconBrush}" />
+        </Style>
+
+        <Style Selector="^:not(:checked):focus-visible:not(:pressed):not(:dragging):not(:disabled) /template/ primitives|SwitchHandle#PART_Handle">
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchUnselectedFocusHandleBrush}" />
+        </Style>
+
+        <Style Selector="^:not(:checked):focus-visible:not(:pressed):not(:dragging):not(:disabled) /template/ Border#PART_Track">
+            <Setter Property="Background" Value="{markup:Token MdCompSwitchUnselectedFocusTrackBrush}" />
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompSwitchUnselectedFocusTrackOutlineBrush}" />
+        </Style>
+
+        <Style Selector="^:not(:checked):focus-visible:not(:pressed):not(:dragging):not(:disabled) /template/ primitives|IconPresenter#PART_UnselectedIcon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompSwitchUnselectedFocusIconBrush}" />
+        </Style>
+
+        <Style Selector="^:not(:checked):pressed:not(:disabled) /template/ primitives|SwitchHandle#PART_Handle, ^:not(:checked):dragging:not(:disabled) /template/ primitives|SwitchHandle#PART_Handle">
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchUnselectedPressedHandleBrush}" />
+        </Style>
+
+        <Style Selector="^:not(:checked):pressed:not(:disabled) /template/ Border#PART_Track, ^:not(:checked):dragging:not(:disabled) /template/ Border#PART_Track">
+            <Setter Property="Background" Value="{markup:Token MdCompSwitchUnselectedPressedTrackBrush}" />
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompSwitchUnselectedPressedTrackOutlineBrush}" />
+        </Style>
+
+        <Style Selector="^:not(:checked):pressed:not(:disabled) /template/ primitives|IconPresenter#PART_UnselectedIcon, ^:not(:checked):dragging:not(:disabled) /template/ primitives|IconPresenter#PART_UnselectedIcon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompSwitchUnselectedPressedIconBrush}" />
+        </Style>
+
+        <Style Selector="^:checked /template/ primitives|InkRipple#PART_Ripple">
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchSelectedPressedStateLayerBrush}" />
+            <Setter Property="BaseOpacity" Value="{markup:Token MdCompSwitchSelectedPressedStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked.m3-hovered:not(:focus-visible):not(:pressed):not(:dragging):not(:disabled) /template/ primitives|SwitchHandle#PART_Handle">
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchSelectedHoverHandleBrush}" />
+        </Style>
+
+        <Style Selector="^:checked.m3-hovered:not(:focus-visible):not(:pressed):not(:dragging):not(:disabled) /template/ Border#PART_Track">
+            <Setter Property="Background" Value="{markup:Token MdCompSwitchSelectedHoverTrackBrush}" />
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompSwitchSelectedHoverTrackBrush}" />
+        </Style>
+
+        <Style Selector="^:checked.m3-hovered:not(:focus-visible):not(:pressed):not(:dragging):not(:disabled) /template/ primitives|IconPresenter#PART_SelectedIcon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompSwitchSelectedHoverIconBrush}" />
+        </Style>
+
+        <Style Selector="^:checked:focus-visible:not(:pressed):not(:dragging):not(:disabled) /template/ primitives|SwitchHandle#PART_Handle">
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchSelectedFocusHandleBrush}" />
+        </Style>
+
+        <Style Selector="^:checked:focus-visible:not(:pressed):not(:dragging):not(:disabled) /template/ Border#PART_Track">
+            <Setter Property="Background" Value="{markup:Token MdCompSwitchSelectedFocusTrackBrush}" />
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompSwitchSelectedFocusTrackBrush}" />
+        </Style>
+
+        <Style Selector="^:checked:focus-visible:not(:pressed):not(:dragging):not(:disabled) /template/ primitives|IconPresenter#PART_SelectedIcon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompSwitchSelectedFocusIconBrush}" />
+        </Style>
+
+        <Style Selector="^:checked:pressed:not(:disabled) /template/ primitives|SwitchHandle#PART_Handle, ^:checked:dragging:not(:disabled) /template/ primitives|SwitchHandle#PART_Handle">
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchSelectedPressedHandleBrush}" />
+        </Style>
+
+        <Style Selector="^:checked:pressed:not(:disabled) /template/ Border#PART_Track, ^:checked:dragging:not(:disabled) /template/ Border#PART_Track">
+            <Setter Property="Background" Value="{markup:Token MdCompSwitchSelectedPressedTrackBrush}" />
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompSwitchSelectedPressedTrackBrush}" />
+        </Style>
+
+        <Style Selector="^:checked:pressed:not(:disabled) /template/ primitives|IconPresenter#PART_SelectedIcon, ^:checked:dragging:not(:disabled) /template/ primitives|IconPresenter#PART_SelectedIcon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompSwitchSelectedPressedIconBrush}" />
+        </Style>
+
+        <Style Selector="^:not(:checked).m3-hovered:not(:focus-visible):not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchUnselectedHoverStateLayerBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompSwitchUnselectedHoverStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:not(:checked):focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchUnselectedFocusStateLayerBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompSwitchUnselectedFocusStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked.m3-hovered:not(:focus-visible):not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchSelectedHoverStateLayerBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompSwitchSelectedHoverStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked:focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchSelectedFocusStateLayerBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompSwitchSelectedFocusStateLayerOpacity}" />
+        </Style>
+
+        <!-- Disabled -->
+
+        <Style Selector="^:disabled">
+            <Setter Property="Cursor" Value="Arrow" />
+            <Setter Property="KnobTransitions" Value="{x:Null}" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ primitives|InkRipple#PART_Ripple">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ Grid#PART_Label">
+            <Setter Property="Opacity" Value="{markup:Token MdImplSwitchDisabledLabelOpacity}" />
+        </Style>
+
+        <Style Selector="^:not(:checked):disabled /template/ primitives|SwitchHandle#PART_Handle">
+            <Setter Property="IsPressed" Value="False" />
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchDisabledUnselectedHandleBrush}" />
+            <Setter Property="HandleOpacity" Value="{markup:Token MdCompSwitchDisabledUnselectedHandleOpacity}" />
+        </Style>
+
+        <Style Selector="^:not(:checked):disabled /template/ Border#PART_Track">
+            <Setter Property="Background" Value="{markup:Token MdCompSwitchDisabledUnselectedTrackBrush}" />
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompSwitchDisabledUnselectedTrackOutlineBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompSwitchDisabledTrackOpacity}" />
+        </Style>
+
+        <Style Selector="^:not(:checked):disabled /template/ primitives|IconPresenter#PART_UnselectedIcon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompSwitchDisabledUnselectedIconBrush}" />
+        </Style>
+
+        <Style Selector="^:checked:disabled /template/ primitives|SwitchHandle#PART_Handle">
+            <Setter Property="IsPressed" Value="False" />
+            <Setter Property="Brush" Value="{markup:Token MdCompSwitchDisabledSelectedHandleBrush}" />
+            <Setter Property="HandleOpacity" Value="{markup:Token MdCompSwitchDisabledSelectedHandleOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked:disabled /template/ Border#PART_Track">
+            <Setter Property="Background" Value="{markup:Token MdCompSwitchDisabledSelectedTrackBrush}" />
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompSwitchDisabledSelectedTrackBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompSwitchDisabledTrackOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked:disabled /template/ primitives|IconPresenter#PART_SelectedIcon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompSwitchDisabledSelectedIconBrush}" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ primitives|SwitchHandle#PART_Handle">
+            <Setter Property="SelectedIconOpacity" Value="{markup:Token MdCompSwitchDisabledSelectedIconOpacity}" />
+            <Setter Property="UnselectedIconOpacity" Value="{markup:Token MdCompSwitchDisabledUnselectedIconOpacity}" />
+        </Style>
+
+        <!-- Classes -->
+
+        <Style Selector="^.no-icons">
+            <Setter Property="controls:SwitchAssist.IconConfiguration" Value="None" />
+        </Style>
+        <Style Selector="^.selected-icon">
+            <Setter Property="controls:SwitchAssist.IconConfiguration" Value="Selected" />
+        </Style>
+        <Style Selector="^.both-icons">
+            <Setter Property="controls:SwitchAssist.IconConfiguration" Value="SelectedAndUnselected" />
+        </Style>
+
+        <Style Selector="^.label-leading">
+            <Setter Property="controls:SwitchAssist.LabelPlacement" Value="Leading" />
+        </Style>
+        <Style Selector="^.label-trailing">
+            <Setter Property="controls:SwitchAssist.LabelPlacement" Value="Trailing" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

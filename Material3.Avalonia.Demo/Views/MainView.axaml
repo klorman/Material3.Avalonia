@@ -27,6 +27,8 @@
 
             <views:RadioButtons HorizontalAlignment="Stretch" />
 
+            <views:Switches HorizontalAlignment="Stretch" />
+
             <views:Badges HorizontalAlignment="Stretch" />
 
             <views:TextBoxes HorizontalAlignment="Center" IsVisible="True" />

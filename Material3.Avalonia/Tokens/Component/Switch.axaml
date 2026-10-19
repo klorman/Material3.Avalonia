@@ -1,0 +1,80 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens">
+    <tokens:TokenAlias x:Key="MdCompSwitchDisabledSelectedHandleBrush" ResourceKey="MdSysSurfaceBrush" />
+    <x:Double x:Key="MdCompSwitchDisabledSelectedHandleOpacity">1</x:Double>
+    <tokens:TokenAlias x:Key="MdCompSwitchDisabledSelectedIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompSwitchDisabledSelectedIconOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompSwitchDisabledSelectedTrackBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompSwitchDisabledTrackOpacity">0.12</x:Double>
+    <tokens:TokenAlias x:Key="MdCompSwitchDisabledUnselectedHandleBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompSwitchDisabledUnselectedHandleOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompSwitchDisabledUnselectedIconBrush" ResourceKey="MdSysSurfaceContainerHighestBrush" />
+    <x:Double x:Key="MdCompSwitchDisabledUnselectedIconOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompSwitchDisabledUnselectedTrackBrush" ResourceKey="MdSysSurfaceContainerHighestBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchDisabledUnselectedTrackOutlineBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchFocusIndicatorBrush" ResourceKey="MdSysSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchFocusIndicatorOffset" ResourceKey="MdSysStateFocusIndicatorOuterOffset" />
+    <tokens:TokenAlias x:Key="MdCompSwitchFocusIndicatorThickness" ResourceKey="MdSysStateFocusIndicatorThickness" />
+    <tokens:TokenAlias x:Key="MdCompSwitchHandleShape" ResourceKey="MdSysShapeCornerFull" />
+    <x:Double x:Key="MdCompSwitchPressedHandleHeight">28</x:Double>
+    <x:Double x:Key="MdCompSwitchPressedHandleWidth">28</x:Double>
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedHandleBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <x:Double x:Key="MdCompSwitchSelectedHandleHeight">24</x:Double>
+    <x:Double x:Key="MdCompSwitchSelectedHandleWidth">24</x:Double>
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedIconBrush" ResourceKey="MdSysPrimaryBrush" />
+    <x:Double x:Key="MdCompSwitchSelectedIconSize">16</x:Double>
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedTrackBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchStateLayerShape" ResourceKey="MdSysShapeCornerFull" />
+    <x:Double x:Key="MdCompSwitchStateLayerSize">40</x:Double>
+    <x:Double x:Key="MdCompSwitchTrackHeight">32</x:Double>
+    <x:Double x:Key="MdCompSwitchTrackOutlineWidth">2</x:Double>
+    <tokens:TokenAlias x:Key="MdCompSwitchTrackShape" ResourceKey="MdSysShapeCornerFull" />
+    <x:Double x:Key="MdCompSwitchTrackWidth">52</x:Double>
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedHandleBrush" ResourceKey="MdSysOutlineBrush" />
+    <x:Double x:Key="MdCompSwitchUnselectedHandleHeight">16</x:Double>
+    <x:Double x:Key="MdCompSwitchUnselectedHandleWidth">16</x:Double>
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedIconBrush" ResourceKey="MdSysSurfaceContainerHighestBrush" />
+    <x:Double x:Key="MdCompSwitchUnselectedIconSize">16</x:Double>
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedTrackBrush" ResourceKey="MdSysSurfaceContainerHighestBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedTrackOutlineBrush" ResourceKey="MdSysOutlineBrush" />
+    <x:Double x:Key="MdCompSwitchWithIconHandleHeight">24</x:Double>
+    <x:Double x:Key="MdCompSwitchWithIconHandleWidth">24</x:Double>
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedHoverHandleBrush" ResourceKey="MdSysPrimaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedHoverIconBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedHoverStateLayerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedHoverStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedHoverTrackBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedHoverHandleBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedHoverIconBrush" ResourceKey="MdSysSurfaceContainerHighestBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedHoverStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedHoverStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedHoverTrackBrush" ResourceKey="MdSysSurfaceContainerHighestBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedHoverTrackOutlineBrush" ResourceKey="MdSysOutlineBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedFocusHandleBrush" ResourceKey="MdSysPrimaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedFocusIconBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedFocusStateLayerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedFocusStateLayerOpacity" ResourceKey="MdSysStateFocusOpacity" />
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedFocusTrackBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedFocusHandleBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedFocusIconBrush" ResourceKey="MdSysSurfaceContainerHighestBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedFocusStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedFocusStateLayerOpacity" ResourceKey="MdSysStateFocusOpacity" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedFocusTrackBrush" ResourceKey="MdSysSurfaceContainerHighestBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedFocusTrackOutlineBrush" ResourceKey="MdSysOutlineBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedPressedHandleBrush" ResourceKey="MdSysPrimaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedPressedIconBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedPressedStateLayerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedPressedStateLayerOpacity" ResourceKey="MdSysStatePressedOpacity" />
+    <tokens:TokenAlias x:Key="MdCompSwitchSelectedPressedTrackBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedPressedHandleBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedPressedIconBrush" ResourceKey="MdSysSurfaceContainerHighestBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedPressedStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedPressedStateLayerOpacity" ResourceKey="MdSysStatePressedOpacity" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedPressedTrackBrush" ResourceKey="MdSysSurfaceContainerHighestBrush" />
+    <tokens:TokenAlias x:Key="MdCompSwitchUnselectedPressedTrackOutlineBrush" ResourceKey="MdSysOutlineBrush" />
+
+    <!-- M3 target measurements and adjacent text opacity have no component tokens. -->
+    <x:Double x:Key="MdImplSwitchTargetSize">48</x:Double>
+    <x:Double x:Key="MdImplSwitchDisabledLabelOpacity">0.38</x:Double>
+</ResourceDictionary>
