@@ -25,6 +25,8 @@
 
             <views:CheckBoxes HorizontalAlignment="Stretch" />
 
+            <views:RadioButtons HorizontalAlignment="Stretch" />
+
             <views:Badges HorizontalAlignment="Stretch" />
 
             <views:TextBoxes HorizontalAlignment="Center" IsVisible="True" />

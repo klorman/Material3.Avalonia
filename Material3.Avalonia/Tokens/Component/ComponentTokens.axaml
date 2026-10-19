@@ -11,5 +11,6 @@
         <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/Component/Menus.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/Component/Checkbox.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/Component/ScrollBar.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/Component/RadioButton.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -6,22 +6,22 @@ using Material3.Avalonia.Motion.Transitions;
 
 namespace Material3.Avalonia.Controls.Primitives;
 
-internal sealed class CheckBoxContentMotion : Panel
+internal sealed class SelectionControlContentMotion : Panel
 {
     public static readonly StyledProperty<double> TargetSizeProperty =
-        AvaloniaProperty.Register<CheckBoxContentMotion, double>(nameof(TargetSize));
+        AvaloniaProperty.Register<SelectionControlContentMotion, double>(nameof(TargetSize));
 
     public static readonly StyledProperty<double> StateLayerSizeProperty =
-        AvaloniaProperty.Register<CheckBoxContentMotion, double>(nameof(StateLayerSize));
+        AvaloniaProperty.Register<SelectionControlContentMotion, double>(nameof(StateLayerSize));
 
     public static readonly StyledProperty<double> IndicatorSlotWidthProperty =
-        AvaloniaProperty.Register<CheckBoxContentMotion, double>(nameof(IndicatorSlotWidth));
+        AvaloniaProperty.Register<SelectionControlContentMotion, double>(nameof(IndicatorSlotWidth));
 
     public static readonly StyledProperty<bool> HasContentProperty =
-        AvaloniaProperty.Register<CheckBoxContentMotion, bool>(nameof(HasContent));
+        AvaloniaProperty.Register<SelectionControlContentMotion, bool>(nameof(HasContent));
 
     private static readonly StyledProperty<double> ProgressProperty =
-        AvaloniaProperty.Register<CheckBoxContentMotion, double>("Progress", 1);
+        AvaloniaProperty.Register<SelectionControlContentMotion, double>("Progress", 1);
 
     private Geometry _from;
     private Geometry _target;
@@ -37,13 +37,13 @@ internal sealed class CheckBoxContentMotion : Panel
             Circle + (target.Circle - Circle) * progress);
     }
 
-    static CheckBoxContentMotion()
+    static SelectionControlContentMotion()
     {
-        AffectsMeasure<CheckBoxContentMotion>(TargetSizeProperty, StateLayerSizeProperty,
+        AffectsMeasure<SelectionControlContentMotion>(TargetSizeProperty, StateLayerSizeProperty,
             IndicatorSlotWidthProperty, HasContentProperty, ProgressProperty);
     }
 
-    public CheckBoxContentMotion()
+    public SelectionControlContentMotion()
     {
         ClipToBounds = true;
         Transitions =
@@ -92,7 +92,7 @@ internal sealed class CheckBoxContentMotion : Panel
         var content = HasContent ? Children[1].DesiredSize : default;
         _contentWidth = content.Width;
         var target = new Geometry(slot + content.Width, Math.Max(TargetSize, content.Height), slot, circle);
-        var owner = TemplatedParent as CheckBox;
+        var owner = TemplatedParent as Control;
         var immediate = !_arranged || MotionSettings.ReduceMotion || TopLevel.GetTopLevel(this) is null;
         if (immediate || target != _target)
         {

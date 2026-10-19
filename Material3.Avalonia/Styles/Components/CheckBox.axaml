@@ -34,11 +34,11 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             Padding="{TemplateBinding Padding}">
-                        <primitives:CheckBoxContentMotion x:Name="PART_InteractionArea"
-                                                          Background="Transparent"
-                                                          TargetSize="{markup:DensityScalar MdImplCheckboxTargetSize, MostDense=Dense5}"
-                                                          IndicatorSlotWidth="{markup:Token MdImplCheckboxTargetSize}"
-                                                          StateLayerSize="{markup:Token MdCompCheckboxStateLayerSize}">
+                        <primitives:SelectionControlContentMotion x:Name="PART_InteractionArea"
+                                                                  Background="Transparent"
+                                                                  TargetSize="{markup:DensityScalar MdImplCheckboxTargetSize, MostDense=Dense5}"
+                                                                  IndicatorSlotWidth="{markup:Token MdImplCheckboxTargetSize}"
+                                                                  StateLayerSize="{markup:Token MdCompCheckboxStateLayerSize}">
                             <Grid x:Name="PART_FocusTarget"
                                   UseLayoutRounding="False"
                                   IsHitTestVisible="False"
@@ -88,17 +88,17 @@
                                               helpers:Typography.TextStyle="{TemplateBinding helpers:Typography.TextStyle}"
                                               RecognizesAccessKey="True"
                                               TextWrapping="Wrap" />
-                        </primitives:CheckBoxContentMotion>
+                        </primitives:SelectionControlContentMotion>
                     </Border>
                 </DataValidationErrors>
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^ /template/ primitives|CheckBoxContentMotion#PART_InteractionArea">
+        <Style Selector="^ /template/ primitives|SelectionControlContentMotion#PART_InteractionArea">
             <Setter Property="HasContent" Value="True" />
         </Style>
 
-        <Style Selector="^:empty /template/ primitives|CheckBoxContentMotion#PART_InteractionArea">
+        <Style Selector="^:empty /template/ primitives|SelectionControlContentMotion#PART_InteractionArea">
             <Setter Property="HasContent" Value="False" />
         </Style>
 

@@ -36,5 +36,6 @@
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ContextMenu.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/MenuFlyoutPresenter.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/CheckBox.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/RadioButton.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

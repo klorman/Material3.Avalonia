@@ -1,0 +1,36 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens">
+    <x:Double x:Key="MdCompRadioButtonIconSize">20</x:Double>
+    <x:Double x:Key="MdCompRadioButtonStateLayerSize">40</x:Double>
+    <tokens:TokenAlias x:Key="MdCompRadioButtonUnselectedIconBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonUnselectedHoverIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonUnselectedHoverStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonUnselectedHoverStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonUnselectedFocusIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonUnselectedFocusStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonUnselectedFocusStateLayerOpacity" ResourceKey="MdSysStateFocusOpacity" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonUnselectedPressedIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonUnselectedPressedStateLayerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonUnselectedPressedStateLayerOpacity" ResourceKey="MdSysStatePressedOpacity" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonUnselectedDisabledIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompRadioButtonUnselectedDisabledIconOpacity">0.38</x:Double>
+    <tokens:TokenAlias x:Key="MdCompRadioButtonSelectedIconBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonSelectedHoverIconBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonSelectedHoverStateLayerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonSelectedHoverStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonSelectedFocusIconBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonSelectedFocusStateLayerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonSelectedFocusStateLayerOpacity" ResourceKey="MdSysStateFocusOpacity" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonSelectedPressedIconBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonSelectedPressedStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonSelectedPressedStateLayerOpacity" ResourceKey="MdSysStatePressedOpacity" />
+    <tokens:TokenAlias x:Key="MdCompRadioButtonSelectedDisabledIconBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompRadioButtonSelectedDisabledIconOpacity">0.38</x:Double>
+
+    <!-- M3 target measurements and indicator geometry have no component tokens. -->
+    <x:Double x:Key="MdImplRadioButtonTargetSize">48</x:Double>
+    <x:Double x:Key="MdImplRadioButtonStrokeThickness">2</x:Double>
+    <x:Double x:Key="MdImplRadioButtonDotSize">10</x:Double>
+    <x:Double x:Key="MdImplRadioButtonDisabledLabelOpacity">0.38</x:Double>
+</ResourceDictionary>

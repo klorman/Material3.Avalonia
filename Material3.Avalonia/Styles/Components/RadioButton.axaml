@@ -1,0 +1,182 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:attached="clr-namespace:Material3.Avalonia.Attached"
+                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers"
+                    xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
+                    xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives">
+
+    <ControlTheme x:Key="{x:Type RadioButton}" TargetType="RadioButton">
+        <Setter Property="internal:HoverState.IsEnabled" Value="True" />
+        <Setter Property="internal:KeyboardActivationGuard.IsEnabled" Value="True" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="attached:DensityAssist.Density" Value="Default" />
+        <Setter Property="helpers:Typography.TextStyle" Value="BodyLarge" />
+        <Setter Property="Foreground" Value="{markup:Token MdSysOnSurfaceBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="attached:FocusRing.Brush" Value="{markup:Token MdSysSecondaryBrush}" />
+        <Setter Property="attached:FocusRing.Thickness" Value="{markup:Token MdSysStateFocusIndicatorThickness}" />
+        <Setter Property="attached:FocusRing.Offset" Value="{markup:Token MdSysStateFocusIndicatorOuterOffset}" />
+        <Setter Property="attached:FocusRing.CornerRadius" Value="{markup:DynamicCornerRadius MdSysShapeCornerFull}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DataValidationErrors helpers:Typography.TextStyle="{x:Null}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Padding="{TemplateBinding Padding}">
+                        <primitives:SelectionControlContentMotion x:Name="PART_InteractionArea"
+                                                                  Background="Transparent"
+                                                                  TargetSize="{markup:DensityScalar MdImplRadioButtonTargetSize, MostDense=Dense5}"
+                                                                  IndicatorSlotWidth="{markup:Token MdImplRadioButtonTargetSize}"
+                                                                  StateLayerSize="{markup:Token MdCompRadioButtonStateLayerSize}">
+                            <Grid x:Name="PART_FocusTarget"
+                                  UseLayoutRounding="False"
+                                  IsHitTestVisible="False"
+                                  TemplatedControl.IsTemplateFocusTarget="True"
+                                  attached:FocusRing.Brush="{TemplateBinding attached:FocusRing.Brush}"
+                                  attached:FocusRing.Thickness="{TemplateBinding attached:FocusRing.Thickness}"
+                                  attached:FocusRing.Offset="{TemplateBinding attached:FocusRing.Offset}"
+                                  attached:FocusRing.CornerRadius="{TemplateBinding attached:FocusRing.CornerRadius}">
+                                <primitives:StateLayer x:Name="PART_StateLayer"
+                                                       CornerRadius="{markup:DynamicCornerRadius MdSysShapeCornerFull}" />
+                                <primitives:InkRipple x:Name="PART_Ripple"
+                                                      CornerRadius="{markup:DynamicCornerRadius MdSysShapeCornerFull}"
+                                                      CenterOutsideShape="True"
+                                                      InteractionTarget="{Binding #PART_InteractionArea}" />
+                                <primitives:RadioButtonIndicator x:Name="PART_Indicator"
+                                                                 IconSize="{markup:Token MdCompRadioButtonIconSize}"
+                                                                 StrokeThickness="{markup:Token MdImplRadioButtonStrokeThickness}"
+                                                                 DotSize="{markup:Token MdImplRadioButtonDotSize}" />
+                            </Grid>
+                            <ContentPresenter x:Name="PART_ContentPresenter"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              helpers:Typography.TextStyle="{TemplateBinding helpers:Typography.TextStyle}"
+                                              RecognizesAccessKey="True"
+                                              TextWrapping="Wrap" />
+                        </primitives:SelectionControlContentMotion>
+                    </Border>
+                </DataValidationErrors>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ primitives|SelectionControlContentMotion#PART_InteractionArea">
+            <Setter Property="HasContent" Value="True" />
+        </Style>
+
+        <Style Selector="^:empty /template/ primitives|SelectionControlContentMotion#PART_InteractionArea">
+            <Setter Property="HasContent" Value="False" />
+        </Style>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter:not(:empty)">
+            <Setter Property="Margin" Value="{markup:DynamicThickness MdSysSpacing100 MdSysSpacing0}" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Cursor" Value="Arrow" />
+        </Style>
+
+        <!-- State -->
+
+        <Style Selector="^ /template/ primitives|RadioButtonIndicator#PART_Indicator">
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonUnselectedIconBrush}" />
+        </Style>
+
+        <Style Selector="^:checked /template/ primitives|RadioButtonIndicator#PART_Indicator">
+            <Setter Property="IsSelected" Value="True" />
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonSelectedIconBrush}" />
+        </Style>
+
+        <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="0" />
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonUnselectedHoverStateLayerBrush}" />
+        </Style>
+
+        <Style Selector="^:not(:checked) /template/ primitives|InkRipple#PART_Ripple">
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonUnselectedPressedStateLayerBrush}" />
+            <Setter Property="BaseOpacity" Value="{markup:Token MdCompRadioButtonUnselectedPressedStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:not(:checked).m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ primitives|RadioButtonIndicator#PART_Indicator">
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonUnselectedHoverIconBrush}" />
+        </Style>
+
+        <Style Selector="^:not(:checked):focus-visible:not(:pressed):not(:disabled) /template/ primitives|RadioButtonIndicator#PART_Indicator">
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonUnselectedFocusIconBrush}" />
+        </Style>
+
+        <Style Selector="^:not(:checked):pressed:not(:disabled) /template/ primitives|RadioButtonIndicator#PART_Indicator">
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonUnselectedPressedIconBrush}" />
+        </Style>
+
+        <Style Selector="^:not(:checked).m3-hovered:not(:focus-visible):not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonUnselectedHoverStateLayerBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompRadioButtonUnselectedHoverStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:not(:checked):focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonUnselectedFocusStateLayerBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompRadioButtonUnselectedFocusStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked /template/ primitives|InkRipple#PART_Ripple">
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonSelectedPressedStateLayerBrush}" />
+            <Setter Property="BaseOpacity" Value="{markup:Token MdCompRadioButtonSelectedPressedStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ primitives|RadioButtonIndicator#PART_Indicator">
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonSelectedHoverIconBrush}" />
+        </Style>
+
+        <Style Selector="^:checked:focus-visible:not(:pressed):not(:disabled) /template/ primitives|RadioButtonIndicator#PART_Indicator">
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonSelectedFocusIconBrush}" />
+        </Style>
+
+        <Style Selector="^:checked:pressed:not(:disabled) /template/ primitives|RadioButtonIndicator#PART_Indicator">
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonSelectedPressedIconBrush}" />
+        </Style>
+
+        <Style Selector="^:checked.m3-hovered:not(:focus-visible):not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonSelectedHoverStateLayerBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompRadioButtonSelectedHoverStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked:focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonSelectedFocusStateLayerBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompRadioButtonSelectedFocusStateLayerOpacity}" />
+        </Style>
+
+        <!-- Disabled -->
+
+        <Style Selector="^:disabled /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ primitives|InkRipple#PART_Ripple">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+
+        <Style Selector="^:not(:checked):disabled /template/ primitives|RadioButtonIndicator#PART_Indicator">
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonUnselectedDisabledIconBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompRadioButtonUnselectedDisabledIconOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked:disabled /template/ primitives|RadioButtonIndicator#PART_Indicator">
+            <Setter Property="Brush" Value="{markup:Token MdCompRadioButtonSelectedDisabledIconBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompRadioButtonSelectedDisabledIconOpacity}" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Opacity" Value="{markup:Token MdImplRadioButtonDisabledLabelOpacity}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

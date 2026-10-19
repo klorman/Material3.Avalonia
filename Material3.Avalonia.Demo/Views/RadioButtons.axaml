@@ -1,0 +1,136 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:m3="https://github.com/klorman/Material3.Avalonia"
+             xmlns:vm="clr-namespace:Material3.Avalonia.Demo.ViewModels"
+             x:DataType="vm:RadioButtonsViewModel"
+             x:Class="Material3.Avalonia.Demo.Views.RadioButtons">
+    <UserControl.Styles>
+        <Style Selector="Border.radio-section">
+            <Setter Property="Background" Value="{m3:Token MdSysSurfaceContainerLowBrush}" />
+            <Setter Property="CornerRadius" Value="{m3:Token MdSysShapeCornerLarge}" />
+            <Setter Property="Padding" Value="{m3:DynamicThickness MdSysSpacing300}" />
+        </Style>
+    </UserControl.Styles>
+    <StackPanel MaxWidth="720"
+                Margin="{m3:DynamicThickness MdSysSpacing300}"
+                Spacing="{m3:Token MdSysSpacing300}">
+        <TextBlock Text="Radio buttons" m3:Typography.TextStyle="HeadlineMedium" />
+        <TextBlock Text="Choose one option. Click the ring, label or surrounding space; selecting the same option again keeps it selected."
+                   TextWrapping="Wrap" m3:Typography.TextStyle="BodyMedium" />
+        <Border Classes="radio-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}">
+                <TextBlock x:Name="AddressLabel" Text="Ship to" m3:Typography.TextStyle="TitleMedium" />
+                <StackPanel m3:RadioButtonAssist.GroupNavigation="True" AutomationProperties.LabeledBy="{Binding #AddressLabel}">
+                    <RadioButton Content="_Home" GroupName="demo-address" IsChecked="{Binding Home, Mode=TwoWay}"
+                                 Command="{Binding CountActivationCommand}" />
+                    <RadioButton Content="_Office" GroupName="demo-address" IsChecked="{Binding Office, Mode=TwoWay}"
+                                 Command="{Binding CountActivationCommand}" />
+                    <RadioButton Content="Unavailable address" GroupName="demo-address" IsEnabled="False" />
+                </StackPanel>
+                <TextBlock Text="{Binding SelectionText}" m3:Typography.TextStyle="BodySmall" />
+                <TextBlock Text="Tab enters the group; arrows select and wrap, skipping disabled options. Tab leaves the group."
+                           TextWrapping="Wrap" m3:Typography.TextStyle="BodySmall" />
+                <Button Content="Select from the view model" Click="OnSelectClick" />
+            </StackPanel>
+        </Border>
+        <Border Classes="radio-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}">
+                <TextBlock Text="Independent groups and initial selection" m3:Typography.TextStyle="TitleMedium" />
+                <StackPanel m3:RadioButtonAssist.GroupNavigation="True">
+                    <RadioButton Content="No initial selection: first option" />
+                    <RadioButton Content="Second option" />
+                </StackPanel>
+                <TextBlock Text="Named group across separate containers" m3:Typography.TextStyle="BodySmall" />
+                <StackPanel m3:RadioButtonAssist.GroupNavigation="True">
+                    <Border><RadioButton Content="Standard delivery" GroupName="demo-cross-container" IsChecked="True" /></Border>
+                    <Border><RadioButton Content="Express delivery" GroupName="demo-cross-container" /></Border>
+                </StackPanel>
+                <StackPanel>
+                    <RadioButton Content="Disabled, unselected" IsEnabled="False" />
+                    <RadioButton Content="Disabled, selected" IsChecked="True" IsEnabled="False" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Border Classes="radio-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}">
+                <TextBlock Text="Click targets and content" m3:Typography.TextStyle="TitleMedium" />
+                <RadioButton Content="Left-aligned target" GroupName="demo-radio-content" IsChecked="True" />
+                <RadioButton Content="Stretched target — click the empty space" HorizontalAlignment="Stretch"
+                             GroupName="demo-radio-content" Background="{m3:Token MdSysSurfaceContainerHighBrush}" />
+                <RadioButton Content="A long radio label wraps naturally when the available width is limited, while the focus ring stays around the indicator."
+                             GroupName="demo-radio-content" MaxWidth="320" />
+                <RadioButton Content="Right-to-left layout" FlowDirection="RightToLeft" HorizontalAlignment="Stretch"
+                             GroupName="demo-radio-content" />
+                <RadioButton Content="Content template" GroupName="demo-radio-content">
+                    <RadioButton.ContentTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <StackPanel>
+                                <TextBlock Text="{Binding}" />
+                                <TextBlock Text="Custom secondary content" m3:Typography.TextStyle="BodySmall" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </RadioButton.ContentTemplate>
+                </RadioButton>
+                <RadioButton AutomationProperties.Name="Compact option with an external label" GroupName="demo-radio-content"
+                             ToolTip.Tip="Radio button with an external accessible label" />
+            </StackPanel>
+        </Border>
+        <Border Classes="radio-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}" m3:DensityAssist.Density="Dense5">
+                <TextBlock Text="Explicit density" m3:Typography.TextStyle="TitleMedium" />
+                <TextBlock Text="The label stays aligned. The ring and dot keep their size while the surrounding target and circle shrink."
+                           TextWrapping="Wrap" m3:Typography.TextStyle="BodySmall" />
+                <RadioButton Content="Default — 48; parent Dense5 is not inherited" GroupName="demo-radio-density" IsChecked="True" />
+                <RadioButton Content="Dense1 — 44" GroupName="demo-radio-density" m3:DensityAssist.Density="Dense1" />
+                <RadioButton Content="Dense2 — 40" GroupName="demo-radio-density" m3:DensityAssist.Density="Dense2" />
+                <RadioButton Content="Dense3 — 36" GroupName="demo-radio-density" m3:DensityAssist.Density="Dense3" />
+                <RadioButton Content="Dense4 — 32" GroupName="demo-radio-density" m3:DensityAssist.Density="Dense4" />
+                <RadioButton Content="Dense5 — 28" GroupName="demo-radio-density" m3:DensityAssist.Density="Dense5" />
+                <StackPanel Orientation="Horizontal" Spacing="{m3:Token MdSysSpacing100}">
+                    <RadioButton AutomationProperties.Name="Default density" GroupName="demo-radio-compact-density" IsChecked="True" />
+                    <RadioButton AutomationProperties.Name="Dense1" GroupName="demo-radio-compact-density" m3:DensityAssist.Density="Dense1" />
+                    <RadioButton AutomationProperties.Name="Dense2" GroupName="demo-radio-compact-density" m3:DensityAssist.Density="Dense2" />
+                    <RadioButton AutomationProperties.Name="Dense3" GroupName="demo-radio-compact-density" m3:DensityAssist.Density="Dense3" />
+                    <RadioButton AutomationProperties.Name="Dense4" GroupName="demo-radio-compact-density" m3:DensityAssist.Density="Dense4" />
+                    <RadioButton AutomationProperties.Name="Dense5" GroupName="demo-radio-compact-density" m3:DensityAssist.Density="Dense5" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Border Classes="radio-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}">
+                <TextBlock Text="Selection, content and density motion" m3:Typography.TextStyle="TitleMedium" />
+                <TextBlock Text="Switch rapidly between options. Change text, template, width and density while the keyboard focus ring is visible."
+                           TextWrapping="Wrap" m3:Typography.TextStyle="BodySmall" />
+                <WrapPanel ItemSpacing="{m3:Token MdSysSpacing100}">
+                    <Button Content="Switch selection" Click="OnMotionSelectionClick" />
+                    <Button Content="Change text" Click="OnTextClick" />
+                    <Button Content="Change template" Click="OnTemplateClick" />
+                    <Button Content="Change width" Click="OnWidthClick" />
+                    <Button Content="Cycle density" Click="OnDensityClick" />
+                </WrapPanel>
+                <StackPanel m3:RadioButtonAssist.GroupNavigation="True">
+                    <RadioButton x:Name="MotionOption" Content="Short label" IsChecked="True" MaxWidth="480" />
+                    <RadioButton x:Name="MotionAlternative" Content="Alternative" />
+                </StackPanel>
+                <StackPanel m3:RadioButtonAssist.GroupNavigation="True" FlowDirection="RightToLeft">
+                    <RadioButton x:Name="RtlMotionOption" Content="Short label" IsChecked="True" MaxWidth="480" />
+                    <RadioButton x:Name="RtlMotionAlternative" Content="Alternative" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Border Classes="radio-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}">
+                <TextBlock Text="Validation and local tokens" m3:Typography.TextStyle="TitleMedium" />
+                <StackPanel>
+                    <RadioButton x:Name="ValidatedOption" Content="Delivery preference" IsChecked="True" />
+                    <RadioButton Content="Another preference" />
+                </StackPanel>
+                <TextBlock Text="Supporting text and validation messages remain separate from the radio indicator."
+                           TextWrapping="Wrap" m3:Typography.TextStyle="BodySmall" />
+                <Button Content="Toggle validation message" Click="OnValidationClick" />
+                <RadioButton x:Name="RemappedOption" Content="Local token alias" IsChecked="True" />
+                <Button Content="Remap selected colors" Click="OnRemapClick" />
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>
