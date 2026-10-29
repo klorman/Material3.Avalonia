@@ -126,6 +126,13 @@ public static class ButtonAssist
 
     private static void ValidateTarget(Button button)
     {
+        if (button is FloatingActionButton)
+        {
+            throw new ArgumentException(
+                "ButtonAssist cannot be used with FloatingActionButton.",
+                nameof(button));
+        }
+
         if (button is IconToggleButton)
         {
             throw new ArgumentException(

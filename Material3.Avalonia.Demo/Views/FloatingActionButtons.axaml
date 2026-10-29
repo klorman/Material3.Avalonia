@@ -1,0 +1,215 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:m3="https://github.com/klorman/Material3.Avalonia"
+             x:Class="Material3.Avalonia.Demo.Views.FloatingActionButtons">
+    <UserControl.Styles>
+        <Style Selector="Border.fab-section">
+            <Setter Property="Background" Value="{m3:Token MdSysSurfaceContainerLowBrush}" />
+            <Setter Property="CornerRadius" Value="{m3:Token MdSysShapeCornerLarge}" />
+            <Setter Property="Padding" Value="{m3:DynamicThickness MdSysSpacing300}" />
+        </Style>
+        <Style Selector="TextBlock.fab-heading">
+            <Setter Property="m3:Typography.TextStyle" Value="TitleLarge" />
+        </Style>
+        <Style Selector="TextBlock.fab-description">
+            <Setter Property="m3:Typography.TextStyle" Value="BodyMedium" />
+            <Setter Property="Foreground" Value="{m3:Token MdSysOnSurfaceVariantBrush}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+        <Style Selector="WrapPanel.fab-samples > m3|FloatingActionButton">
+            <Setter Property="Margin" Value="{m3:DynamicThickness MdSysSpacing100}" />
+        </Style>
+        <ContainerQuery Name="profile-action" Query="max-width:400">
+            <Style Selector="m3|FloatingActionButton.profile-action">
+                <Setter Property="IsExtended" Value="False" />
+            </Style>
+        </ContainerQuery>
+    </UserControl.Styles>
+
+    <StackPanel Margin="{m3:DynamicThickness MdSysSpacing300}"
+                Spacing="{m3:Token MdSysSpacing300}">
+        <TextBlock Text="Floating action buttons" m3:Typography.TextStyle="HeadlineMedium" />
+        <TextBlock Classes="fab-description"
+                   Text="One primary action, three expressive sizes and six color styles. Add Content for an extended FAB; the same button retains its command and focus when the label collapses." />
+
+        <!-- Colors -->
+        <Border Classes="fab-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing200}">
+                <TextBlock Classes="fab-heading" Text="Color styles" />
+                <TextBlock Classes="fab-description" Text="Container colors are tonal; primary, secondary and tertiary use the corresponding on-color. Hover, keyboard focus and press keep their Material state layers and elevation." />
+                <WrapPanel Classes="fab-samples">
+                    <m3:FloatingActionButton Variant="PrimaryContainer" Icon="{m3:Symbol Add}"
+                                             ToolTip.Tip="PrimaryContainer" AutomationProperties.Name="PrimaryContainer" />
+                    <m3:FloatingActionButton Variant="SecondaryContainer" Icon="{m3:Symbol Edit}"
+                                             ToolTip.Tip="SecondaryContainer" AutomationProperties.Name="SecondaryContainer" />
+                    <m3:FloatingActionButton Variant="TertiaryContainer" Icon="{m3:Symbol Share}"
+                                             ToolTip.Tip="TertiaryContainer" AutomationProperties.Name="TertiaryContainer" />
+                    <m3:FloatingActionButton Variant="Primary" Icon="{m3:Symbol Send}"
+                                             ToolTip.Tip="Primary" AutomationProperties.Name="Primary" />
+                    <m3:FloatingActionButton Variant="Secondary" Icon="{m3:Symbol Favorite}"
+                                             ToolTip.Tip="Secondary" AutomationProperties.Name="Secondary" />
+                    <m3:FloatingActionButton Variant="Tertiary" Icon="{m3:Symbol Check}"
+                                             ToolTip.Tip="Tertiary" AutomationProperties.Name="Tertiary" />
+                </WrapPanel>
+                <WrapPanel Classes="fab-samples">
+                    <m3:FloatingActionButton Variant="PrimaryContainer" Icon="{m3:Symbol Add}" Content="Create" />
+                    <m3:FloatingActionButton Variant="SecondaryContainer" Icon="{m3:Symbol Edit}" Content="Create" />
+                    <m3:FloatingActionButton Variant="TertiaryContainer" Icon="{m3:Symbol Share}" Content="Create" />
+                    <m3:FloatingActionButton Variant="Primary" Icon="{m3:Symbol Send}" Content="Create" />
+                    <m3:FloatingActionButton Variant="Secondary" Icon="{m3:Symbol Favorite}" Content="Create" />
+                    <m3:FloatingActionButton Variant="Tertiary" Icon="{m3:Symbol Check}" Content="Create" />
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Sizes -->
+        <Border Classes="fab-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing200}">
+                <TextBlock Classes="fab-heading" Text="Sizes" />
+                <TextBlock Classes="fab-description" Text="Small: 56 dp · Medium: 80 dp · Large: 96 dp. Medium is recommended for most layouts. Extended FABs keep the corresponding FAB height, shape and icon size." />
+                <WrapPanel Classes="fab-samples">
+                    <m3:FloatingActionButton Size="Small" Icon="{m3:Symbol Add}"
+                                             ToolTip.Tip="Small" AutomationProperties.Name="Small FAB" />
+                    <m3:FloatingActionButton Size="Medium" Icon="{m3:Symbol Add}"
+                                             ToolTip.Tip="Medium" AutomationProperties.Name="Medium FAB" />
+                    <m3:FloatingActionButton Size="Large" Icon="{m3:Symbol Add}"
+                                             ToolTip.Tip="Large" AutomationProperties.Name="Large FAB" />
+                </WrapPanel>
+                <WrapPanel Classes="fab-samples">
+                    <m3:FloatingActionButton Size="Small" Icon="{m3:Symbol Edit}" Content="Compose" />
+                    <m3:FloatingActionButton Size="Medium" Icon="{m3:Symbol Edit}" Content="Compose" />
+                    <m3:FloatingActionButton Size="Large" Icon="{m3:Symbol Edit}" Content="Compose" />
+                </WrapPanel>
+                <TextBlock Classes="fab-description" Text="Without an icon, the label stays visible even with IsExtended=False. Short labels keep the 80 dp minimum width." />
+                <m3:FloatingActionButton Content="Go" IsExtended="False" />
+            </StackPanel>
+        </Border>
+
+        <!-- Interaction -->
+        <Border Classes="fab-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing200}">
+                <TextBlock Classes="fab-heading" Text="One button, animated states" />
+                <TextBlock Classes="fab-description" Text="Unavailable actions disappear instead of showing a disabled FAB. Collapse keeps the accessible label and provides an automatic tooltip. Rapidly toggle states to interrupt the springs." />
+                <WrapPanel>
+                    <CheckBox x:Name="ExtendedToggle" Content="Extended" IsChecked="True" Margin="0 0 16 0" />
+                    <CheckBox x:Name="PresentedToggle" Content="Presented" IsChecked="True" Margin="0 0 16 0" />
+                    <CheckBox x:Name="EnabledToggle" Content="IsEnabled" IsChecked="True" Margin="0 0 16 0" />
+                    <CheckBox x:Name="AvailableToggle" Content="CanExecute" IsChecked="True" Click="OnAvailabilityChanged" />
+                </WrapPanel>
+                <WrapPanel>
+                    <Button Content="Change label" Click="OnChangeLabel" Margin="0 0 8 8" />
+                    <Button Content="Change icon" Click="OnChangeIcon" Margin="0 0 8 8" />
+                    <Button Content="Change size" Click="OnChangeSize" Margin="0 0 8 8" />
+                    <Button Content="Mirror RTL" Click="OnMirror" Margin="0 0 8 8" />
+                </WrapPanel>
+                <Panel x:Name="InteractionArea" MinHeight="180">
+                    <m3:FloatingActionButton x:Name="InteractiveSample" Content="Compose" Icon="{m3:Symbol Edit}"
+                                             Size="Medium" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                             IsExtended="{Binding #ExtendedToggle.IsChecked}"
+                                             IsPresented="{Binding #PresentedToggle.IsChecked}"
+                                             IsEnabled="{Binding #EnabledToggle.IsChecked}" />
+                </Panel>
+                <TextBlock x:Name="ActionStatus" Classes="fab-description" Text="Activate with the pointer, Space or Enter." />
+                <WrapPanel>
+                    <Button Content="Standard motion" Click="OnStandardMotion" Margin="0 0 8 0" />
+                    <Button Content="Expressive motion" Click="OnExpressiveMotion" Margin="0 0 16 0" />
+                    <CheckBox Content="Reduced motion" Click="OnReducedMotion" />
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Scrolling -->
+        <Border Classes="fab-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing200}">
+                <TextBlock Classes="fab-heading" Text="Persistent action above a scrolling list" />
+                <TextBlock Classes="fab-description" Text="Scroll inside the list: down collapses the label, up expands it. The ends of the list expand the label too. The FAB remains anchored above the content." />
+                <Grid Height="360" ClipToBounds="False">
+                    <ScrollViewer x:Name="ScrollSample" VerticalScrollBarVisibility="Visible">
+                        <ItemsControl x:Name="Messages" Margin="0 0 0 112">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="x:String">
+                                    <Border Padding="{m3:DynamicThickness MdSysSpacing200}"
+                                            BorderBrush="{m3:Token MdSysOutlineVariantBrush}" BorderThickness="0 0 0 1">
+                                        <TextBlock Text="{Binding}" m3:Typography.TextStyle="BodyLarge" />
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                    <m3:FloatingActionButton Icon="{m3:Symbol Edit}" Content="Compose" Size="Medium"
+                                             HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                             ScrollViewer="{Binding #ScrollSample}" Click="OnAction" />
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- Navigation -->
+        <Border Classes="fab-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing200}">
+                <TextBlock Classes="fab-heading" Text="Changing page context" />
+                <TextBlock Classes="fab-description" Text="The next action is prepared while the FAB is hidden. Settings has no primary action, so the FAB stays hidden there." />
+                <StackPanel Orientation="Horizontal" Spacing="{m3:Token MdSysSpacing100}">
+                    <Button Content="Inbox" Click="OnInbox" />
+                    <Button Content="Projects" Click="OnProjects" />
+                    <Button Content="Settings" Click="OnSettings" />
+                </StackPanel>
+                <Grid MinHeight="180">
+                    <StackPanel Spacing="{m3:Token MdSysSpacing100}">
+                        <TextBlock x:Name="PageTitle" Text="Inbox" m3:Typography.TextStyle="HeadlineSmall" />
+                        <TextBlock x:Name="PageDescription" Classes="fab-description" Text="Compose a message in this inbox." />
+                    </StackPanel>
+                    <m3:FloatingActionButton x:Name="NavigationSample" Content="Compose" Icon="{m3:Symbol Edit}"
+                                             HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="OnAction" />
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- Layout and tokens -->
+        <Border Classes="fab-section">
+            <StackPanel Spacing="{m3:Token MdSysSpacing200}">
+                <TextBlock Classes="fab-heading" Text="Layout, localization and local tokens" />
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="{m3:Token MdSysSpacing200}">
+                    <Border Background="{m3:Token MdSysSurfaceBrush}" Padding="{m3:DynamicThickness MdSysSpacing200}">
+                        <Border.Styles>
+                            <m3:MaterialTheme Mode="Light" SourceColor="#6750A4" MotionScheme="{x:Null}" />
+                        </Border.Styles>
+                        <StackPanel Spacing="{m3:Token MdSysSpacing200}">
+                            <TextBlock Text="Light" Foreground="{m3:Token MdSysOnSurfaceBrush}" />
+                            <m3:FloatingActionButton Icon="{m3:Symbol Add}" Content="Create" HorizontalAlignment="Center" Margin="0" />
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Column="1" Background="{m3:Token MdSysSurfaceBrush}" Padding="{m3:DynamicThickness MdSysSpacing200}">
+                        <Border.Styles>
+                            <m3:MaterialTheme Mode="Dark" SourceColor="#6750A4" MotionScheme="{x:Null}" />
+                        </Border.Styles>
+                        <StackPanel Spacing="{m3:Token MdSysSpacing200}">
+                            <TextBlock Text="Dark" Foreground="{m3:Token MdSysOnSurfaceBrush}" />
+                            <m3:FloatingActionButton Icon="{m3:Symbol Add}" Content="Create" HorizontalAlignment="Center" Margin="0" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Border FlowDirection="RightToLeft">
+                    <m3:FloatingActionButton Icon="{m3:Symbol Edit}" Content="رسالة جديدة" HorizontalAlignment="Left" />
+                </Border>
+                <TextBlock Classes="fab-description" Text="Resize this view: the profile action collapses below 400 dp of container width. Its full label remains available as the accessible name and compact tooltip." />
+                <Border MaxWidth="480" HorizontalAlignment="Left"
+                        Container.Name="profile-action" Container.Sizing="Width">
+                    <m3:FloatingActionButton Classes="profile-action" Icon="{m3:Symbol Check}"
+                                             Content="Сохранить изменения профиля" HorizontalAlignment="Right" />
+                </Border>
+                <TextBlock Classes="fab-description" Text="The default outer margin is 16 dp. The Light and Dark containers already provide padding, so their buttons use Margin=0. Labels stay on one line without ellipsis; bind IsExtended to your layout when space is limited." />
+                <Border>
+                    <Border.Resources>
+                        <m3:TokenAlias x:Key="MdCompFabPrimaryContainerContainerBrush" ResourceKey="MdSysTertiaryContainerBrush" />
+                        <m3:TokenAlias x:Key="MdCompExtendedFabPrimaryContainerContainerBrush" ResourceKey="MdSysTertiaryContainerBrush" />
+                        <m3:TokenAlias x:Key="MdCompFabPrimaryContainerIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+                        <m3:TokenAlias x:Key="MdCompExtendedFabPrimaryContainerIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+                        <m3:TokenAlias x:Key="MdCompExtendedFabPrimaryContainerLabelBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+                    </Border.Resources>
+                    <m3:FloatingActionButton Icon="{m3:Symbol Add}" Content="Local tokens"
+                                             IsExtended="{Binding #ExtendedToggle.IsChecked}" HorizontalAlignment="Center" />
+                </Border>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

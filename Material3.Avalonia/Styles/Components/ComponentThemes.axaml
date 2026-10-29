@@ -9,6 +9,7 @@
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/IconButtonFamily.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/IconButton.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/IconToggleButton.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/FloatingActionButton.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ToggleButton.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Card.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/DataValidationErrors.axaml" />

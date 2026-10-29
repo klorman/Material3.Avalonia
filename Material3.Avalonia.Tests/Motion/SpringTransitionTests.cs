@@ -25,6 +25,49 @@ public sealed class SpringTransitionTests
         });
     }
 
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void ExistingTransitionsFollowSchemeChangesAfterGarbageCollection(bool directional)
+    {
+        var previousScheme = MotionSettings.GlobalScheme;
+        var previousReducedMotion = MotionSettings.ReduceMotion;
+        try
+        {
+            MotionSettings.ReduceMotion = false;
+            MotionSettings.GlobalScheme = MotionScheme.Expressive;
+            var transition = CreateTransition();
+            var expressive = Read(transition);
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+            MotionSettings.GlobalScheme = MotionScheme.Standard;
+
+            var standard = Read(CreateTransition());
+            standard.Should().NotBeApproximately(expressive, 0.01);
+            Read(transition).Should().BeApproximately(standard, 0.0001);
+            GC.KeepAlive(transition);
+        }
+        finally
+        {
+            MotionSettings.GlobalScheme = previousScheme;
+            MotionSettings.ReduceMotion = previousReducedMotion;
+        }
+
+        object CreateTransition() => directional
+            ? new SpringDirectionalDoubleTransition
+            {
+                IncreaseStyle = MotionStyle.Spatial, DecreaseStyle = MotionStyle.Spatial,
+                IncreaseSpeed = MotionSpeed.Fast, DecreaseSpeed = MotionSpeed.Fast
+            }
+            : new TestDoubleTransition { Speed = MotionSpeed.Fast };
+
+        static double Read(object transition) => transition is SpringDirectionalDoubleTransition value
+            ? Sample(value, 0.5, 0, 1)
+            : ((TestDoubleTransition)transition).Sample(0.5, 0, 1);
+    }
+
     [Fact]
     public void RespectReduceMotionFalseKeepsSpringInterpolation()
     {

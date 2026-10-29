@@ -23,6 +23,8 @@
 
             <views:IconButtons HorizontalAlignment="Center" />
 
+            <views:FloatingActionButtons HorizontalAlignment="Stretch" />
+
             <views:CheckBoxes HorizontalAlignment="Stretch" />
 
             <views:RadioButtons HorizontalAlignment="Stretch" />

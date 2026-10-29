@@ -1,0 +1,885 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Material3.Avalonia.Controls"
+                    xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
+                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
+                    xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
+                    xmlns:transitions="clr-namespace:Material3.Avalonia.Motion.Transitions"
+                    xmlns:attached="clr-namespace:Material3.Avalonia.Attached">
+
+    <ControlTheme x:Key="{x:Type controls:FloatingActionButton}" TargetType="controls:FloatingActionButton">
+        <Setter Property="internal:HoverState.IsEnabled" Value="True" />
+        <Setter Property="internal:KeyboardActivationGuard.IsEnabled" Value="True" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Margin" Value="{markup:DynamicThickness MdSysSpacing200}" />
+        <Setter Property="helpers:Typography.TextStyle" Value="{x:Null}" />
+        <Setter Property="attached:FocusRing.Thickness" Value="{markup:Token MdSysStateFocusIndicatorThickness}" />
+        <Setter Property="attached:FocusRing.Offset" Value="{markup:Token MdSysStateFocusIndicatorOuterOffset}" />
+        <Setter Property="attached:FocusRing.Brush" Value="{markup:Token MdSysSecondaryBrush}" />
+        <Setter Property="attached:FocusRing.CornerRadius" Value="{Binding $self.CornerRadius}" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <transitions:SpringBrushTransition Property="Background" Style="Effects" Speed="Fast" />
+                <transitions:SpringBrushTransition Property="BorderBrush" Style="Effects" Speed="Fast" />
+                <transitions:SpringCornerRadiusTransition Property="CornerRadius" Style="Spatial" Speed="Fast" />
+            </Transitions>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <primitives:FabReveal x:Name="PART_Reveal">
+                    <Grid x:Name="PART_Container"
+                          ClipToBounds="{TemplateBinding ClipToBounds}"
+                          helpers:Typography.TextStyle="{x:Null}">
+                        <Border x:Name="PART_Outline"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <transitions:SpringBoxShadowsTransition Property="BoxShadow" />
+                                </Transitions>
+                            </Border.Transitions>
+                        </Border>
+
+                        <primitives:StateLayer x:Name="PART_StateLayer"
+                                               CornerRadius="{TemplateBinding CornerRadius}" />
+
+                        <primitives:FabContentMotion x:Name="PART_Content"
+                                                     ContentPadding="{TemplateBinding Padding}"
+                                                     HasIcon="{TemplateBinding Icon, Converter={x:Static ObjectConverters.IsNotNull}}">
+                            <primitives:IconPresenter x:Name="PART_Icon"
+                                                      IsHitTestVisible="False"
+                                                      IsFilled="True"
+                                                      IconChangeAnimation="Scale"
+                                                      Foreground="{Binding #PART_Content.EffectiveIconBrush}"
+                                                      Value="{TemplateBinding Icon}">
+                                <primitives:IconPresenter.Transitions>
+                                    <Transitions>
+                                        <transitions:SpringBrushTransition Property="Foreground" Style="Effects" Speed="Fast" />
+                                    </Transitions>
+                                </primitives:IconPresenter.Transitions>
+                            </primitives:IconPresenter>
+                            <ContentPresenter x:Name="PART_ContentPresenter"
+                                              IsHitTestVisible="False"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Foreground="{TemplateBinding Foreground}"
+                                              TextWrapping="NoWrap"
+                                              TextTrimming="None">
+                                <ContentPresenter.Transitions>
+                                    <Transitions>
+                                        <transitions:SpringBrushTransition Property="Foreground" Style="Effects" Speed="Fast" />
+                                    </Transitions>
+                                </ContentPresenter.Transitions>
+                            </ContentPresenter>
+                        </primitives:FabContentMotion>
+
+                        <primitives:InkRipple x:Name="PART_Ripple"
+                                              CornerRadius="{TemplateBinding CornerRadius}" />
+                    </Grid>
+                </primitives:FabReveal>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+        <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+            <Setter Property="IsExtended" Value="False" />
+            <Setter Property="ExtendedMinimumWidth" Value="{markup:Token MdImplExtendedFabMinimumWidth}" />
+        </Style>
+        <Style Selector="^:extended /template/ primitives|FabContentMotion#PART_Content">
+            <Setter Property="IsExtended" Value="True" />
+        </Style>
+
+        <!-- Size -->
+        <Style Selector="^[Size=Small]">
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdCompExtendedFabSmallLeadingSpace MdSysSpacing0 MdCompExtendedFabSmallTrailingSpace MdSysSpacing0}" />
+            <Setter Property="FontFamily" Value="{markup:Token MdCompExtendedFabSmallLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{markup:Token MdCompExtendedFabSmallLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{markup:Token MdCompExtendedFabSmallLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdCompExtendedFabSmallLabelTextTracking}" />
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="LineHeight" Value="{markup:Token MdCompExtendedFabSmallLabelTextLineHeight}" />
+            </Style>
+            <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                <Setter Property="CollapsedWidth" Value="{markup:Token MdCompFabContainerWidth}" />
+                <Setter Property="Gap" Value="{markup:Token MdCompExtendedFabSmallIconLabelSpace}" />
+            </Style>
+            <Style Selector="^:not(:extended)">
+                <Setter Property="Height" Value="{markup:Token MdCompFabContainerHeight}" />
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompFabContainerShape}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Size" Value="{markup:Token MdCompFabIconSize}" />
+                </Style>
+            </Style>
+            <Style Selector="^:extended">
+                <Setter Property="Height" Value="{markup:Token MdCompExtendedFabSmallContainerHeight}" />
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompExtendedFabSmallContainerShape}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Size" Value="{markup:Token MdCompExtendedFabSmallIconSize}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[Size=Medium]">
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdCompExtendedFabMediumLeadingSpace MdSysSpacing0 MdCompExtendedFabMediumTrailingSpace MdSysSpacing0}" />
+            <Setter Property="FontFamily" Value="{markup:Token MdCompExtendedFabMediumLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{markup:Token MdCompExtendedFabMediumLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{markup:Token MdCompExtendedFabMediumLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdCompExtendedFabMediumLabelTextTracking}" />
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="LineHeight" Value="{markup:Token MdCompExtendedFabMediumLabelTextLineHeight}" />
+            </Style>
+            <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                <Setter Property="CollapsedWidth" Value="{markup:Token MdCompFabMediumContainerWidth}" />
+                <Setter Property="Gap" Value="{markup:Token MdCompExtendedFabMediumIconLabelSpace}" />
+            </Style>
+            <Style Selector="^:not(:extended)">
+                <Setter Property="Height" Value="{markup:Token MdCompFabMediumContainerHeight}" />
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompFabMediumContainerShape}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Size" Value="{markup:Token MdCompFabMediumIconSize}" />
+                </Style>
+            </Style>
+            <Style Selector="^:extended">
+                <Setter Property="Height" Value="{markup:Token MdCompExtendedFabMediumContainerHeight}" />
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompExtendedFabMediumContainerShape}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Size" Value="{markup:Token MdCompExtendedFabMediumIconSize}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[Size=Large]">
+            <Setter Property="Padding" Value="{markup:DynamicThickness MdCompExtendedFabLargeLeadingSpace MdSysSpacing0 MdCompExtendedFabLargeTrailingSpace MdSysSpacing0}" />
+            <Setter Property="FontFamily" Value="{markup:Token MdCompExtendedFabLargeLabelTextFontFamily}" />
+            <Setter Property="FontWeight" Value="{markup:Token MdCompExtendedFabLargeLabelTextWeight}" />
+            <Setter Property="FontSize" Value="{markup:Token MdCompExtendedFabLargeLabelTextSize}" />
+            <Setter Property="LetterSpacing" Value="{markup:Token MdCompExtendedFabLargeLabelTextTracking}" />
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="LineHeight" Value="{markup:Token MdCompExtendedFabLargeLabelTextLineHeight}" />
+            </Style>
+            <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                <Setter Property="CollapsedWidth" Value="{markup:Token MdCompFabLargeContainerWidth}" />
+                <Setter Property="Gap" Value="{markup:Token MdCompExtendedFabLargeIconLabelSpace}" />
+            </Style>
+            <Style Selector="^:not(:extended)">
+                <Setter Property="Height" Value="{markup:Token MdCompFabLargeContainerHeight}" />
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompFabLargeContainerShape}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Size" Value="{markup:Token MdCompFabLargeIconSize}" />
+                </Style>
+            </Style>
+            <Style Selector="^:extended">
+                <Setter Property="Height" Value="{markup:Token MdCompExtendedFabLargeContainerHeight}" />
+                <Setter Property="CornerRadius" Value="{markup:Token MdCompExtendedFabLargeContainerShape}" />
+                <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+                    <Setter Property="Size" Value="{markup:Token MdCompExtendedFabLargeIconSize}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <!-- Variant and state -->
+        <Style Selector="^[Variant=PrimaryContainer]">
+            <Style Selector="^:not(:extended)">
+                <Setter Property="Background" Value="{markup:Token MdCompFabPrimaryContainerContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFabPrimaryContainerIconBrush}" />
+                <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                    <Setter Property="IconBrush" Value="{markup:Token MdCompFabPrimaryContainerIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Outline">
+                    <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabPrimaryContainerContainerElevation, MdCompFabPrimaryContainerContainerShadowColor}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompFabPrimaryContainerPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompFabPrimaryContainerPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabPrimaryContainerHoveredIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabPrimaryContainerHoveredIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabPrimaryContainerHoveredStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabPrimaryContainerHoveredStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabPrimaryContainerHoveredContainerElevation, MdCompFabPrimaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:focus-visible:not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabPrimaryContainerFocusedIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabPrimaryContainerFocusedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabPrimaryContainerFocusedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabPrimaryContainerFocusedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabPrimaryContainerFocusedContainerElevation, MdCompFabPrimaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:pressed:not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabPrimaryContainerPressedIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabPrimaryContainerPressedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabPrimaryContainerPressedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabPrimaryContainerPressedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabPrimaryContainerPressedContainerElevation, MdCompFabPrimaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+            </Style>
+            <Style Selector="^:extended">
+                <Setter Property="Background" Value="{markup:Token MdCompExtendedFabPrimaryContainerContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabPrimaryContainerLabelBrush}" />
+                <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                    <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabPrimaryContainerIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Outline">
+                    <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabPrimaryContainerContainerElevation, MdCompExtendedFabPrimaryContainerContainerShadowColor}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabPrimaryContainerPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompExtendedFabPrimaryContainerPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabPrimaryContainerHoveredLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabPrimaryContainerHoveredIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabPrimaryContainerHoveredStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabPrimaryContainerHoveredStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabPrimaryContainerHoveredContainerElevation, MdCompExtendedFabPrimaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:focus-visible:not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabPrimaryContainerFocusedLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabPrimaryContainerFocusedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabPrimaryContainerFocusedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabPrimaryContainerFocusedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabPrimaryContainerFocusedContainerElevation, MdCompExtendedFabPrimaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:pressed:not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabPrimaryContainerPressedLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabPrimaryContainerPressedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabPrimaryContainerPressedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabPrimaryContainerPressedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabPrimaryContainerPressedContainerElevation, MdCompExtendedFabPrimaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[Variant=SecondaryContainer]">
+            <Style Selector="^:not(:extended)">
+                <Setter Property="Background" Value="{markup:Token MdCompFabSecondaryContainerContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFabSecondaryContainerIconBrush}" />
+                <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                    <Setter Property="IconBrush" Value="{markup:Token MdCompFabSecondaryContainerIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Outline">
+                    <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabSecondaryContainerContainerElevation, MdCompFabSecondaryContainerContainerShadowColor}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompFabSecondaryContainerPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompFabSecondaryContainerPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabSecondaryContainerHoveredIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabSecondaryContainerHoveredIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabSecondaryContainerHoveredStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabSecondaryContainerHoveredStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabSecondaryContainerHoveredContainerElevation, MdCompFabSecondaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:focus-visible:not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabSecondaryContainerFocusedIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabSecondaryContainerFocusedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabSecondaryContainerFocusedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabSecondaryContainerFocusedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabSecondaryContainerFocusedContainerElevation, MdCompFabSecondaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:pressed:not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabSecondaryContainerPressedIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabSecondaryContainerPressedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabSecondaryContainerPressedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabSecondaryContainerPressedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabSecondaryContainerPressedContainerElevation, MdCompFabSecondaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+            </Style>
+            <Style Selector="^:extended">
+                <Setter Property="Background" Value="{markup:Token MdCompExtendedFabSecondaryContainerContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabSecondaryContainerLabelBrush}" />
+                <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                    <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabSecondaryContainerIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Outline">
+                    <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabSecondaryContainerContainerElevation, MdCompExtendedFabSecondaryContainerContainerShadowColor}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabSecondaryContainerPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompExtendedFabSecondaryContainerPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabSecondaryContainerHoveredLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabSecondaryContainerHoveredIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabSecondaryContainerHoveredStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabSecondaryContainerHoveredStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabSecondaryContainerHoveredContainerElevation, MdCompExtendedFabSecondaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:focus-visible:not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabSecondaryContainerFocusedLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabSecondaryContainerFocusedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabSecondaryContainerFocusedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabSecondaryContainerFocusedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabSecondaryContainerFocusedContainerElevation, MdCompExtendedFabSecondaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:pressed:not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabSecondaryContainerPressedLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabSecondaryContainerPressedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabSecondaryContainerPressedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabSecondaryContainerPressedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabSecondaryContainerPressedContainerElevation, MdCompExtendedFabSecondaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[Variant=TertiaryContainer]">
+            <Style Selector="^:not(:extended)">
+                <Setter Property="Background" Value="{markup:Token MdCompFabTertiaryContainerContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFabTertiaryContainerIconBrush}" />
+                <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                    <Setter Property="IconBrush" Value="{markup:Token MdCompFabTertiaryContainerIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Outline">
+                    <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabTertiaryContainerContainerElevation, MdCompFabTertiaryContainerContainerShadowColor}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompFabTertiaryContainerPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompFabTertiaryContainerPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabTertiaryContainerHoveredIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabTertiaryContainerHoveredIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabTertiaryContainerHoveredStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabTertiaryContainerHoveredStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabTertiaryContainerHoveredContainerElevation, MdCompFabTertiaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:focus-visible:not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabTertiaryContainerFocusedIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabTertiaryContainerFocusedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabTertiaryContainerFocusedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabTertiaryContainerFocusedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabTertiaryContainerFocusedContainerElevation, MdCompFabTertiaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:pressed:not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabTertiaryContainerPressedIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabTertiaryContainerPressedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabTertiaryContainerPressedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabTertiaryContainerPressedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabTertiaryContainerPressedContainerElevation, MdCompFabTertiaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+            </Style>
+            <Style Selector="^:extended">
+                <Setter Property="Background" Value="{markup:Token MdCompExtendedFabTertiaryContainerContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabTertiaryContainerLabelBrush}" />
+                <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                    <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabTertiaryContainerIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Outline">
+                    <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabTertiaryContainerContainerElevation, MdCompExtendedFabTertiaryContainerContainerShadowColor}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabTertiaryContainerPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompExtendedFabTertiaryContainerPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabTertiaryContainerHoveredLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabTertiaryContainerHoveredIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabTertiaryContainerHoveredStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabTertiaryContainerHoveredStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabTertiaryContainerHoveredContainerElevation, MdCompExtendedFabTertiaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:focus-visible:not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabTertiaryContainerFocusedLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabTertiaryContainerFocusedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabTertiaryContainerFocusedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabTertiaryContainerFocusedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabTertiaryContainerFocusedContainerElevation, MdCompExtendedFabTertiaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:pressed:not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabTertiaryContainerPressedLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabTertiaryContainerPressedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabTertiaryContainerPressedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabTertiaryContainerPressedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabTertiaryContainerPressedContainerElevation, MdCompExtendedFabTertiaryContainerContainerShadowColor}" />
+                    </Style>
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[Variant=Primary]">
+            <Style Selector="^:not(:extended)">
+                <Setter Property="Background" Value="{markup:Token MdCompFabPrimaryContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFabPrimaryIconBrush}" />
+                <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                    <Setter Property="IconBrush" Value="{markup:Token MdCompFabPrimaryIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Outline">
+                    <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabPrimaryContainerElevation, MdCompFabPrimaryContainerShadowColor}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompFabPrimaryPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompFabPrimaryPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabPrimaryHoveredIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabPrimaryHoveredIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabPrimaryHoveredStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabPrimaryHoveredStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabPrimaryHoveredContainerElevation, MdCompFabPrimaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:focus-visible:not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabPrimaryFocusedIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabPrimaryFocusedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabPrimaryFocusedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabPrimaryFocusedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabPrimaryFocusedContainerElevation, MdCompFabPrimaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:pressed:not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabPrimaryPressedIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabPrimaryPressedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabPrimaryPressedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabPrimaryPressedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabPrimaryPressedContainerElevation, MdCompFabPrimaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+            </Style>
+            <Style Selector="^:extended">
+                <Setter Property="Background" Value="{markup:Token MdCompExtendedFabPrimaryContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabPrimaryLabelBrush}" />
+                <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                    <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabPrimaryIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Outline">
+                    <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabPrimaryContainerElevation, MdCompExtendedFabPrimaryContainerShadowColor}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabPrimaryPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompExtendedFabPrimaryPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabPrimaryHoveredLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabPrimaryHoveredIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabPrimaryHoveredStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabPrimaryHoveredStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabPrimaryHoveredContainerElevation, MdCompExtendedFabPrimaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:focus-visible:not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabPrimaryFocusedLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabPrimaryFocusedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabPrimaryFocusedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabPrimaryFocusedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabPrimaryFocusedContainerElevation, MdCompExtendedFabPrimaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:pressed:not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabPrimaryPressedLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabPrimaryPressedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabPrimaryPressedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabPrimaryPressedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabPrimaryPressedContainerElevation, MdCompExtendedFabPrimaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[Variant=Secondary]">
+            <Style Selector="^:not(:extended)">
+                <Setter Property="Background" Value="{markup:Token MdCompFabSecondaryContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFabSecondaryIconBrush}" />
+                <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                    <Setter Property="IconBrush" Value="{markup:Token MdCompFabSecondaryIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Outline">
+                    <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabSecondaryContainerElevation, MdCompFabSecondaryContainerShadowColor}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompFabSecondaryPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompFabSecondaryPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabSecondaryHoveredIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabSecondaryHoveredIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabSecondaryHoveredStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabSecondaryHoveredStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabSecondaryHoveredContainerElevation, MdCompFabSecondaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:focus-visible:not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabSecondaryFocusedIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabSecondaryFocusedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabSecondaryFocusedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabSecondaryFocusedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabSecondaryFocusedContainerElevation, MdCompFabSecondaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:pressed:not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabSecondaryPressedIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabSecondaryPressedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabSecondaryPressedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabSecondaryPressedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabSecondaryPressedContainerElevation, MdCompFabSecondaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+            </Style>
+            <Style Selector="^:extended">
+                <Setter Property="Background" Value="{markup:Token MdCompExtendedFabSecondaryContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabSecondaryLabelBrush}" />
+                <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                    <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabSecondaryIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Outline">
+                    <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabSecondaryContainerElevation, MdCompExtendedFabSecondaryContainerShadowColor}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabSecondaryPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompExtendedFabSecondaryPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabSecondaryHoveredLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabSecondaryHoveredIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabSecondaryHoveredStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabSecondaryHoveredStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabSecondaryHoveredContainerElevation, MdCompExtendedFabSecondaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:focus-visible:not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabSecondaryFocusedLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabSecondaryFocusedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabSecondaryFocusedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabSecondaryFocusedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabSecondaryFocusedContainerElevation, MdCompExtendedFabSecondaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:pressed:not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabSecondaryPressedLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabSecondaryPressedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabSecondaryPressedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabSecondaryPressedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabSecondaryPressedContainerElevation, MdCompExtendedFabSecondaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^[Variant=Tertiary]">
+            <Style Selector="^:not(:extended)">
+                <Setter Property="Background" Value="{markup:Token MdCompFabTertiaryContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompFabTertiaryIconBrush}" />
+                <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                    <Setter Property="IconBrush" Value="{markup:Token MdCompFabTertiaryIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Outline">
+                    <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabTertiaryContainerElevation, MdCompFabTertiaryContainerShadowColor}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompFabTertiaryPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompFabTertiaryPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabTertiaryHoveredIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabTertiaryHoveredIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabTertiaryHoveredStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabTertiaryHoveredStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabTertiaryHoveredContainerElevation, MdCompFabTertiaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:focus-visible:not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabTertiaryFocusedIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabTertiaryFocusedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabTertiaryFocusedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabTertiaryFocusedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabTertiaryFocusedContainerElevation, MdCompFabTertiaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:pressed:not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompFabTertiaryPressedIconBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompFabTertiaryPressedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompFabTertiaryPressedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompFabTertiaryPressedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompFabTertiaryPressedContainerElevation, MdCompFabTertiaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+            </Style>
+            <Style Selector="^:extended">
+                <Setter Property="Background" Value="{markup:Token MdCompExtendedFabTertiaryContainerBrush}" />
+                <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabTertiaryLabelBrush}" />
+                <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                    <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabTertiaryIconBrush}" />
+                </Style>
+                <Style Selector="^ /template/ Border#PART_Outline">
+                    <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabTertiaryContainerElevation, MdCompExtendedFabTertiaryContainerShadowColor}" />
+                </Style>
+                <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                    <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabTertiaryPressedStateLayerBrush}" />
+                    <Setter Property="BaseOpacity" Value="{markup:Token MdCompExtendedFabTertiaryPressedStateLayerOpacity}" />
+                </Style>
+                <Style Selector="^.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabTertiaryHoveredLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabTertiaryHoveredIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabTertiaryHoveredStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabTertiaryHoveredStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabTertiaryHoveredContainerElevation, MdCompExtendedFabTertiaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:focus-visible:not(:pressed):not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabTertiaryFocusedLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabTertiaryFocusedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabTertiaryFocusedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabTertiaryFocusedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabTertiaryFocusedContainerElevation, MdCompExtendedFabTertiaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+                <Style Selector="^:pressed:not(:disabled)">
+                    <Setter Property="Foreground" Value="{markup:Token MdCompExtendedFabTertiaryPressedLabelBrush}" />
+                    <Style Selector="^ /template/ primitives|FabContentMotion#PART_Content">
+                        <Setter Property="IconBrush" Value="{markup:Token MdCompExtendedFabTertiaryPressedIconBrush}" />
+                    </Style>
+                    <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                        <Setter Property="Brush" Value="{markup:Token MdCompExtendedFabTertiaryPressedStateLayerBrush}" />
+                        <Setter Property="Opacity" Value="{markup:Token MdCompExtendedFabTertiaryPressedStateLayerOpacity}" />
+                    </Style>
+                    <Style Selector="^ /template/ Border#PART_Outline">
+                        <Setter Property="BoxShadow" Value="{markup:DynamicBoxShadow MdCompExtendedFabTertiaryPressedContainerElevation, MdCompExtendedFabTertiaryContainerShadowColor}" />
+                    </Style>
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^:not(:presented)">
+            <Setter Property="Cursor" Value="Arrow" />
+            <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+                <Setter Property="Opacity" Value="0" />
+            </Style>
+            <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+                <Setter Property="Brush" Value="{x:Null}" />
+            </Style>
+        </Style>
+
+        <!-- Classes -->
+        <Style Selector="^.sm">
+            <Setter Property="Size" Value="Small" />
+        </Style>
+        <Style Selector="^.md">
+            <Setter Property="Size" Value="Medium" />
+        </Style>
+        <Style Selector="^.lg">
+            <Setter Property="Size" Value="Large" />
+        </Style>
+        <Style Selector="^.primary-container">
+            <Setter Property="Variant" Value="PrimaryContainer" />
+        </Style>
+        <Style Selector="^.secondary-container">
+            <Setter Property="Variant" Value="SecondaryContainer" />
+        </Style>
+        <Style Selector="^.tertiary-container">
+            <Setter Property="Variant" Value="TertiaryContainer" />
+        </Style>
+        <Style Selector="^.primary">
+            <Setter Property="Variant" Value="Primary" />
+        </Style>
+        <Style Selector="^.secondary">
+            <Setter Property="Variant" Value="Secondary" />
+        </Style>
+        <Style Selector="^.tertiary">
+            <Setter Property="Variant" Value="Tertiary" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

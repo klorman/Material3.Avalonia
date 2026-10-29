@@ -9,6 +9,7 @@ namespace Material3.Avalonia.Motion.Transitions;
 /// </summary>
 public sealed class SpringDirectionalDoubleTransition : InterpolatingTransitionBase<double>
 {
+    private readonly EventHandler _globalSchemeChanged;
     private MotionStyle _increaseStyle = MotionStyle.Effects;
     private MotionSpeed _increaseSpeed = MotionSpeed.Slow;
     private MotionStyle _decreaseStyle = MotionStyle.Effects;
@@ -94,7 +95,8 @@ public sealed class SpringDirectionalDoubleTransition : InterpolatingTransitionB
     /// </summary>
     public SpringDirectionalDoubleTransition()
     {
-        MotionSettings.GlobalSchemeChanged += (_, _) => MarkDurationDirty();
+        _globalSchemeChanged = (_, _) => MarkDurationDirty();
+        MotionSettings.GlobalSchemeChanged += _globalSchemeChanged;
         PostRecomputeIfNeeded();
     }
 

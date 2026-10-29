@@ -190,7 +190,7 @@ public class IconPresenter : Control
 
     private void ChangeFill()
     {
-        if (_displayedValue is MaterialSymbol && !MotionSettings.ReduceMotion &&
+        if (_displayedValue is MaterialSymbol && IsEffectivelyVisible && !MotionSettings.ReduceMotion &&
             TopLevel.GetTopLevel(this) is not null)
         {
             _fromFill = _fill;
@@ -229,7 +229,7 @@ public class IconPresenter : Control
     private void ChangeSource()
     {
         if (Equals(_displayedValue, Value) && !_animating) return;
-        if (IconChangeAnimation == IconChangeAnimation.Scale && !MotionSettings.ReduceMotion &&
+        if (IconChangeAnimation == IconChangeAnimation.Scale && IsEffectivelyVisible && !MotionSettings.ReduceMotion &&
             TopLevel.GetTopLevel(this) is not null)
         {
             if (_displayedValue is not null && (!_animating || !_shrinking))
@@ -268,6 +268,13 @@ public class IconPresenter : Control
     private void Animate(TimeSpan timestamp)
     {
         _framePending = false;
+        if (!IsEffectivelyVisible)
+        {
+            if (_animating) FinishChange();
+            if (_filling) FinishFill();
+            return;
+        }
+
         AnimateFill();
         if (!_animating)
         {

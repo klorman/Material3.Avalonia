@@ -206,17 +206,7 @@ internal sealed class MenuSurface : Decorator
         {
             _shadows = BoxShadow;
             if (ShadowBrush is ISolidColorBrush brush && BoxShadow.Count > 0)
-            {
-                var shadows = new BoxShadow[BoxShadow.Count];
-                for (var i = 0; i < shadows.Length; i++)
-                {
-                    shadows[i] = BoxShadow[i];
-                    shadows[i].Color = Color.FromArgb((byte)(shadows[i].Color.A * brush.Color.A / 255 * brush.Opacity),
-                        brush.Color.R, brush.Color.G, brush.Color.B);
-                }
-
-                _shadows = new BoxShadows(shadows[0], shadows.Skip(1).ToArray());
-            }
+                _shadows = BoxShadowColors.WithColor(BoxShadow, brush.Color, brush.Opacity);
         }
 
         if (change.Property == AnchorGapProperty) Presentation?.UpdateAnchor();

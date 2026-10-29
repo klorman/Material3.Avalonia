@@ -9,6 +9,9 @@ public abstract class SpringTransitionBase<T, TAdapter> : InterpolatingTransitio
 {
     private readonly TAdapter _adapter = new();
 
+    // MotionSettings keeps weak subscriptions, so the transition must retain its handler.
+    private readonly EventHandler _globalSchemeChanged;
+
     private double? _stiffness;
 
     public double? Stiffness
@@ -77,7 +80,8 @@ public abstract class SpringTransitionBase<T, TAdapter> : InterpolatingTransitio
 
     protected SpringTransitionBase()
     {
-        MotionSettings.GlobalSchemeChanged += (_, _) => MarkDurationDirty();
+        _globalSchemeChanged = (_, _) => MarkDurationDirty();
+        MotionSettings.GlobalSchemeChanged += _globalSchemeChanged;
         PostRecomputeIfNeeded();
     }
 

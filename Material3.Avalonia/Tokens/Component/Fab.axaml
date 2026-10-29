@@ -1,0 +1,129 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens">
+    <!-- Small -->
+    <x:Double x:Key="MdCompFabContainerHeight">56</x:Double>
+    <x:Double x:Key="MdCompFabContainerWidth">56</x:Double>
+    <x:Double x:Key="MdCompFabIconSize">24</x:Double>
+    <tokens:TokenAlias x:Key="MdCompFabContainerShape" ResourceKey="MdSysShapeCornerLarge" />
+
+    <!-- Medium -->
+    <x:Double x:Key="MdCompFabMediumContainerHeight">80</x:Double>
+    <x:Double x:Key="MdCompFabMediumContainerWidth">80</x:Double>
+    <x:Double x:Key="MdCompFabMediumIconSize">28</x:Double>
+    <tokens:TokenAlias x:Key="MdCompFabMediumContainerShape" ResourceKey="MdSysShapeCornerLargeIncreased" />
+
+    <!-- Large -->
+    <x:Double x:Key="MdCompFabLargeContainerHeight">96</x:Double>
+    <x:Double x:Key="MdCompFabLargeContainerWidth">96</x:Double>
+    <x:Double x:Key="MdCompFabLargeIconSize">36</x:Double>
+    <tokens:TokenAlias x:Key="MdCompFabLargeContainerShape" ResourceKey="MdSysShapeCornerExtraLarge" />
+
+    <!-- PrimaryContainer -->
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerContainerBrush" ResourceKey="MdSysPrimaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerContainerShadowColor" ResourceKey="MdSysShadowColor" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerIconBrush" ResourceKey="MdSysOnPrimaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerHoveredContainerElevation" ResourceKey="MdSysShadowLevel4" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerHoveredIconBrush" ResourceKey="MdSysOnPrimaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerHoveredStateLayerBrush" ResourceKey="MdSysOnPrimaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerHoveredStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerFocusedContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerFocusedIconBrush" ResourceKey="MdSysOnPrimaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerFocusedStateLayerBrush" ResourceKey="MdSysOnPrimaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerFocusedStateLayerOpacity" ResourceKey="MdSysStateFocusOpacity" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerPressedContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerPressedIconBrush" ResourceKey="MdSysOnPrimaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerPressedStateLayerBrush" ResourceKey="MdSysOnPrimaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerPressedStateLayerOpacity" ResourceKey="MdSysStatePressedOpacity" />
+
+    <!-- SecondaryContainer -->
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerContainerBrush" ResourceKey="MdSysSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerContainerShadowColor" ResourceKey="MdSysShadowColor" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerIconBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerHoveredContainerElevation" ResourceKey="MdSysShadowLevel4" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerHoveredIconBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerHoveredStateLayerBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerHoveredStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerFocusedContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerFocusedIconBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerFocusedStateLayerBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerFocusedStateLayerOpacity" ResourceKey="MdSysStateFocusOpacity" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerPressedContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerPressedIconBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerPressedStateLayerBrush" ResourceKey="MdSysOnSecondaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerPressedStateLayerOpacity" ResourceKey="MdSysStatePressedOpacity" />
+
+    <!-- TertiaryContainer -->
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerContainerBrush" ResourceKey="MdSysTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerContainerShadowColor" ResourceKey="MdSysShadowColor" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerHoveredContainerElevation" ResourceKey="MdSysShadowLevel4" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerHoveredIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerHoveredStateLayerBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerHoveredStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerFocusedContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerFocusedIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerFocusedStateLayerBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerFocusedStateLayerOpacity" ResourceKey="MdSysStateFocusOpacity" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerPressedContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerPressedIconBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerPressedStateLayerBrush" ResourceKey="MdSysOnTertiaryContainerBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerPressedStateLayerOpacity" ResourceKey="MdSysStatePressedOpacity" />
+
+    <!-- Primary -->
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerShadowColor" ResourceKey="MdSysShadowColor" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryIconBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryHoveredContainerElevation" ResourceKey="MdSysShadowLevel4" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryHoveredIconBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryHoveredStateLayerBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryHoveredStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryFocusedContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryFocusedIconBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryFocusedStateLayerBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryFocusedStateLayerOpacity" ResourceKey="MdSysStateFocusOpacity" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryPressedContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryPressedIconBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryPressedStateLayerBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabPrimaryPressedStateLayerOpacity" ResourceKey="MdSysStatePressedOpacity" />
+
+    <!-- Secondary -->
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerBrush" ResourceKey="MdSysSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerShadowColor" ResourceKey="MdSysShadowColor" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryIconBrush" ResourceKey="MdSysOnSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryHoveredContainerElevation" ResourceKey="MdSysShadowLevel4" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryHoveredIconBrush" ResourceKey="MdSysOnSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryHoveredStateLayerBrush" ResourceKey="MdSysOnSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryHoveredStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryFocusedContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryFocusedIconBrush" ResourceKey="MdSysOnSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryFocusedStateLayerBrush" ResourceKey="MdSysOnSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryFocusedStateLayerOpacity" ResourceKey="MdSysStateFocusOpacity" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryPressedContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryPressedIconBrush" ResourceKey="MdSysOnSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryPressedStateLayerBrush" ResourceKey="MdSysOnSecondaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabSecondaryPressedStateLayerOpacity" ResourceKey="MdSysStatePressedOpacity" />
+
+    <!-- Tertiary -->
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerBrush" ResourceKey="MdSysTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerShadowColor" ResourceKey="MdSysShadowColor" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryIconBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryHoveredContainerElevation" ResourceKey="MdSysShadowLevel4" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryHoveredIconBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryHoveredStateLayerBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryHoveredStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryFocusedContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryFocusedIconBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryFocusedStateLayerBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryFocusedStateLayerOpacity" ResourceKey="MdSysStateFocusOpacity" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryPressedContainerElevation" ResourceKey="MdSysShadowLevel3" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryPressedIconBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryPressedStateLayerBrush" ResourceKey="MdSysOnTertiaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompFabTertiaryPressedStateLayerOpacity" ResourceKey="MdSysStatePressedOpacity" />
+</ResourceDictionary>
